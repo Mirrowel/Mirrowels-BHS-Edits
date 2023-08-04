@@ -1917,19 +1917,19 @@ local function MedicineUsed(name,health,timedheal,ispreview)
 end
 
 local function actor_on_sleep(hours)
-	printf("Sleepie time for : ", hours)
+	local hoursleft=hours
+	printf("Sleepie time for : %s", hoursleft)
 	for k,v in pairs(timedhp) do
 		timedhp[k]=0
-		printf("Reset timedp")
+		--printf("Reset timedp")
 	end
-	local hoursleft=hours
 	hoursleft = hoursleft*healthmult*sleep_heal_power
-	printf("Adjusted hours: ", hoursleft)
+	printf("Adjusted hours: %s", hoursleft)
 	if sleep_heal then
 		if sleep_heal_logic then
 			printf("Sleep logic is on")
 			for i=1,hoursleft do
-				HealOne(newhealth,health)
+				HealOne(0,health)
 			end
 		else
 			printf("Sleep logic is off")
@@ -2063,7 +2063,7 @@ local function ActorMenu_on_item_focus_receive(item)
 	end
 	local item_name=item:section()
 	focused_item=item:id()
-	printf("Focused %s item",item_name)
+	--printf("Focused %s item",item_name)
 	if healhelplist[item_name] or bandagelist[item_name] or painkillerlist[item_name] or healonelist[item_name] then
 		printf("It was a medical item")
 		-- InitializePreviewBars()
@@ -2074,7 +2074,7 @@ local function ActorMenu_on_item_focus_receive(item)
 end
 
 local function ActorMenu_on_item_focus_lost(item)
-	printf("! on item focus lost "..(item and item:section() or "nil"))
+	--printf("! on item focus lost "..(item and item:section() or "nil"))
 	if focused_item==item:id() then
 		EmptyPreviewBars()
 		focused_item=nil
