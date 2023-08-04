@@ -161,7 +161,7 @@ hud_blink_timer.blinktime=1000
 -- These items heal bodyparts over time, healing all listed body parts at the same time. Won't heal if body part is at 0 hp (=broken).
 -- * the numbers for each body part is the total amount of hp healed for each body part
 -- * timeregen: after this amount of time, 1 hp is added to each listed body part.
-local healhelplist={}
+healhelplist={}
 healhelplist.lastregen=time_global()
 healhelplist.healtimer=30000
 if medkits_all_heal then
@@ -179,12 +179,12 @@ healhelplist.rebirth={head=10,torso=10,rightleg=4,leftleg=4,rightarm=4,leftarm=4
 -- * healtimer: time it takes to heal 1 hp.
 -- * healactive: leave at 0, this is used to track it during runtime.
 -- * lasttimestamp: leave at 0, this is used to track it during runtime.
-local healonelist={}
---healonelist.lastregen=time_global()
---healonelist.healtimer=30000
---healonelist.healamount=0
+healonelist={}
+healonelist.lastregen=time_global()
+healonelist.healtimer=30000
+healonelist.healamount=0
 if medkits_one_heal then
-	healonelist.medkit={healamount=5,healtimer=2000,healactive=0,lasttimestamp=0}
+	healonelist.medkit={healamount=5,healtimer=6500,healactive=0,lasttimestamp=0}
 	healonelist.medkit_army={healamount=12,healtimer=2000,healactive=0,lasttimestamp=0}
 	healonelist.medkit_scientic={healamount=10,healtimer=2000,healactive=0,lasttimestamp=0}
 end
@@ -198,7 +198,7 @@ healonelist.glucose={healamount=1,healtimer=50000,healactive=0,lasttimestamp=0}
 -- Limitations
 -- * bandageamount: how much hp is healed in total. Hp is added to body part with lowest health first.
 -- * maxarmleg and maxheadtorso = can only heal body part up to this hp level.
-local bandagelist={}
+bandagelist={}
 if tourniquet_is_splint then
 	bandagelist.jgut={bandageamount=1,maxarmleg=1,maxheadtorso=1}
 end
@@ -209,17 +209,20 @@ bandagelist.survival_kit={bandageamount=4,maxarmleg=2,maxheadtorso=4}
 
 -- Painkillers add painkillerpower as timedhp to limbs and double that to torso + head. 
 -- timedhp are added to health when considering effects such as shaking hands and limping. Won't prevent death when torso or head hp = 0.
-currentpainkillerpower = 0	-- Test this variable to see what strength of painkiller is currently active.
-local painkillerlist={}
+painkillerlist={}
+painkillerlist.lasttimestamp=time_global()
+painkillerlist.painkillerduration=0
+painkillerlist.painkillerpower=0
 painkillerlist.yadylin={painkillerpower=1,painkillerduration=132000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.cocaine={painkillerpower=1,painkillerduration=1644000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.medkit={painkillerpower=1,painkillerduration=34000,painkilleractive=0,lasttimestamp=0}
+painkillerlist.medkit={painkillerpower=1,painkillerduration=32000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.medkit_army={painkillerpower=3,painkillerduration=34000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.medkit_scientic={painkillerpower=1,painkillerduration=34000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.analgetic={painkillerpower=2,painkillerduration=1034000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000,painkilleractive=0,lasttimestamp=0}
 painkillerlist.salicidic_acid={painkillerpower=3,painkillerduration=1152000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.morphine={painkillerpower=4,painkillerduration=1518000,painkilleractive=0,lasttimestamp=0}
+painkillerlist.morphine={painkillerpower=5,painkillerduration=15000,painkilleractive=0,lasttimestamp=0}
+--painkillerlist.morphine={painkillerpower=4,painkillerduration=1518000,painkilleractive=0,lasttimestamp=0}
 
 local modifiedregen = regen
 
@@ -294,14 +297,14 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"timedheal.rightleg",timedheal.rightleg)
 	utils_obj.save_var(db.actor,"timedheal.leftleg",timedheal.leftleg)
 
-	utils_obj.save_var(db.actor,"onetimedheal.head",onetimedheal.head)
-	utils_obj.save_var(db.actor,"onetimedheal.torso",onetimedheal.torso)
-	utils_obj.save_var(db.actor,"onetimedheal.rightarm",onetimedheal.rightarm)
-	utils_obj.save_var(db.actor,"onetimedheal.leftarm",onetimedheal.leftarm)
-	utils_obj.save_var(db.actor,"onetimedheal.rightleg",onetimedheal.rightleg)
-	utils_obj.save_var(db.actor,"onetimedheal.leftleg",onetimedheal.leftleg)
 	utils_obj.save_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer)
-	utils_obj.save_var(db.actor,"healhelplist.lastregen",healhelplist.lastregen)
+
+	utils_obj.save_var(db.actor,"healonelist.healtimer",healonelist.healtimer)
+	utils_obj.save_var(db.actor,"healonelist.healamount",healonelist.healamount)
+
+	utils_obj.save_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration)
+	utils_obj.save_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower)
+
 
 --	counter = 0
 --	for k,v in pairs(healonelist) do
@@ -322,20 +325,20 @@ local function SaveHealthStatus()
 --		counter = counter + 1
 --	end
 	
-	counter = 0
-	for k,v in pairs(painkillerlist) do
-		savestring = "painkiller" .. counter
-		if painkillerlist[k].painkilleractive > 0 then
-			durationleft = painkillerlist[k].painkillerduration - (time_global() - painkillerlist[k].lasttimestamp)
-			if durationleft < 0 then
-				durationleft = 0
-			end
-			utils_obj.save_var(db.actor,savestring,durationleft)
-		else
-			utils_obj.save_var(db.actor,savestring,0)
-		end
-		counter = counter + 1
-	end	
+--	counter = 0
+--	for k,v in pairs(painkillerlist) do
+--		savestring = "painkiller" .. counter
+--		if painkillerlist[k].painkilleractive > 0 then
+--			durationleft = painkillerlist[k].painkillerduration - (time_global() - painkillerlist[k].lasttimestamp)
+--			if durationleft < 0 then
+--				durationleft = 0
+--			end
+--			utils_obj.save_var(db.actor,savestring,durationleft)
+--		else
+--			utils_obj.save_var(db.actor,savestring,0)
+--		end
+--		counter = counter + 1
+--	end	
 end
 local function LoadHealthStatus()
 	health.head=utils_obj.load_var(db.actor,"health.head") or maxhp.head
@@ -352,40 +355,41 @@ local function LoadHealthStatus()
 	timedheal.rightleg=utils_obj.load_var(db.actor,"timedheal.rightleg") or 0
 	timedheal.leftleg=utils_obj.load_var(db.actor,"timedheal.leftleg") or 0
 
-	onetimedheal.head=utils_obj.load_var(db.actor,"onetimedheal.head",onetimedheal.head) or 0
-	onetimedheal.torso=utils_obj.load_var(db.actor,"onetimedheal.torso",onetimedheal.torso) or 0
-	onetimedheal.rightarm=utils_obj.load_var(db.actor,"onetimedheal.rightarm",onetimedheal.rightarm) or 0
-	onetimedheal.leftarm=utils_obj.load_var(db.actor,"onetimedheal.leftarm",onetimedheal.leftarm) or 0
-	onetimedheal.rightleg=utils_obj.load_var(db.actor,"onetimedheal.rightleg",onetimedheal.rightleg) or 0
-	onetimedheal.leftleg=utils_obj.load_var(db.actor,"onetimedheal.leftleg",onetimedheal.leftleg) or 0
+	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 30000
 
-
-	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 30000	
-	counter = 0
-	for k,v in pairs(healonelist) do
-		savestring1 = "healone" .. counter .. "time"
-		savestring2 = "healone" .. counter .. "amount"
-		amount = utils_obj.load_var(db.actor,savestring2) or 0
-		if amount > 0 then
-			healonelist[k].healactive = amount
-			timepassed = utils_obj.load_var(db.actor,savestring1) or 0
-			settimestamp = time_global() - timepassed
-			healonelist[k].lasttimestamp = settimestamp
-		end
-		counter = counter + 1
-	end
+	healonelist.healtimer=utils_obj.load_var(db.actor,"healonelist.healtimer",healonelist.healtimer) or 30000
+	healonelist.healamount=utils_obj.load_var(db.actor,"healonelist.healamount",healonelist.healamount) or 0
 	
-	counter = 0
-	for k,v in pairs(painkillerlist) do
-		savestring = "painkiller" .. counter
-		durationleft = utils_obj.load_var(db.actor,savestring) or 0
-		if durationleft > 0 then
-			settimestamp = time_global() - (painkillerlist[k].painkillerduration - durationleft)
-			painkillerlist[k].lasttimestamp = settimestamp
-			painkillerlist[k].painkilleractive = 1
-		end
-		counter = counter + 1
-	end
+	painkillerlist.painkillerduration=utils_obj.load_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration) or 30000
+	painkillerlist.painkillerpower=utils_obj.load_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower) or 0
+	if painkillerlist.painkillerpower > 0 and painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
+	if painkillerlist.painkillerpower <=0 and painkiller_grain_shader then level.remove_pp_effector(5020) end
+
+--	counter = 0
+--	for k,v in pairs(healonelist) do
+--		savestring1 = "healone" .. counter .. "time"
+--		savestring2 = "healone" .. counter .. "amount"
+--		amount = utils_obj.load_var(db.actor,savestring2) or 0
+--		if amount > 0 then
+--			healonelist[k].healactive = amount
+--			timepassed = utils_obj.load_var(db.actor,savestring1) or 0
+--			settimestamp = time_global() - timepassed
+--			healonelist[k].lasttimestamp = settimestamp
+--		end
+--		counter = counter + 1
+--	end
+	
+--	counter = 0
+--	for k,v in pairs(painkillerlist) do
+--		savestring = "painkiller" .. counter
+--		durationleft = utils_obj.load_var(db.actor,savestring) or 0
+--		if durationleft > 0 then
+--			settimestamp = time_global() - (painkillerlist[k].painkillerduration - durationleft)
+--			painkillerlist[k].lasttimestamp = settimestamp
+--			painkillerlist[k].painkilleractive = 1
+--		end
+--		counter = counter + 1
+--	end
 end
 
 
@@ -633,7 +637,7 @@ function bhs_concussion()
 	local volume_sound_x_fade = 0.01
 
 	local anm_damage_threshold = 2
-	local damage_taken = (previous - current) * math.pow(0.75, currentpainkillerpower)
+	local damage_taken = (previous - current) * math.pow(0.75, painkillerlist.painkillerpower)
 --	local damage_taken = previous - current
 	damage_taken = damage_taken > 0 and damage_taken or 0
 
@@ -677,8 +681,8 @@ function bhs_concussion()
 
 	-- regen
 	painkiller_regen_bonus = 0
-	if currentpainkillerpower > 0 then
-		painkiller_regen_bonus = (currentpainkillerpower + 1) * 0.05
+	if painkillerlist.painkillerpower > 0 then
+		painkiller_regen_bonus = (painkillerlist.painkillerpower + 1) * 0.05
 	end
 	if tg > tg_effects_regen then
 		head_tbl.previous = clamp(head_tbl.previous - 0.01 - painkiller_regen_bonus, current, head_tbl.previous)		-- effector's power decrease: 	 50 sec for each lost HP
@@ -1412,17 +1416,22 @@ end
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 local function actor_on_sleep(hours)
+	printf("Sleepie time for : ", hours)
 	for k,v in pairs(timedhp) do
 		timedhp[k]=0
+		printf("Reset timedp")
 	end
 	local hoursleft=hours
 	hoursleft = hoursleft*sleep_heal_power
+	printf("Adjusted hours: ", hoursleft)
 	if sleep_heal then
 		if sleep_heal_logic then
+			printf("Sleep logic is on")
 			for i=1,hoursleft do
 				HealOne(newhealth,health)
 			end
 		else
+			printf("Sleep logic is off")
 			local head_difference=maxhp.head-health.head
 			if head_difference>0 then
 				if hoursleft>head_difference then
@@ -1633,6 +1642,7 @@ local function HealOne(healthmod,health)
 				if health[k] < maxhp[k] * healupto then
 					health[k] = health[k] + 1
 					healamount = 0
+					printf("Healed once")
 					break
 				end
 			end
@@ -1641,6 +1651,7 @@ local function HealOne(healthmod,health)
 			and loopcounter >= maxhp.rightarm * 2 * healupto and loopcounter >= maxhp.rightleg * 2 * healupto then break end
 		loopcounter = loopcounter + 1
 	end
+	SaveHealthStatus()
 end
 
 
@@ -1671,6 +1682,7 @@ local function BandageUsed(name,health)
 		if loopcounter >= maxarmleg and loopcounter >= maxheadtorso then break end
 		loopcounter = loopcounter + 1
 	end
+	SaveHealthStatus()
 end
 
 ----------------------------------------------------------------
@@ -1710,6 +1722,7 @@ function actor_on_update()
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
 				end
+				printf("Healed all")
 				timedheal[k]=timedheal[k]-1
 				if timedheal[k]<0 then timedheal[k]=0 end
 			end
@@ -1719,91 +1732,84 @@ function actor_on_update()
 		end
 		statuschanged = true
 	end
-	
-	for k,v in pairs(healonelist) do
-		if healonelist[k].healactive > 0 then
-			if time_global() - healonelist[k].lasttimestamp > healonelist[k].healtimer then
-				HealOne(1.0,health)  -- healing not capped to actor.health %
-				healonelist[k].healactive = healonelist[k].healactive - 1
-				if healonelist[k].healactive < 0 then
-					healonelist[k].healactive = 0
-				end
-				if healonelist[k].healactive == 0 then
-					healonelist[k].lasttimestamp = 0
-				else
-					healonelist[k].lasttimestamp = time_global()
-				end
-				statuschanged = true
+
+	if time_global() - healonelist.lastregen > healonelist.healtimer then
+		if healonelist.healamount > 0 then
+			printf("Healing once")
+			HealOne(1.0,health)  -- healing not capped to actor.health %
+			healonelist.healamount = healonelist.healamount - 1
+			if healonelist.healamount < 0 then
+				healonelist.healamount = 0
 			end
-		end
-	end
-	
-	currentpainkillerpower = 0
-	for k,v in pairs(painkillerlist) do
-		if painkillerlist[k].painkilleractive > 0 then
-			if time_global() - painkillerlist[k].lasttimestamp < painkillerlist[k].painkillerduration then
-				if currentpainkillerpower < painkillerlist[k].painkillerpower then
-					currentpainkillerpower = painkillerlist[k].painkillerpower
-					statuschanged = true
-				end
+			if healonelist.healamount == 0 then
+				healonelist.lastregen = 0
 			else
-				painkillerlist[k].painkilleractive = 0
---				if painkillerlist[k].harming then
---					health.torso = health.torso - (painkillerlist[k].harming + 1)
-					--Don't give injuries that are healable by a bandage, that would be stupid. So minimum torso and head hp is 4.
---					if health.torso < 4 then health.torso = 4 end
-					--health.head = health.head - painkillerlist[k].harming -- can't do that, will trigger a concussion.
-					--if not (head_tbl.previous) then head_tbl.previous = health.head * effects_mult end	-- tried to prevent triggering a concussion. Doesn't work like this.
---					health.head = health.head - 1	-- do this instead to not trigger concussion.
---					if health.head < 4 then health.head = 4 end
-					
-					-- give shaking hands. But don't give injuries that are healable by a bandage, that would be stupid.
-					--if health.left_arm > painkillerlist[k].harming then   --this lines gives error "attempt to compare number with nil"
-					--	health.left_arm = health.left_arm - painkillerlist[k].harming
-					--	if health.left_arm < 2 then health.left_arm = 2 end
-					--end
-					--if health.right_arm > painkillerlist[k].harming then
-					--	health.right_arm = health.right_arm - painkillerlist[k].harming
-					--	if health.right_arm < 2 then health.right_arm = 2 end
-					--end
---				end
-				statuschanged = true
+				healonelist.lastregen = time_global()
 			end
-		end
-	end
-	
-	if currentpainkillerpower > 0 then
-		if painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
-		for k,v in pairs(health) do
-			local missinghealth = 0
-			if v < maxhp[k] then
-				missinghealth = maxhp[k] - v
-				if missinghealth < 0 then missinghealth = 0 end
-			end
-			local bonus = currentpainkillerpower
-			--if string.find(k, "head") or string.find(k, "torso") then
-				--bonus = currentpainkillerpower * 2
-			--end
-			if bonus > missinghealth then
-				bonus = missinghealth
-			end
-			timedhp[k] = bonus
-		end
-	else 
-		if painkiller_grain_shader then level.remove_pp_effector(5020) end
-		for k,v in pairs(health) do
-			timedhp[k] = 0
-		end
-	end
-	
-	if modifiedregen>0 and init then
-		if time_global() - timeregen > modifiedregen then
-			HealOne(newhealth,health)
-			timeregen = time_global()
 			statuschanged = true
-			
 		end
 	end
+	
+--	for k,v in pairs(healonelist) do
+--		if healonelist[k].healactive > 0 then
+--			if time_global() - healonelist[k].lasttimestamp > healonelist[k].healtimer then
+--				HealOne(1.0,health)  -- healing not capped to actor.health %
+--				healonelist[k].healactive = healonelist[k].healactive - 1
+--				if healonelist[k].healactive < 0 then
+--					healonelist[k].healactive = 0
+--				end
+--				if healonelist[k].healactive == 0 then
+--					healonelist[k].lasttimestamp = 0
+--				else
+--					healonelist[k].lasttimestamp = time_global()
+--				end
+--				statuschanged = true
+--			end
+--		end
+--	end
+
+	if painkillerlist.painkillerpower > 0 then
+		if time_global() - painkillerlist.lasttimestamp > painkillerlist.painkillerduration then
+			printf("Painkillers ran out")
+			painkillerlist.painkillerpower = 0
+			painkillerlist.painkillerduration = 0
+			painkillerlist.lasttimestamp = time_global()
+			if painkiller_grain_shader then level.remove_pp_effector(5020) end
+			for k,v in pairs(health) do
+				timedhp[k] = 0
+			end
+			statuschanged = true
+		end	
+	end
+
+	--if painkillerlist[k].harming then
+		--health.torso = health.torso - (painkillerlist[k].harming + 1)
+		--Don't give injuries that are healable by a bandage, that would be stupid. So minimum torso and head hp is 4.
+		--if health.torso < 4 then health.torso = 4 end
+		--health.head = health.head - painkillerlist[k].harming -- can't do that, will trigger a concussion.
+		--if not (head_tbl.previous) then head_tbl.previous = health.head * effects_mult end	-- tried to prevent triggering a concussion. Doesn't work like this.
+		--health.head = health.head - 1	-- do this instead to not trigger concussion.
+		--if health.head < 4 then health.head = 4 end
+		
+		-- give shaking hands. But don't give injuries that are healable by a bandage, that would be stupid.
+		--if health.left_arm > painkillerlist[k].harming then   --this lines gives error "attempt to compare number with nil"
+		--	health.left_arm = health.left_arm - painkillerlist[k].harming
+		--	if health.left_arm < 2 then health.left_arm = 2 end
+		--end
+		--if health.right_arm > painkillerlist[k].harming then
+		--	health.right_arm = health.right_arm - painkillerlist[k].harming
+		--	if health.right_arm < 2 then health.right_arm = 2 end
+		--end
+	--end
+	
+	--if modifiedregen>0 and init then
+	--	if time_global() - timeregen > modifiedregen then
+	--		HealOne(newhealth,health)
+	--		timeregen = time_global()
+	--		statuschanged = true
+	--		
+	--	end
+	--end
 	if not init then
 	
 		display_width=device().width
@@ -1889,11 +1895,62 @@ end
 -- end
 
 -- how's it going?
-local function MedicineUsed(name,health,ispreview)
+local function MedicineUsed(name,health,timedheal,ispreview)
+	printf("Medicine used for %s",ispreview)
 	if bandagelist[name] then
 		BandageUsed(name,health)
+		printf("Bandage used for %s",ispreview) -- see console output
 	end
-	if ispreview>0 then
+	
+	if ispreview==0 then
+		if healhelplist[name] then
+			healhelplist.lastregen=time_global()
+			healhelplist.healtimer=healhelplist[name].timeregen
+			for k,v in pairs(timedheal) do
+				local bonus=healhelplist[name][k]
+				if bonus then
+					timedheal[k]=v+bonus
+				end
+			end
+			printf("Heal all used for %s",ispreview)
+		end
+		if healonelist[name] then
+			healonelist.healamount = healonelist[name].healamount
+			healonelist.healtimer = healonelist[name].healtimer
+			healonelist.lastregen = time_global()
+			printf("Heal one used for %s",ispreview)
+		end
+		if painkillerlist[name] then
+			if painkillerlist.painkillerpower < painkillerlist[name].painkillerpower then
+				painkillerlist.painkillerpower = painkillerlist[name].painkillerpower
+				painkillerlist.painkillerduration = painkillerlist[name].painkillerduration
+			end
+			painkillerlist.lasttimestamp = time_global()
+			for k,v in pairs(health) do
+				local missinghealth = 0
+				if v < maxhp[k] then
+					missinghealth = maxhp[k] - v
+					if missinghealth < 0 then missinghealth = 0 end
+				end
+				local bonus = painkillerlist.painkillerpower
+				if string.find(k, "head") or string.find(k, "torso") then
+					bonus = painkillerlist.painkillerpower * 2
+				end
+				if bonus > missinghealth then
+					bonus = missinghealth
+				end
+				timedhp[k] = bonus
+			end
+			if painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
+			printf("Painkiller used for %s",ispreview)
+		end
+	else
+		if healonelist[name] then
+			for i=1,healonelist[name].healamount do
+				HealOne(1.0,preview.health)
+				printf("HealOne used for %s",ispreview)
+			end
+		end
 		if healhelplist[name] then
 			for k,v in pairs(health) do
 				local bonus = healhelplist[name][k]
@@ -1905,13 +1962,14 @@ local function MedicineUsed(name,health,ispreview)
 					end
 				end
 			end
+			printf("Heal all used for %s",ispreview)
 		end
-		
-		painkillerpreview = currentpainkillerpower
+		painkillerpreview = painkillerlist.painkillerpower
 		if painkillerlist[name] then
 			if painkillerpreview < painkillerlist[name].painkillerpower then
 				painkillerpreview = painkillerlist[name].painkillerpower
 			end
+			printf("Painkiller used for %s",ispreview)
 		end
 		if painkillerpreview > 0 then
 			for k,v in pairs(health) do
@@ -1934,27 +1992,8 @@ local function MedicineUsed(name,health,ispreview)
 end
 
 local function actor_on_item_use(obj,objname)
-	if healonelist[objname] then
-		healonelist[objname].healactive = healonelist[objname].healactive + healonelist[objname].healamount
-		if healonelist[objname].lasttimestamp <= 0 then
-			healonelist[objname].lasttimestamp = time_global()
-		end
-	end
-	if painkillerlist[objname] then
-		painkillerlist[objname].painkilleractive = 1
-		painkillerlist[objname].lasttimestamp = time_global()
-	end
-	MedicineUsed(objname,health,0)
-	if healhelplist[objname] then
-		healhelplist.lastregen=time_global()
-		healhelplist.healtimer=healhelplist[objname].timeregen
-		for k,v in pairs(timedheal) do
-			local bonus=healhelplist[objname][k]
-			if bonus then
-				timedheal[k]=v+bonus
-			end
-		end
-	end
+	printf("%s used for %s",objname,obj)
+	MedicineUsed(objname,health,timedheal,0)
 	SaveHealthStatus()
 end
 
@@ -2006,21 +2045,18 @@ local function ActorMenu_on_item_focus_receive(item)
 	end
 	local item_name=item:section()
 	focused_item=item:id()
+	printf("Focused %s item",item_name)
 	if healhelplist[item_name] or bandagelist[item_name] or painkillerlist[item_name] or healonelist[item_name] then
+		printf("It was a medical item")
 		-- InitializePreviewBars()
 		preview.health=copy_table(health)
 		preview.bonus=copy_table(timedhp)
-		if healonelist[item_name] then
-			for i=1,healonelist[item_name].healamount do
-				HealOne(1.0,preview.health)
-			end
-		end
-		MedicineUsed(item_name,preview.health,1)
+		MedicineUsed(item_name,preview.health,preview.bonus,1)
 	end
 end
 
 local function ActorMenu_on_item_focus_lost(item)
-	--printf("! on item forus lost "..(item and item:section() or "nil"))
+	printf("! on item focus lost "..(item and item:section() or "nil"))
 	if focused_item==item:id() then
 		EmptyPreviewBars()
 		focused_item=nil
