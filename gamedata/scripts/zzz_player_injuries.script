@@ -338,6 +338,13 @@ local function LoadHealthStatus()
 	timedheal.leftarm=utils_obj.load_var(db.actor,"timedheal.leftarm") or 0
 	timedheal.rightleg=utils_obj.load_var(db.actor,"timedheal.rightleg") or 0
 	timedheal.leftleg=utils_obj.load_var(db.actor,"timedheal.leftleg") or 0
+
+	onetimedheal.head=utils_obj.load_var(db.actor,"onetimedheal.head",onetimedheal.head) or 0
+	onetimedheal.torso=utils_obj.load_var(db.actor,"onetimedheal.torso",onetimedheal.torso) or 0
+	onetimedheal.rightarm=utils_obj.load_var(db.actor,"onetimedheal.rightarm",onetimedheal.rightarm) or 0
+	onetimedheal.leftarm=utils_obj.load_var(db.actor,"onetimedheal.leftarm",onetimedheal.leftarm) or 0
+	onetimedheal.rightleg=utils_obj.load_var(db.actor,"onetimedheal.rightleg",onetimedheal.rightleg) or 0
+	onetimedheal.leftleg=utils_obj.load_var(db.actor,"onetimedheal.leftleg",onetimedheal.leftleg) or 0
 	
 	counter = 0
 	for k,v in pairs(healonelist) do
