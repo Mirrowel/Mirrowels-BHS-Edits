@@ -2,14 +2,14 @@
 local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
-damagescale=1.0 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+healthmult = zzz_player_injuries_mcm.get_config("HEALTH_MULT") or 1 -- Scales the healing gain. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
+
+damagescale=1.0*healthmult -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
 local show_player_name=true
 local hide_if_healthy=false
-
---healthmult = zzz_player_injuries_mcm.get_config("HEALTH_MULT") or 1 -- Scales the healing gain. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
 
 local natural_regeneration = zzz_player_injuries_mcm.get_config("NATURAL_REGENERATION")
 local artifact_and_natural_regeneration_speed_mod = zzz_player_injuries_mcm.get_config("regeneration_speed")
@@ -35,7 +35,7 @@ end
 local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")	-- will keep it on loading just in case
 
 -- It's very important to keep the correct ratio between "effects_mult" and "maxhp" as shown in example
-effects_mult = 1 -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
+effects_mult = 1/healthmult -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
 local prev_time = nil
 local head_tbl = {}
 local tinnitus_play = false
@@ -91,12 +91,12 @@ display.types[169]=1.7777
 display.types[1610]=1.56
 
 maxhp={}
-maxhp.head=22
-maxhp.torso=22
-maxhp.leftarm=10
-maxhp.rightarm=10
-maxhp.leftleg=10
-maxhp.rightleg=10
+maxhp.head=11*healthmult
+maxhp.torso=11*healthmult
+maxhp.leftarm=5*healthmult
+maxhp.rightarm=5*healthmult
+maxhp.leftleg=5*healthmult
+maxhp.rightleg=5*healthmult
 
 health={}
 health.head=maxhp.head
@@ -164,14 +164,15 @@ hud_blink_timer.blinktime=1000
 healhelplist={}
 healhelplist.lastregen=time_global()
 healhelplist.healtimer=30000
+healhelplist.healpower=0
 if medkits_all_heal then
-	healhelplist.medkit={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
-	healhelplist.medkit_army={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
-	healhelplist.medkit_scientic={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
+	healhelplist.medkit={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
+	healhelplist.medkit_army={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
+	healhelplist.medkit_scientic={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
 end
-healhelplist.antibio_chlor={head=2,torso=2,rightleg=2,leftleg=2,rightarm=2,leftarm=2,timeregen=44000}
-healhelplist.antibio_sulfad={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=30000}
-healhelplist.rebirth={head=10,torso=10,rightleg=4,leftleg=4,rightarm=4,leftarm=4,timeregen=1000}
+healhelplist.antibio_chlor={head=2,torso=2,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=0,timeregen=44000}
+healhelplist.antibio_sulfad={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,healpower=0,timeregen=30000}
+healhelplist.rebirth={head=10,torso=10,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=0,timeregen=1000}
 
 -- Items that add 1 hp at a time to the most injured body part. Won't heal if body part is at 0 hp (=broken).
 -- For broken limbs you first need to use a bandage (=splint).
@@ -183,13 +184,14 @@ healonelist={}
 healonelist.lastregen=time_global()
 healonelist.healtimer=30000
 healonelist.healamount=0
+healonelist.healpower=0
 if medkits_one_heal then
-	healonelist.medkit={healamount=5,healtimer=6500,healactive=0,lasttimestamp=0}
-	healonelist.medkit_army={healamount=12,healtimer=2000,healactive=0,lasttimestamp=0}
-	healonelist.medkit_scientic={healamount=10,healtimer=2000,healactive=0,lasttimestamp=0}
+	healonelist.medkit={healamount=5,healtimer=6500,healpower=1}
+	healonelist.medkit_army={healamount=12,healtimer=2000,healpower=1}
+	healonelist.medkit_scientic={healamount=10,healtimer=2000,healpower=1}
 end
-healonelist.drug_coagulant={healamount=1,healtimer=60000,healactive=0,lasttimestamp=0}
-healonelist.glucose={healamount=1,healtimer=50000,healactive=0,lasttimestamp=0}
+healonelist.drug_coagulant={healamount=1,healtimer=60000,healpower=0}
+healonelist.glucose={healamount=1,healtimer=50000,healpower=0}
 
 
 -- First aid items:
@@ -298,8 +300,10 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"timedheal.leftleg",timedheal.leftleg)
 
 	utils_obj.save_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer)
+	utils_obj.save_var(db.actor,"healhelplist.healpower",healhelplist.healpower)
 
 	utils_obj.save_var(db.actor,"healonelist.healtimer",healonelist.healtimer)
+	utils_obj.save_var(db.actor,"healonelist.healpower",healonelist.healpower)
 	utils_obj.save_var(db.actor,"healonelist.healamount",healonelist.healamount)
 
 	utils_obj.save_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration)
@@ -356,8 +360,10 @@ local function LoadHealthStatus()
 	timedheal.leftleg=utils_obj.load_var(db.actor,"timedheal.leftleg") or 0
 
 	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 30000
+	healhelplist.healpower=utils_obj.load_var(db.actor,"healhelplist.healpower",healhelplist.healpower) or 0
 
 	healonelist.healtimer=utils_obj.load_var(db.actor,"healonelist.healtimer",healonelist.healtimer) or 30000
+	healonelist.healpower=utils_obj.load_var(db.actor,"healonelist.healpower",healonelist.healpower) or 0
 	healonelist.healamount=utils_obj.load_var(db.actor,"healonelist.healamount",healonelist.healamount) or 0
 	
 	painkillerlist.painkillerduration=utils_obj.load_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration) or 30000
@@ -1372,11 +1378,16 @@ local function actor_on_footstep(material,power,hud_view,flags)
 
 	if mst then		-- comment this and uncomment next one for super memes !!
 --	if (not (cr or low_cr) ) and (left_l < 1 or right_l < 1) then
-		if left_l <= (zzz_player_injuries_mcm.get_config("leg_limping_damage_minimum_hp")) then 
+		local right_l_mst = health.leftleg * effects_mult		-- right is left
+		local left_l_mst = health.rightleg * effects_mult
+		if right_l_mst < 1 then right_l = 0.8 end			-- exp will still make big difference between 1 and 0.8
+		if left_l_mst < 1 then left_l = 0.8 end
+
+		if left_l_mst <= (zzz_player_injuries_mcm.get_config("leg_limping_damage_minimum_hp")) then 
 			l_leg_power = 0.0290
 		end
 
-		if right_l <= (zzz_player_injuries_mcm.get_config("leg_limping_damage_minimum_hp")) then
+		if right_l_mst <= (zzz_player_injuries_mcm.get_config("leg_limping_damage_minimum_hp")) then
 			r_leg_power = 0.0290
 		end
 
@@ -1415,98 +1426,6 @@ local function actor_on_footstep(material,power,hud_view,flags)
 end
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
-local function actor_on_sleep(hours)
-	printf("Sleepie time for : ", hours)
-	for k,v in pairs(timedhp) do
-		timedhp[k]=0
-		printf("Reset timedp")
-	end
-	local hoursleft=hours
-	hoursleft = hoursleft*sleep_heal_power
-	printf("Adjusted hours: ", hoursleft)
-	if sleep_heal then
-		if sleep_heal_logic then
-			printf("Sleep logic is on")
-			for i=1,hoursleft do
-				HealOne(newhealth,health)
-			end
-		else
-			printf("Sleep logic is off")
-			local head_difference=maxhp.head-health.head
-			if head_difference>0 then
-				if hoursleft>head_difference then
-					health.head=maxhp.head
-					hoursleft=hoursleft-head_difference
-					utils_obj.save_var(db.actor,"health.head",health.head)
-				else
-					health.head=health.head+hoursleft
-					utils_obj.save_var(db.actor,"health.head",health.head)
-					return 
-				end
-			end
-			local torso_difference=maxhp.torso-health.torso
-			if torso_difference>0 then
-				if hoursleft>torso_difference then
-					health.torso=maxhp.torso
-					hoursleft=hoursleft-torso_difference
-					utils_obj.save_var(db.actor,"health.torso",health.torso)
-				else
-					health.torso=health.torso+hoursleft
-					utils_obj.save_var(db.actor,"health.torso",health.torso)
-					return 
-				end
-			end
-			local rightarm_difference=maxhp.rightarm-health.rightarm
-			if rightarm_difference>0 then
-				if hoursleft>rightarm_difference then
-					health.rightarm=maxhp.rightarm
-					hoursleft=hoursleft-rightarm_difference
-					utils_obj.save_var(db.actor,"health.rightarm",health.rightarm)
-				else
-					health.rightarm=health.rightarm+hoursleft
-					utils_obj.save_var(db.actor,"health.rightarm",health.rightarm)
-					return 
-				end
-			end
-			local leftarm_difference=maxhp.leftarm-health.leftarm
-			if leftarm_difference>0 then
-				if hoursleft>leftarm_difference then
-					health.leftarm=maxhp.leftarm
-					hoursleft=hoursleft-leftarm_difference
-					utils_obj.save_var(db.actor,"health.leftarm",health.leftarm)
-				else
-					health.leftarm=health.leftarm+hoursleft
-					utils_obj.save_var(db.actor,"health.leftarm",health.leftarm)
-					return 
-				end
-			end
-			local rightleg_difference=maxhp.rightleg-health.rightleg
-			if rightleg_difference>0 then
-				if hoursleft>rightleg_difference then
-					health.rightleg=maxhp.rightleg
-					hoursleft=hoursleft-rightleg_difference
-					utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
-				else
-					health.rightleg=health.rightleg+hoursleft
-					utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
-					return 
-				end
-			end
-			local leftleg_difference=maxhp.leftleg-health.leftleg
-			if leftleg_difference>0 then
-				if hoursleft>leftleg_difference then
-					health.leftleg=maxhp.leftleg
-					hoursleft=hoursleft-leftleg_difference
-					utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
-				else
-					health.leftleg=health.leftleg+hoursleft
-					utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
-					return 
-				end
-			end
-		end
-	end
-end
 
 local is_body_parts_damaged = false
 local function check_body_parts()
@@ -1626,12 +1545,13 @@ local functor = function(t,a,b)
 end
 
 local function HealOne(healthmod,health)
-	local healupto = healthmod		--Heal up to this percentage value. Medicine should have 1, regeneration uses actor health.
-	if healupto > 1 then healupto = 1 end
-	if healupto <= 0 then return end
+	local healupto = healthmod
+	if healupto == 0 then healupto=db.actor.health		--Heal up to this percentage value. Medicine should have 1, regeneration uses actor health.
+	elseif healupto > 1 then healupto = 1
+	elseif healupto < 0 then return end
 	local healamount = 1
 	local loopcounter = 1 --Only heal limbs that are not broken (broken = at 0 hp).
---	if not splinting or medkit_is_splint then loopcounter = 0 end
+	if not splinting or (medkit_is_splint and medkits_one_heal and healupto==1) then loopcounter = 0 end
 	while healamount > 0 do
 		for k,v in pairs(health, functor) do
 			adjustedhealth = v						--Double health for arm&leg for deciding what to heal, since limbs have half hp of head/torso
@@ -1712,22 +1632,22 @@ function actor_on_update()
 	end
 	
 	local statuschanged = false
+	local allheal_ceiling=1
 	if time_global()-healhelplist.lastregen>healhelplist.healtimer then
 		healhelplist.lastregen=time_global()
+		if healhelplist.healpower == 0 then allheal_ceiling=db.actor.health
+		else allheal_ceiling=healhelplist.healpower end
 		for k,v in pairs(timedheal) do
 			if v>0 then
-				if health[k]~=0 then -- why tf is ~= used here? broken
-					if health[k]<maxhp[k] then
+				if health[k]~=0 or not splinting or (medkit_is_splint and medkits_all_heal) then -- broken
+					if health[k]<maxhp[k]*allheal_ceiling  then
 						health[k]=health[k]+1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
-				end
 				printf("Healed all")
+				else printf("Wasted healing on %s",k) end
 				timedheal[k]=timedheal[k]-1
 				if timedheal[k]<0 then timedheal[k]=0 end
-			end
-			if v<0 then
-				timedheal[k]=0
 			end	
 		end
 		statuschanged = true
@@ -1736,13 +1656,14 @@ function actor_on_update()
 	if time_global() - healonelist.lastregen > healonelist.healtimer then
 		if healonelist.healamount > 0 then
 			printf("Healing once")
-			HealOne(1.0,health)  -- healing not capped to actor.health %
+			HealOne(healonelist.healpower,health)  -- healing not capped to actor.health %
 			healonelist.healamount = healonelist.healamount - 1
 			if healonelist.healamount < 0 then
 				healonelist.healamount = 0
 			end
 			if healonelist.healamount == 0 then
 				healonelist.lastregen = 0
+				healonelist.healpower = 0
 			else
 				healonelist.lastregen = time_global()
 			end
@@ -1902,10 +1823,11 @@ local function MedicineUsed(name,health,timedheal,ispreview)
 		printf("Bandage used for %s",ispreview) -- see console output
 	end
 	
-	if ispreview==0 then
+	if ispreview == 0 then
 		if healhelplist[name] then
 			healhelplist.lastregen=time_global()
 			healhelplist.healtimer=healhelplist[name].timeregen
+			healhelplist.healpower=healhelplist[name].healpower
 			for k,v in pairs(timedheal) do
 				local bonus=healhelplist[name][k]
 				if bonus then
@@ -1947,16 +1869,19 @@ local function MedicineUsed(name,health,timedheal,ispreview)
 	else
 		if healonelist[name] then
 			for i=1,healonelist[name].healamount do
-				HealOne(1.0,preview.health)
+				HealOne(healonelist[name].healpower,preview.health)
 				printf("HealOne used for %s",ispreview)
 			end
 		end
+		local allheal_ceiling=1
 		if healhelplist[name] then
+			if healhelplist[name].healpower <= 0 then allheal_ceiling=db.actor.health
+			else allheal_ceiling=healhelplist.healpower end
 			for k,v in pairs(health) do
 				local bonus = healhelplist[name][k]
 				if v > 0 and bonus then
-					if health[k]+bonus>maxhp[k] then
-						health[k]=maxhp[k]
+					if health[k]+bonus>maxhp[k]*allheal_ceiling then
+						health[k]=maxhp[k]*allheal_ceiling 
 					else
 						health[k]=health[k]+bonus
 					end
@@ -1986,6 +1911,99 @@ local function MedicineUsed(name,health,timedheal,ispreview)
 					bonus = missinghealth
 				end
 				preview.bonus[k] = bonus
+			end
+		end
+	end
+end
+
+local function actor_on_sleep(hours)
+	printf("Sleepie time for : ", hours)
+	for k,v in pairs(timedhp) do
+		timedhp[k]=0
+		printf("Reset timedp")
+	end
+	local hoursleft=hours
+	hoursleft = hoursleft*healthmult*sleep_heal_power
+	printf("Adjusted hours: ", hoursleft)
+	if sleep_heal then
+		if sleep_heal_logic then
+			printf("Sleep logic is on")
+			for i=1,hoursleft do
+				HealOne(newhealth,health)
+			end
+		else
+			printf("Sleep logic is off")
+			local head_difference=maxhp.head-health.head
+			if head_difference>0 then
+				if hoursleft>head_difference then
+					health.head=maxhp.head
+					hoursleft=hoursleft-head_difference
+					utils_obj.save_var(db.actor,"health.head",health.head)
+				else
+					health.head=health.head+hoursleft
+					utils_obj.save_var(db.actor,"health.head",health.head)
+					return 
+				end
+			end
+			local torso_difference=maxhp.torso-health.torso
+			if torso_difference>0 then
+				if hoursleft>torso_difference then
+					health.torso=maxhp.torso
+					hoursleft=hoursleft-torso_difference
+					utils_obj.save_var(db.actor,"health.torso",health.torso)
+				else
+					health.torso=health.torso+hoursleft
+					utils_obj.save_var(db.actor,"health.torso",health.torso)
+					return 
+				end
+			end
+			local rightarm_difference=maxhp.rightarm-health.rightarm
+			if rightarm_difference>0 then
+				if hoursleft>rightarm_difference then
+					health.rightarm=maxhp.rightarm
+					hoursleft=hoursleft-rightarm_difference
+					utils_obj.save_var(db.actor,"health.rightarm",health.rightarm)
+				else
+					health.rightarm=health.rightarm+hoursleft
+					utils_obj.save_var(db.actor,"health.rightarm",health.rightarm)
+					return 
+				end
+			end
+			local leftarm_difference=maxhp.leftarm-health.leftarm
+			if leftarm_difference>0 then
+				if hoursleft>leftarm_difference then
+					health.leftarm=maxhp.leftarm
+					hoursleft=hoursleft-leftarm_difference
+					utils_obj.save_var(db.actor,"health.leftarm",health.leftarm)
+				else
+					health.leftarm=health.leftarm+hoursleft
+					utils_obj.save_var(db.actor,"health.leftarm",health.leftarm)
+					return 
+				end
+			end
+			local rightleg_difference=maxhp.rightleg-health.rightleg
+			if rightleg_difference>0 then
+				if hoursleft>rightleg_difference then
+					health.rightleg=maxhp.rightleg
+					hoursleft=hoursleft-rightleg_difference
+					utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
+				else
+					health.rightleg=health.rightleg+hoursleft
+					utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
+					return 
+				end
+			end
+			local leftleg_difference=maxhp.leftleg-health.leftleg
+			if leftleg_difference>0 then
+				if hoursleft>leftleg_difference then
+					health.leftleg=maxhp.leftleg
+					hoursleft=hoursleft-leftleg_difference
+					utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
+				else
+					health.leftleg=health.leftleg+hoursleft
+					utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
+					return 
+				end
 			end
 		end
 	end
