@@ -91,12 +91,12 @@ display.types[169]=1.7777
 display.types[1610]=1.56
 
 maxhp={}
-maxhp.head=11
-maxhp.torso=11
-maxhp.leftarm=5
-maxhp.rightarm=5
-maxhp.leftleg=5
-maxhp.rightleg=5
+maxhp.head=22
+maxhp.torso=22
+maxhp.leftarm=10
+maxhp.rightarm=10
+maxhp.leftleg=10
+maxhp.rightleg=10
 
 health={}
 health.head=maxhp.head
@@ -141,6 +141,14 @@ timedheal.rightarm=0
 timedheal.leftleg=0
 timedheal.rightleg=0
 
+local onetimedheal={}
+onetimedheal.head=0
+onetimedheal.torso=0
+onetimedheal.leftarm=0
+onetimedheal.rightarm=0
+onetimedheal.leftleg=0
+onetimedheal.rightleg=0
+
 local hud_blink_timer={}
 hud_blink_timer.head=0
 hud_blink_timer.torso=0
@@ -157,9 +165,9 @@ local healhelplist={}
 healhelplist.lastregen=time_global()
 healhelplist.healtimer=30000
 if medkits_all_heal then
-	healhelplist.medkit={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=30000}
-	healhelplist.medkit_army={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=30000}
-	healhelplist.medkit_scientic={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=30000}
+	healhelplist.medkit={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
+	healhelplist.medkit_army={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
+	healhelplist.medkit_scientic={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,timeregen=5000}
 end
 healhelplist.antibio_chlor={head=2,torso=2,rightleg=2,leftleg=2,rightarm=2,leftarm=2,timeregen=44000}
 healhelplist.antibio_sulfad={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,timeregen=30000}
@@ -289,7 +297,9 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"onetimedheal.leftarm",onetimedheal.leftarm)
 	utils_obj.save_var(db.actor,"onetimedheal.rightleg",onetimedheal.rightleg)
 	utils_obj.save_var(db.actor,"onetimedheal.leftleg",onetimedheal.leftleg)
-	
+	utils_obj.save_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer)
+	utils_obj.save_var(db.actor,"healhelplist.lastregen",healhelplist.lastregen)
+
 	counter = 0
 	for k,v in pairs(healonelist) do
 		savestring1 = "healone" .. counter .. "time"
@@ -345,7 +355,9 @@ local function LoadHealthStatus()
 	onetimedheal.leftarm=utils_obj.load_var(db.actor,"onetimedheal.leftarm",onetimedheal.leftarm) or 0
 	onetimedheal.rightleg=utils_obj.load_var(db.actor,"onetimedheal.rightleg",onetimedheal.rightleg) or 0
 	onetimedheal.leftleg=utils_obj.load_var(db.actor,"onetimedheal.leftleg",onetimedheal.leftleg) or 0
-	
+
+
+	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 30000	
 	counter = 0
 	for k,v in pairs(healonelist) do
 		savestring1 = "healone" .. counter .. "time"
