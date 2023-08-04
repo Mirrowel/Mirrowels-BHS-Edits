@@ -1,0 +1,65 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["TEXT_BASED_PATCH"] = false,
+	["NEW_LIMB_PENALTIES_FEATURE"] = true,
+	["new_voice_sounds"] = true,
+	["leg_penalty_minimum_hp"] = 5,
+	["leg_limping_damage_minimum_hp"] = 3,
+	["leg_animation_power"] = 1.0,
+	["arm_penalty_minimum_hp"] = 10,
+	["arm_animation_power"] = 1.0,
+	["head_penalty_minimum_hp"] = 2,
+	["head_animation_power"] = 1.0,
+	["NATURAL_REGENERATION"] = false,
+	["regeneration_speed"] = 1.0,
+	["PAINKILLER_GRAIN_SHADER"] = false,
+	["SPLINTING"] = true,
+	["MEDKIT_IS_SPLINT"] = true,
+	["TOURNIQUET_IS_SPLINT"] = true,
+	["BANDAGE_IS_SPLINT"] = true,
+	["REGENERATION_IS_SPLINT"] = false,
+	["MEDKITS_ALL_HEAL"] = false,
+	["MEDKITS_ONE_HEAL"] = true,
+	["SLEEP_HEALS"] = true,
+	["SLEEP_HEALS_LOGICAL"] = true,
+	["SLEEP_HEALS_POWER"] = 1,
+	["HEALTH_MULT"] = 1,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("body_health_system/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "body_health_system",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_body_health_system_title",size= {512,50},spacing= 20 },
+			{id = "TEXT_BASED_PATCH", type = "check", val = 1, def = false},
+			{id = "NEW_LIMB_PENALTIES_FEATURE", type = "check", val = 1, def = true},
+			{id = "new_voice_sounds", type = "check", val = 1, def = true},
+			{id = "leg_penalty_minimum_hp", type = "track", val = 2, min=1,max=5,step=1, def = 5},
+			{id = "leg_limping_damage_minimum_hp", type = "track", val = 2, min=-1,max=4,step=1, def = 3},
+			{id = "leg_animation_power", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+			{id = "arm_penalty_minimum_hp", type = "track", val = 2, min=1,max=10,step=1, def = 10},
+			{id = "arm_animation_power", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+			{id = "head_penalty_minimum_hp", type = "track", val = 2, min=1,max=10,step=1, def = 2},
+			{id = "head_animation_power", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+			{id = "NATURAL_REGENERATION", type = "check", val = 1, def = false},
+			{id = "regeneration_speed", type = "track", val = 2, min=0.2,max=5,step=0.1, def = 1},
+			{id = "PAINKILLER_GRAIN_SHADER", type = "check", val = 1, def = false},
+			{id = "SPLINTING", type = "check", val = 1, def = true},
+			{id = "MEDKIT_IS_SPLINT", type = "check", val = 1, def = true},
+			{id = "TOURNIQUET_IS_SPLINT", type = "check", val = 1, def = true},
+			{id = "BANDAGE_IS_SPLINT", type = "check", val = 1, def = true},
+			{id = "REGENERATION_IS_SPLINT", type = "check", val = 1, def = false},
+			{id = "MEDKITS_ALL_HEAL", type = "check", val = 1, def = false},
+			{id = "MEDKITS_ONE_HEAL", type = "check", val = 1, def = true},
+			{id = "SLEEP_HEALS", type = "check", val = 1, def = true},
+			{id = "SLEEP_HEALS_LOGICAL", type = "check", val = 1, def = true},
+			{id = "SLEEP_HEALS_POWER", type = "track", val = 2, min=0.1,max=5,step=0.1, def = 2},
+			{id = "HEALTH_MULT", type = "track", val = 2, min=1,max=10,step=1, def = 1},
+
+		}
+	}
+
+	return op
+end

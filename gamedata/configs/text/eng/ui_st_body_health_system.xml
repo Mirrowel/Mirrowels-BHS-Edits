@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+		<text>Body Health System</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Body Health System</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH">
+		<text>Text HUD Replacer</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH_desc">
+		<text>(Reloading required) Text version of HUD.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
+		<text>New Limb Penalties feature</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
+		<text>(Reloading required) Enabling this activates new penalties feature. Disabling returns old BHS penalties.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds">
+		<text>New voice for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
+		<text>Enabling this activates new voice during sprint with damaged legs. Disabling returns voice from original mod.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp">
+		<text>Minimum Leg HP for camera sway penalty</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
+		<text>HP of at least one leg must be below this value to play effects. Default slider value of 5 means that effects will play at 4 or less HP. (Movement speed penalty will still be there, for now)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp">
+		<text>Minimum Leg HP for damage during sprint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp_desc">
+		<text>Sprint with damaged leg has a chance to deal damage. This slider sets the minimum amount of leg HP needed to play this effect, i.e. if slider is 4 and leg HP is 4 then effect will be active. (Value of -1 disables the feature)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power">
+		<text>Legs Camera Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power_desc">
+		<text>Multiplier of legs penalty for camera effect. Default: 1.0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp">
+		<text>Minimum Arms HP for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp_desc">
+		<text>Summary Arms HP must be below this value to play effects. Default slider value of 10 means that effects will play if both arms have 9 or less HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power">
+		<text>Arms Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power_desc">
+		<text>Multiplier for arms penalty effect power. Default: 1.0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp">
+		<text>Minimum Head Damage for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp_desc">
+		<text>Damage needed to play effects. For example, default slider value of 2 means that each headshot damage must be for 2 or more HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power">
+		<text>Head Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power_desc">
+		<text>Multiplier for head penalty effect power. Default: 1.0.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
+		<text>Natural healing</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
+		<text>Damaged body parts will heal VERY slowly on their own if they are not broken (broken = no HP remaining). Limited to how healthy you are. When at half health, body parts heal only up to half HP.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_regeneration_speed">
+		<text>Natural and artifact healing speed</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
+		<text>Speed up or slow down natural healing and artifact healing. Higher is faster, healing time is divided by this number. At setting 1 (default) - healing speed for 1 HP healed: 5 min without artifacts, 2 min with weakest artifact, 30 sec with several powerful artifacts.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
+		<text>Painkiller grain shader</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER_desc">
+		<text>When you take a medical item with painkiller effect, the screen becomes grainy (same as when you are in a radiation area).</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
+		<text>Tourniquet is splint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
+		<text>With this option turned on, the tourniquet fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SPLINTING">
+		<text>Broken limb mechanic (THIS AND ALL ITEMS BELOW REQUIRE A RESTART PROBABLY)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SPLINTING_desc">
+		<text>Broken limbs(Reached 0 HP) require a splint first to be healed. That can be done with a survival kit. Does not prevent painkillers from working. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
+		<text>Medkits also splint broken limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
+		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
+		<text>Bandage is splint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
+		<text>With this option turned on, the bandage fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+	</string>
+		<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT">
+		<text>Medkits also splint broken limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT_desc">
+		<text>Natural and artefact regeneration ignore broken limb mechanic and heal limbs anyway. Though whats the point in this mechanic if you enable this. </text>
+	</string>
+
+</string_table>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+		<text>Body Health System</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Body Health System</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH">
+		<text>Текстовый HUD</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH_desc">
+		<text>(Требуется перезагрузка) Текстовая версия HUD'а.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
+		<text>Новая функция штрафов конечностей</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
+		<text>(Требуется перезагрузка) Включение этой опции активирует новую функцию штрафов. Отключение возвращает старые штрафы BHS.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds">
+		<text>Новый голос при эффектах</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
+		<text>Включение этой опции активирует новые звуки голоса при спринте со сломанными ногами. Выключение возвращает голос оригинального мода.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp">
+		<text>Минимальное здоровье ног для активации эффектов камеры</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
+		<text>Здоровье хотя бы одной ноги должно быть ниже этого значения, чтобы активировать эффекты. Значение ползунка по умолчанию 5 означает, что эффекты будут воспроизводиться при значении здоровья 4 или менее. (Штраф скорости передвижения отключить нельзя, пока)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp">
+		<text>Минимальное здоровье ног для активации урона при спринте</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp_desc">
+		<text>Спринт с поврежденными ногами имеет шанс нанести урон. Ползунок устанавливает минимальное значение здоровья ног, необходимое для активации эффекта. Например, если ползунок 4 и здоровье хотя бы одной ноги 4, то эффект будет активирован. (Значение -1 выключает функцию)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power">
+		<text>Сила эффектов (Ноги)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power_desc">
+		<text>Множитель для силы эффектов (ноги). По умолчанию: 1.0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp">
+		<text>Минимальное здоровье рук для активации штрафов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp_desc">
+		<text>Суммарное здоровье обеих рук должно быть ниже этого значения, чтобы активировать эффекты. Значение ползунка по умолчанию 10 означает, что эффекты будут воспроизводиться, если обе руки имеют значение здоровья 9 или менее.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power">
+		<text>Сила эффектов (Руки)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power_desc">
+		<text>Множитель для силы эффектов (руки). По умолчанию: 1.0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp">
+		<text>Минимальный урон головы для активации штрафов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp_desc">
+		<text>Урон, необходимый для активации эффектов. Например, значение ползунка по умолчанию 2 означает, что урон от каждого выстрела в голову должен будет убавлять значение здоровья на 2 или более.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power">
+		<text>Сила эффектов (Голова)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power_desc">
+		<text>Множитель для силы эффектов (голова). По умолчанию: 1.0.</text>
+	</string>
+	
+	
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
+		<text>Natural healing</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
+		<text>Damaged body parts will heal VERY slowly on their own if they are not broken (broken = no HP remaining). Limited to how healthy you are. When at half health, body parts heal only up to half HP.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_regeneration_speed">
+		<text>Natural and artifact healing speed</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
+		<text>Speed up or slow down natural healing and artifact healing. Higher is faster, healing time is divided by this number. At setting 1 (default) - healing speed for 1 HP healed: 5 min without artifacts, 2 min with weakest artifact, 30 sec with several powerful artifacts.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
+		<text>Painkiller grain shader</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER_desc">
+		<text>When you take a medical item with painkiller effect, the screen becomes grainy (same as when you are in a radiation area).</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
+		<text>Tourniquet is splint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
+		<text>With this option turned on, the tourniquet fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SPLINTING">
+		<text>Broken limb mechanic (THIS AND ALL ITEMS BELOW REQUIRE A RESTART PROBABLY)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SPLINTING_desc">
+		<text>Broken limbs(Reached 0 HP) require a splint first to be healed. That can be done with a survival kit. Does not prevent painkillers from working. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
+		<text>Medkits also splint broken limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
+		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
+		<text>Bandage is splint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
+		<text>With this option turned on, the bandage fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+	</string>
+		<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT">
+		<text>Medkits also splint broken limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT_desc">
+		<text>Natural and artefact regeneration ignore broken limb mechanic and heal limbs anyway. Though whats the point in this mechanic if you enable this. </text>
+	</string>
+
+
+</string_table>
