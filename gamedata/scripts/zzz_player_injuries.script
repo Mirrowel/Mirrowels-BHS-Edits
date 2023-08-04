@@ -2,7 +2,7 @@
 local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
-local damagescale=1.0 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+damagescale=1.0 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
@@ -35,7 +35,7 @@ end
 local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")	-- will keep it on loading just in case
 
 -- It's very important to keep the correct ratio between "effects_mult" and "maxhp" as shown in example
-local effects_mult = 1 -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
+effects_mult = 1 -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
 local prev_time = nil
 local head_tbl = {}
 local tinnitus_play = false
@@ -180,6 +180,9 @@ healhelplist.rebirth={head=10,torso=10,rightleg=4,leftleg=4,rightarm=4,leftarm=4
 -- * healactive: leave at 0, this is used to track it during runtime.
 -- * lasttimestamp: leave at 0, this is used to track it during runtime.
 local healonelist={}
+--healonelist.lastregen=time_global()
+--healonelist.healtimer=30000
+--healonelist.healamount=0
 if medkits_one_heal then
 	healonelist.medkit={healamount=5,healtimer=2000,healactive=0,lasttimestamp=0}
 	healonelist.medkit_army={healamount=12,healtimer=2000,healactive=0,lasttimestamp=0}
@@ -300,24 +303,24 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer)
 	utils_obj.save_var(db.actor,"healhelplist.lastregen",healhelplist.lastregen)
 
-	counter = 0
-	for k,v in pairs(healonelist) do
-		savestring1 = "healone" .. counter .. "time"
-		savestring2 = "healone" .. counter .. "amount"
-		if healonelist[k].healactive > 0 then
-			amount = healonelist[k].healactive
-			timepassed = time_global() - healonelist[k].lasttimestamp
-			if timepassed < 0 then
-				timepassed = 0
-			end
-			utils_obj.save_var(db.actor,savestring1,timepassed)
-			utils_obj.save_var(db.actor,savestring2,amount)
-		else
-			utils_obj.save_var(db.actor,savestring1,timepassed)
-			utils_obj.save_var(db.actor,savestring2,amount)
-		end
-		counter = counter + 1
-	end
+--	counter = 0
+--	for k,v in pairs(healonelist) do
+--		savestring1 = "healone" .. counter .. "time"
+--		savestring2 = "healone" .. counter .. "amount"
+--		if healonelist[k].healactive > 0 then
+--			amount = healonelist[k].healactive
+--			timepassed = time_global() - healonelist[k].lasttimestamp
+--			if timepassed < 0 then
+--				timepassed = 0
+--			end
+--			utils_obj.save_var(db.actor,savestring1,timepassed)
+--			utils_obj.save_var(db.actor,savestring2,amount)
+--		else
+--			utils_obj.save_var(db.actor,savestring1,timepassed)
+--			utils_obj.save_var(db.actor,savestring2,amount)
+--		end
+--		counter = counter + 1
+--	end
 	
 	counter = 0
 	for k,v in pairs(painkillerlist) do
@@ -1378,7 +1381,7 @@ local function actor_on_footstep(material,power,hud_view,flags)
 	--	printf("hit_power: " .. (hit_power))
 		local file
 		local sound_play = math.random(1,100)
-		if (hit_power > 0) and (state_cooldown < time_global()) and (sound_play <= 13) then
+		if (hit_power > 0) and (state_cooldown < time_global()) and (sound_play <= 35) then
 			if zzz_player_injuries_mcm.get_config("new_voice_sounds") then
 				local helmet = (db.actor:item_in_slot(12) or db.actor:get_current_outfit())
 				if helmet then

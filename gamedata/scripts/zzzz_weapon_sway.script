@@ -1,0 +1,441 @@
+------------------------------- mcm stuff --------------------------------------
+local weapon_sway_enable = weapon_sway_mcm.get_config("weapon_sway_feature")
+local aim_anm = weapon_sway_mcm.get_config("animation_type")
+local max_effect_power = weapon_sway_mcm.get_config("max_effect_power")
+local sway_keybind = weapon_sway_mcm.get_config("sway_keybind")
+
+local power_stand = weapon_sway_mcm.get_config("power_stand")
+local power_crouch = weapon_sway_mcm.get_config("power_crouch")
+local power_low_crouch = weapon_sway_mcm.get_config("power_low_crouch")
+
+local power_stand_scoped = weapon_sway_mcm.get_config("power_stand_scoped")
+local power_crouch_scoped = weapon_sway_mcm.get_config("power_crouch_scoped")
+local power_low_crouch_scoped = weapon_sway_mcm.get_config("power_low_crouch_scoped")
+
+local weapon_mount_feature = weapon_sway_mcm.get_config("weapon_mount_feature")
+local weapon_mounted_power = weapon_sway_mcm.get_config("weapon_mounted_power")
+local y_axis_mounted_distance = weapon_sway_mcm.get_config("y_axis_mounted_distance")
+
+local weapon_handling_mult = weapon_sway_mcm.get_config("handling_mult")
+
+local weight_factor = weapon_sway_mcm.get_config("weight_factor")
+local max_power_weight = weapon_sway_mcm.get_config("max_power_weight")
+
+local hold_breath_feature = weapon_sway_mcm.get_config("hold_breath_feature")
+local enable_breath_sound = weapon_sway_mcm.get_config("enable_breath_sound")
+local breath_restore_mult = weapon_sway_mcm.get_config("breath_restore_mult")
+local max_hold_breath_time = weapon_sway_mcm.get_config("max_hold_breath_time")
+
+local hold_breath_mult = weapon_sway_mcm.get_config("hold_breath_mult")
+local release_breath_mult = weapon_sway_mcm.get_config("release_breath_mult")
+
+local weapon_sway_debug = weapon_sway_mcm.get_config("debugx")
+
+------------------------------- mcm patch --------------------------------------
+local bhs_patch = weapon_sway_mcm.get_config("bhs_patch")
+local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm and zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")
+local effects_mult = zzz_player_injuries.effects_mult		-- If you changed this in BHS script - you need to change it here too
+
+	-- demonized's and Raven's magic, i dont even know how it works
+if zzz_player_injuries then
+	zzz_player_injuries.RegisterScriptCallback = function(k, func)
+		if not (k == "actor_on_weapon_zoom_in") then
+			_G.RegisterScriptCallback(k, func)
+		end
+	end
+end
+------------------------------- main ----------------------------------
+local zoom_flag = false
+local holding_breath = false
+local breath_held_for = 0
+
+function weapon_sway()
+	local wpn = db.actor:active_item()
+	if not (wpn and IsWeapon(wpn)) then return end
+	if (IsMelee(wpn)) then return end
+
+	local wpn_sec = wpn:section()
+	if not wpn_sec then return end
+
+	local wpn_scoped = wpn:weapon_is_scope()
+	local handling = utils_ui.prop_handling(wpn, wpn_sec)
+
+	-- anm power mults
+	local body_mult = get_body_state_power(wpn, wpn_scoped) or 1		-- power based on body state
+	local extra_mult = wpn_scoped and 0.02 or 0.1		-- reduce scoped anm power
+	local mount_mult = wpn_mounted() and weapon_mounted_power or 1	-- weapon mounted
+	local handling_mult = handling and ((2.5 - 0.02 * handling * 100)^weapon_handling_mult) or 1		-- handling
+	local weight = get_weight_power(wpn_sec) and clamp(get_weight_power(wpn_sec) * weight_factor, 0.01, max_power_weight) or 1		-- weight factor
+	local breath_mult = holding_breath and hold_breath_mult or 1 + breath_held_for * release_breath_mult		-- breath mult
+
+	-- Summary power
+	local cam_power = body_mult * weight * extra_mult * mount_mult * breath_mult * handling_mult
+	cam_power = clamp(cam_power, 0, max_effect_power)
+
+	-- Play anim or Change its power
+	if level.check_cam_effector(99215) then
+		level.set_cam_effector_factor(99215, cam_power)
+	else
+		level.add_cam_effector("weapon_sway\\sway_" .. aim_anm .. ".anm", 99215, true, "", 0, true, cam_power)
+	end
+
+
+	-- dbg
+	if not weapon_sway_debug then return end
+	actor_menu.set_msg(1, strformat("weight_mult: %s | handling_mult: %s | Total Power: %s", r(weight), r(handling_mult), r(cam_power)))
+
+end
+
+function weapon_sway_remove()
+	level.remove_cam_effector(99215)
+end
+
+----------------------- manage breath ------------------------
+-- start holding breath
+ local press_tg = 0
+function on_key_press(key)
+	if not weapon_sway_enable then return end
+	if not hold_breath_feature then return end
+
+	-- when we aiming and press "hold breath" button
+	if not (zoom_flag and key == sway_keybind) then return end
+
+	-- set "holding_breath" to TRUE
+	holding_breath = true
+
+	local tg = time_global()
+	if tg < press_tg then return end
+	press_tg = tg + 2000	-- against people who trying their best to break it ;]
+
+	-- and play hold sound
+	breath_snd_hold()
+
+end
+
+-- increase/decrease breath hold
+local breath_tmr = 0
+function breath_update()
+	local tg = time_global()
+	if tg < breath_tmr then return end
+	breath_tmr = tg + 250
+
+	-- increase "breath_held_for" if hold, decrease "breath_held_for" otherwise
+	breath_held_for = holding_breath and breath_held_for + 0.25 or breath_held_for - 0.25 * breath_restore_mult
+	breath_held_for = clamp(breath_held_for, 0, max_hold_breath_time)
+
+	-- end holding breath if reached max time
+	if breath_held_for < max_hold_breath_time then return end
+
+	-- to give at least 1 sec if someone tries to spam it xd
+	breath_held_for = breath_held_for - 1
+
+	-- set "holding_breath" to FALSE
+	holding_breath = false
+
+	-- and play release sound
+	breath_snd_release()
+
+end
+
+-- end holding breath on key
+function on_key_release(key)
+	if not (zoom_flag and holding_breath and key == sway_keybind) then return end
+
+	-- set "holding_breath" to FALSE
+	holding_breath = false
+
+	-- if breath was held for more than 3 seconds - play release sound
+	if breath_held_for > 3 then
+		breath_snd_release()
+	end
+
+end
+
+function breath_snd_hold()
+	if not enable_breath_sound then return end
+	local snd_hold = sound_object("weapon_sway\\hold_1")
+	snd_hold:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+end
+
+function breath_snd_release()
+	if not enable_breath_sound then return end
+	local snd_release = sound_object("weapon_sway\\release_1")
+	snd_release:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+end
+
+----------------------- power mults ------------------------
+function get_body_state_power(wpn, scope)
+	local body_state = get_body_state()
+	if not body_state then return end
+
+	local body_mult = 1
+	body_mult = scope and power_stand_scoped or power_stand
+
+	if body_state == "crouch" then
+		body_mult = scope and power_crouch_scoped or power_crouch
+	elseif body_state == "low_crouch" then
+		body_mult = scope and power_low_crouch_scoped or power_low_crouch
+	end
+
+	return body_mult
+end
+
+function wpn_mounted()
+	if not weapon_mount_feature then return end
+
+	local rp_diff = get_rp_diff()
+
+	return rp_diff > 0.1
+end
+
+function get_weight_power(wpn_sec)
+	if not ini_sys:section_exist(wpn_sec, "inv_weight") then return end
+
+	return ini_sys:r_float_ex(wpn_sec, "inv_weight")
+end
+
+----------------------- utils ------------------------
+function get_body_state()
+	local crouch = IsMoveState('mcCrouch')
+	local accel = IsMoveState('mcAccel')
+	local body_st = "stand"
+
+	if crouch then
+		if accel then
+			body_st = "low_crouch"
+		else
+			body_st = "crouch"
+		end
+	end
+
+	return body_st
+end
+
+function ray_pick_dir(add_x, add_y, add_z, range)
+	local pos = device().cam_pos
+	local dir = device().cam_dir
+	local vec_x = dir.x + add_x
+	local vec_y = dir.y + add_y
+	local vec_z = dir.z + add_z
+	vec_x = clamp( r(vec_x), -1, 1)
+	vec_y = clamp( r(vec_y), -1, 1)
+	vec_z = clamp( r(vec_z), -1, 1)
+
+	-- dbg
+	if weapon_sway_debug then
+		printf("--------------------")
+		printf("dir: %s", dir)
+		printf("edited dir: x: %s, y: %s, z: %s", vec_x, vec_y, vec_z)
+	end
+
+	local pick = ray_pick()
+	pick:set_position(pos)
+	pick:set_direction(vector():set(vec_x, vec_y, vec_z))
+	pick:set_flags(2)
+	pick:set_range(range)
+	pick:query()
+	local distance = pick:get_distance()
+
+	return distance
+end
+
+function normal_ray_pick()
+	local pos = device().cam_pos
+	local dir = device().cam_dir
+	local pick = ray_pick()
+	pick:set_position(pos)
+	pick:set_direction(dir)
+	pick:set_flags(2)
+	pick:set_range(0.85)
+	pick:query()
+	local distance = pick:get_distance()
+
+	return distance
+end
+
+function get_rp_diff()
+	local default_raycast = normal_ray_pick()
+	local x = 0
+	local y = y_axis_mounted_distance
+	local z = 0
+	local range = 0.85
+	local custom_raycast = r(ray_pick_dir(x, y, z, range))
+	local diff = custom_raycast - default_raycast
+
+	return diff
+end
+
+function r(val)
+	return round_idp(val, 2)
+end
+
+----------------------- BHS compatibility ------------------------
+if bhs_patch and zzz_player_injuries then
+	function bhs_sway_func()
+		if not (NEW_LIMB_PENALTIES_FEATURE) then return end
+
+		local wpn = db.actor:active_item()
+		if not (wpn and IsWeapon(wpn)) then return end
+		if (IsMelee(wpn)) then return end
+
+		local wpn_sec = wpn:section()
+		if not wpn_sec then return end
+
+		local wpn_scoped = wpn:weapon_is_scope()
+		local handling = utils_ui.prop_handling(wpn, wpn_sec)
+
+		local body_state = get_body_state()
+		local left_arm = (zzz_player_injuries.health.rightarm + zzz_player_injuries.timedhp.rightarm) * effects_mult
+		left_arm = left_arm >=1 and left_arm or 0.75
+		local right_arm = (zzz_player_injuries.health.leftarm + zzz_player_injuries.timedhp.leftarm) * effects_mult
+		right_arm = right_arm >=1 and right_arm or 0.75
+		local arms_sum = left_arm + right_arm
+		local max_arms_sum = (zzz_player_injuries.maxhp.rightarm + zzz_player_injuries.maxhp.leftarm) * effects_mult
+
+		-- anm power mults
+		local bhs_cam_power = 1
+		local body_mult = get_body_state_power(wpn, wpn_scoped) or 1		-- power based on body state
+		local extra_mult = wpn_scoped and 0.02 or 0.1		-- reduce scoped anm power
+		local mount_mult = wpn_mounted() and weapon_mounted_power or 1	-- weapon mounted
+		local handling_mult = handling and ((2.5 - 0.02 * handling * 100)^weapon_handling_mult) or 1		-- handling
+		local weight = get_weight_power(wpn_sec) and clamp(get_weight_power(wpn_sec) * weight_factor, 0.01, max_power_weight) or 1		-- weight factor
+		local breath_mult = holding_breath and hold_breath_mult or 1 + breath_held_for * release_breath_mult		-- breath mult
+
+		-- Summary Weapon Sway power
+		local cam_power = body_mult * weight * extra_mult * mount_mult * breath_mult * handling_mult
+		cam_power = clamp(cam_power, 0, max_effect_power)
+
+		-- BHS
+		if arms_sum < (max_arms_sum * (zzz_player_injuries_mcm.get_config("arm_penalty_minimum_hp") * 0.1)) then
+			if (left_arm < right_arm / 1.5) or (right_arm < left_arm / 1.5) then
+				bhs_cam_power = 1.15 * weight / arms_sum
+				bhs_cam_power = (body_state == "crouch") and (0.8 * weight / arms_sum) or bhs_cam_power
+				bhs_cam_power = (body_state == "low_crouch") and (0.4 * weight / arms_sum) or bhs_cam_power
+			else
+				bhs_cam_power = 0.8 * weight / arms_sum
+				bhs_cam_power = (body_state == "crouch") and (0.55 * weight / arms_sum) or bhs_cam_power
+				bhs_cam_power = (body_state == "low_crouch") and (0.3 * weight / arms_sum) or bhs_cam_power
+			end
+
+			-- Summary BHS power
+			bhs_cam_power = clamp((bhs_cam_power * mount_mult * breath_mult * handling_mult), 0, 3)
+			bhs_cam_power = bhs_cam_power * (zzz_player_injuries_mcm.get_config("arm_animation_power"))
+			local cam_power_scope = bhs_cam_power * 0.2
+			if wpn:weapon_is_scope() then
+				bhs_cam_power = cam_power_scope
+			end
+
+		-- Play anim or Change its power
+			if level.check_cam_effector(99215) then
+				level.set_cam_effector_factor(99215, bhs_cam_power)
+			else
+				level.add_cam_effector("weapon_sway\\sway_" .. aim_anm .. ".anm", 99215, true, "", 0, true, bhs_cam_power)
+			end
+
+		-- Weapon Sway
+		elseif weapon_sway_enable then
+			-- Play anim or Change its power
+			if level.check_cam_effector(99215) then
+				level.set_cam_effector_factor(99215, cam_power)
+			else
+				level.add_cam_effector("weapon_sway\\sway_" .. aim_anm .. ".anm", 99215, true, "", 0, true, cam_power)
+			end
+
+		end
+
+		-- dbg
+		if not weapon_sway_debug then return end
+		news_manager.send_tip(db.actor, string.format("y-axis diff: %s", ( get_rp_diff() )), 0, nil, 1500)
+
+		if not hold_breath_feature then return end
+		news_manager.send_tip(db.actor, string.format("Breath being held for: %s", breath_held_for), 0, nil, 1500)
+
+	end
+end
+
+----------------------- cb ------------------------
+function actor_on_weapon_zoom_in(wpn)
+	zoom_flag = true
+end
+
+function actor_on_weapon_zoom_out(wpn)
+	weapon_sway_remove()
+	zoom_flag = false
+
+	if not (holding_breath) then return end
+
+	holding_breath = false
+
+	-- if breath was held for more than 3 seconds - play release sound
+	if breath_held_for > 3 then
+		breath_snd_release()
+	end
+
+ end
+
+local tg_act = 0
+function main_update()
+	local tg = time_global()
+	if tg < tg_act then return end
+	tg_act = tg + 250
+
+	if weapon_sway_enable and zoom_flag then
+		if bhs_patch and zzz_player_injuries and bhs_sway_func then
+			bhs_sway_func()
+		else
+			weapon_sway()
+		end
+	end
+
+	-- dbg
+	if not weapon_sway_debug then return end
+	news_manager.send_tip(db.actor, string.format("y-axis diff: %s", ( get_rp_diff() )), 0, nil, 1500)
+
+	if not hold_breath_feature then return end
+	news_manager.send_tip(db.actor, string.format("Breath being held for: %s", breath_held_for), 0, nil, 1500)
+
+end
+
+function on_option_change()
+	weapon_sway_enable = weapon_sway_mcm.get_config("weapon_sway_feature")
+	aim_anm = weapon_sway_mcm.get_config("animation_type")
+	max_effect_power = weapon_sway_mcm.get_config("max_effect_power")
+	sway_keybind = weapon_sway_mcm.get_config("sway_keybind")
+
+	power_stand = weapon_sway_mcm.get_config("power_stand")
+	power_crouch = weapon_sway_mcm.get_config("power_crouch")
+	power_low_crouch = weapon_sway_mcm.get_config("power_low_crouch")
+
+	power_stand_scoped = weapon_sway_mcm.get_config("power_stand_scoped")
+	power_crouch_scoped = weapon_sway_mcm.get_config("power_crouch_scoped")
+	power_low_crouch_scoped = weapon_sway_mcm.get_config("power_low_crouch_scoped")
+
+	weapon_mount_feature = weapon_sway_mcm.get_config("weapon_mount_feature")
+	weapon_mounted_power = weapon_sway_mcm.get_config("weapon_mounted_power")
+	y_axis_mounted_distance = weapon_sway_mcm.get_config("y_axis_mounted_distance")
+
+	weapon_handling_mult = weapon_sway_mcm.get_config("handling_mult")
+
+	weight_factor = weapon_sway_mcm.get_config("weight_factor")
+	max_power_weight = weapon_sway_mcm.get_config("max_power_weight")
+
+	hold_breath_feature = weapon_sway_mcm.get_config("hold_breath_feature")
+	enable_breath_sound = weapon_sway_mcm.get_config("enable_breath_sound")
+	breath_restore_mult = weapon_sway_mcm.get_config("breath_restore_mult")
+	max_hold_breath_time = weapon_sway_mcm.get_config("max_hold_breath_time")
+
+	hold_breath_mult = weapon_sway_mcm.get_config("hold_breath_mult")
+	release_breath_mult = weapon_sway_mcm.get_config("release_breath_mult")
+
+	weapon_sway_debug = weapon_sway_mcm.get_config("debugx")
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_key_press", on_key_press)
+	RegisterScriptCallback("actor_on_update", breath_update)
+	RegisterScriptCallback("on_key_release", on_key_release)
+	RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+	RegisterScriptCallback("actor_on_update", main_update)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end
