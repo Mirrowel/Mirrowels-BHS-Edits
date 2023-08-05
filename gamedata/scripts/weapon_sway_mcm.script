@@ -1,0 +1,72 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["weapon_sway_feature"] = true,
+	["bhs_patch"] = false,
+	["sway_keybind"] = DIK_keys.DIK_F,
+	["animation_type"] = 1,
+	["max_effect_power"] = 3,
+	["weight_factor"] = 1,
+	["max_power_weight"] = 7,
+	["power_stand"] = 1.2,
+	["power_crouch"] = 0.8,
+	["power_low_crouch"] = 0.4,
+	["power_stand_scoped"] = 1.2,
+	["power_crouch_scoped"] = 0.8,
+	["power_low_crouch_scoped"] = 0.4,
+	["weapon_mount_feature"] = true,
+	["weapon_mounted_power"] = 0.1,
+	["y_axis_mounted_distance"] = -0.35,
+	["hold_breath_feature"] = true,
+	["hold_breath_mult"] = 0.1,
+	["release_breath_mult"] = 0.04,
+	["max_hold_breath_time"] = 11,
+	["breath_restore_mult"] = 0.5,
+	["enable_breath_sound"] = true,
+	["handling_mult"] = 1,
+	["debugx"] = false,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("weapon_sway/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "weapon_sway",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_weapon_sway_title",size= {512,50},spacing= 20 },
+			{id = "weapon_sway_feature", type = "check", val = 1, def = true},
+			{id = "bhs_patch", type = "check", val = 1, def = false},
+			{id = "sway_keybind", type = "key_bind", val = 2, def = DIK_keys.DIK_F},
+			{id = "animation_type", type= "list", val= 2, def= 1, 	content= { {1, "sway_1"} , {2, "sway_2"} , {3, "custom_1"} , {4, "custom_2"} , {5, "custom_3"} } , no_str = true },
+			{id="divider", type="line" },
+			{id = "max_effect_power", type = "track", val = 2, min=0.1, max=8, step=0.1, def = 3},
+			{id = "weight_factor", type = "track", val = 2, min=0.1, max=3, step=0.1, def = 1},
+			{id = "max_power_weight", type = "track", val = 2, min=0.25, max=15, step=0.25, def = 7},
+			{id="divider", type="line" },
+			{id = "power_stand", type = "track", val = 2, min=0, max=3, step=0.1, def = 1.2},
+			{id = "power_crouch", type = "track", val = 2, min=0, max=3, step=0.1, def = 0.8},
+			{id = "power_low_crouch", type = "track", val = 2, min=0, max=3, step=0.1, def = 0.4},
+			{id="divider", type="line" },
+			{id = "power_stand_scoped", type = "track", val = 2, min=0, max=3, step=0.1, def = 1.2},
+			{id = "power_crouch_scoped", type = "track", val = 2, min=0, max=3, step=0.1, def = 0.8},
+			{id = "power_low_crouch_scoped", type = "track", val = 2, min=0, max=3, step=0.1, def = 0.4},
+			{id="divider", type="line" },
+			{id = "weapon_mount_feature", type = "check", val = 1, def = true},
+			{id = "weapon_mounted_power", type = "track", val = 2, min=0, max=1, step=0.005, def = 0.1},
+			{id = "y_axis_mounted_distance", type = "track", val = 2, min=-0.75, max=0, step=0.01, def = -0.35},
+			{id="divider", type="line" },
+			{id = "hold_breath_feature", type = "check", val = 1, def = true},
+			{id = "hold_breath_mult", type = "track", val = 2, min=0, max=1, step=0.05, def = 0.1},
+			{id = "release_breath_mult", type = "track", val = 2, min=0.01, max=0.1, step=0.01, def = 0.04},
+			{id = "max_hold_breath_time", type = "track", val = 2, min=2, max=30, step=0.5, def = 11},
+			{id = "breath_restore_mult", type = "track", val = 2, min=0.1, max=3, step=0.1, def = 0.5},
+			{id = "enable_breath_sound", type = "check", val = 1, def = true},
+			{id="divider", type="line" },
+			{id = "handling_mult", type = "track", val = 2, min=0, max=1.5, step=0.025, def = 1},
+			{id="divider", type="line" },
+			{id = "debugx", type = "check", val = 1, def = false},
+
+		}
+	}
+
+	return op
+end

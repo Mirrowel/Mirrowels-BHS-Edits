@@ -2,9 +2,9 @@
 local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
-healthmult = zzz_player_injuries_mcm.get_config("HEALTH_MULT") or 1 -- Scales the healing gain. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
+healthmult = zzz_player_injuries_mcm.get_config("HEALTH_MULT") or 1 -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
 
-damagescale=1.0*healthmult -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+damagescale=2.0*healthmult -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
@@ -29,13 +29,14 @@ local sleep_heal_power = zzz_player_injuries_mcm.get_config("SLEEP_HEALS_POWER")
 local regen=0 -- Don't change that. Use mcm instead. Automatic blue health regeneration on each limb. Setting it to 90000 would mean each 90 seconds 1 health point restores
 if natural_regeneration then
 	regen = 300000/artifact_and_natural_regeneration_speed_mod
+	regen = regen/healthmult
 end
 
 --====== marked everything i added with 'xcvb' to make it easier to find in case someone wants to change/modify anything from new effects ======
 local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")	-- will keep it on loading just in case
 
 -- It's very important to keep the correct ratio between "effects_mult" and "maxhp" as shown in example
-effects_mult = 1/healthmult -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
+effects_mult = 0.5/healthmult -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
 local prev_time = nil
 local head_tbl = {}
 local tinnitus_play = false
@@ -91,12 +92,12 @@ display.types[169]=1.7777
 display.types[1610]=1.56
 
 maxhp={}
-maxhp.head=11*healthmult
-maxhp.torso=11*healthmult
-maxhp.leftarm=5*healthmult
-maxhp.rightarm=5*healthmult
-maxhp.leftleg=5*healthmult
-maxhp.rightleg=5*healthmult
+maxhp.head=22*healthmult
+maxhp.torso=22*healthmult
+maxhp.leftarm=10*healthmult
+maxhp.rightarm=10*healthmult
+maxhp.leftleg=10*healthmult
+maxhp.rightleg=10*healthmult
 
 health={}
 health.head=maxhp.head
@@ -140,14 +141,6 @@ timedheal.leftarm=0
 timedheal.rightarm=0
 timedheal.leftleg=0
 timedheal.rightleg=0
-
-local onetimedheal={}
-onetimedheal.head=0
-onetimedheal.torso=0
-onetimedheal.leftarm=0
-onetimedheal.rightarm=0
-onetimedheal.leftleg=0
-onetimedheal.rightleg=0
 
 local hud_blink_timer={}
 hud_blink_timer.head=0
@@ -215,16 +208,19 @@ painkillerlist={}
 painkillerlist.lasttimestamp=time_global()
 painkillerlist.painkillerduration=0
 painkillerlist.painkillerpower=0
-painkillerlist.yadylin={painkillerpower=1,painkillerduration=132000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.cocaine={painkillerpower=1,painkillerduration=1644000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.medkit={painkillerpower=1,painkillerduration=32000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.medkit_army={painkillerpower=3,painkillerduration=34000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.medkit_scientic={painkillerpower=1,painkillerduration=34000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.analgetic={painkillerpower=2,painkillerduration=1034000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.salicidic_acid={painkillerpower=3,painkillerduration=1152000,painkilleractive=0,lasttimestamp=0}
-painkillerlist.morphine={painkillerpower=5,painkillerduration=15000,painkilleractive=0,lasttimestamp=0}
---painkillerlist.morphine={painkillerpower=4,painkillerduration=1518000,painkilleractive=0,lasttimestamp=0}
+painkillerlist.yadylin={painkillerpower=1,painkillerduration=132000}
+painkillerlist.cocaine={painkillerpower=1,painkillerduration=1644000}
+painkillerlist.medkit={painkillerpower=1,painkillerduration=64000}
+painkillerlist.medkit_army={painkillerpower=3,painkillerduration=64000}
+painkillerlist.medkit_scientic={painkillerpower=1,painkillerduration=64000}
+painkillerlist.analgetic={painkillerpower=2,painkillerduration=1034000}
+painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000}
+painkillerlist.salicidic_acid={painkillerpower=3,painkillerduration=1152000}
+painkillerlist.morphine={painkillerpower=5,painkillerduration=1518000}
+painkillerlist.stimpack={painkillerpower=5,painkillerduration=1518000}
+painkillerlist.stimpack_army={painkillerpower=5,painkillerduration=1518000}
+painkillerlist.stimpack_army_scientific={painkillerpower=5,painkillerduration=1518000}
+
 
 local modifiedregen = regen
 
@@ -299,6 +295,13 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"timedheal.rightleg",timedheal.rightleg)
 	utils_obj.save_var(db.actor,"timedheal.leftleg",timedheal.leftleg)
 
+	utils_obj.save_var(db.actor,"timedhp.head",timedhp.head)
+	utils_obj.save_var(db.actor,"timedhp.torso",timedhp.torso)
+	utils_obj.save_var(db.actor,"timedhp.rightarm",timedhp.rightarm)
+	utils_obj.save_var(db.actor,"timedhp.leftarm",timedhp.leftarm)
+	utils_obj.save_var(db.actor,"timedhp.rightleg",timedhp.rightleg)
+	utils_obj.save_var(db.actor,"timedhp.leftleg",timedhp.leftleg)
+
 	utils_obj.save_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer)
 	utils_obj.save_var(db.actor,"healhelplist.healpower",healhelplist.healpower)
 
@@ -309,42 +312,9 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration)
 	utils_obj.save_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower)
 
-
---	counter = 0
---	for k,v in pairs(healonelist) do
---		savestring1 = "healone" .. counter .. "time"
---		savestring2 = "healone" .. counter .. "amount"
---		if healonelist[k].healactive > 0 then
---			amount = healonelist[k].healactive
---			timepassed = time_global() - healonelist[k].lasttimestamp
---			if timepassed < 0 then
---				timepassed = 0
---			end
---			utils_obj.save_var(db.actor,savestring1,timepassed)
---			utils_obj.save_var(db.actor,savestring2,amount)
---		else
---			utils_obj.save_var(db.actor,savestring1,timepassed)
---			utils_obj.save_var(db.actor,savestring2,amount)
---		end
---		counter = counter + 1
---	end
-	
---	counter = 0
---	for k,v in pairs(painkillerlist) do
---		savestring = "painkiller" .. counter
---		if painkillerlist[k].painkilleractive > 0 then
---			durationleft = painkillerlist[k].painkillerduration - (time_global() - painkillerlist[k].lasttimestamp)
---			if durationleft < 0 then
---				durationleft = 0
---			end
---			utils_obj.save_var(db.actor,savestring,durationleft)
---		else
---			utils_obj.save_var(db.actor,savestring,0)
---		end
---		counter = counter + 1
---	end	
 end
 local function LoadHealthStatus()
+
 	health.head=utils_obj.load_var(db.actor,"health.head") or maxhp.head
 	health.torso=utils_obj.load_var(db.actor,"health.torso") or maxhp.torso
 	health.rightarm=utils_obj.load_var(db.actor,"health.rightarm") or maxhp.rightarm
@@ -359,6 +329,13 @@ local function LoadHealthStatus()
 	timedheal.rightleg=utils_obj.load_var(db.actor,"timedheal.rightleg") or 0
 	timedheal.leftleg=utils_obj.load_var(db.actor,"timedheal.leftleg") or 0
 
+	timedhp.head=utils_obj.load_var(db.actor,"timedhp.head") or 0
+	timedhp.torso=utils_obj.load_var(db.actor,"timedhp.torso") or 0
+	timedhp.rightarm=utils_obj.load_var(db.actor,"timedhp.rightarm") or 0
+	timedhp.leftarm=utils_obj.load_var(db.actor,"timedhp.leftarm") or 0
+	timedhp.rightleg=utils_obj.load_var(db.actor,"timedhp.rightleg") or 0
+	timedhp.leftleg=utils_obj.load_var(db.actor,"timedhp.leftleg") or 0
+
 	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 30000
 	healhelplist.healpower=utils_obj.load_var(db.actor,"healhelplist.healpower",healhelplist.healpower) or 0
 
@@ -368,34 +345,15 @@ local function LoadHealthStatus()
 	
 	painkillerlist.painkillerduration=utils_obj.load_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration) or 30000
 	painkillerlist.painkillerpower=utils_obj.load_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower) or 0
-	if painkillerlist.painkillerpower > 0 and painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
-	if painkillerlist.painkillerpower <=0 and painkiller_grain_shader then level.remove_pp_effector(5020) end
+	if painkillerlist.painkillerpower > 0 and painkiller_grain_shader then 
+		printf("Adding the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
+		level.add_pp_effector("radiation.ppe", 5020, true) 
+	end
+	if painkillerlist.painkillerpower <=0 and painkiller_grain_shader then
+		printf("Removing the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
+		level.remove_pp_effector(5020) 
+	end
 
---	counter = 0
---	for k,v in pairs(healonelist) do
---		savestring1 = "healone" .. counter .. "time"
---		savestring2 = "healone" .. counter .. "amount"
---		amount = utils_obj.load_var(db.actor,savestring2) or 0
---		if amount > 0 then
---			healonelist[k].healactive = amount
---			timepassed = utils_obj.load_var(db.actor,savestring1) or 0
---			settimestamp = time_global() - timepassed
---			healonelist[k].lasttimestamp = settimestamp
---		end
---		counter = counter + 1
---	end
-	
---	counter = 0
---	for k,v in pairs(painkillerlist) do
---		savestring = "painkiller" .. counter
---		durationleft = utils_obj.load_var(db.actor,savestring) or 0
---		if durationleft > 0 then
---			settimestamp = time_global() - (painkillerlist[k].painkillerduration - durationleft)
---			painkillerlist[k].lasttimestamp = settimestamp
---			painkillerlist[k].painkilleractive = 1
---		end
---		counter = counter + 1
---	end
 end
 
 
@@ -1395,10 +1353,11 @@ local function actor_on_footstep(material,power,hud_view,flags)
 
 	--	printf("hit_power: " .. (hit_power))
 		local file
-		local sound_play = math.random(1,100)
-		if (hit_power > 0) and (state_cooldown < time_global()) and (sound_play <= 35) then
+		local chance = math.random(1,100)
+		if (hit_power > 0) and (state_cooldown < time_global()) and (chance<=35) then
 			if zzz_player_injuries_mcm.get_config("new_voice_sounds") then
 				local helmet = (db.actor:item_in_slot(12) or db.actor:get_current_outfit())
+				local sound_play = math.random(1,13)
 				if helmet then
 					muffle = ""
 				else
@@ -1551,7 +1510,7 @@ local function HealOne(healthmod,health)
 	elseif healupto < 0 then return end
 	local healamount = 1
 	local loopcounter = 1 --Only heal limbs that are not broken (broken = at 0 hp).
-	if not splinting or (medkit_is_splint and medkits_one_heal and healupto==1) then loopcounter = 0 end
+	if (not splinting) or (medkit_is_splint and medkits_one_heal and healupto==1) then loopcounter = 0 end
 	while healamount > 0 do
 		for k,v in pairs(health, functor) do
 			adjustedhealth = v						--Double health for arm&leg for deciding what to heal, since limbs have half hp of head/torso
@@ -1561,6 +1520,7 @@ local function HealOne(healthmod,health)
 			if adjustedhealth == loopcounter then
 				if health[k] < maxhp[k] * healupto then
 					health[k] = health[k] + 1
+					if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					healamount = 0
 					printf("Healed once")
 					break
@@ -1589,11 +1549,13 @@ local function BandageUsed(name,health)
 					if v < maxarmleg and health[k] < maxhp[k] then
 						health[k] = health[k] + 1
 						bandageamount = bandageamount - 1
+						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
 				else
 					if v < maxheadtorso and health[k] < maxhp[k] then
 						health[k] = health[k] + 1
 						bandageamount = bandageamount - 1
+					if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
 				end
 			end
@@ -1610,7 +1572,6 @@ end
 
 function actor_on_update()
 	--actor_menu.set_msg("width:"..device().width.." height:"..device().height)
-	
 	local newhealth=db.actor.health
 	local amount=myhealth-newhealth
 	if amount>0.0293 then
@@ -1618,15 +1579,17 @@ function actor_on_update()
 		--printf("! %s",amount
 		-- trace_this("Amount"..amount.."\n")
 	end
-
-	
 	myhealth=db.actor.health
+
 	for k,v in pairs(health) do
-		if v>maxhp[k] then health[k]=maxhp[k] end
+		if v>maxhp[k] then 
+		health[k]=maxhp[k] end
 		if v<=0 then health[k]=0 end
 	end
 	for k,v in pairs(preview.health) do
-		if v>maxhp[k] then preview.health[k]=maxhp[k] end
+		if v>maxhp[k] then 
+			preview.health[k]=maxhp[k]
+			preview.bonus[k]=0	end
 		if v<=0 then preview.health[k]=0 end
 		if (preview.health[k]+preview.bonus[k])>maxhp[k] then preview.bonus[k]=(health[k]-maxhp[k]) end  -- needs a check
 	end
@@ -1639,9 +1602,9 @@ function actor_on_update()
 		else allheal_ceiling=healhelplist.healpower end
 		for k,v in pairs(timedheal) do
 			if v>0 then
-				if health[k]~=0 or not splinting or (medkit_is_splint and medkits_all_heal) then -- broken
+				if health[k]~=0 or (not splinting) or (medkit_is_splint and medkits_all_heal) then -- broken
 					if health[k]<maxhp[k]*allheal_ceiling  then
-						health[k]=health[k]+1
+						health[k]=health[k] + 1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
 				printf("Healed all")
@@ -1670,24 +1633,6 @@ function actor_on_update()
 			statuschanged = true
 		end
 	end
-	
---	for k,v in pairs(healonelist) do
---		if healonelist[k].healactive > 0 then
---			if time_global() - healonelist[k].lasttimestamp > healonelist[k].healtimer then
---				HealOne(1.0,health)  -- healing not capped to actor.health %
---				healonelist[k].healactive = healonelist[k].healactive - 1
---				if healonelist[k].healactive < 0 then
---					healonelist[k].healactive = 0
---				end
---				if healonelist[k].healactive == 0 then
---					healonelist[k].lasttimestamp = 0
---				else
---					healonelist[k].lasttimestamp = time_global()
---				end
---				statuschanged = true
---			end
---		end
---	end
 
 	if painkillerlist.painkillerpower > 0 then
 		if time_global() - painkillerlist.lasttimestamp > painkillerlist.painkillerduration then
@@ -1723,14 +1668,14 @@ function actor_on_update()
 		--end
 	--end
 	
-	--if modifiedregen>0 and init then
-	--	if time_global() - timeregen > modifiedregen then
-	--		HealOne(newhealth,health)
-	--		timeregen = time_global()
-	--		statuschanged = true
-	--		
-	--	end
-	--end
+		if modifiedregen>0 and init then
+			if time_global() - timeregen > modifiedregen then
+				HealOne(newhealth,health)
+				timeregen = time_global()
+				statuschanged = true
+				
+			end
+		end
 	if not init then
 	
 		display_width=device().width
@@ -1921,7 +1866,11 @@ local function actor_on_sleep(hours)
 	printf("Sleepie time for : %s", hoursleft)
 	for k,v in pairs(timedhp) do
 		timedhp[k]=0
-		--printf("Reset timedp")
+		painkillerlist.painkillerpower = 0
+		painkillerlist.painkillerduration = 0
+		if painkiller_grain_shader then
+			level.remove_pp_effector(5020) 
+		end
 	end
 	hoursleft = hoursleft*healthmult*sleep_heal_power
 	printf("Adjusted hours: %s", hoursleft)
@@ -2007,6 +1956,7 @@ local function actor_on_sleep(hours)
 			end
 		end
 	end
+	SaveHealthStatus()
 end
 
 local function actor_on_item_use(obj,objname)

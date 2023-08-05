@@ -1,0 +1,81 @@
+local base_sway
+local is_zoomed
+
+valid_wpns = {
+    wpn_svu = true,
+    wpn_svu_alt = true
+}
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+	RegisterScriptCallback("actor_on_weapon_zoom_in",actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out",actor_on_weapon_zoom_out)
+	RegisterScriptCallback("actor_on_before_death", restore_sway)
+	RegisterScriptCallback("actor_on_net_destroy", restore_sway)
+end
+
+-- when entering game; load and restore previously saved sway setting
+function actor_on_first_update()
+    local saved_sway = axr_main.config:r_value("temp", "base_sway")
+    if saved_sway then
+        base_sway = saved_sway
+        restore_sway()
+    else
+        base_sway = get_console_cmd(0, "weapon_sway")
+        axr_main.config:w_value("temp", "base_sway", base_sway)
+        axr_main.config:save()
+    end
+end
+
+-- add sway to valid weapon when aiming
+function actor_on_weapon_zoom_in(wpn)
+    is_zoomed = true
+    if base_sway == "on" then return end
+
+    local sec = wpn and ini_sys:r_string_ex(wpn:section(),"parent_section") or wpn and wpn:section() or nil
+    local is_valid_wpn = sec and valid_wpns[sec] or nil
+    if not is_valid_wpn then return end
+
+    local sway = get_console_cmd(0, "weapon_sway")
+    if sway == "off" then
+        --news_manager.send_tip(db.actor, "APPLY SVU SWAY")
+        change_sway("on")
+    end
+end
+
+-- remove sway when aiming stops
+function actor_on_weapon_zoom_out(wpn)
+    is_zoomed = false
+    if base_sway == "on" then return end
+
+    local sway = get_console_cmd(0, "weapon_sway")
+    if sway == "on" then
+        --news_manager.send_tip(db.actor, "REMOVE SVU SWAY")
+        change_sway("off")
+    end
+end
+
+function actor_on_update()
+    if not base_sway then return end
+
+    local sway = get_console_cmd(0, "weapon_sway")
+
+    -- if player uses the console to change the weapon sway, this should update the base_sway to it
+    if base_sway ~= sway and not is_zoomed then
+        base_sway = sway
+        axr_main.config:w_value("temp", "base_sway", base_sway)
+        axr_main.config:save()
+        news_manager.send_tip(db.actor, "CHANGED BASE SWAY")
+    end
+end
+
+function change_sway(value)
+    exec_console_cmd("weapon_sway " .. value)
+end
+
+function restore_sway()
+	if base_sway then
+		exec_console_cmd("weapon_sway " .. base_sway)
+	end
+end

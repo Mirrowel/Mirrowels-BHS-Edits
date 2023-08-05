@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_weapon_sway_title">
+		<text>Weapon Sway</text>
+	</string>
+	<string id="ui_mcm_menu_weapon_sway">
+		<text>Weapon Sway</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature">
+		<text>Enable Weapon Sway</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature_desc">
+		<text>Enabling/Disabling the weapon sway feature.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_bhs_patch">
+		<text>Body Health System patch (Need reloading)</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_bhs_patch_desc">
+		<text>Enable if you have Body Health System addon installed and want to have sway penalties from BHS. This will use Weapon Sway addon when arms are above BHS arm penalties. \n
+					\n You can disable patch even when BHS installed, this will overwrite BHS and use only Weapon Sway addon all the time.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_sway_keybind">
+		<text>Hold Breath Keybind</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_sway_keybind_desc">
+		<text>Changes keybind for the hold breath feature.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type">
+		<text>Animation Type</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_desc">
+		<text>Animation type of weapon sway. Currently only have first two, all "custom_" are empty and are there for people to add their own.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type_scope">
+		<text>Scope Animation Type</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_scope_desc">
+		<text>Animation type of weapon sway with scope. List same as above.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_effect_power">
+		<text>Max Effect Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_effect_power_desc">
+		<text>Maximum power that camera effect can reach, combined from all other factors. \n 
+				\n Default: 3</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weight_factor">
+		<text>Weight Factor</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weight_factor_desc">
+		<text>Multiplier for weight of the gun (gun_weight * Weight_Factor). \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_power_weight">
+		<text>Max Weight Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_power_weight_desc">
+		<text>Maximum power that weight multiplier can reach, the heavier gun the more multiplier for camera effect is. \n 
+				\n Default: 7</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand">
+		<text>Stand Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_desc">
+		<text>Effect multiplier for stand/walk body states. \n 
+				\n Default: 1.2 \n 
+				\n (Stand_Power * gun_weight * Weight_Factor * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch">
+		<text>Crouch Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_desc">
+		<text>Effect multiplier for crouch body state. \n 
+				\n Default: 0.8 \n 
+				\n (Crouch_Power * gun_weight * Weight_Factor * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch">
+		<text>Low Crouch Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_desc">
+		<text>Effect multiplier for low crouch body state. \n 
+				\n Default: 0.4 \n 
+				\n (Low_Crouch_Power * gun_weight * Weight_Factor * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand_scoped">
+		<text>Scope Stand Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_scoped_desc">
+		<text>Effect multiplier for stand/walk body states if weapon has scope. \n 
+				\n Default: 1.2 \n 
+				\n (Scope_Stand_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped">
+		<text>Scope Crouch Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped_desc">
+		<text>Effect multiplier for crouch body state if weapon has scope. \n 
+				\n Default: 0.8 \n 
+				\n (Scope_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped">
+		<text>Scope Low Crouch Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped_desc">
+		<text>Effect multiplier for low crouch body state if weapon has scope. \n 
+				\n Default: 0.4 \n 
+				\n (Scope_Low_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped">
+		<text>Scope Low Crouch Power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped_desc">
+		<text>Effect multiplier for low crouch body state if weapon has scope. \n 
+				\n Default: 0.4 \n 
+				\n (Scope_Low_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature">
+		<text>Mounted weapon feature</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature_desc">
+		<text>A feature that allows you to put a gun on an obstacle infront of you to reduce weapon sway.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power">
+		<text>Mounted weapon reduce power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power_desc">
+		<text>Reduction multiplier of weapon sway when it's mounted. \n 
+				\n Default: 0.1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance">
+		<text>Max height of mounted weapon</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance_desc">
+		<text>This one is a bit complicated, just reduce even more if you want a weapon to still considered "mounted" when you raise it higher. \n 
+				\n Default: -0.35</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_feature">
+		<text>Hold breath feature</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_feature_desc">
+		<text>Allows you to hold breath by holding "Use" key while aiming and decrease weapon sway for limited amount of time.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_mult">
+		<text>Hold breath power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_mult_desc">
+		<text>(constant) Multiplier for weapon sway reduction while holding your breath. \n 
+				\n Default: 0.1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_release_breath_mult">
+		<text>Release breath power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_release_breath_mult_desc">
+		<text>(1 + this_value * seconds_hold) Penalty multiplier that you get after releasing "Use" key or if hit max timer. \n 
+				\n Default: 0.04</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time">
+		<text>Maximum time to hold breath</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time_desc">
+		<text>Maximum amount of time that you can hold your breath for (in seconds). \n 
+				\n Default: 11</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_breath_restore_mult">
+		<text>Breath restore power</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_breath_restore_mult_desc">
+		<text>Multiplier for breath restore, a value of  "1" means that breath will restore at the same speed as decreasing. \n 
+				\n Default: 0.5</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_enable_breath_sound">
+		<text>Enable hold breath sound</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_enable_breath_sound_desc">
+		<text>Enables breath in/out sounds.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_handling_mult">
+		<text>"Handling" weapon stat factor</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_handling_mult_desc">
+		<text>Range of handling weapon stat multiplier:  \n
+				\n Increasing this value will result in: bad handlings = bigger penalties; good handlings = bigger bonuses. \n
+				\n Decreasing is: bad handlings = less penalties, good handlings = less bonuses, "0" = handlings do not affect sway. \n
+				\n Default: 1</text>
+	</string>
+
+
+	<string id="ui_mcm_weapon_sway_debugx">
+		<text>Debug</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_debugx_desc">
+		<text>Debug allows you to see: \n
+					\n 1. Direction and changed y-axis direction (in console) \n
+					\n 2. Difference in distance between cursor and raycast with edited "y" (in dynamic news) \n
+					\n 3. Power of animation camera effect (actor messages at the bottom)</text>
+	</string>
+
+
+</string_table>

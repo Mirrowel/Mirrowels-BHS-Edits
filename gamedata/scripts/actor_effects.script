@@ -1032,6 +1032,7 @@ end
 local prev_health = 0
 local impact_snd, impact_cam
 local impact_removed
+local painkiller = 0  --Eddie
 function Update_Impact(actor)
 	if (not opt.enable_hit_impact_effect) then
 		if (not impact_removed) then
@@ -1043,7 +1044,7 @@ function Update_Impact(actor)
 	end
 	impact_removed = false
 	
-	painkiller = zzz_player_injuries.currentpainkillerpower		--Eddie
+	painkiller = zzz_player_injuries.painkillerlist.painkillerpower		--Eddie
 	
 	if (prev_health > (actor.health + 0.05)) then
 		level.add_pp_effector(opt.health.little_ppe ,2011, false)

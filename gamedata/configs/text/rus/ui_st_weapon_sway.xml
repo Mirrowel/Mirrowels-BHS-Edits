@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_weapon_sway_title">
+		<text>Раскачивание оружия</text>
+	</string>
+	<string id="ui_mcm_menu_weapon_sway">
+		<text>Раскачивание оружия</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature">
+		<text>Включить раскачивание оружия</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature_desc">
+		<text>Включение/выключение функции раскачивания оружия.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_bhs_patch">
+		<text>Body Health System патч (нужна перезагрузка)</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_bhs_patch_desc">
+		<text>Включите только если у вас установлен аддон Body Health System и хотите иметь штрафы раскачки из BHS. Будет использоваться раскачка из Weapon Sway аддона когда здоровье рук выше штрафов BHS. \n
+					\n Вы можете выключить опцию даже если BHS установлен, это перезапишет штрафы BHS и будет использоваться раскачка только из аддона Weapon Sway всё время.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_sway_keybind">
+		<text>Клавиша задержки дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_sway_keybind_desc">
+		<text>Меняет клавишу задержки дыхания.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type">
+		<text>Тип анимации оружия</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_desc">
+		<text>Тип анимации раскачивания. В настоящее время есть только первые два, все "custom_" пусты, оставлены чтобы люди могут добавлять свои собственные. \n
+				\n (Требуется перезагрузка)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type_scope">
+		<text>Тип анимации оружия с прицелом</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_scope_desc">
+		<text>Тип анимации раскачивания оружия с прицелом. Список такой же, как и выше. \n
+				\n (Требуется перезагрузка)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_effect_power">
+		<text>Максимальная сила эффекта</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_effect_power_desc">
+		<text>Максимальная сила, которой может достичь эффект камеры, в сочетании со всеми другими факторами. \n
+				\n По умолчанию: 3</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weight_factor">
+		<text>Коэффициент веса</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weight_factor_desc">
+		<text>Множитель для веса оружия (вес_оружия * Коэффициент_веса). \n
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_power_weight">
+		<text>Максимальное значение силы веса</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_power_weight_desc">
+		<text>Максимальная сила, которой может достичь множитель веса, чем тяжелее оружие, тем больше множитель для эффекта камеры. \n
+				\n По умолчанию: 7</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand">
+		<text>Сила для стоячего положения тела</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_desc">
+		<text>Множитель эффекта для положений тела стоя/при ходьбе. \n
+				\n По умолчанию: 1.2 \n 
+				\n (Stand_Power * вес_оружия * Коэффициент_веса * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch">
+		<text>Сила для положения тела в полуприседе</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_desc">
+		<text>Множитель эффекта для положения тела в полуприседе. \n
+				\n По умолчанию: 0.8 \n 
+				\n (Crouch_Power * вес_оружия * Коэффициент_веса * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch">
+		<text>Сила для положения тела в приседе</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_desc">
+		<text>Множитель эффекта для положения тела в приседе. \n
+				\n По умолчанию: 0.4 \n 
+				\n (Low_Crouch_Power * вес_оружия * Коэффициент_веса * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand_scoped">
+		<text>Сила для стоячего положения тела с прицелом</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_scoped_desc">
+		<text>Множитель эффекта для положений тела стоя/при ходьбе с прицелом. \n
+				\n По умолчанию: 1.2 \n 
+				\n (Scope_Stand_Power * вес_оружия * Коэффициент_веса * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped">
+		<text>Сила для положения тела в полуприседе с прицелом</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped_desc">
+		<text>Множитель эффекта для положения тела в полуприседе с прицелом. \n
+				\n По умолчанию: 0.8 \n 
+				\n (Scope_Crouch_Power * вес_оружия * Коэффициент_веса * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped">
+		<text>Сила для положения тела в приседе с прицелом</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped_desc">
+		<text>Множитель эффекта для положения тела в приседе с прицелом. \n
+				\n По умолчанию: 0.4 \n 
+				\n (Scope_Low_Crouch_Power * вес_оружия * Коэффициент_веса * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature">
+		<text>Mounted weapon feature</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature_desc">
+		<text>Функция, которая позволяет вам поставить оружие на препятствие перед вами, чтобы уменьшить раскачивание оружия.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power">
+		<text>Mounted weapon уменьшение силы эффекта</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power_desc">
+		<text>Множитель уменьшения раскачивания оружия если оно на препятствии. \n
+				\n По умолчанию: 0.1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance">
+		<text>Максимальная высота of mounted weapon</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance_desc">
+		<text>Уменьшите еще больше, если вы хотите, чтобы оружие по-прежнему считалось "установленным", когда вы поднимаете его выше. \n
+				\n По умолчанию: -0.35</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_feature">
+		<text>Опция задержки дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_feature_desc">
+		<text>Позволяет задерживать дыхание, удерживая клавишу "Использовать" во время прицеливания, и уменьшать раскачивание оружия в течение ограниченного времени.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_mult">
+		<text>Сила эффекта задержки дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_mult_desc">
+		<text>(постоянный) Множитель для уменьшения раскачивания оружия при задержке дыхания. \n 
+				\n По умолчанию: 0.1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_release_breath_mult">
+		<text>Сила эффекта при выдохе</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_release_breath_mult_desc">
+		<text>(1 + множитель * задержано_секунд) Множитель штрафа, который вы получаете после того, как отпустите клавишу "Использовать" или достигнете максимального таймера. \n 
+				\n По умолчанию: 0.04</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time">
+		<text>Максимальное время для задержки дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time_desc">
+		<text>Максимальное количество времени, на которое вы можете задержать дыхание (в секундах). \n 
+				\n По умолчанию: 11</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_breath_restore_mult">
+		<text>Сила восстановления дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_breath_restore_mult_desc">
+		<text>Множитель для восстановления дыхания, значение "1" означает, что дыхание будет восстанавливаться с той же скоростью, что и при его уменьшении. \n 
+				\n По умолчанию: 0.5</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_enable_breath_sound">
+		<text>Включить звук задержки дыхания</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_enable_breath_sound_desc">
+		<text>Включает звуки вдоха/выдоха.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_handling_mult">
+		<text>Коэффициент "Удобности" оружия</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_handling_mult_desc">
+		<text>Диапозон множителя характеристики оружия "Удобность":  \n
+				\n Увеличение этого значения приведет к: низкая удобность = большим штрафам; высокая удобность = большим бонусам. \n
+				\n Уменьшение: низкая удобность = меньше штрафов, высокая удобность = меньше бонусов, "0" = удобность не влияет на раскачку. \n
+				\n По умолчанию: 1</text>
+	</string>
+
+
+	<string id="ui_mcm_weapon_sway_debugx">
+		<text>Дебаг</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_debugx_desc">
+		<text>Дебаг позволяет вам видеть: \n
+					\n 1. Направление и измененное направление оси y (в консоли) \n
+					\n 2. Разница в расстоянии между курсором и рэйкастом отредактированной оси "y" (в динамических новостях) \n
+					\n 3. Сила эффекта анимации камеры (сообщения актера внизу)</text>
+	</string>
+
+
+</string_table>

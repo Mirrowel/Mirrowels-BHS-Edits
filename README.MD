@@ -19,14 +19,20 @@ Currently in active development to balance the items and the system.
 
 ## **Stuff that this mod already has:**
   - No temp hp System. Replaced by painkillers instead. Exactly the same purpose as tarkov basically. Allow you to use the destroyed limbs and remove the nasty effects.
+  - To complement painkiller system weapon sway mod is integrated. Painkillers reduce weapon sway like if the limb is healed by that amount.
   - Medkits either heal all parts at once OR they heal set amount of HP, going one HP at a time for the lowest HP limb(potentially more efficient, which makes a lot of sense).
-  - Broken limb system. If HP of the limb reaches 0 you need to splint it via survival kit(default), tourniquet,bandage or medkit(all configurable and can turn off).
+  - Broken limb system. If HP of the limb reaches 0 you need to splint it via survival kit(default),tourniquet,bandage or medkit(all configurable and can turn off).
   - Reworked sleep healing to heal more logically(you heal lowest limbs first). Can disable that.
-  - Health multiplier to enable more gradual healing. Limb HP by default is 11 torso, head; 5 for the rest - kinda low. - Experimental. Realistically would do nothing but increase the number of HP steps so it looks smoother
+  - Health multiplier to enable more gradual healing. Limb HP by default is 11 torso, head; 5 for the rest - kinda low. - Experimental. Realistically would do nothing but increase the number of HP steps so it looks smoother but makes it hard to see real HP
 
 ## **Stuff i will add:**
   - All the items and balancing.
+  - Reduce medkit heal rate to be slower. Increase the usefulness of stimpaks.
   - Campfire heal for limbs(adapting script)
   - Artefact healing for limbs(same thing)
   - More effects on limb damage. Instead of instadeath increase received damage, stuff like that - need ideas
   - BHS screen in inventory(also adapt) - might need help to do that. Hopefully not as i like dynahud
+  - EFT meds, if possible via DLTX
+  - Heal limbs one-by-one only like in EFT(maybe)
+
+  Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
