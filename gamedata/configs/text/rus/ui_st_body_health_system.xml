@@ -80,7 +80,7 @@
 		<text>Natural healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
-		<text>Damaged body parts will heal VERY slowly on their own if they are not broken (broken = no HP remaining). Limited to how healthy you are. When at half health, body parts heal only up to half HP.</text>
+		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP.</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_regeneration_speed">
@@ -120,11 +120,47 @@
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
 		<text>With this option turned on, the bandage fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
 	</string>
-		<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT">
-		<text>Medkits also splint broken limbs</text>
+	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT">
+		<text>Regeneration ignores splinting</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT_desc">
 		<text>Natural and artefact regeneration ignore broken limb mechanic and heal limbs anyway. Though whats the point in this mechanic if you enable this. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKITS_ALL_HEAL">
+		<text>Medkits heal all limbs at once</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKITS_ALL_HEAL_desc">
+		<text>Medkits heal all limbs at once for one HP at a time intead of one most damaged at a time (easier). </text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKITS_ONE_HEAL">
+		<text>Medkits heal most damaged limb first</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKITS_ONE_HEAL_desc">
+		<text>Medkits heal most damaged limb first one HP at a time (Intended default). </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
+		<text>Sleep healing</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_desc">
+		<text>Sleeping regenerates damage to limbs. Healing speed and mechanic can be adjusted below. Cannot heal over % of your main HP. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL">
+		<text>New sleeping heal logic</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL_desc">
+		<text>In original BHS every limb got healed one HP per hour of sleep. This heals most damaged limb one HP at a time per hour(can be adjusted). </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER">
+		<text>Sleeping heal rate</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER_desc">
+		<text>Multiplier for sleep healing rate. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_HEALTH_MULT">
+		<text>Body health multiplier(EXPERIMENTAL)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_HEALTH_MULT_desc">
+		<text>Multiplies limb HP by this number. Everything is scaled to that number so in effect it only increases the amount of steps HP bars have. </text>
 	</string>
 
 

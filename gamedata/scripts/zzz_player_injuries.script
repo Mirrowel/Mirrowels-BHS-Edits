@@ -1,5 +1,5 @@
 -- Eddie's Edit September 6, 2021
-local disable_hud_fps_fix_tmr = 0.2			-- sec
+local disable_hud_fps_fix_tmr = 0.15			-- sec
 
 ------------------------ SETTINGS ------------------------
 healthmult = zzz_player_injuries_mcm.get_config("HEALTH_MULT") or 1 -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
@@ -22,6 +22,8 @@ local medkit_is_splint = zzz_player_injuries_mcm.get_config("MEDKIT_IS_SPLINT")
 local regeneration_is_splint = zzz_player_injuries_mcm.get_config("REGENERATION_IS_SPLINT")
 local medkits_all_heal = zzz_player_injuries_mcm.get_config("MEDKITS_ALL_HEAL")
 local medkits_one_heal = zzz_player_injuries_mcm.get_config("MEDKITS_ONE_HEAL")
+local rebirth_all_heal = zzz_player_injuries_mcm.get_config("REBIRTH_ALL_HEAL")
+local rebirth_one_heal = zzz_player_injuries_mcm.get_config("REBIRTH_ONE_HEAL")
 local sleep_heal = zzz_player_injuries_mcm.get_config("SLEEP_HEALS")
 local sleep_heal_logic = zzz_player_injuries_mcm.get_config("SLEEP_HEALS_LOGICAL")
 local sleep_heal_power = zzz_player_injuries_mcm.get_config("SLEEP_HEALS_POWER")
@@ -159,13 +161,16 @@ healhelplist.lastregen=time_global()
 healhelplist.healtimer=30000
 healhelplist.healpower=0
 if medkits_all_heal then
-	healhelplist.medkit={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
-	healhelplist.medkit_army={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
-	healhelplist.medkit_scientic={head=5,torso=5,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=5000}
+	healhelplist.medkit={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=6000}
+	healhelplist.medkit_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=4175}
+	healhelplist.medkit_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=4175}
+	healhelplist.stimpack={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=1000}
+	healhelplist.stimpack_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=900}
+	healhelplist.stimpack_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=900}
 end
-healhelplist.antibio_chlor={head=2,torso=2,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=0,timeregen=44000}
-healhelplist.antibio_sulfad={head=3,torso=3,rightleg=3,leftleg=3,rightarm=3,leftarm=3,healpower=0,timeregen=30000}
-healhelplist.rebirth={head=10,torso=10,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=0,timeregen=1000}
+if rebirth_all_heal then
+	healhelplist.rebirth={head=22,torso=22,rightleg=10,leftleg=10,rightarm=10,leftarm=10,healpower=0,timeregen=772}
+end
 
 -- Items that add 1 hp at a time to the most injured body part. Won't heal if body part is at 0 hp (=broken).
 -- For broken limbs you first need to use a bandage (=splint).
@@ -179,12 +184,18 @@ healonelist.healtimer=30000
 healonelist.healamount=0
 healonelist.healpower=0
 if medkits_one_heal then
-	healonelist.medkit={healamount=5,healtimer=6500,healpower=1}
-	healonelist.medkit_army={healamount=12,healtimer=2000,healpower=1}
-	healonelist.medkit_scientic={healamount=10,healtimer=2000,healpower=1}
+	healonelist.medkit={healamount=21,healtimer=3180,healpower=1}
+	healonelist.medkit_army={healamount=42,healtimer=1590,healpower=1}
+	healonelist.medkit_scientic={healamount=42,healtimer=1590,healpower=1}
+	healonelist.stimpack={healamount=21,healtimer=571,healpower=1}
+	healonelist.stimpack_army={healamount=42,healtimer=357,healpower=1}
+	healonelist.stimpack_scientic={healamount=42,healtimer=357,healpower=1}
+	healonelist.survival_kit={healamount=63,healtimer=1428,healpower=1}
 end
-healonelist.drug_coagulant={healamount=1,healtimer=60000,healpower=0}
-healonelist.glucose={healamount=1,healtimer=50000,healpower=0}
+if rebirth_one_heal then
+	healonelist.rebirth={healamount=63,healtimer=269,healpower=0}
+end
+healonelist.drug_coagulant={healamount=11,healtimer=39818,healpower=0}
 
 
 -- First aid items:
@@ -200,7 +211,7 @@ end
 if bandage_is_splint then
 	bandagelist.bandage={bandageamount=1,maxarmleg=1,maxheadtorso=1}
 end
-bandagelist.survival_kit={bandageamount=4,maxarmleg=2,maxheadtorso=4}
+bandagelist.survival_kit={bandageamount=4,maxarmleg=1,maxheadtorso=1}
 
 -- Painkillers add painkillerpower as timedhp to limbs and double that to torso + head. 
 -- timedhp are added to health when considering effects such as shaking hands and limping. Won't prevent death when torso or head hp = 0.
@@ -208,18 +219,22 @@ painkillerlist={}
 painkillerlist.lasttimestamp=time_global()
 painkillerlist.painkillerduration=0
 painkillerlist.painkillerpower=0
-painkillerlist.yadylin={painkillerpower=1,painkillerduration=132000}
+painkillerlist.morphine={painkillerpower=5,painkillerduration=305000}
+painkillerlist.rebirth={painkillerpower=5,painkillerduration=305000}
+painkillerlist.salicidic_acid={painkillerpower=3,painkillerduration=152000}
+painkillerlist.analgetic={painkillerpower=2,painkillerduration=305000}
+painkillerlist.akvatab={painkillerpower=2,painkillerduration=290000}
+painkillerlist.yadylin={painkillerpower=2,painkillerduration=505000}
+painkillerlist.adrenalin={painkillerpower=1,painkillerduration=2184000}
+painkillerlist.medkit_army={painkillerpower=3,painkillerduration=128000}
+painkillerlist.medkit_scientic={painkillerpower=2,painkillerduration=128000}
+painkillerlist.stimpack={painkillerpower=1,painkillerduration=128000}
+painkillerlist.stimpack_army={painkillerpower=2,painkillerduration=128000}
+painkillerlist.stimpack_scientic={painkillerpower=1,painkillerduration=128000}
 painkillerlist.cocaine={painkillerpower=1,painkillerduration=1644000}
-painkillerlist.medkit={painkillerpower=1,painkillerduration=64000}
-painkillerlist.medkit_army={painkillerpower=3,painkillerduration=64000}
-painkillerlist.medkit_scientic={painkillerpower=1,painkillerduration=64000}
-painkillerlist.analgetic={painkillerpower=2,painkillerduration=1034000}
-painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000}
-painkillerlist.salicidic_acid={painkillerpower=3,painkillerduration=1152000}
-painkillerlist.morphine={painkillerpower=5,painkillerduration=1518000}
-painkillerlist.stimpack={painkillerpower=5,painkillerduration=1518000}
-painkillerlist.stimpack_army={painkillerpower=5,painkillerduration=1518000}
-painkillerlist.stimpack_army_scientific={painkillerpower=5,painkillerduration=1518000}
+painkillerlist.joint={painkillerpower=1,painkillerduration=420000}
+painkillerlist.marijuana={painkillerpower=1,painkillerduration=652000}
+
 
 
 local modifiedregen = regen
@@ -840,6 +855,21 @@ local function recieved_damage(amount)
 --		end
 		utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
 		
+	end
+	for k,v in pairs(health) do
+		local missinghealth = 0
+		if v < maxhp[k] then
+			missinghealth = maxhp[k] - v
+			if missinghealth < 0 then missinghealth = 0 end
+		end
+		local bonus = painkillerlist.painkillerpower
+		if string.find(k, "head") or string.find(k, "torso") then
+			bonus = painkillerlist.painkillerpower * 2
+		end
+		if bonus > missinghealth then
+			bonus = missinghealth
+		end
+		timedhp[k] = bonus
 	end
 	timeregen=time_global()
 end
@@ -1668,14 +1698,14 @@ function actor_on_update()
 		--end
 	--end
 	
-		if modifiedregen>0 and init then
-			if time_global() - timeregen > modifiedregen then
-				HealOne(newhealth,health)
-				timeregen = time_global()
-				statuschanged = true
-				
-			end
+	if modifiedregen>0 and init then
+		if time_global() - timeregen > modifiedregen then
+			HealOne(newhealth,health)
+			timeregen = time_global()
+			statuschanged = true
+			
 		end
+	end
 	if not init then
 	
 		display_width=device().width
