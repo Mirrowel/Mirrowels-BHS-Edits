@@ -17,15 +17,16 @@ local defaults = {
 	["MEDKIT_IS_SPLINT"] = true,
 	["TOURNIQUET_IS_SPLINT"] = true,
 	["BANDAGE_IS_SPLINT"] = true,
-	["REGENERATION_IS_SPLINT"] = false,
-	["MEDKITS_ALL_HEAL"] = false,
-	["MEDKITS_ONE_HEAL"] = true,
-	["REBIRTH_ALL_HEAL"] = false,
-	["REBIRTH_ONE_HEAL"] = true,
+	["MEDKITS_HEAL_LOGIC"] = 2,
+	["REBIRTH_HEAL_LOGIC"] = 2,
 	["SLEEP_HEALS"] = true,
 	["SLEEP_HEALS_LOGICAL"] = true,
 	["SLEEP_HEALS_POWER"] = 1,
-	["HEALTH_MULT"] = 1,
+	["HEALTH_OG"] = false,
+	["USE_SURGERY"] = true,
+	["SUGERY_INSTANT"] = true,
+	["SUGERY_HEALS"] = false,
+	["CMS_RESTORES_HP_TOO"] = false,
 }
 
 function get_config(key)
@@ -34,7 +35,7 @@ end
 
 function on_mcm_load()
 	op = { id= "body_health_system",sh=true ,gr={
-			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_body_health_system_title",size= {512,50},spacing= 20 },
+			{id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_body_health_system_title",size= {512,50},spacing= 20 },
 			{id = "TEXT_BASED_PATCH", type = "check", val = 1, def = false},
 			{id = "NEW_LIMB_PENALTIES_FEATURE", type = "check", val = 1, def = true},
 			{id = "new_voice_sounds", type = "check", val = 1, def = true},
@@ -45,25 +46,35 @@ function on_mcm_load()
 			{id = "arm_animation_power", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
 			{id = "head_penalty_minimum_hp", type = "track", val = 2, min=1,max=10,step=1, def = 2},
 			{id = "head_animation_power", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+			{id = "divider", type = "line"},
+			{id = "NEW_OPTIONS", type = "desc", clr = {200, 200, 255, 200}, text = "ui_mcm_body_health_system_NEW_OPTIONS"},
+			{id = "divider", type = "line"},
 			{id = "NATURAL_REGENERATION", type = "check", val = 1, def = false},
 			{id = "regeneration_speed", type = "track", val = 2, min=0.2,max=5,step=0.1, def = 1},
+			{id = "divider", type = "line"},
 			{id = "PAINKILLER_GRAIN_SHADER", type = "check", val = 1, def = true},
+			{id = "divider", type = "line"},
+			{id = "MEDKITS_HEAL_LOGIC", type = "list", val = 2, content={ {1,"MEDKITS_ALL_HEAL"}, {2,"MEDKITS_ONE_HEAL"}}, def=2.0},
+			{id = "REBIRTH_HEAL_LOGIC", type = "list", val = 2, content={ {1,"REBIRTH_ALL_HEAL"}, {2,"REBIRTH_ONE_HEAL"}}, def=2.0},
+			{id = "divider", type = "line"},
+			{id = "USE_SURGERY", type = "check", val = 1, def = true},
+			{id = "SURGERY_INSTANT", type = "check", val = 1, def = false},
+			{id = "SURGERY_HEALS", type = "check", val = 1, def = false},
+			{id = "CMS_RESTORES_HP_TOO", type = "check", val = 1, def = false},
+			{id = "divider", type = "line"},
 			{id = "SPLINTING", type = "check", val = 1, def = true},
 			{id = "MEDKIT_IS_SPLINT", type = "check", val = 1, def = false},
 			{id = "TOURNIQUET_IS_SPLINT", type = "check", val = 1, def = false},
 			{id = "BANDAGE_IS_SPLINT", type = "check", val = 1, def = false},
-			{id = "REGENERATION_IS_SPLINT", type = "check", val = 1, def = false},
-			{id = "MEDKITS_ALL_HEAL", type = "check", val = 1, def = false},
-			{id = "MEDKITS_ONE_HEAL", type = "check", val = 1, def = true},
-			{id = "REBIRTH_ALL_HEAL", type = "check", val = 1, def = false},
-			{id = "REBIRTH_ONE_HEAL", type = "check", val = 1, def = true},
+			{id = "divider", type = "line"},
 			{id = "SLEEP_HEALS", type = "check", val = 1, def = true},
 			{id = "SLEEP_HEALS_LOGICAL", type = "check", val = 1, def = true},
 			{id = "SLEEP_HEALS_POWER", type = "track", val = 2, min=1,max=5,step=1, def = 2},
-			{id = "HEALTH_MULT", type = "track", val = 2, min=1,max=5,step=1, def = 1},
-
+			{id = "divider", type = "line"},
+			{id = "HEALTH_OG", type = "check", val = 1, def = false},
 		}
 	}
+	
 
 	return op
 end

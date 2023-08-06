@@ -75,13 +75,15 @@
 		<text>Multiplier for head penalty effect power. Default: 1.0.</text>
 	</string>
 
+	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
+		<text>New options from the M-BHS system. Leave at default for the preferred way to play the game./n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW</text>
+	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Natural healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
 		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP.</text>
 	</string>
-	
 	<string id="ui_mcm_body_health_system_regeneration_speed">
 		<text>Natural and artifact healing speed</text>
 	</string>
@@ -95,47 +97,80 @@
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER_desc">
 		<text>When you take a medical item with painkiller effect, the screen becomes grainy (same as when you are in a radiation area).</text>
 	</string>
-	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
-		<text>Tourniquet is splint</text>
+
+	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC">
+		<text>Medkit healing logic</text>
 	</string>
-	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
-		<text>With this option turned on, the tourniquet fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC_desc">
+		<text>Medkits heal all limbs at once for one HP at a time (easier) OR medkits heal most damaged limb first one HP at a time (Intended default). </text>
 	</string>
+	<string id="ui_mcm_lst_MEDKITS_ALL_HEAL">
+		<text>Medkits heal all limbs at once</text>
+	</string>
+	<string id="ui_mcm_lst_MEDKITS_ONE_HEAL">
+		<text>Medkits heal one HP at a time, most damaged limb first</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC">
+		<text>Rebirth healing logic</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC_desc">
+		<text>Rebirth heals all limbs at once for one HP at a time (easier) OR rebirth heals most damaged limb first one HP at a time (Intended default). </text>
+	</string>
+	<string id="ui_mcm_lst_REBIRTH_ALL_HEAL">
+		<text>Rebirth heals all limbs at once</text>
+	</string>
+	<string id="ui_mcm_lst_system_REBIRTH_ONE_HEAL">
+		<text>Rebirth heals one HP at a time, most damaged limb first</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_USE_SURGERY">
+		<text>Surgery mechanic </text>
+	</string>
+	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
+		<text>Destroyed limbs(Reached 0 HP) require surgery via surgical tools or surgical kit first to be healed. Does not prevent painkillers from working</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
+		<text>Surgery tools repair only one limb</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
+		<text>Surgery tools repair their set amount of HP instantly and on one limb only. Have to enable this for CMS to be able to heal more than one HP on a limb</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
+		<text>Surgery heals by itself (ENABLED IF SPLINTING IS DISABLED BUT SURGERY ENABLED)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_HEALS_desc">
+		<text>Surgery tools heal instead of repairing HP, effectively removing splinting mechanic.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO">
+		<text>CMS like tarkov</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO_desc">
+		<text>Allows CMS kit to restore limbs to 40% of hp instead of just repairing them to be splinted. Only works for CMS kit.</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_SPLINTING">
-		<text>Broken limb mechanic (THIS AND ALL ITEMS BELOW REQUIRE A RESTART PROBABLY)</text>
+		<text>Broken limb mechanic</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SPLINTING_desc">
-		<text>Broken limbs(Reached 0 HP) require a splint first to be healed. That can be done with a survival kit. Does not prevent painkillers from working. </text>
-	</string>
-	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
-		<text>Medkits also splint broken limbs</text>
-	</string>
-	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
-		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation. </text>
+		<text>Limbs repaired with surgery require a splint first to be healed. Does not prevent painkillers from working. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
 		<text>Bandage is splint</text>
 	</string>
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
-		<text>With this option turned on, the bandage fixes a broken limb. NOTICE: If you change this option, you need to exit the game and reload for this to take effect. Also, the item text does not change, as this is a quick and dirty implementation.</text>
+		<text>With this option turned on, the bandage fixes a broken limb.</text>
 	</string>
-	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT">
-		<text>Regeneration ignores splinting</text>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
+		<text>Tourniquet is splint</text>
 	</string>
-	<string id="ui_mcm_body_health_system_REGENERATION_IS_SPLINT_desc">
-		<text>Natural and artefact regeneration ignore broken limb mechanic and heal limbs anyway. Though whats the point in this mechanic if you enable this. </text>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
+		<text>With this option turned on, the tourniquet fixes a broken limb.</text>
 	</string>
-	<string id="ui_mcm_body_health_system_MEDKITS_ALL_HEAL">
-		<text>Medkits heal all limbs at once</text>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
+		<text>Medkits also splint broken limbs</text>
 	</string>
-	<string id="ui_mcm_body_health_system_MEDKITS_ALL_HEAL_desc">
-		<text>Medkits heal all limbs at once for one HP at a time intead of one most damaged at a time (easier). </text>
-	</string>
-	<string id="ui_mcm_body_health_system_MEDKITS_ONE_HEAL">
-		<text>Medkits heal most damaged limb first</text>
-	</string>
-	<string id="ui_mcm_body_health_system_MEDKITS_ONE_HEAL_desc">
-		<text>Medkits heal most damaged limb first one HP at a time (Intended default). </text>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
+		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). </text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
 		<text>Sleep healing</text>
@@ -155,11 +190,11 @@
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER_desc">
 		<text>Multiplier for sleep healing rate. </text>
 	</string>
-	<string id="ui_mcm_body_health_system_HEALTH_MULT">
-		<text>Body health multiplier(EXPERIMENTAL)</text>
+	<string id="ui_mcm_body_health_system_HEALTH_OG">
+		<text>Restore health values to default BHS ones</text>
 	</string>
-	<string id="ui_mcm_body_health_system_HEALTH_MULT_desc">
-		<text>Multiplies limb HP by this number. Everything is scaled to that number so in effect it only increases the amount of steps HP bars have. </text>
+	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
+		<text>Restores values to how they were in default BHS. Does nothing but decrease the amount of health steps on the UI. </text>
 	</string>
 
 </string_table>

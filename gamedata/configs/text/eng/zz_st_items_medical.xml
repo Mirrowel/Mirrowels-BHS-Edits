@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Medical Items + Drugs
+-->
+
+<string_table>
+	<string id="st_surginst">
+		<text>Surgical Instruments</text>
+	</string>
+	<string id="st_surginst_descr">
+		<text>Small variation of surgical instrument which are common in the zone. They are used to craft the CMS kit. Can be directly used, but it will require a bandage and the instruments aren't sterile anymore. So they can be used only one time.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] small kit to recover bodyparts\n
+		%c[d_blue] • %c[ui_gray_2] crafting item\n
+		%c[d_blue] • %c[ui_gray_2] surgical item\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] you will have to hurt yourself within the medical intervention\n
+		</text>
+	</string>
+	<string id="st_zagustin">
+		<text>Zagustin</text>
+	</string>
+	<string id="st_zagustin_descr">
+		<text>Military issue drug. Inhibitis activators of profibinolysin and slows down its transformation in fibrinolysin. Temporarily stops bleeding and increases resistance to bloodloss. Has side effects. Leads to severe dehydration.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] stops bleeding fast\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
+		</text>
+	</string>
+	<string id="st_bandage_army">
+		<text>Army Bandage</text>
+	</string>
+	<string id="st_bandage_army_descr">
+		<text>An elastic army bandage used to stop bleeding and prevent infection of wounds. For regular bleeding, carefully apply the bandage to the wound. For arterial bleeding, urgently tie the bandage around the affected area.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] stops bleeding\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (adhesive plaster)\n
+		</text>
+	</string>
+	<string id="st_propital">
+		<text>Propital</text>
+	</string>
+	<string id="st_propital_descr">
+		<text>Military issue drug. It stimulates regeneration processes by increasing the biosynthesis of purine and pyrimidine bases, RNA, functional and enzymatic cell elements. Increases metabolism, health and vitality. It has long-term side effects. Permitted to use only by medical officers and paramedics.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
+		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
+		</text>
+	</string>
+	<string id="st_sj6">
+		<text>Combat Stimulant SJ6</text>
+	</string>
+	<string id="st_sj6_descr">
+		<text>Combat stimulant. Mixed with a small amount of adrenalin it is used to increase the body abilities before combat for about 3 minutes. The stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ6. Has side effects.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] military item\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] very good damage resistance bonus\n
+		%c[d_purple] • %c[ui_gray_2] very good carryweight bonus\n
+		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
+		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 600 seconds\n
+		</text>
+	</string>
+	<string id="st_sj1">
+		<text>Combat Stimulant SJ1</text>
+	</string>
+	<string id="st_sj1_descr">
+		<text>Combat stimulant. Is used for gaining strength and endurance before combat for about 3 minutes. Stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ1. Has side effects.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] military item\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] good damage resistance bonus\n
+		%c[d_purple] • %c[ui_gray_2] good carryweight bonus\n
+		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
+		%c[d_green] • %c[pda_white] causes level 3 painkilling effect for 600 seconds\n
+		</text>
+	</string>
+	<string id="st_cms">
+		<text>CMS surgical kit</text>
+	</string>
+	<string id="st_cms_descr">
+		<text>Compact surgical kit for treatment of bullet wounds and other serious injuries. Unlike surgical tools will also restore some lost HP too after restoring the limb.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] surgical item\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] slow usage (field kit)\n
+		</text>
+	</string>
+	<string id="st_analgin">
+		<text>Analgin painkillers</text>
+	</string>
+	<string id="st_analgin_descr">
+		<text>The most cheap and widely spread painkillers.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] painkillers\n
+		%c[d_green] • %c[pda_white] causes level 1 painkilling effect for 180 seconds\n
+		</text>
+	</string>
+	<string id="st_splint">
+		<text>Splint</text>
+	</string>
+	<string id="st_splint_descr">
+		<text>Common splint for fixing the damaged bones in positions as an emergency aid measure.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[0,255,255,255] heals broken bones \n
+		%c[d_blue] • %c[ui_gray_2] fast and permanent\n
+		</text>
+	</string>
+	<string id="st_antirad_cystamine">
+		<text>Alu splint</text>
+	</string>
+	<string id="st_antirad_cystamine_descr">
+		<text>Common splint for fixing the damaged bones in positions as an emergency aid measure.\n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] heals broken bones\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] fast and permanent\n
+		</text>
+	</string>
+	<string id="st_morphine">
+		<text>Morphine Ampoule</text>
+	</string>
+	<string id="st_morphine_descr">
+		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. This ampoule contains a powerful dose of morphine. In clinical medicine, morphine is regarded as the gold standard of opioid analgesics used to relieve severe or agonizing pain and suffering. Like other opioids, such as oxycodone, hydromorphone, and diacetylmorphine (heroin), morphine acts directly on the central nervous system (CNS) to relieve pain. Injected into an arm or a thigh.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_purple] • %c[ui_gray_2]extremely large damage resistance bonus (10%)\n
+		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
+		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 305 seconds\n
+		</text>
+	</string>
+	<string id="st_salicidic_acid">
+		<text>Metamizole Ampoule</text>
+	</string>
+	<string id="st_salicidic_acid_descr">
+		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. It contains a powerful dose of metamizole mixed with an antihemorrhagic drug. Metamizole is one of the strongest Non-Steroidal Anti-Inflammatory Drugs (NSAIDs), especially effective at easing aches and pains as well as reducing fevers. It is also useful as anti-inflammatory drug when used in higher doses. May cause some delayed side effects such as leucopenia or agranulocytosis, so it should be used with moderation. Injected into an arm or a thigh. Its availability in the Zone is limited due to the difficulty of smuggling the medicine across military cordons.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_purple] • %c[pda_white]Large damage resistance bonus (7.5%)\n
+		%c[d_green] • %c[pda_white] causes level 4 painkilling effect for 180 seconds\n
+		</text>
+	</string>
+</string_table>
