@@ -42,37 +42,40 @@ Currently in active development to balance the items and the system.
 # Alright here is my first balancing attempt for meds:
 - All medkits heal twice as slow. Overall they heal exactly the same amount, just slower. New time is 66.8 seconds.
 - Survival kit modified using same logic as medkits, but with radiation and healing boosted to match heal speed of basic medkit. New time is 90 seconds.
- - Rebirth modded to last twice as long. Same idea as medkits.
+- Rebirth modded to last twice as long. Same idea as medkits. New time is 14 seconds.
 ## As for limb damage:
 Keep in mind these values: Legs and Arms have 10HP per limb. Torso and Head have 22HP per limb. 
 That is double of what basic BHS has to make 1HP matter less in the system making balancing easier.
 No, boosting HP does not make limbs survive more damage. Everything is scaled.
-### Heal One System(Healing one HP at a time for one limb):
-- Basic medkit: 21 HP total over the duration. Can heal two arms/legs to full or torso/head once
-- Army and Cheese: 42 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
-- Stimpacks: Mirror what medkits heal over their duration, but faster.
-- Survival kit: 63 HP total over 90 seconds.
-- Coagulant(Vinca/Barvinok): Heals 11 HP over 438 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-- Rebirth: 63 HP total over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-### Heal All System(Healing one HP at a time for all limbs):
-- Basic medkit: Head/Torso - 11 HP, Legs/Arms - 5 HP total over the duration. Can heal two arms/legs to full or torso/head once
-- Army and Cheese: Head/Torso - 16 HP, Legs/Arms - 7 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
-- Stimpacks: Mirror what medkits heal over their duration, but faster.
-- Rebirth: Head/Torso - 22 HP, Legs/Arms - 10 HP over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-### Painkillers
-Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms.
-- Morphine: 5 painkiller power for 305 seconds.
-- Rebirth: 5 painkiller power for 305 seconds.
-- Salicidic acid: 3 painkiller power for 152 seconds.
-- Analgetic(Diclofenac Sodium): 2 painkiller power for 305 seconds.
-- Akvatab(Ibuprofen): 2 painkiller power for 290 seconds.
-- Yadulin: 2 painkiller power for 505 seconds.
-- Adrenalin(Epinephrine): 1 painkiller power for 2184 seconds.
-- Army Medkit: 3 painkiller power for 128 seconds.
-- Cheese Medkit: 2 painkiller power for 128 seconds.
-- Stimpack: 1 painkiller power for 64 seconds.
-- Army Stimpack: 2 painkiller power for 128 seconds.
-- Sci Stimpack: 1 painkiller power for 128 seconds.
-- Cocaine: 1 painkiller power for 1644 seconds.
-- Joint: 1 painkiller power for 420 seconds.
-- Marijuana: 1 painkiller power for 652 seconds.
+
+---
+- ### Heal One System(Healing one HP at a time for one limb):
+  - Basic medkit: 21 HP total over the duration. Can heal two arms/legs to full or torso/head once
+  - Army and Cheese: 42 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
+  - Stimpacks: Mirror what medkits heal over their duration, but faster.
+  - Survival kit: 63 HP total over 90 seconds.
+  - Coagulant(Vinca/Barvinok): Heals 11 HP over 438 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
+  - Rebirth: 63 HP total over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
+---
+- ### Heal All System(Healing one HP at a time for all limbs):
+  - Basic medkit: Head/Torso - 11 HP, Legs/Arms - 5 HP total over the duration. Can heal two arms/legs to full or torso/head once
+  - Army and Cheese: Head/Torso - 16 HP, Legs/Arms - 7 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
+  - Stimpacks: Mirror what medkits heal over their duration, but faster.
+  - Rebirth: Head/Torso - 22 HP, Legs/Arms - 10 HP over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
+---
+- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**)
+  - Morphine: 5 painkiller power for 305 seconds.
+  - Rebirth: 5 painkiller power for 305 seconds.
+  - Salicidic acid: 3 painkiller power for 152 seconds.
+  - Analgetic(Diclofenac Sodium): 2 painkiller power for 305 seconds.
+  - Akvatab(Ibuprofen): 2 painkiller power for 290 seconds.
+  - Yadulin: 2 painkiller power for 505 seconds.
+  - Adrenalin(Epinephrine): 1 painkiller power for 2184 seconds.
+  - Army Medkit: 3 painkiller power for 128 seconds.
+  - Cheese Medkit: 2 painkiller power for 128 seconds.
+  - Stimpack: 1 painkiller power for 64 seconds.
+  - Army Stimpack: 2 painkiller power for 128 seconds.
+  - Sci Stimpack: 1 painkiller power for 128 seconds.
+  - Cocaine: 1 painkiller power for 1644 seconds.
+  - Joint: 1 painkiller power for 420 seconds.
+  - Marijuana: 1 painkiller power for 652 seconds.
