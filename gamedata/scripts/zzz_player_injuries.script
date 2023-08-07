@@ -79,11 +79,12 @@ end
 ------------------------------------------------------------------------------------------------
 
 local last_damaged_hitbox=nil
-local showtexthud=(zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and 2 or 0 --1 large left down, 2 default center 0 texture
-local show_hud_type=2
-local show_hud_change_time=0
+showtexthud=(zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and 2 or 0 --1 large left down, 2 default center 0 texture
+
+show_hud_type=2
+show_hud_change_time=0
 local myhealth=0
-local healthstatus=true
+healthstatus=true
 local init=false
 local timeregen=time_global()
 
@@ -233,7 +234,7 @@ if OGhealth then
 		healonelist.medkit_scientic={healamount=21,healtimer=1590,healpower=1}
 		healonelist.stimpack={healamount=11,healtimer=571,healpower=1}
 		healonelist.stimpack_army={healamount=21,healtimer=357,healpower=1}
-		--healonelist.stimpack_scientic={healamount=42,healtimer=357,healpower=1}
+		healonelist.stimpack_scientic={healamount=42,healtimer=357,healpower=1}
 		healonelist.survival_kit={healamount=31,healtimer=1428,healpower=1}
 	end
 	if rebirth_heal_logic == 2 then
@@ -259,7 +260,6 @@ if splinting then
 	end
 	splintlist.splint={splintamount=1,maxarmleg=1,maxheadtorso=1}
 	splintlist.alu_splint={splintamount=1,maxarmleg=1,maxheadtorso=1}
-	splintlist.survival_kit={splintamount=1,maxarmleg=1,maxheadtorso=1}
 end
 
 surgerylist={}
