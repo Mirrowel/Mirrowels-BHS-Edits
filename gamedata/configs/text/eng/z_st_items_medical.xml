@@ -12,7 +12,6 @@
 		<text>Ibuprofen is a medication in the nonsteroidal anti-inflammatory drug (NSAID) class that is used for treating pain, fever, and inflammation. It is used as a general painkiller.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] painkillers\n
-		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
 		</text>
 	</string>
 	<string id="st_bandage">
