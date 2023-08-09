@@ -1850,7 +1850,7 @@ function actor_on_update()
 	--actor_menu.set_msg("width:"..device().width.." height:"..device().height)
 	local newhealth=db.actor.health
 	local amount=myhealth-newhealth
-	if amount>0.0293 then
+	if amount>0.06 then
 		recieved_damage(amount)
 		--printf("! %s",amount
 		-- trace_this("Amount"..amount.."\n")
