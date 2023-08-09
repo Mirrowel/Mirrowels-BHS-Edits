@@ -86,7 +86,7 @@ show_hud_change_time=0
 local myhealth=0
 healthstatus=true
 local init=false
-local timeregen=time_global()
+local healtimer=time_global()
 
 local display_width=2560
 local display_height=1440
@@ -172,33 +172,33 @@ hud_blink_timer.blinktime=1000
 
 -- These items heal bodyparts over time, healing all listed body parts at the same time. Won't heal if body part is at 0 hp (=broken).
 -- * the numbers for each body part is the total amount of hp healed for each body part
--- * timeregen: after this amount of time, 1 hp is added to each listed body part.
+-- * healtimer: after this amount of time, 1 hp is added to each listed body part.
 healhelplist={}
 healhelplist.lastregen=time_global()
 healhelplist.healtimer=30000
 healhelplist.healpower=0
 if medkits_heal_logic == 1 then
-	healhelplist.medkit={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=6000}
-	healhelplist.medkit_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=4175}
-	healhelplist.medkit_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=4175}
-	healhelplist.stimpack={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,timeregen=1000}
-	healhelplist.stimpack_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=900}
-	healhelplist.stimpack_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,timeregen=900}
+	healhelplist.medkit={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,healtimer=6000}
+	healhelplist.medkit_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,healtimer=4175}
+	healhelplist.medkit_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,healtimer=4175}
+	healhelplist.stimpack={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=1,healtimer=1000}
+	healhelplist.stimpack_army={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,healtimer=900}
+	healhelplist.stimpack_scientic={head=16,torso=16,rightleg=7,leftleg=7,rightarm=7,leftarm=7,healpower=1,healtimer=900}
 end
 if rebirth_heal_logic == 1 then
-	healhelplist.rebirth={head=22,torso=22,rightleg=10,leftleg=10,rightarm=10,leftarm=10,healpower=0,timeregen=772}
+	healhelplist.rebirth={head=22,torso=22,rightleg=10,leftleg=10,rightarm=10,leftarm=10,healpower=0,healtimer=772}
 end
-if OGhealth then
+if OGhealthbool then
 	if medkits_heal_logic == 1 then
-		healhelplist.medkit={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,timeregen=6000}
-		healhelplist.medkit_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,timeregen=4175}
-		healhelplist.medkit_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,timeregen=4175}
-		healhelplist.stimpack={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,timeregen=1000}
-		healhelplist.stimpack_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,timeregen=900}
-		healhelplist.stimpack_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,timeregen=900}
+		healhelplist.medkit={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,healtimer=6000}
+		healhelplist.medkit_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=4175}
+		healhelplist.medkit_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=4175}
+		healhelplist.stimpack={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,healtimer=1000}
+		healhelplist.stimpack_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=900}
+		healhelplist.stimpack_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=900}
 	end
 	if rebirth_heal_logic == 1 then
-		healhelplist.rebirth={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=0,timeregen=772}
+		healhelplist.rebirth={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=0,healtimer=772}
 	end
 end
 
@@ -215,26 +215,26 @@ healonelist.healamount=0
 healonelist.healpower=0
 if medkits_heal_logic == 2 then
 	healonelist.medkit={healamount=21,healtimer=3180,healpower=1}
-	healonelist.medkit_army={healamount=42,healtimer=1590,healpower=1}
-	healonelist.medkit_scientic={healamount=42,healtimer=1590,healpower=1}
+	healonelist.medkit_army={healamount=32,healtimer=2084,healpower=1}
+	healonelist.medkit_scientic={healamount=32,healtimer=2084,healpower=1}
 	healonelist.stimpack={healamount=21,healtimer=571,healpower=1}
-	healonelist.stimpack_army={healamount=42,healtimer=357,healpower=1}
-	healonelist.stimpack_scientic={healamount=42,healtimer=357,healpower=1}
-	healonelist.survival_kit={healamount=63,healtimer=1428,healpower=1}
+	healonelist.stimpack_army={healamount=32,healtimer=357,healpower=1}
+	healonelist.stimpack_scientic={healamount=32,healtimer=357,healpower=1}
+	healonelist.survival_kit={healamount=60,healtimer=1428,healpower=1}
 end
 if rebirth_heal_logic == 2 then
-	healonelist.rebirth={healamount=63,healtimer=269,healpower=0}
+	healonelist.rebirth={healamount=60,healtimer=269,healpower=0}
 end
 healonelist.drug_coagulant={healamount=11,healtimer=39818,healpower=0}
-healonelist.propital={healamount=30,healtimer=6000,healpower=0}
-if OGhealth then
+healonelist.propital={healamount=21,healtimer=6000,healpower=0}
+if OGhealthbool then
 	if medkits_heal_logic == 2 then
 		healonelist.medkit={healamount=11,healtimer=3180,healpower=1}
 		healonelist.medkit_army={healamount=21,healtimer=1590,healpower=1}
 		healonelist.medkit_scientic={healamount=21,healtimer=1590,healpower=1}
 		healonelist.stimpack={healamount=11,healtimer=571,healpower=1}
 		healonelist.stimpack_army={healamount=21,healtimer=357,healpower=1}
-		healonelist.stimpack_scientic={healamount=42,healtimer=357,healpower=1}
+		healonelist.stimpack_scientic={healamount=21,healtimer=357,healpower=1}
 		healonelist.survival_kit={healamount=31,healtimer=1428,healpower=1}
 	end
 	if rebirth_heal_logic == 2 then
@@ -964,7 +964,7 @@ local function recieved_damage(amount)
 		end
 		timedhp[k] = bonus
 	end
-	timeregen=time_global()
+	healtimer=time_global()
 end
 local progress_stamina=nil
 local progress_health=nil
@@ -1733,6 +1733,7 @@ local function SurgeryUsed(name,health,surgeryhp)
 							printf("Surgery used on %s",k)
 							surgeryamount = 0
 							if surgeryhp[k]>maxhp[k] then surgeryhp[k]=maxhp[k] end
+							return
 						end
 					end
 				end
@@ -1760,8 +1761,8 @@ local function SurgeryUsed(name,health,surgeryhp)
 						health[k] = surgeryamount
 						printf("Surgery used on %s",k)
 						surgeryamount = 0
-						if health[k]>maxhp[k] then health[k]=maxhp[k] 
-						end
+						if health[k]>maxhp[k] then health[k]=maxhp[k] end
+						return
 					end
 				end
 			end
@@ -1942,9 +1943,9 @@ function actor_on_update()
 	--end
 	
 	if modifiedregen>0 and init then
-		if time_global() - timeregen > modifiedregen then
+		if time_global() - healtimer > modifiedregen then
 			HealOne(newhealth,health)
-			timeregen = time_global()
+			healtimer = time_global()
 			statuschanged = true
 			
 		end
@@ -2048,7 +2049,7 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 	if ispreview == 0 then
 		if healhelplist[name] then
 			healhelplist.lastregen=time_global()
-			healhelplist.healtimer=healhelplist[name].timeregen
+			healhelplist.healtimer=healhelplist[name].healtimer
 			healhelplist.healpower=healhelplist[name].healpower
 			for k,v in pairs(timedheal) do
 				local bonus=healhelplist[name][k]

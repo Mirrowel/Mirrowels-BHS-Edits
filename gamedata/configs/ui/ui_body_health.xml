@@ -88,11 +88,11 @@
 			<texture>ui_hud_bhs_bar_green</texture>
 		</progress>
 	</bhs_health_bodypart_green_1610>
-	<bhs_health_bodypart_blue_43 x="0" y="0" width="20" height="4" horz="1" min="0" max="100">
+	<bhs_health_bodypart_blue_1610 x="0" y="0" width="20" height="4" horz="1" min="0" max="100">
 		<progress stretch="1">
 			<texture>ui_hud_bhs_bar_blue</texture>
 		</progress>
-	</bhs_health_bodypart_blue_43>
+	</bhs_health_bodypart_blue_1610>
 	
 	
 </window>

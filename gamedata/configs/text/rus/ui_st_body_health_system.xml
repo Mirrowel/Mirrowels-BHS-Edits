@@ -119,7 +119,7 @@
 	<string id="ui_mcm_lst_REBIRTH_ALL_HEAL">
 		<text>Rebirth heals all limbs at once</text>
 	</string>
-	<string id="ui_mcm_lst_system_REBIRTH_ONE_HEAL">
+	<string id="ui_mcm_lst_REBIRTH_ONE_HEAL">
 		<text>Rebirth heals one HP at a time, most damaged limb first</text>
 	</string>
 	

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_bhs_mihail_krug">
+		<text>•</text>
+	</string>
+
+	<string id="st_bhs_head_str">
+		<text>Г</text>
+	</string>
+
+	<string id="st_bhs_torso_str">
+		<text>Т</text>
+	</string>
+
+	<string id="st_bhs_rightarm_str">
+		<text>Р</text>
+	</string>
+
+	<string id="st_bhs_rightleg_str">
+		<text>Н</text>
+	</string>
+
+	<string id="st_bhs_heals">
+		<text>Лечит </text>
+	</string>
+	
+	<string id="st_bhs_currhp">
+		<text>текущего уровня HP</text>
+	</string>
+	
+	<string id="st_bhs_upto">
+		<text>до</text>
+	</string>
+	
+	<string id="st_bhs_for">
+		<text>на</text>
+	</string>
+	
+	<string id="st_bhs_painkiller">
+		<text>Болеутоляющее</text>
+	</string>
+
+	<string id="st_bhs_painkillerlvl">
+		<text> эффект </text>
+	</string>
+	
+	<string id="st_bhs_splint">
+		<text>Шина</text>
+	</string>
+	
+	<string id="st_bhs_splints">
+		<text>Выпрямляет конечность</text>
+	</string>
+	
+	<string id="st_bhs_surgery">
+		<text>Хирургический набор</text>
+	</string>
+	
+	<string id="st_bhs_surgerys">
+		<text>Восстанавливает конечность</text>
+	</string>
+
+</string_table>

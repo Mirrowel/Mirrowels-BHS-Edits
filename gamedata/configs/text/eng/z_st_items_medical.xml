@@ -11,9 +11,8 @@
 	<string id="st_akvatab_descr">
 		<text>Ibuprofen is a medication in the nonsteroidal anti-inflammatory drug (NSAID) class that is used for treating pain, fever, and inflammation. It is used as a general painkiller.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_blue] â€¢ %c[ui_gray_2] painkillers\n
-		%c[d_red] â€¢ %c[ui_gray_2]causes slight dizziness\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 290 seconds\n
+		%c[d_blue] • %c[ui_gray_2] painkillers\n
+		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
 		</text>
 	</string>
 	<string id="st_bandage">
@@ -21,7 +20,6 @@
 	</string>
 	<string id="st_bandage_descr">
 		<text>A normal elastic bandage used to stop bleeding and prevent infection of wounds. For regular bleeding, carefully apply the bandage to the wound. For arterial bleeding, urgently tie the bandage around the affected area.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
 		</text>
 	</string>
 	<string id="st_drug_coagulant">
@@ -29,8 +27,6 @@
 	</string>
 	<string id="st_drug_coagulant_descr">
 		<text>Ukrainian Vikasolum - an artificial equivalent of vitamin K. The main purpose of this drug is to increase blood coagulation speed. In great demand among stalkers who want slow-healing wounds and lacerations inflicted by mutants to close up faster. The effects of the drug are long-lasting. Take two tablets at a time.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 11 limb HP during its effect duration\n
 		</text>
 	</string>
 	<string id="st_drug_anabiotic">
@@ -47,7 +43,6 @@
 	</string>
 	<string id="st_drug_antidot_descr">
 		<text>The IP2 antitoxin is a complex drug comprising several antidotes, including metoclopramidum, pyridoxine, thiamine, riboxin and other pharmaceuticals. The drug is used to inject a range of antibiotics to neutralize natural poisons, together with synthetic poison absorbers, into the bloodstream. IP2 is not particularly popular in the Zone as most stalkers rely on a gas mask and a protective suit. However, there are still those who have a few units of this antidote stashed for emergency situations. The effects of the drug are long-lasting. Take one capsule at a time.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
 		</text>
 	</string>
 	<string id="st_analgetic">
@@ -58,7 +53,6 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_purple] • %c[pda_white]Average damage resistance bonus (5%)\n
 		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 305 seconds\n
 		</text>
 	</string>
 	<string id="st_jgut_zhgut">
@@ -66,7 +60,6 @@
 	</string>
 	<string id="st_jgut_descr">
 		<text>A haemostatic rubber tourniquet, allowing the user to stop bleeding.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
 		</text>
 	</string>
 	<string id="st_yadylin">
@@ -76,7 +69,6 @@
 		<text>A semi-drug based on morphine. It allows the user to quickly dull pain and increase production of adrenaline, aiding the user in withstanding even the most intense battles. It is popular among stalkers, often used as a recreation drug among criminal groups, and is allegedly being supplied to the Monolith.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_red] • %c[ui_gray_2]causes severe dizziness\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 505 seconds\n
 		</text>
 	</string>
 	<string id="st_medkit">
@@ -84,8 +76,6 @@
 	</string>
 	<string id="st_medkit_descr">
 		<text>The AI-2 medkit was developed as a standard service first aid kit for various defence and law enforcement agencies and civil defense forces of the USSR. Handy for treating injuries, wounds, chemical and thermal burns and various types of poison.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 21 limb HP during its effect duration\n
 		</text>
 	</string>
 	<string id="st_medkit_army">
@@ -93,9 +83,6 @@
 	</string>
 	<string id="st_medkit_army_descr">
 		<text>A specialized medical kit for providing first aid to combat casualties. The kit includes blood coagulants based on menadione, painkillers, antibiotics and immunostimulants, as well as a kit for removing bullets and fragments from the body. This medkit is issued primarily to army personnel such as Spetsnaz units venturing deep into the Zone and is popular among Duty forces.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 3 painkilling effect for 128 seconds\n
 		</text>
 	</string>
 	<string id="st_medkit_science">
@@ -103,9 +90,6 @@
 	</string>
 	<string id="st_medkit_science_descr">
 		<text>A medical kit designed specifically for use in the Zone. The kit contains products for handling wounds, as well as preventing the development of radiation poisoning and reducing accumulated radiation in the body. Contains Vikasolum, Batilolum and Naphazoline, unlike other medkits.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 128 seconds\n
 		</text>
 	</string>
 	<string id="st_stim_impro">
@@ -113,9 +97,6 @@
 	</string>
 	<string id="st_stim_impro_descr">
 		<text>Improvised stimpacks are popular among novice Zoners as they are easy to obtain and inexpensive. Produced in the Zone from commonly available ingredients, without proper equipment and purification. This is the cause of many side effects which include headache, paraesthesia and considerable increase in nutrition demand. Injected in the thigh.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 21 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 1 painkilling effect for 128 seconds\n
 		</text>
 	</string>
 	<string id="st_stim_military">
@@ -123,9 +104,6 @@
 	</string>
 	<string id="st_stim_military_descr">
 		<text>Military stims constitute a part of standard-issue soldier equipment for field operations in the Zone. Easily available on the market and can be acquired for a moderate price. Popular among experienced Zoners. They are significantly more potent and faster working than their improvised counterparts, which makes them perfect for use in life-threatening situations. Produced from raw agents of high density which can take their toll on the body. Side effects include shock, extreme dizziness and increased hunger.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 3 painkilling effect for 128 seconds\n
 		</text>
 	</string>
 	<string id="st_stim_scientic">
@@ -133,9 +111,6 @@
 	</string>
 	<string id="st_stim_scientic_descr">
 		<text>Created by the same defence research institute in Kiev which developed the well-known SEVA suit, this state-of-the-art solution constitutes the most potent health stabiliser available in the Zone. Best quality ingredients and perfected formula enable almost instant recuperation and ensure prompt radiation cleansing. Side effects are minimised. Extremely high cost practically limits the target group of the drug to most skilful and successful stalkers.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 128 seconds\n
 		</text>
 	</string>
 	<string id="st_cocaine">
@@ -146,7 +121,6 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2]very potent stimulant\n
 		%c[d_green] • %c[ui_gray_2]very potent dizziness removal\n
-		%c[d_green] • %c[pda_white] causes level 1 painkilling effect for 1644 seconds\n
 		</text>
 	</string>
 	<string id="st_adrenalin">
@@ -157,7 +131,6 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2]very potent stimulant\n
 		%c[d_green] • %c[ui_gray_2]very potent dizziness removal\n
-		%c[d_green] • %c[pda_white] causes level 2 painkilling effect for 2184 seconds\n
 		</text>
 	</string>
 	<string id="st_morphine">
@@ -168,14 +141,12 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_purple] • %c[ui_gray_2]extremely large damage resistance bonus (15%)\n
 		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
-		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 305 seconds\n
 		</text>
 	</string>
 	<string id="st_salicidic_acid_descr">
 		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. It contains a powerful dose of metamizole mixed with an antihemorrhagic drug. Metamizole is one of the strongest Non-Steroidal Anti-Inflammatory Drugs (NSAIDs), especially effective at easing aches and pains as well as reducing fevers. It is also useful as anti-inflammatory drug when used in higher doses. May cause some delayed side effects such as leucopenia or agranulocytosis, so it should be used with moderation. Injected into an arm or a thigh. Its availability in the Zone is limited due to the difficulty of smuggling the medicine across military cordons.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_purple] • %c[pda_white]Large damage resistance bonus (10%)\n
-		%c[d_green] • %c[pda_white] causes level 4 painkilling effect for 180 seconds\n
 		</text>
 	</string>
 	<string id="st_antibio_sulfad">
@@ -200,8 +171,6 @@
 		<text>Warning! Do not use in combination with any other drug as this may prove lethal. This powerful mixture contained in a small syringe will make you lose consciousness. But when you wake up (if you wake up), you will feel reborn. Inject the syringe into your thigh when sitting down.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_red] • %c[ui_gray_2]causes extreme dizziness\n
-		%c[d_green] • %c[pda_white] heals 63 limb HP during its effect duration\n
-		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 305 seconds\n
 		</text>
 	</string>
 	<string id="st_tetanus">
@@ -211,7 +180,6 @@
 		<text>Fentanyl is a powerful opioid used as a pain medication. It is also used as a recreational drug, sometimes mixed with heroin, cocaine, or methamphetamine, and its potentially deadly overdose effects can be neutralized by naloxone. Fentanyl works primarily by activating ?-opioid receptors.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
-		%c[d_green] • %c[pda_white] causes level 3 painkilling effect for 202 seconds\n
 		</text>
 	</string>
 </string_table>

@@ -50,7 +50,6 @@
 		%c[d_blue] • %c[ui_gray_2] imported\n
 		%c[d_blue] • %c[ui_gray_2] high quality\n
 		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
-		%c[d_green] • %c[pda_white] heals 42 limb HP during its effect duration\n
 		</text>
 	</string>
 	<string id="st_sj6">
@@ -66,7 +65,6 @@
 		%c[d_purple] • %c[ui_gray_2] very good damage resistance bonus\n
 		%c[d_purple] • %c[ui_gray_2] very good carryweight bonus\n
 		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
-		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 600 seconds\n
 		</text>
 	</string>
 	<string id="st_sj1">
@@ -82,7 +80,6 @@
 		%c[d_purple] • %c[ui_gray_2] good damage resistance bonus\n
 		%c[d_purple] • %c[ui_gray_2] good carryweight bonus\n
 		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
-		%c[d_green] • %c[pda_white] causes level 3 painkilling effect for 600 seconds\n
 		</text>
 	</string>
 	<string id="st_cms">
@@ -105,7 +102,6 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] painkillers\n
-		%c[d_green] • %c[pda_white] causes level 1 painkilling effect for 180 seconds\n
 		</text>
 	</string>
 	<string id="st_splint">
@@ -118,10 +114,10 @@
 		%c[d_blue] • %c[ui_gray_2] fast and permanent\n
 		</text>
 	</string>
-	<string id="st_antirad_cystamine">
+	<string id="st_alu_splint">
 		<text>Alu splint</text>
 	</string>
-	<string id="st_antirad_cystamine_descr">
+	<string id="st_alu_splint">
 		<text>Common splint for fixing the damaged bones in positions as an emergency aid measure.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] heals broken bones\n
@@ -137,7 +133,6 @@
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_purple] • %c[ui_gray_2]extremely large damage resistance bonus (10%)\n
 		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
-		%c[d_green] • %c[pda_white] causes level 5 painkilling effect for 305 seconds\n
 		</text>
 	</string>
 	<string id="st_salicidic_acid">
@@ -147,7 +142,6 @@
 		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. It contains a powerful dose of metamizole mixed with an antihemorrhagic drug. Metamizole is one of the strongest Non-Steroidal Anti-Inflammatory Drugs (NSAIDs), especially effective at easing aches and pains as well as reducing fevers. It is also useful as anti-inflammatory drug when used in higher doses. May cause some delayed side effects such as leucopenia or agranulocytosis, so it should be used with moderation. Injected into an arm or a thigh. Its availability in the Zone is limited due to the difficulty of smuggling the medicine across military cordons.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_purple] • %c[pda_white]Large damage resistance bonus (7.5%)\n
-		%c[d_green] • %c[pda_white] causes level 4 painkilling effect for 180 seconds\n
 		</text>
 	</string>
 </string_table>

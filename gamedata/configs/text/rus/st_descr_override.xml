@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="desc_over_prop">
+		<text>СВОЙСТВА:</text>
+	</string>
+
+	<string id="desc_over_timed">
+		<text>ВРЕМЕННОЕ:</text>
+	</string>
+
+	<string id="desc_over_bhs">
+		<text>КОНЕЧНОСТИ:</text>
+	</string>
+
+	<string id="desc_over_hp">
+		<text>здоровье:</text>
+	</string>
+
+	<string id="desc_over_rad">
+		<text>радиация:</text>
+	</string>
+
+	<string id="desc_over_bleed">
+		<text>кровотечение:</text>
+	</string>
+
+	<string id="desc_over_over">
+		<text>за</text>
+	</string>
+
+	<string id="desc_over_sec">
+		<text>сек</text>
+	</string>
+
+	<string id="desc_over_sleep">
+		<text>сон:</text>
+	</string>
+
+	<string id="desc_over_thirst">
+		<text>жажда:</text>
+	</string>
+
+</string_table>

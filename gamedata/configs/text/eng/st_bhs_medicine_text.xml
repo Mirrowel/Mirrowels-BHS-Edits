@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_bhs_mihail_krug">
+		<text>•</text>
+	</string>
+
+	<string id="st_bhs_head_str">
+		<text>H</text>
+	</string>
+
+	<string id="st_bhs_torso_str">
+		<text>T</text>
+	</string>
+
+	<string id="st_bhs_rightarm_str">
+		<text>A</text>
+	</string>
+
+	<string id="st_bhs_rightleg_str">
+		<text>L</text>
+	</string>
+
+	<string id="st_bhs_heals">
+		<text>Heals </text>
+	</string>
+	
+	<string id="st_bhs_currhp">
+		<text>current HP level</text>
+	</string>
+	
+	<string id="st_bhs_upto">
+		<text>to</text>
+	</string>
+	
+	<string id="st_bhs_for">
+		<text>for</text>
+	</string>
+	
+	<string id="st_bhs_painkiller">
+		<text>Painkiller</text>
+	</string>
+
+	<string id="st_bhs_painkillerlvl">
+		<text>level</text>
+	</string>
+	
+	<string id="st_bhs_splint">
+		<text>Splint kit</text>
+	</string>
+	
+	<string id="st_bhs_splints">
+		<text>Splints a limb</text>
+	</string>
+	
+	<string id="st_bhs_surgery">
+		<text>Surgical kit</text>
+	</string>
+	
+	<string id="st_bhs_surgerys">
+		<text>Restores a limb</text>
+	</string>
+
+</string_table>

@@ -1,7 +1,6 @@
 -- If you don't use MCM, change your defaults from here.
 local defaults = {
 	["weapon_sway_feature"] = true,
-	["bhs_patch"] = false,
 	["sway_keybind"] = DIK_keys.DIK_F,
 	["animation_type"] = 1,
 	["max_effect_power"] = 3,
@@ -34,7 +33,6 @@ function on_mcm_load()
 	op = { id= "weapon_sway",sh=true ,gr={
 			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_weapon_sway_title",size= {512,50},spacing= 20 },
 			{id = "weapon_sway_feature", type = "check", val = 1, def = true},
-			{id = "bhs_patch", type = "check", val = 1, def = false},
 			{id = "sway_keybind", type = "key_bind", val = 2, def = DIK_keys.DIK_F},
 			{id = "animation_type", type= "list", val= 2, def= 1, 	content= { {1, "sway_1"} , {2, "sway_2"} , {3, "custom_1"} , {4, "custom_2"} , {5, "custom_3"} } , no_str = true },
 			{id="divider", type="line" },

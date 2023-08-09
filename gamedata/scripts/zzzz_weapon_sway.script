@@ -32,7 +32,7 @@ local release_breath_mult = weapon_sway_mcm.get_config("release_breath_mult")
 local weapon_sway_debug = weapon_sway_mcm.get_config("debugx")
 
 ------------------------------- mcm patch --------------------------------------
-local bhs_patch = weapon_sway_mcm.get_config("bhs_patch")
+local bhs_patch = 1
 local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm and zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")
 local effects_mult = zzz_player_injuries.effects_mult		-- If you changed this in BHS script - you need to change it here too
 
