@@ -1898,7 +1898,8 @@ function actor_on_update()
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
 				--printf("Healed all")
-				else --printf("Wasted healing on %s",k) end
+				else --printf("Wasted healing on %s",k) 
+				end
 				timedheal[k]=timedheal[k]-1
 				if timedheal[k]<0 then timedheal[k]=0 end
 			end	
