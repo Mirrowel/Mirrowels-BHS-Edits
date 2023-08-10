@@ -3,7 +3,7 @@ local disable_hud_fps_fix_tmr = 0.15			-- sec
 
 ------------------------ SETTINGS ------------------------
 local OGhealthbool = zzz_player_injuries_mcm.get_config("HEALTH_OG") -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
-local OGhealth = 1
+OGhealth = 1
 if OGhealthbool then OGhealth = 2 end
 damagescale=2.0/OGhealth -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
@@ -13,7 +13,7 @@ local show_player_name=true
 local hide_if_healthy=false
 
 local natural_regeneration = zzz_player_injuries_mcm.get_config("NATURAL_REGENERATION")
-local artifact_and_natural_regeneration_speed_mod = zzz_player_injuries_mcm.get_config("regeneration_speed")
+local natural_regeneration_speed_mod = zzz_player_injuries_mcm.get_config("regeneration_speed")
 
 local painkiller_grain_shader = zzz_player_injuries_mcm.get_config("PAINKILLER_GRAIN_SHADER")
 local tourniquet_is_splint = zzz_player_injuries_mcm.get_config("TOURNIQUET_IS_SPLINT")
@@ -33,7 +33,7 @@ local cms_restores_hp_too = zzz_player_injuries_mcm.get_config("CMS_RESTORES_HP_
 
 local regen=0 -- Don't change that. Use mcm instead. Automatic blue health regeneration on each limb. Setting it to 90000 would mean each 90 seconds 1 health point restores
 if natural_regeneration then
-	regen = 300000/artifact_and_natural_regeneration_speed_mod
+	regen = 300000/natural_regeneration_speed_mod
 	regen = regen*OGhealth
 end
 
@@ -610,6 +610,14 @@ function limp_speed_slow()
 	local run_coef = 0.0625 * legs_summ + 0.375
 	local sprint_coef = 0.0625 * legs_summ + 0.375
 	local real_sprint_coef = 0.025 * legs_summ + 0.75
+	if (health.leftleg + timedhp.leftleg) > (health.rightleg + timedhp.rightleg) then
+		real_sprint_coef = 0.025 * ((health.leftleg + timedhp.leftleg) * effects_mult) + 0.75
+	elseif (health.leftleg + timedhp.leftleg) < (health.rightleg + timedhp.rightleg) then
+		real_sprint_coef = 0.025 * ((health.rightleg + timedhp.rightleg) * effects_mult) + 0.75
+	end
+	if (health.leftleg + timedhp.leftleg) == 0 or (health.rightleg + timedhp.rightleg) == 0 then
+		run_coef = 0.375
+	end
 	speed.add_speed("bhs_speed_run", run_coef, false, true)
 --	speed.add_speed("bhs_speed_runback", run_coef, false, true)
 	speed.add_speed("bhs_speed_sprint", real_sprint_coef, true, true)
@@ -1682,7 +1690,7 @@ local function HealOne(healthmod,health)
 						if surgeryhp[k]>0 then surgeryhp[k] = surgeryhp[k] - 1 end
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 						healamount = 0
-						printf("Healed once")
+						--printf("Healed once")
 						break
 					end
 				end
@@ -1704,7 +1712,7 @@ local function HealOne(healthmod,health)
 						health[k] = health[k] + 1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 						healamount = 0
-						printf("Healed once")
+						--printf("Healed once")
 						break
 					end
 				end
@@ -1717,6 +1725,11 @@ local function HealOne(healthmod,health)
 	SaveHealthStatus()
 end
 
+function ArtiHeal(healthmod)
+	printf("Artihealed or campfire once")
+	HealOne(healthmod,health)
+end
+
 local function SurgeryUsed(name,health,surgeryhp)
 	local surgeryamount = surgerylist[name].surgeryamount
 	if surgeryamount <= 0 then return end
@@ -1724,15 +1737,15 @@ local function SurgeryUsed(name,health,surgeryhp)
 	local maxheadtorso = surgerylist[name].maxheadtorso or 0
 	
 	local loopcounter = 0 -- can heal destroyed limbs
-	printf("Using surgery")
+	--printf("Using surgery")
 	if not surgery_heals and splinting then
 		if surgery_instant then
 			for k,v in pairs(health, functor) do
 				if v == 0 then
 					if string.find(k, "leg") or string.find(k, "arm") then
-						if surgeryhp[k] == 0 then
+						if surgeryhp[k] == 0 and surgeryamount > 0 then
 							surgeryhp[k] = surgeryamount
-							printf("Surgery used on %s",k)
+							--printf("Surgery used on %s",k)
 							surgeryamount = 0
 							if surgeryhp[k]>maxhp[k] then surgeryhp[k]=maxhp[k] end
 							return
@@ -1746,7 +1759,7 @@ local function SurgeryUsed(name,health,surgeryhp)
 					if string.find(k, "leg") or string.find(k, "arm") then
 						if health[k] == 0 and surgeryhp[k] == 0 then
 							surgeryhp[k] = surgeryhp[k] + 1
-							printf("Surgery used on %s",k)
+							--printf("Surgery used on %s",k)
 							surgeryamount = surgeryamount - 1
 						end
 					end
@@ -1761,7 +1774,7 @@ local function SurgeryUsed(name,health,surgeryhp)
 				if v == 0 then
 					if string.find(k, "leg") or string.find(k, "arm") then
 						health[k] = surgeryamount
-						printf("Surgery used on %s",k)
+						--printf("Surgery used on %s",k)
 						surgeryamount = 0
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 						return
@@ -1775,7 +1788,7 @@ local function SurgeryUsed(name,health,surgeryhp)
 						if string.find(k, "leg") or string.find(k, "arm") then
 							if health[k] == 0 and surgeryhp[k] == loopcounter then
 								surgeryhp[k] = surgeryhp[k] + 1
-								printf("Surgery used on %s",k)
+								--printf("Surgery used on %s",k)
 								surgeryamount = surgeryamount - 1
 							end
 						end
@@ -1806,14 +1819,14 @@ local function SplintUsed(name,health,surgeryhp)
 	local loopcounter = 0
 	if using_surgery then
 		loopcounter = 1
-		printf("Using surgery")
-		printf("Splinting")
+		--printf("Using surgery")
+		--printf("Splinting")
 		while splintamount > 0 do
 			for k,v in pairs(surgeryhp, functor) do
 				if v == loopcounter then
 					if v-1 < maxarmleg and health[k] < maxhp[k]  then
 						health[k] = health[k] + 1
-						printf("Splint used on %s",k)
+						--printf("Splint used on %s",k)
 						splintamount = splintamount - 1
 						surgeryhp[k] = surgeryhp[k] - 1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
@@ -1848,6 +1861,7 @@ end
 
 function actor_on_update()
 	--actor_menu.set_msg("width:"..device().width.." height:"..device().height)
+	
 	local newhealth=db.actor.health
 	local amount=myhealth-newhealth
 	if amount>0.06 then
@@ -1883,8 +1897,8 @@ function actor_on_update()
 						health[k]=health[k] + 1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
 					end
-				printf("Healed all")
-				else printf("Wasted healing on %s",k) end
+				--printf("Healed all")
+				else --printf("Wasted healing on %s",k) end
 				timedheal[k]=timedheal[k]-1
 				if timedheal[k]<0 then timedheal[k]=0 end
 			end	
@@ -1894,7 +1908,7 @@ function actor_on_update()
 
 	if time_global() - healonelist.lastregen > healonelist.healtimer then
 		if healonelist.healamount > 0 then
-			printf("Healing once")
+			--printf("Healing once")
 			HealOne(healonelist.healpower,health)  -- healing not capped to actor.health %
 			healonelist.healamount = healonelist.healamount - 1
 			if healonelist.healamount < 0 then
@@ -2038,14 +2052,14 @@ end
 
 -- how's it going?
 local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
-	printf("Medicine used for %s",ispreview)
+	--printf("Medicine used for %s",ispreview)
 	if splintlist[name] then
 		SplintUsed(name,health,surgeryhp)
-		printf("Splint used for %s",ispreview) -- see console output
+		--printf("Splint used for %s",ispreview) -- see console output
 	end
 	if surgerylist[name] then
 		SurgeryUsed(name,health,surgeryhp)
-		printf("Surgery used for %s",ispreview) -- see console output
+		--printf("Surgery used for %s",ispreview) -- see console output
 	end
 	
 	if ispreview == 0 then
@@ -2059,13 +2073,13 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 					timedheal[k]=v+bonus
 				end
 			end
-			printf("Heal all used for %s",ispreview)
+			--printf("Heal all used for %s",ispreview)
 		end
 		if healonelist[name] then
 			healonelist.healamount = healonelist[name].healamount
 			healonelist.healtimer = healonelist[name].healtimer
 			healonelist.lastregen = time_global()
-			printf("Heal one used for %s",ispreview)
+			--printf("Heal one used for %s",ispreview)
 		end
 		if painkillerlist[name] then
 			if painkillerlist.painkillerpower < painkillerlist[name].painkillerpower then
@@ -2089,13 +2103,13 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 				timedhp[k] = bonus
 			end
 			if painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
-			printf("Painkiller used for %s",ispreview)
+			--printf("Painkiller used for %s",ispreview)
 		end
 	else
 		if healonelist[name] then
 			for i=1,healonelist[name].healamount do
 				HealOne(healonelist[name].healpower,preview.health)
-				printf("HealOne used for %s",ispreview)
+				--printf("HealOne used for %s",ispreview)
 			end
 		end
 		local allheal_ceiling=1
@@ -2112,14 +2126,14 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 					end
 				end
 			end
-			printf("Heal all used for %s",ispreview)
+			--printf("Heal all used for %s",ispreview)
 		end
 		painkillerpreview = painkillerlist.painkillerpower
 		if painkillerlist[name] then
 			if painkillerpreview < painkillerlist[name].painkillerpower then
 				painkillerpreview = painkillerlist[name].painkillerpower
 			end
-			printf("Painkiller used for %s",ispreview)
+			--printf("Painkiller used for %s",ispreview)
 		end
 		if painkillerpreview > 0 then
 			for k,v in pairs(health) do
@@ -2240,7 +2254,7 @@ local function actor_on_sleep(hours)
 end
 
 local function actor_on_item_use(obj,objname)
-	printf("%s used for %s",objname,obj)
+	--printf("%s used for %s",objname,obj)
 	MedicineUsed(objname,health,timedheal,surgeryhp,0)
 	SaveHealthStatus()
 end
@@ -2298,7 +2312,7 @@ local function ActorMenu_on_item_focus_receive(item)
 	focused_item=item:id()
 	--printf("Focused %s item",item_name)
 	if healhelplist[item_name] or splintlist[item_name] or painkillerlist[item_name] or healonelist[item_name] or surgerylist[item_name] then
-		printf("It was a medical item")
+		--printf("It was a medical item")
 		-- InitializePreviewBars()
 		preview.health=copy_table(health)
 		preview.bonus=copy_table(timedhp)
@@ -2337,7 +2351,7 @@ end
 --	)
 --	modifiedregen = regen
 --	if val ~= 0 then
---		modifiedregen = math.floor((30000 + (60000 / val)) / artifact_and_natural_regeneration_speed_mod)
+--		modifiedregen = math.floor((30000 + (60000 / val)) / natural_regeneration_speed_mod)
 --	end
 --end
 

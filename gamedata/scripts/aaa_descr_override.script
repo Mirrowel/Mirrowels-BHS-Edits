@@ -16,19 +16,19 @@ function pr(...)
 	printf(...)
 end
 
-obj_desc_def = ui_item.get_obj_desc
-
 BuildFooter = ui_item.build_desc_footer
 function ui_item.build_desc_footer(obj, sec, str)
-	str = str or gc(ini_sys:r_string_ex(sec, "description"))
-	if (not str) then return "" end
 	if zzz_player_injuries.healonelist[sec] or zzz_player_injuries.healhelplist[sec] or zzz_player_injuries.painkillerlist[sec] or zzz_player_injuries.surgerylist[sec] or zzz_player_injuries.splintlist[sec] then
+		printf("Changed desc for %s", sec)
+		str = str or gc(ini_sys:r_string_ex(sec, "description"))
+		if (not str) then return "" end
 		str = str .. title_clr .. gc("desc_over_bhs") .. def_clr .. " \\n"
 		local bhs_str = bhs_descr_str(obj, sec)
 		str = str .. bhs_str
+		str = str .. " \\n"
+	else
+		return BuildFooter(obj, sec, str)
 	end
-	str = str .. " \\n"
-
 	return str
 end
 

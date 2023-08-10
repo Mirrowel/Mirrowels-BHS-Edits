@@ -76,125 +76,150 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
-		<text>New options from the M-BHS system. Leave at default for the preferred way to play the game./n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW</text>
+		<text>Новые настройки из BHS Realistic Overhaul. Оставьте по умолчанию для предпологаемого способа игры. /n ВЫ ДОЛЖНЫ ПЕРЕЗАГРУЗИТЬ ИГРУ ПОСЛЕ ИЗМЕНЕНИЯ ЛЮБЫХ НАСТРОЕК НИЖЕ</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
-		<text>Natural healing</text>
+		<text>Естественная регенерация</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
-		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP.</text>
+		<text>Поврежденные части тела будут очень медленно заживать самостоятельно. Не может восстановить больше чем % уровень вашего основного здоровья. По умолчанию 1HP конечности каждые 5 минут</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed">
-		<text>Natural and artifact healing speed</text>
+		<text>Скорость естественного и артефактного восстановления</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
-		<text>Speed up or slow down natural healing and artifact healing. Higher is faster, healing time is divided by this number.</text>
+		<text>Ускорьте или замедлите естественное и артефактное регенерация. Чем выше значение, тем быстрее происходит регенерация, время восстановления делится на это число.</text>
 	</string>
-
+	
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
-		<text>Painkiller grain shader</text>
+		<text>Шейдер зернистости под воздействием обезболивающего</text>
 	</string>
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER_desc">
-		<text>When you take a medical item with painkiller effect, the screen becomes grainy (same as when you are in a radiation area).</text>
+		<text>Когда вы принимаете лекарственное средство с обезболивающим эффектом, экран становится зернистым (так же, как когда вы находитесь в зоне радиации).</text>
 	</string>
-
+	
 	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC">
-		<text>Medkit healing logic</text>
+		<text>Логика лечения аптечкой</text>
 	</string>
 	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC_desc">
-		<text>Medkits heal all limbs at once for one HP at a time (easier) OR medkits heal most damaged limb first one HP at a time (Intended default). </text>
+		<text>Аптечки одновременно лечат все конечности по одной единице здоровья за раз (проще) ИЛИ лечат наиболее поврежденную конечность по одной единице здоровья (По умолчанию).</text>
 	</string>
 	<string id="ui_mcm_lst_MEDKITS_ALL_HEAL">
-		<text>Medkits heal all limbs at once</text>
+		<text>Аптечки лечат все конечности одновременно</text>
 	</string>
 	<string id="ui_mcm_lst_MEDKITS_ONE_HEAL">
-		<text>Medkits heal one HP at a time, most damaged limb first</text>
+		<text>Медицинские аптечки лечат по одной единице здоровья, начиная с наиболее поврежденной конечности</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC">
-		<text>Rebirth healing logic</text>
+		<text>Логика лечения "возрождения"</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC_desc">
-		<text>Rebirth heals all limbs at once for one HP at a time (easier) OR rebirth heals most damaged limb first one HP at a time (Intended default). </text>
+		<text>Возрождение одновременно лечит все конечности по одной единице здоровья (проще) ИЛИ лечит наиболее поврежденную конечность по одной единице здоровья (По умолчанию).</text>
 	</string>
 	<string id="ui_mcm_lst_REBIRTH_ALL_HEAL">
-		<text>Rebirth heals all limbs at once</text>
+		<text>Возрождение лечит все конечности одновременно</text>
 	</string>
 	<string id="ui_mcm_lst_REBIRTH_ONE_HEAL">
-		<text>Rebirth heals one HP at a time, most damaged limb first</text>
+		<text>Возрождение лечит по одной единице здоровья, начиная с наиболее поврежденной конечности</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_USE_SURGERY">
-		<text>Surgery mechanic </text>
+		<text>Механика хирургии</text>
 	</string>
 	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
-		<text>Destroyed limbs(Reached 0 HP) require surgery via surgical tools or surgical kit first to be healed. Does not prevent painkillers from working</text>
+		<text>Уничтоженные конечности (достигшие 0 HP) требуют хирургического вмешательства с использованием хирургических инструментов или хирургического набора. Не мешает работе обезболивающих</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
-		<text>Surgery tools repair only one limb</text>
+		<text>Хирургические инструменты восстанавливают только одну конечность</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
-		<text>Surgery tools repair their set amount of HP instantly and on one limb only. Have to enable this for CMS to be able to heal more than one HP on a limb</text>
+		<text>Хирургические инструменты мгновенно восстанавливают своё заданное количество HP на одной конечности. Необходимо включить эту опцию, чтобы CMS мог излечивать более одного HP на конечность</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
-		<text>Surgery heals by itself (ENABLED IF SPLINTING IS DISABLED BUT SURGERY ENABLED)</text>
+		<text>Хирургия излечивает сама по себе (ВКЛЮЧЕНО, ЕСЛИ ВЫКЛЮЧЕНЫ ПЕРЕЛОМЫ, НО ХИРУРГИЯ ВКЛЮЧЕНА)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS_desc">
-		<text>Surgery tools heal instead of repairing HP, effectively removing splinting mechanic.</text>
+		<text>Хирургические инструменты излечивают HP вместо их восстановления, что фактически удаляет механику переломов.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO">
-		<text>CMS like tarkov</text>
+		<text>CMS, как в Таркове</text>
 	</string>
 	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO_desc">
-		<text>Allows CMS kit to restore limbs to 40% of hp instead of just repairing them to be splinted. Only works for CMS kit.</text>
+		<text>Позволяет CMS восстанавливать 40% HP конечностей вместо простого их восстановления для шинирования. Работает только с CMS набором.</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_SPLINTING">
-		<text>Broken limb mechanic</text>
+		<text>Механика сломанных конечностей</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SPLINTING_desc">
-		<text>Limbs repaired with surgery require a splint first to be healed. Does not prevent painkillers from working. </text>
+		<text>Лечение сломанных конечностей хирургией требует наложения шин. Не мешает действию обезболивающих. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
-		<text>Bandage is splint</text>
+		<text>Бинт - это шина</text>
 	</string>
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
-		<text>With this option turned on, the bandage fixes a broken limb.</text>
+		<text>При включенной опции повязка лечит сломанную конечность.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
-		<text>Tourniquet is splint</text>
+		<text>Жгут - это шина</text>
 	</string>
 	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
-		<text>With this option turned on, the tourniquet fixes a broken limb.</text>
+		<text>При включенной опции жгут лечит сломанную конечность.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
-		<text>Medkits also splint broken limbs</text>
+		<text>Аптечки также лечат сломанные конечности</text>
 	</string>
 	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
-		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). </text>
+		<text>Аптечки игнорируют механику сломанных конечностей и все равно лечат конечности. Можно считать, что в аптечке содержится шина (вау, Тарков). </text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
-		<text>Sleep healing</text>
+		<text>Лечение во сне</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_desc">
-		<text>Sleeping regenerates damage to limbs. Healing speed and mechanic can be adjusted below. Cannot heal over % of your main HP. </text>
+		<text>Сон восстанавливает повреждения конечностей. Скорость и механика лечения могут быть настроены ниже. Нельзя исцелить более чем уровень в % основного здоровья. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL">
-		<text>New sleeping heal logic</text>
+		<text>Новая логика лечения во сне</text>
 	</string>
+	
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL_desc">
-		<text>In original BHS every limb got healed one HP per hour of sleep. This heals most damaged limb one HP at a time per hour(can be adjusted). </text>
+		<text>В оригинальной системе BHS каждая конечность заживает на одно HP за каждый час сна. Новая система заживляет самую поврежденную конечность по одной HP за каждый час (можно настроить).</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER">
-		<text>Sleeping heal rate</text>
+		<text>Скорость заживления во время сна</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER_desc">
-		<text>Multiplier for sleep healing rate. </text>
+		<text>Множитель скорости заживления во время сна.</text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
+		<text>Артефакты могут восстанавливать конечности</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
+		<text>Если артефакт обладает свойствами заживления, он также медленно восстанавливает конечности до уровня текущего HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
+		<text>Множитель скорости заживления артефактов (Чем выше, тем быстрее)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER_desc">
+		<text>Мнодитель скорости</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING">
+		<text>Костры могут восстанавливать конечности</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval">
+		<text>Интервал между регенерациям конечностей (в секундах)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
+		<text>Время восстановления конечности за один такт (в секундах). Нажмите ENTER после ввода желаемого значения.</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_HEALTH_OG">
-		<text>Restore health values to default BHS ones</text>
+		<text>Восстановить значения здоровья до стандартных BHS</text>
 	</string>
 	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
-		<text>Restores values to how they were in default BHS. Does nothing but decrease the amount of health steps on the UI. </text>
+		<text>Восстанавливает значения как они были в стандартном BHS. Ничего не делает, кроме уменьшения количества шагов здоровья на интерфейсе.</text>
 	</string>
 
 

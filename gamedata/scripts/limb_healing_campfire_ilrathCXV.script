@@ -1,0 +1,42 @@
+-- CREDIT FOR THE SCRIPT GOES TO ilrathCXV. SOME EDITS WERE MADE TO WORK WITH BHS REALISTIC OVERHAUL MOD AND TO ACCEPT MCM
+
+if zzz_player_injuries then end
+
+local time_g = 0
+local timer_regen = time_global()
+local campfire_healing = zzz_player_injuries_mcm.get_config("CAMPFIRE_HEALING")
+local cozy_limb_heal_interval = (zzz_player_injuries_mcm.get_config("limb_heal_interval") * 1000) or 2000	-- default from Frost: update every 2000ms/2sec
+local start_tracking = false
+
+function get_nearby_lit_campfire(dist)
+	local pos = db.actor:position()
+	for id,binder in pairs(bind_campfire.campfires_all) do
+		if (binder and binder.campfire and binder.campfire:is_on()) then
+			if (pos:distance_to_sqr(binder.object:position()) <= dist) then
+				return true
+			end
+		end 
+	end 
+	return false
+end
+
+function actor_on_update()
+	time_g = time_global()
+
+    if get_nearby_lit_campfire(10.0) then
+		if not start_tracking then
+			timer_regen = time_global()
+			start_tracking = true
+		elseif ((time_g - timer_regen) > cozy_limb_heal_interval) then
+			zzz_player_injuries.ArtiHeal(0)
+			timer_regen=time_global()
+			start_tracking = false
+		end
+    end
+end
+
+function on_game_start()
+	if campfire_healing then
+		RegisterScriptCallback("actor_on_update",actor_on_update)
+	end
+end

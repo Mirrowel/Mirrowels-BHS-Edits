@@ -76,13 +76,13 @@
 	</string>
 
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
-		<text>New options from the M-BHS system. Leave at default for the preferred way to play the game./n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW</text>
+		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game./n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Natural healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
-		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP.</text>
+		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP. Default is 1 limb HP every 5 minutes</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed">
 		<text>Natural and artifact healing speed</text>
@@ -190,11 +190,39 @@
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER_desc">
 		<text>Multiplier for sleep healing rate. </text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
+		<text>Artefacts can regenerate Limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
+		<text>If an artefact posesses healing properties it will also slowly regenerate limbs up to current HP level. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
+		<text>Artefact healing speed multiplier (Higher=Faster)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER_desc">
+		<text>Adjusts the regeneration speed for artefacts by this multiplier. </text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING">
+		<text>Campfires can regenerate Limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING_desc">
+		<text>Campfires can regenerate Limbs</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval">
+		<text>Time between heal (seconds)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
+		<text>The amount of time for a limb to heal by one tick (in seconds). Press ENTER after typing your desired value. </text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_HEALTH_OG">
 		<text>Restore health values to default BHS ones</text>
 	</string>
 	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
 		<text>Restores values to how they were in default BHS. Does nothing but decrease the amount of health steps on the UI. </text>
 	</string>
+
 
 </string_table>
