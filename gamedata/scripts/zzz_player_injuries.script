@@ -1,5 +1,5 @@
 -- Eddie's Edit September 6, 2021
-local disable_hud_fps_fix_tmr = 0.15			-- sec
+local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
 local OGhealthbool = zzz_player_injuries_mcm.get_config("HEALTH_OG") -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
@@ -278,23 +278,23 @@ painkillerlist={}
 painkillerlist.lasttimestamp=time_global()
 painkillerlist.painkillerduration=0
 painkillerlist.painkillerpower=0
-painkillerlist.morphine={painkillerpower=5,painkillerduration=305000}
-painkillerlist.rebirth={painkillerpower=5,painkillerduration=305000}
-painkillerlist.salicidic_acid={painkillerpower=4,painkillerduration=180000}
-painkillerlist.tetanus={painkillerpower=3,painkillerduration=202000}
-painkillerlist.analgetic={painkillerpower=2,painkillerduration=305000}
-painkillerlist.sj1={painkillerpower=3,painkillerduration=600000}
-painkillerlist.sj6={painkillerpower=5,painkillerduration=600000}
-painkillerlist.analgin={painkillerpower=1,painkillerduration=180000}
-painkillerlist.akvatab={painkillerpower=2,painkillerduration=290000}
-painkillerlist.yadylin={painkillerpower=2,painkillerduration=505000}
+painkillerlist.morphine={painkillerpower=9,painkillerduration=305000}
+painkillerlist.rebirth={painkillerpower=9,painkillerduration=305000}
+painkillerlist.salicidic_acid={painkillerpower=7,painkillerduration=180000}
+painkillerlist.tetanus={painkillerpower=4,painkillerduration=202000}
+painkillerlist.analgetic={painkillerpower=5,painkillerduration=305000}
+painkillerlist.sj1={painkillerpower=4,painkillerduration=600000}
+painkillerlist.sj6={painkillerpower=7,painkillerduration=600000}
+painkillerlist.analgin={painkillerpower=2,painkillerduration=180000}
+painkillerlist.akvatab={painkillerpower=4,painkillerduration=290000}
+painkillerlist.yadylin={painkillerpower=4,painkillerduration=505000}
 painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000}
-painkillerlist.medkit_army={painkillerpower=3,painkillerduration=128000}
-painkillerlist.medkit_scientic={painkillerpower=2,painkillerduration=128000}
-painkillerlist.stimpack={painkillerpower=1,painkillerduration=128000}
-painkillerlist.stimpack_army={painkillerpower=3,painkillerduration=128000}
-painkillerlist.stimpack_scientic={painkillerpower=2,painkillerduration=128000}
-painkillerlist.cocaine={painkillerpower=1,painkillerduration=1644000}
+painkillerlist.medkit_army={painkillerpower=4,painkillerduration=128000}
+painkillerlist.medkit_scientic={painkillerpower=3,painkillerduration=128000}
+painkillerlist.stimpack={painkillerpower=2,painkillerduration=128000}
+painkillerlist.stimpack_army={painkillerpower=4,painkillerduration=128000}
+painkillerlist.stimpack_scientic={painkillerpower=3,painkillerduration=128000}
+painkillerlist.cocaine={painkillerpower=2,painkillerduration=1644000}
 painkillerlist.joint={painkillerpower=1,painkillerduration=420000}
 painkillerlist.marijuana={painkillerpower=1,painkillerduration=652000}
 
@@ -1858,6 +1858,8 @@ end
 
 ----------------------------------------------------------------
 
+local status_check_timer = 0
+local status_check_interval = 250
 
 function actor_on_update()
 	--actor_menu.set_msg("width:"..device().width.." height:"..device().height)
@@ -1870,7 +1872,8 @@ function actor_on_update()
 		-- trace_this("Amount"..amount.."\n")
 	end
 	myhealth=db.actor.health
-
+	if time_global() >= status_check_timer then 
+			status_check_timer = time_global() + status_check_interval
 	for k,v in pairs(health) do
 		if v>maxhp[k] then 
 		health[k]=maxhp[k] end
@@ -1938,26 +1941,6 @@ function actor_on_update()
 			statuschanged = true
 		end	
 	end
-
-	--if painkillerlist[k].harming then
-		--health.torso = health.torso - (painkillerlist[k].harming + 1)
-		--Don't give injuries that are healable by a bandage, that would be stupid. So minimum torso and head hp is 4.
-		--if health.torso < 4 then health.torso = 4 end
-		--health.head = health.head - painkillerlist[k].harming -- can't do that, will trigger a concussion.
-		--if not (head_tbl.previous) then head_tbl.previous = health.head * effects_mult end	-- tried to prevent triggering a concussion. Doesn't work like this.
-		--health.head = health.head - 1	-- do this instead to not trigger concussion.
-		--if health.head < 4 then health.head = 4 end
-		
-		-- give shaking hands. But don't give injuries that are healable by a bandage, that would be stupid.
-		--if health.left_arm > painkillerlist[k].harming then   --this lines gives error "attempt to compare number with nil"
-		--	health.left_arm = health.left_arm - painkillerlist[k].harming
-		--	if health.left_arm < 2 then health.left_arm = 2 end
-		--end
-		--if health.right_arm > painkillerlist[k].harming then
-		--	health.right_arm = health.right_arm - painkillerlist[k].harming
-		--	if health.right_arm < 2 then health.right_arm = 2 end
-		--end
-	--end
 	
 	if modifiedregen>0 and init then
 		if time_global() - healtimer > modifiedregen then
@@ -1990,7 +1973,6 @@ function actor_on_update()
 		end
 	end
 	
-	-- trace_this("Entre\n")
 	if not (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) then
 		local hidehudonce=false
 		if hide_default_hud and not hidehudonce then
@@ -2016,6 +1998,7 @@ function actor_on_update()
 		legs_limp()
 	end
 	----------------------------
+	end
 	HUDUpdate()
 	PartialDamage()
 end

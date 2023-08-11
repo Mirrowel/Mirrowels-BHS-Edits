@@ -117,7 +117,7 @@
 	<string id="st_alu_splint">
 		<text>Alu splint</text>
 	</string>
-	<string id="st_alu_splint_desc">
+	<string id="st_alu_splint_descr">
 		<text>Common splint for fixing the damaged bones in positions as an emergency aid measure.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] heals broken bones\n

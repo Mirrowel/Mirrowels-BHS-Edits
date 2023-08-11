@@ -123,6 +123,7 @@ function actor_on_update()
 	end
 
 	if (modifiedregen > 0) and (time_g-timer_regen>modifiedregen) then
+		shouldUpdate = true
 		if time_g-timer_regen>modifiedregen then
 			zzz_player_injuries.ArtiHeal(0)
 			timer_regen=time_global()
@@ -191,6 +192,7 @@ function on_game_start()
 		RegisterScriptCallback("actor_on_first_update", artihealing_calculations)	-- TEST
 		RegisterScriptCallback("actor_on_update", actor_on_update)
 		RegisterScriptCallback("actor_item_to_belt", artihealing_calculations)
-		RegisterScriptCallback("actor_item_to_ruck", artihealing_calculations)
+		--RegisterScriptCallback("actor_item_to_ruck", artihealing_calculations)
+		--RegisterScriptCallback("actor_on_item_use", artihealing_calculations)
 	end
 end
