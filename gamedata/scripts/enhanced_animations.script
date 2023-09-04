@@ -57,14 +57,14 @@ end
 function loadsettings()
 	if ui_mcm then -- here we test to make sure ui_mcm exists before trying to call it's get function.
 		enable_animations = ui_mcm.get("EA_settings/enable_animations")
-		mutant_loot_mod = false --ui_mcm.get("EA_settings/mutant_loot")
+		mutant_loot_mod = ui_mcm.get("EA_settings/mutant_loot")
 		ea_debug = ui_mcm.get("EA_settings/ea_debug")
 		if enable_animations == false then
 			mutant_loot_mod = false
 			ui_mcm.set("EA_settings/mutant_loot", false)
 		end
 	else
-		mutant_loot_mod = false --ini_eff:r_bool_ex("anim_settings", "mutant_loot_mod")
+		mutant_loot_mod = ini_eff:r_bool_ex("anim_settings", "mutant_loot_mod")
 		enable_animations = ui_options.get("video/player/animations")
 	end
 end
@@ -102,7 +102,7 @@ function use_item(obj)
 	obj_m = obj
 	used_item = item
 	hide_hud_inventory()
-	anim_section = ini_eff:r_string_ex(used_item, "anm")
+	anim_section = ini_eff:r_string_ex(item, "anm")
 	mask_hud_switcher()
 	anim_prepare()
 end
@@ -115,7 +115,7 @@ function monster_on_actor_use(obj)
 	end
 	wpn = db.actor:active_item()
 	if wpn then
-		wpn = wpn:clsid() == 168 and wpn:section() or "wpn_knife5"
+		wpn = wpn:clsid() == clsid.wpn_knife_s and wpn:section() or "wpn_knife5"
 		wpn = string.gsub(wpn,"-","_")
 	end
 	item_knife.degradate()
@@ -188,7 +188,7 @@ function actor_on_update()
 	end
 	local anim_section_hud = nil
 	if used_monster then
-		anim_section_hud = "item_ea_harv_" .. ( wpn or "wpn_knife5" ) .. "_hud"
+		anim_section_hud = "item_ea_harv_" .. ( wpn or "wpn_knife3" ) .. "_hud"
 		start_anim(anim_section_hud)
 		anim_manager_monster()
 		failure_timer = 0
