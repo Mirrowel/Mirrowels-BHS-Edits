@@ -97,3 +97,24 @@ In order to restore a limb to 1 HP surgical tools are required.
   - Cocaine: 1 painkiller power for 1644 seconds.
   - Joint: 1 painkiller power for 420 seconds.
   - Marijuana: 1 painkiller power for 652 seconds.
+
+# Latest changelog:
+## Changelog 0.6 Beta:
+### Additions and rebalancing:
+- Bandages and tourniquets now work instantly instead of over time.
+- Vodka's are now painkillers of different power.
+- To be able to sprint with broken legs you now need painkiller power 3 and above. Vodkas provide up to 2.
+- Psy mechanics for SJ stims. Now they lower your max psy health but increase resistance and regeneration the lower your psy health is. (EXPERIMENTAL)
+- A lot more traders sell new items now, and old ones should be fixed, hopefully.
+- Compatibility patch for Coffee if the zone to use better anims.
+- Damage to limbs increased by 25%. Hopefully losing limbs will be more frequent.
+### Fixes:
+- Painkillers active time is now tracked a lot better, so level transitions wont extend their duration. Nor saving/loading will extend/decrease it. Deviation will be very small % wise.
+- Detailed description compatibility now has fixed encoding for dot symbols
+- Default detailed description script fixes(included by default, not compat)
+- Artefact healing now wont work if you dont have PBA mod installed. Meaning if you want to use it in base anomaly you need to patch it. I would do that if i had vanilla classnames and values for them - it is not hard at all.
+- General bugfixing for main script
+- DLTX bugfixing to make sure included mods are not overwritten by standalone versions of same mods.
+- Animation files bugfixing to change as little as possible compared to base FDDA + asnen's. Now should be 100% compatible as no old anims are overwritten or deleted.
+- Damage threshold lowered back to 3% like default. Now consumable items are tracked and wont deal damage to limbs
+- Renamed Enchaned UI compat to "Enhanced GUI". Got confused about names
