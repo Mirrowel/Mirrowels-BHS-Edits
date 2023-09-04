@@ -98,6 +98,9 @@ In order to restore a limb to 1 HP surgical tools are required.
   - Marijuana: 1 painkiller power for 652 seconds.
 
 # Latest changelog:
+## Hotfix 0.6A:
+- Fixed mutant harvest animation
+- Added FDDA MCM unlocker for gamma users
 ## Changelog 0.6 Beta:
 ### Additions and rebalancing:
 - Bandages and tourniquets now work instantly instead of over time.
