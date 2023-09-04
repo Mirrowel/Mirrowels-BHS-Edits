@@ -1,9 +1,12 @@
 [vodka]
 snd = interface\item_usage\vodka_drink
-anm = item_ea_cmuphob_vodka
+anm = item_ga_cmuphob_vodka
 cam = itemuse_anm_effects\vodka.anm
 tm = 7200
 helm = false
+
+[vodka2]:vodka
+anm = item_ga_hemupob_vodka
 
 [fdda_error_snd]
 snd = interface\item_usage\error_sound
@@ -18,22 +21,15 @@ hud_anm = itemuse_anm_effects\mre_hands_use.anm
 [ration_ukr]:mre
 [ration_ru]:mre
 
-[vodka2]:vodka
-snd = interface\item_usage\vodka_drink
-anm = item_ea_cmuphob_vodka
-cam = itemuse_anm_effects\vodka.anm
-tm = 7200
-helm = false
-
 [drug_booster]
-anm = item_ea_booster_weight
+anm = item_ga_booster_weight
 snd = interface\item_usage\gerkules
 cam = itemuse_anm_effects\gercules.anm
 tm = 7000
 helm = false
 
 [drug_anabiotic]
-anm = item_ea_anabiotic
+anm = item_ga_anabiotic
 snd = interface\item_usage\anabiotic
 cam = itemuse_anm_effects\biotic.anm
 tm = 22000
@@ -135,7 +131,7 @@ helm = false
 
 [energy_drink]
 snd = interface\item_usage\energy_drink
-anm = item_ea_energy_drink_nonstop
+anm = item_ga_energy_drink_nonstop
 cam = itemuse_anm_effects\energy_drink.anm
 tm = 5300
 helm = false
@@ -157,8 +153,11 @@ helm = false
 
 [survival_kit]:bandage
 snd = interface\item_usage\bandage_surginst
+anm = item_ga_bandage
+cam = itemuse_anm_effects\bandage.anm
 speed = 0.70
 tm = 12000
+helm = true
 
 [beer]:cocacola
 snd = interface\item_usage\drink_beer_use
@@ -173,7 +172,7 @@ anm = item_ea_beer_2
 snd = interface\item_usage\pills_use
 anm = item_ea_drug_coagulant
 cam = itemuse_anm_effects\tabletki_use.anm
-tm = 3700
+tm = 3200
 helm = false
 
 [drug_sleepingpills]:drug_coagulant
@@ -261,62 +260,53 @@ helm = true
 [tetanus]:antirad
 [adrenalin]:antirad
 
-[rebirth]
-snd = interface\item_usage\syringe2
-anm = item_ea_syringer_guns
-cam = itemuse_anm_effects\antirad.anm
-tm = 3200
-helm = true
+[rebirth]:antirad
 
 [salicidic_acid]:morphine
-anm = item_ga_medkit
 
 [glucose]:antirad
 [glucose_s]:antirad
 
-
-
-
 [bandage]
 snd = interface\item_usage\bandage
-anm = item_ea_bandage
+anm = item_ga_bandage
 cam = itemuse_anm_effects\bandage.anm
 tm = 5100
 helm = true
 
 [bandage_israeli]:bandage
+anm = item_ga_bandage_israeli
+tm = 5100
+
+[jgut]
+snd = interface\item_usage\bandage_use
 anm = item_ea_bandage_israeli
+cam = itemuse_anm_effects\bint_use.anm
+tm = 3700
+helm = true
 
 [bio_bandage]:bandage
-anm = item_ea_bio_bandage
+anm = item_ga_bio_bandage
 
 [mineral_water]
 snd = interface\item_usage\water_drink
-anm = item_ea_mineral_water
+anm = item_ga_mineral_water
 cam = itemuse_anm_effects\voda.anm
 tm = 7250
 helm = false
 
 [vodka_quality]
-snd = interface\item_usage\drink_flask3
-anm = item_ea_flask2
-cam = itemuse_anm_effects\drink_flask.anm
-tm = 8000
+snd = interface\item_usage\new_drink_flask
+anm = item_ga_flask2
+cam = itemuse_anm_effects\sexo_flask_drink.anm
+tm = 7250
 helm = false
 
 [flask]:vodka_quality
-snd = interface\item_usage\drink_flask4
-anm = item_ea_flask
-cam = itemuse_anm_effects\drink_flask.anm
-tm = 8000
-helm = false
+anm = item_ga_flask
 
-[bottle_metal]
-snd = interface\item_usage\water_flask
-anm = item_ea_water_flask
-cam = itemuse_anm_effects\water_flask2.anm
-tm = 12200
-helm = false
+[bottle_metal]:vodka_quality
+anm = item_ga_water_flask
 
 [at_baloon_lead_box]:bottle_metal
 

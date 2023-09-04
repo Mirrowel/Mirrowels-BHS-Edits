@@ -56,30 +56,38 @@
 		<text>Combat Stimulant SJ6</text>
 	</string>
 	<string id="st_sj6_descr">
-		<text>Combat stimulant. Mixed with a small amount of adrenalin it is used to increase the body abilities before combat for about 3 minutes. The stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ6. Has side effects.\n \n
+		<text>Combat stimulant. Mixed with a small amount of adrenalin it is used to increase the body abilities before combat for about 3 minutes. The stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ6. Has side effects. Not recommended for use in psy-active zones\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
 		%c[d_blue] • %c[ui_gray_2] military item\n
 		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
-		%c[d_purple] • %c[ui_gray_2] very good damage resistance bonus\n
+		%c[d_blue] • %c[ui_gray_2] freshens you up\n
+		%c[d_purple] • %c[ui_gray_2] very good damage resistance bonus (20%)\n
 		%c[d_purple] • %c[ui_gray_2] very good carryweight bonus\n
 		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
+		%c[d_purple] • %c[ui_gray_2] long duration\n
+		%c[d_red] • %c[ui_gray_2] causes hallucinations but strenghtens the mind\n
+		%c[d_red] • %c[ui_gray_2] greatly increases hunger\n
 		</text>
 	</string>
 	<string id="st_sj1">
 		<text>Combat Stimulant SJ1</text>
 	</string>
 	<string id="st_sj1_descr">
-		<text>Combat stimulant. Is used for gaining strength and endurance before combat for about 3 minutes. Stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ1. Has side effects.\n \n
+		<text>Combat stimulant. Is used for gaining strength and endurance before combat for about 3 minutes. Stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ1. Has side effects. Not recommended for use in psy-active zones\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
 		%c[d_blue] • %c[ui_gray_2] military item\n
 		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
-		%c[d_purple] • %c[ui_gray_2] good damage resistance bonus\n
+		%c[d_blue] • %c[ui_gray_2] freshens you up\n
+		%c[d_purple] • %c[ui_gray_2] good damage resistance bonus (15%)\n
 		%c[d_purple] • %c[ui_gray_2] good carryweight bonus\n
 		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
+		%c[d_purple] • %c[ui_gray_2] long duration\n
+		%c[d_red] • %c[ui_gray_2] causes hallucinations but strenghtens the mind\n
+		%c[d_red] • %c[ui_gray_2] increases hunger\n
 		</text>
 	</string>
 	<string id="st_cms">

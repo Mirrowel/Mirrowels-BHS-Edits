@@ -76,7 +76,7 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
-		<text>Новые настройки из BHS Realistic Overhaul. Оставьте по умолчанию для предпологаемого способа игры. /n ВЫ ДОЛЖНЫ ПЕРЕЗАГРУЗИТЬ ИГРУ ПОСЛЕ ИЗМЕНЕНИЯ ЛЮБЫХ НАСТРОЕК НИЖЕ</text>
+		<text>Новые настройки из BHS Realistic Overhaul. Оставьте по умолчанию для предпологаемого способа игры. \n ВЫ ДОЛЖНЫ ПЕРЕЗАГРУЗИТЬ ИГРУ ПОСЛЕ ИЗМЕНЕНИЯ ЛЮБЫХ НАСТРОЕК НИЖЕ. ДЛЯ НЕКОТОРЫХ НУЖЕН ПОЛНЫЙ ПЕРЕЗАПУСК</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Естественная регенерация</text>
@@ -85,10 +85,10 @@
 		<text>Поврежденные части тела будут очень медленно заживать самостоятельно. Не может восстановить больше чем % уровень вашего основного здоровья. По умолчанию 1HP конечности каждые 5 минут</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed">
-		<text>Скорость естественного и артефактного восстановления</text>
+		<text>Скорость естественного восстановления</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
-		<text>Ускорьте или замедлите естественное и артефактное регенерация. Чем выше значение, тем быстрее происходит регенерация, время восстановления делится на это число.</text>
+		<text>Множитель времени. Чем выше значение, тем быстрее происходит регенерация. Время делится на это число.</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
@@ -108,7 +108,7 @@
 		<text>Аптечки лечат все конечности одновременно</text>
 	</string>
 	<string id="ui_mcm_lst_MEDKITS_ONE_HEAL">
-		<text>Медицинские аптечки лечат по одной единице здоровья, начиная с наиболее поврежденной конечности</text>
+		<text>Аптечки лечат по одной единице здоровья</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC">
 		<text>Логика лечения "возрождения"</text>
@@ -120,7 +120,7 @@
 		<text>Возрождение лечит все конечности одновременно</text>
 	</string>
 	<string id="ui_mcm_lst_REBIRTH_ONE_HEAL">
-		<text>Возрождение лечит по одной единице здоровья, начиная с наиболее поврежденной конечности</text>
+		<text>Возрождение лечит по одной единице здоровья</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_USE_SURGERY">
@@ -172,6 +172,17 @@
 	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
 		<text>Аптечки игнорируют механику сломанных конечностей и все равно лечат конечности. Можно считать, что в аптечке содержится шина (вау, Тарков). </text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS">
+		<text>Пси эффекты от медикаментов(Voiced actor)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS_desc">
+		<text>Медикаменты могут наносить или исцелять пси-урон. Пока только пси эффект от SJ инжекторов.\n
+		SJ инжекторы уменьшают максимальный уровень пси-здоровья вызывая галлюцинации, но при этом повышают защиту от пси урона и восстановление пси.\n
+		Работает по умолчанию на GAMMA. Иначе требуется Voiced actor мод.\n
+		Если скрипт не найден, то ничего не произойдет. Выключать только если не нравится пси урон от медикаментов.</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
 		<text>Лечение во сне</text>
 	</string>
@@ -193,16 +204,17 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
-		<text>Артефакты могут восстанавливать конечности(СОВМЕСТИМО ПО УМОЛЧАНИЮ ТОЛЬКО С ГАММОЙ. СМОТРИТЕ КАК ДОБАВИТЬ ДРУГИЕ АРТЕФАКТЫ НА СТРАНИЦЕ МОДА)</text>
+		<text>Артефакты могут восстанавливать конечности</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
-		<text>Если артефакт обладает свойствами заживления, он также медленно восстанавливает конечности до уровня текущего HP.</text>
+		<text>(СОВМЕСТИМО ПО УМОЛЧАНИЮ ТОЛЬКО С ГАММОЙ. СМОТРИТЕ КАК ДОБАВИТЬ ДРУГИЕ АРТЕФАКТЫ НА СТРАНИЦЕ МОДА)\n
+		Если артефакт обладает свойствами заживления, он также медленно восстанавливает конечности до уровня текущего HP.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
-		<text>Множитель скорости заживления артефактов (Чем выше, тем быстрее)</text>
+		<text>Множитель скорости заживления артефактов</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER_desc">
-		<text>Мнодитель скорости</text>
+		<text>Мнодитель скорости (Чем выше, тем быстрее)</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING">

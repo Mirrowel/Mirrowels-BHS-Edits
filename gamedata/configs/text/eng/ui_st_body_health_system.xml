@@ -76,19 +76,19 @@
 	</string>
 
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
-		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game./n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW</text>
+		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game.\n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW. SOME SETTINGS MAY REQUIRE A FULL RESTART</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Natural healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
-		<text>Damaged body parts will heal VERY slowly on their own. Cannot heal over % of your main HP. Default is 1 limb HP every 5 minutes</text>
+		<text>Damaged body parts will heal VERY slowly on their own.\nCannot heal over % of your main HP. Default is 1 limb HP every 5 minutes</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed">
-		<text>Natural and artifact healing speed</text>
+		<text>Natural healing speed</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
-		<text>Speed up or slow down natural healing and artifact healing. Higher is faster, healing time is divided by this number.</text>
+		<text>Multiplier for natural regeneration. Higher is faster. Healing time is divided by this number.</text>
 	</string>
 
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
@@ -108,7 +108,7 @@
 		<text>Medkits heal all limbs at once</text>
 	</string>
 	<string id="ui_mcm_lst_MEDKITS_ONE_HEAL">
-		<text>Medkits heal one HP at a time, most damaged limb first</text>
+		<text>Medkits heal one HP at a time</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC">
 		<text>Rebirth healing logic</text>
@@ -120,7 +120,7 @@
 		<text>Rebirth heals all limbs at once</text>
 	</string>
 	<string id="ui_mcm_lst_REBIRTH_ONE_HEAL">
-		<text>Rebirth heals one HP at a time, most damaged limb first</text>
+		<text>Rebirth heals one HP at a time</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_USE_SURGERY">
@@ -170,8 +170,19 @@
 		<text>Medkits also splint broken limbs</text>
 	</string>
 	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
-		<text>Medkits ignore broken limb mechanic and heal limbs anyway. Think of this like a splint being contained in a medkit (wow, tarkov). </text>
+		<text>Medkits ignore broken limb mechanic and heal limbs anyway.\nThink of this like a splint being contained in a medkit (wow, tarkov). </text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS">
+		<text>Medicine psy effects(Voiced actor)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS_desc">
+		<text>Medicine can cause or heal psy damage. Currently only SJ injectors psy effects are implemented.\n
+		SJ injectors decrease maximum psy health causing hallucinations but also increase psy resistance and regeneration.\n
+		Works by default for GAMMA. Otherwise requires Voiced Actor mod.\n
+		If script is not found nothing happens. Disable only if you dont like psi damage from meds.</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
 		<text>Sleep healing</text>
 	</string>
@@ -192,10 +203,11 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
-		<text>Artefacts can regenerate Limbs (ONLY COMPATIBLE WITH GAMMA BY DEFAULT. LOOK UP MOD PAGE ON HOW TO EDIT THE VALUES)</text>
+		<text>Artefacts can regenerate Limbs</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
-		<text>If an artefact posesses healing properties it will also slowly regenerate limbs up to current HP level. </text>
+		<text>(ONLY COMPATIBLE WITH GAMMA BY DEFAULT. LOOK UP MOD PAGE ON HOW TO EDIT THE VALUES)\n
+		If an artefact posesses healing properties it will also slowly regenerate limbs up to current HP level. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
 		<text>Artefact healing speed multiplier (Higher=Faster)</text>

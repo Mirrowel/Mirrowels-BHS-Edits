@@ -95,22 +95,8 @@ use_sound					                       = interface\inv_medkit
 use_condition                                      = true
 max_uses                                           = 5
 remove_after_use                                   = true
+eat_health					                       = -0.03
 tier = 3
-![analgetic]
-boost_wound_immunity		                       = 0.05
-boost_fire_wound_immunity	                       = 0.05
-boost_explosion_immunity	                       = 0.05
-boost_strike_immunity		                       = 0.05
-![salicidic_acid]
-boost_wound_immunity		                       = 0.075
-boost_fire_wound_immunity	                       = 0.075
-boost_explosion_immunity	                       = 0.075
-boost_strike_immunity		                       = 0.075
-![morphine]
-boost_wound_immunity		                       = 0.1
-boost_fire_wound_immunity	                       = 0.1
-boost_explosion_immunity	                       = 0.1
-boost_strike_immunity		                       = 0.1
 [sj1]:booster
 $spawn 						                       = "food and drugs\medkit"
 visual	= dynamics\weapons\wpn_eat\eft_meds\itm_stim_sj6.ogf
@@ -126,16 +112,18 @@ inv_grid_height = 1
 inv_grid_x = 6
 inv_grid_y = 1
 boost_time					                       = 600
-boost_wound_immunity		                       = 0.10
-boost_strike_immunity		                       = 0.10
-boost_fire_wound_immunity	                       = 0.10
-boost_explosion_immunity	                       = 0.10
+boost_wound_immunity		                       = 0.15
+boost_strike_immunity		                       = 0.15
+boost_fire_wound_immunity	                       = 0.15
+boost_explosion_immunity	                       = 0.15
+--boost_telepat_protection                           = 0.03
 boost_power_restore			                       = 0.00442
 boost_max_weight			                       = 20.000
 eat_alcohol					                       = -0.150
 eat_satiety 				                       = -0.300
 eat_thirstiness                                    = 0.3
 eat_sleepiness				                       = -0.05
+eat_health					                       = -0.04
 use_sound					                       = interface\inv_syringe
 tier = 3
 [sj6]:booster
@@ -153,16 +141,18 @@ inv_grid_height = 1
 inv_grid_x = 7
 inv_grid_y = 1
 boost_time					                       = 600
-boost_wound_immunity		                       = 0.15
-boost_strike_immunity		                       = 0.15
-boost_fire_wound_immunity	                       = 0.15
-boost_explosion_immunity	                       = 0.15
+boost_wound_immunity		                       = 0.2
+boost_strike_immunity		                       = 0.2
+boost_fire_wound_immunity	                       = 0.2
+boost_explosion_immunity	                       = 0.2
+--boost_telepat_protection                           = 0.05
 boost_power_restore			                       = 0.00842
 boost_max_weight			                       = 30.000
 eat_alcohol					                       = -0.250
 eat_satiety 				                       = -0.500
 eat_thirstiness                                    = 0.5
-eat_sleepiness				                       = -0.1
+eat_sleepiness				                       = -0.2
+eat_health					                       = -0.08
 use_sound					                       = interface\inv_syringe
 tier = 4
 [propital]:booster
@@ -185,6 +175,7 @@ eat_alcohol					                       = 0.025
 eat_satiety 				                       = -0.200
 eat_thirstiness                                    = 0.5
 eat_sleepiness				                       = 0.09
+eat_health					                       = -0.02
 use_sound					                       = interface\inv_syringe
 tier = 5
 [zagustin]:booster
@@ -208,15 +199,10 @@ eat_alcohol					                       = 0.025
 eat_satiety 				                       = -0.350
 eat_thirstiness                                    = 0.5
 eat_sleepiness				                       = 0.09
+eat_health					                       = -0.03
 use_sound					                       = interface\inv_syringe
 tier = 5
 ;--==================| Med-packs |=================
-![bandage]
-eat_satiety 				                       = 0
-eat_alcohol					                       = 0
-eat_sleepiness				                       = 0
-boost_time 					                       = 5	;5
-boost_bleeding_restore 		                       = 0.005
 [bandage_army]:booster_multi
 $spawn 						                       = "food and drugs\bandage"
 kind			                               = i_medical
@@ -231,8 +217,8 @@ inv_grid_width			= 1
 inv_grid_height			= 1
 inv_grid_x				= 0
 inv_grid_y				= 0
-boost_time 					                       = 5	;5
-boost_bleeding_restore 		                       = 0.01
+boost_time 					                       = 1
+boost_bleeding_restore 		                       = 0.1
 use_sound					                       = interface\inv_bandage_3p7
 use_condition                                      = true
 script_binding                                     = bind_item.bind
@@ -258,7 +244,7 @@ attach_position_offset		                       = 0.096910, -0.013594, 0.107925
 attach_bone_name		                           = bip01_r_hand
 auto_attach				                           = false
 required_tool				                       = bandage
-boost_wound_immunity		                       = -0.05
+eat_health					                       = -0.08
 use_sound					                       = actor\pain_6
 tier = 1
 

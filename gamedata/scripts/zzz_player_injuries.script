@@ -5,7 +5,8 @@ local disable_hud_fps_fix_tmr = 0.2			-- sec
 local OGhealthbool = zzz_player_injuries_mcm.get_config("HEALTH_OG") -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
 OGhealth = 1
 if OGhealthbool then OGhealth = 2 end
-damagescale=2.0/OGhealth -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+damagescale=2.5/OGhealth -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+local damage_threshold=0.03 -- 0.03 is default
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
@@ -79,6 +80,7 @@ end
 ------------------------------------------------------------------------------------------------
 
 local last_damaged_hitbox=nil
+local eat_damaged=false
 showtexthud=(zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and 2 or 0 --1 large left down, 2 default center 0 texture
 
 show_hud_type=2
@@ -278,27 +280,30 @@ painkillerlist={}
 painkillerlist.lasttimestamp=time_global()
 painkillerlist.painkillerduration=0
 painkillerlist.painkillerpower=0
-painkillerlist.morphine={painkillerpower=9,painkillerduration=305000}
-painkillerlist.rebirth={painkillerpower=9,painkillerduration=305000}
-painkillerlist.salicidic_acid={painkillerpower=7,painkillerduration=180000}
-painkillerlist.tetanus={painkillerpower=4,painkillerduration=202000}
-painkillerlist.analgetic={painkillerpower=5,painkillerduration=305000}
-painkillerlist.sj1={painkillerpower=4,painkillerduration=600000}
-painkillerlist.sj6={painkillerpower=7,painkillerduration=600000}
-painkillerlist.analgin={painkillerpower=2,painkillerduration=180000}
-painkillerlist.akvatab={painkillerpower=4,painkillerduration=290000}
-painkillerlist.yadylin={painkillerpower=4,painkillerduration=505000}
-painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000}
-painkillerlist.medkit_army={painkillerpower=4,painkillerduration=128000}
-painkillerlist.medkit_scientic={painkillerpower=3,painkillerduration=128000}
-painkillerlist.stimpack={painkillerpower=2,painkillerduration=128000}
-painkillerlist.stimpack_army={painkillerpower=4,painkillerduration=128000}
-painkillerlist.stimpack_scientic={painkillerpower=3,painkillerduration=128000}
-painkillerlist.cocaine={painkillerpower=2,painkillerduration=1644000}
-painkillerlist.joint={painkillerpower=1,painkillerduration=420000}
-painkillerlist.marijuana={painkillerpower=1,painkillerduration=652000}
-
-
+painkillerlist.countdown_increments=0 -- divides the total duration into x parts. Used to make sure painkillers actual duration stays closer to its set duration + up to length of one increment.
+painkillerlist.morphine={painkillerpower=9,painkillerduration=305000,countdown_increments=30}
+painkillerlist.rebirth={painkillerpower=9,painkillerduration=305000,countdown_increments=30}
+painkillerlist.salicidic_acid={painkillerpower=7,painkillerduration=180000,countdown_increments=36}
+painkillerlist.tetanus={painkillerpower=4,painkillerduration=202000,countdown_increments=20}
+painkillerlist.analgetic={painkillerpower=5,painkillerduration=305000,countdown_increments=30}
+painkillerlist.sj1={painkillerpower=4,painkillerduration=600000,countdown_increments=60}
+painkillerlist.sj6={painkillerpower=7,painkillerduration=600000,countdown_increments=60}
+painkillerlist.analgin={painkillerpower=2,painkillerduration=180000,countdown_increments=36}
+painkillerlist.akvatab={painkillerpower=4,painkillerduration=290000,countdown_increments=29}
+painkillerlist.yadylin={painkillerpower=4,painkillerduration=505000,countdown_increments=50}
+painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000,countdown_increments=105}
+painkillerlist.medkit_army={painkillerpower=4,painkillerduration=128000,countdown_increments=25}
+painkillerlist.medkit_scientic={painkillerpower=3,painkillerduration=128000,countdown_increments=25}
+painkillerlist.stimpack={painkillerpower=2,painkillerduration=128000,countdown_increments=25}
+painkillerlist.stimpack_army={painkillerpower=4,painkillerduration=128000,countdown_increments=25}
+painkillerlist.stimpack_scientic={painkillerpower=3,painkillerduration=128000,countdown_increments=25}
+painkillerlist.cocaine={painkillerpower=2,painkillerduration=1644000,countdown_increments=80}
+painkillerlist.joint={painkillerpower=1,painkillerduration=420000,countdown_increments=42}
+painkillerlist.marijuana={painkillerpower=1,painkillerduration=652000,countdown_increments=40}
+painkillerlist.vodka={painkillerpower=1,painkillerduration=300000,countdown_increments=30}
+painkillerlist.vodka2={painkillerpower=1,painkillerduration=300000,countdown_increments=30}
+painkillerlist.vodka_quality={painkillerpower=2,painkillerduration=300000,countdown_increments=30}
+painkillerlist.bottle_metal={painkillerpower=2,painkillerduration=300000,countdown_increments=30}
 
 local modifiedregen = regen
 
@@ -394,6 +399,8 @@ local function SaveHealthStatus()
 
 	utils_obj.save_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration)
 	utils_obj.save_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower)
+	utils_obj.save_var(db.actor,"painkillerlist.countdown_increments",painkillerlist.countdown_increments)
+
 
 end
 local function LoadHealthStatus()
@@ -424,15 +431,17 @@ local function LoadHealthStatus()
 	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.rightleg",surgeryhp.rightleg) or 0
 	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.leftleg",surgeryhp.leftleg) or 0
 
-	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 3000
+	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 0
 	healhelplist.healpower=utils_obj.load_var(db.actor,"healhelplist.healpower",healhelplist.healpower) or 0
 
-	healonelist.healtimer=utils_obj.load_var(db.actor,"healonelist.healtimer",healonelist.healtimer) or 3000
+	healonelist.healtimer=utils_obj.load_var(db.actor,"healonelist.healtimer",healonelist.healtimer) or 0
 	healonelist.healpower=utils_obj.load_var(db.actor,"healonelist.healpower",healonelist.healpower) or 0
 	healonelist.healamount=utils_obj.load_var(db.actor,"healonelist.healamount",healonelist.healamount) or 0
 	
-	painkillerlist.painkillerduration=utils_obj.load_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration) or 30000
+	painkillerlist.painkillerduration=utils_obj.load_var(db.actor,"painkillerlist.painkillerduration",painkillerlist.painkillerduration) or 0
 	painkillerlist.painkillerpower=utils_obj.load_var(db.actor,"painkillerlist.painkillerpower",painkillerlist.painkillerpower) or 0
+	painkillerlist.countdown_increments=utils_obj.load_var(db.actor,"painkillerlist.countdown_increments",painkillerlist.countdown_increments) or 0
+
 	if painkillerlist.painkillerpower > 0 and painkiller_grain_shader then 
 		printf("Adding the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
 		level.add_pp_effector("radiation.ppe", 5020, true) 
@@ -615,7 +624,7 @@ function limp_speed_slow()
 	elseif (health.leftleg + timedhp.leftleg) < (health.rightleg + timedhp.rightleg) then
 		real_sprint_coef = 0.025 * ((health.rightleg + timedhp.rightleg) * effects_mult) + 0.75
 	end
-	if (health.leftleg + timedhp.leftleg) == 0 or (health.rightleg + timedhp.rightleg) == 0 then
+	if (((health.leftleg + timedhp.leftleg) == 0 or (health.leftleg==0 and timedhp.leftleg<=2)) or ((health.rightleg + timedhp.rightleg) == 0 or (health.rightleg==0 and timedhp.rightleg<=2))) then
 		run_coef = 0.375
 	end
 	speed.add_speed("bhs_speed_run", run_coef, false, true)
@@ -639,8 +648,8 @@ function legs_limp()
 	local right_l = (health.leftleg + timedhp.leftleg) * effects_mult -- right is left
 	local left_l = (health.rightleg + timedhp.rightleg) * effects_mult
 	local legs_sum = left_l + right_l
-	local max_right_l = maxhp.leftleg * effects_mult * (zzz_player_injuries_mcm.get_config("leg_penalty_minimum_hp") * 0.2)
-	local max_left_l = maxhp.rightleg * effects_mult * (zzz_player_injuries_mcm.get_config("leg_penalty_minimum_hp") * 0.2)
+	local max_right_l = maxhp.leftleg * effects_mult * (zzz_player_injuries_mcm.get_config("leg_penalty_minimum_hp") * 0.1)
+	local max_left_l = maxhp.rightleg * effects_mult * (zzz_player_injuries_mcm.get_config("leg_penalty_minimum_hp") * 0.1)
 	local max_legs_sum = max_left_l + max_right_l
 
 	if (right_l == left_l) and (legs_sum < max_legs_sum) then
@@ -1866,10 +1875,14 @@ function actor_on_update()
 	
 	local newhealth=db.actor.health
 	local amount=myhealth-newhealth
-	if amount>0.06 then
+	if amount>damage_threshold and not eat_damaged then
+		--printf("Received %s damage and it was not from eating",amount)
 		recieved_damage(amount)
-		--printf("! %s",amount
-		-- trace_this("Amount"..amount.."\n")
+		--printf("! %s",amount)
+		--trace_this("Amount"..amount.."\n")
+	elseif amount>damage_threshold and eat_damaged then
+		--printf("Received %s damage but it was from eating, ignored",amount)
+		eat_damaged=false
 	end
 	myhealth=db.actor.health
 	if time_global() >= status_check_timer then 
@@ -1889,7 +1902,7 @@ function actor_on_update()
 	
 	local statuschanged = false
 	local allheal_ceiling=1
-	if time_global()-healhelplist.lastregen>healhelplist.healtimer then
+	if timedheal.torso>0 and time_global()-healhelplist.lastregen>healhelplist.healtimer  then
 		healhelplist.lastregen=time_global()
 		if healhelplist.healpower == 0 then allheal_ceiling=db.actor.health
 		else allheal_ceiling=healhelplist.healpower end
@@ -1930,13 +1943,20 @@ function actor_on_update()
 
 	if painkillerlist.painkillerpower > 0 then
 		if time_global() - painkillerlist.lasttimestamp > painkillerlist.painkillerduration then
-			printf("Painkillers ran out")
-			painkillerlist.painkillerpower = 0
-			painkillerlist.painkillerduration = 0
-			painkillerlist.lasttimestamp = time_global()
-			if painkiller_grain_shader then level.remove_pp_effector(5020) end
-			for k,v in pairs(health) do
-				timedhp[k] = 0
+			if painkillerlist.countdown_increments == 1 or painkillerlist.countdown_increments < 0 then
+				painkillerlist.countdown_increments = 0
+				printf("Painkillers ran out")
+				painkillerlist.painkillerpower = 0
+				painkillerlist.painkillerduration = 0
+				painkillerlist.lasttimestamp = time_global()
+				if painkiller_grain_shader then level.remove_pp_effector(5020) end
+				for k,v in pairs(health) do
+					timedhp[k] = 0
+				end
+			elseif painkillerlist.countdown_increments > 1 then
+				painkillerlist.countdown_increments = painkillerlist.countdown_increments - 1
+				painkillerlist.lasttimestamp = time_global()
+				--printf("Countdowns left: %s",painkillerlist.countdown_increments)
 			end
 			statuschanged = true
 		end	
@@ -2053,7 +2073,7 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 			healhelplist.healpower=healhelplist[name].healpower
 			for k,v in pairs(timedheal) do
 				local bonus=healhelplist[name][k]
-				if bonus then
+				if bonus and v==0 then
 					timedheal[k]=v+bonus
 				end
 			end
@@ -2068,9 +2088,18 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 		if painkillerlist[name] then
 			if painkillerlist.painkillerpower < painkillerlist[name].painkillerpower then
 				painkillerlist.painkillerpower = painkillerlist[name].painkillerpower
-				painkillerlist.painkillerduration = painkillerlist[name].painkillerduration
+				painkillerlist.countdown_increments=painkillerlist[name].countdown_increments
+				--printf("Original duration: %s",painkillerlist[name].painkillerduration)
+				painkillerlist.painkillerduration = painkillerlist[name].painkillerduration/painkillerlist.countdown_increments
+				--printf("Countdowns set. New duration: %s",painkillerlist.painkillerduration)
+				painkillerlist.lasttimestamp = time_global()
+			elseif painkillerlist.painkillerpower == painkillerlist[name].painkillerpower then
+				painkillerlist.countdown_increments=painkillerlist[name].countdown_increments
+				--printf("Original duration: %s",painkillerlist[name].painkillerduration)
+				painkillerlist.painkillerduration = painkillerlist[name].painkillerduration/painkillerlist.countdown_increments
+				--printf("Countdowns set. New duration: %s",painkillerlist.painkillerduration)
+				painkillerlist.lasttimestamp = time_global()
 			end
-			painkillerlist.lasttimestamp = time_global()
 			for k,v in pairs(health) do
 				local missinghealth = 0
 				if v < maxhp[k] then
@@ -2146,6 +2175,7 @@ local function actor_on_sleep(hours)
 		timedhp[k]=0
 		painkillerlist.painkillerpower = 0
 		painkillerlist.painkillerduration = 0
+		painkillerlist.countdown_increments=0
 		if painkiller_grain_shader then
 			level.remove_pp_effector(5020) 
 		end
@@ -2238,7 +2268,18 @@ local function actor_on_sleep(hours)
 end
 
 local function actor_on_item_use(obj,objname)
+	local sec = obj:section()
+	--printf("Used %s",objname)
 	--printf("%s used for %s",objname,obj)
+	local eat_health = ini_sys:r_float_ex(sec, "eat_health")
+	local eat_damage=eat_health * -1
+	--printf("It deals %s damage",eat_damage)
+	if eat_damage>=damage_threshold then
+		eat_damaged=true
+		--printf("Eating damage recorded")
+	else
+		--printf("Eating damage too low")
+	end
 	MedicineUsed(objname,health,timedheal,surgeryhp,0)
 	SaveHealthStatus()
 end
@@ -2349,7 +2390,7 @@ function on_game_start()
 	RegisterScriptCallback("actor_on_weapon_zoom_out",actor_on_weapon_zoom_out) 	-- xcvb
 	RegisterScriptCallback("actor_on_footstep",actor_on_footstep)									-- xcvb
 	RegisterScriptCallback("actor_on_sleep",actor_on_sleep)
-	RegisterScriptCallback("actor_on_before_hit_callback",actor_on_hit_callback)
+	RegisterScriptCallback("actor_on_hit_callback",actor_on_hit_callback)
 	RegisterScriptCallback("actor_on_update",actor_on_update)
 	RegisterScriptCallback("actor_on_before_death",actor_on_before_death)
 	RegisterScriptCallback("actor_on_item_use",actor_on_item_use)

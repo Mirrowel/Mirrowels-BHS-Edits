@@ -187,7 +187,7 @@ function artihealing_calculations()
 end
 
 function on_game_start()
-	if artefact_healing then
+	if artefact_healing and perk_based_artefacts then
 		RegisterScriptCallback("actor_on_first_update", check_chain_status)
 		RegisterScriptCallback("actor_on_first_update", artihealing_calculations)	-- TEST
 		RegisterScriptCallback("actor_on_update", actor_on_update)

@@ -107,12 +107,14 @@ function bhs_descr_str(obj, obj_sec)
 					arm_str = grey_clr .. gc("st_bhs_rightarm_str") .. color .. val_to_fkn_circles(val) .. " "
 				elseif limb == "rightleg" then
 					leg_str = grey_clr .. gc("st_bhs_rightleg_str") .. color .. val_to_fkn_circles(val) .. " "
-				elseif limb == "healtimer" then
+				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==2 then
 					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].healamount) .. gc("desc_over_sec") .. " "
+				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==1 then
+					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].head) .. gc("desc_over_sec") .. " "
 				elseif limb == "healpower" then
 					if val == 0 then text=gc("st_bhs_currhp")
 					else text = val*100 .. "%" end
-					healpower_str = grey_clr .. gc("st_bhs_upto") .. " " .. color .. text .. " max "
+					healpower_str = grey_clr .. gc("st_bhs_upto") .. " " .. color .. text .. " max. "
 				elseif limb == "painkillerpower" then
 					painkillerpower_str = grey_clr .. gc("st_bhs_painkillerlvl") .. " " .. color .. val
 				elseif limb == "painkillerduration" then
