@@ -9,7 +9,7 @@ Currently in active development to balance the items and the system.
 MORE UP-TO-DATE Description on Moddb page https://www.moddb.com/mods/stalker-anomaly/addons/bhs-realistic-overhaul
 
 All new items are sold by medics. Some new items also added to flea market and butcher's shop.
-As well as a lot of different traders that dont have medcs nearby.
+As well as a lot of different traders that don't have medics nearby.
 
 **MOD IS CONSTANTLY BEING DEVELOPED SO EXPECT CHANGES TO HAPPEN FREQUENTLY.**
 
@@ -36,7 +36,6 @@ As well as a lot of different traders that dont have medcs nearby.
 
 ## **Stuff i will add:**
   - More effects on limb damage. Instead of instadeath increase received damage, stuff like that - need ideas
-  - BHS screen in inventory(also adapt) - might need help to do that. Hopefully not as i like dynahud
   - Heal limbs one-by-one only like in EFT(maybe)
 
   Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
