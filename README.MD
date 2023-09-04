@@ -6,6 +6,11 @@ The github link: https://github.com/Mirrowel/Mirrowels-BHS-Edits
 
 Currently in active development to balance the items and the system.
 
+MORE UP-TO-DATE Description on Moddb page https://www.moddb.com/mods/stalker-anomaly/addons/bhs-realistic-overhaul
+
+All new items are sold by medics. Some new items also added to flea market and butcher's shop.
+As well as a lot of different traders that dont have medcs nearby.
+
 **MOD IS CONSTANTLY BEING DEVELOPED SO EXPECT CHANGES TO HAPPEN FREQUENTLY.**
 
 **An overview of the mod and plans below.**
@@ -26,10 +31,10 @@ Currently in active development to balance the items and the system.
   - Health multiplier to enable more gradual healing. Limb HP by default is 11 torso, head; 5 for the rest - kinda low. - Experimental. Realistically would do nothing but increase the number of HP steps so it looks smoother but makes it hard to see real HP
   - Weapon sway depending on arms damage and painkiller effect
   - Slower medkit usage and healing rate.
-
-## **Stuff i will add:**
   - Campfire heal for limbs(adapting script)
   - Artefact healing for limbs(same thing)
+
+## **Stuff i will add:**
   - More effects on limb damage. Instead of instadeath increase received damage, stuff like that - need ideas
   - BHS screen in inventory(also adapt) - might need help to do that. Hopefully not as i like dynahud
   - Heal limbs one-by-one only like in EFT(maybe)
@@ -37,11 +42,11 @@ Currently in active development to balance the items and the system.
   Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
 
 
-
-# Alright here is my first balancing attempt for meds:
+# Balancing for meds:
 - All medkits heal twice as slow. Overall they heal exactly the same amount, just slower. New time is 66.8 seconds.
 - Survival kit modified using same logic as medkits, but with radiation and healing boosted to match heal speed of basic medkit. New time is 90 seconds.
 - Rebirth modded to last twice as long. Same idea as medkits. New time is 14 seconds.
+- Bandages apply their effect instantly instead of over time.
 ## As for limb damage:
 Keep in mind these values: Legs and Arms have 10HP per limb. Torso and Head have 22HP per limb. 
 That is double of what basic BHS has to make 1HP matter less in the system making balancing easier.
@@ -65,14 +70,14 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 
 - ### Surgery system and kits:
 In order to restore a limb to 1 HP surgical tools are required.
-- Surgical tools: Slow use, restores one limb to be splinted in 10 seconds. One use and needs a bandage.
+- Surgical tools: Slow use, restores one limb to be splinted in 10 seconds. One use and needs a bandage. Will cause damage on use.
 - CMS: Slow use, 5 charges. Restores one limb to be splinted in 10 seconds. Can be configured to restore a limb without a splint required. More weight-efficient
 
 - ### Splints:
 - Splint: Slow use, restores a limb to full 1HP in 10 seconds. Once charge.
 - Aluminium splints: Slow use, restores a limb to full 1HP in 10 seconds. Three charges. More weight-efficient
 ---
-- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**)
+- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**) -OUTDATED
   - Morphine: 5 painkiller power for 305 seconds.
   - Rebirth: 5 painkiller power for 305 seconds.
   - Fentanyl: 3 painkiller power for 202 seconds.
