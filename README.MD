@@ -98,10 +98,14 @@ In order to restore a limb to 1 HP surgical tools are required.
   - Marijuana: 1 painkiller power for 652 seconds.
 
 # Latest changelog:
+## 0.63 Beta:
+- Dynamic item spawns,item rewards,new game loadouts DLTX item injection
+- Safe deletion utility to safely delete all new items
+- Loot injection for new items. Now they can be looted from bodies.
 ## Hotfix 0.6A:
 - Fixed mutant harvest animation
 - Added FDDA MCM unlocker for gamma users
-## Changelog 0.6 Beta:
+## 0.6 Beta:
 ### Additions and rebalancing:
 - Bandages and tourniquets now work instantly instead of over time.
 - Vodka's are now painkillers of different power.
