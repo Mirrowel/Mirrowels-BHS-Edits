@@ -33,10 +33,16 @@ local defaults = {
 	["CAMPFIRE_HEALING"] = true,
 	["CAMPFIRE_HEALING_POWER"] = 1,
 	["limb_heal_interval"] = 20,
+	["loot_coefficient"] = 1,
+	["safe_uninstall"] = false
 }
 
 function get_config(key)
 	if ui_mcm then return ui_mcm.get("body_health_system/"..key) else return defaults[key] end
+end
+
+function set_config(key, value)
+    if ui_mcm then ui_mcm.set("body_health_system/" .. key, value) end
 end
 
 function on_mcm_load()
@@ -86,6 +92,10 @@ function on_mcm_load()
 			{id = "limb_heal_interval",type = "input", val = 2, min = 1, max = 100, def = 20},
 			{id = "divider", type = "line"},
 			{id = "HEALTH_OG", type = "check", val = 1, def = false},
+			{id = "divider", type = "line"},
+			{id = "loot_coefficient", type = "track", val = 2, min = 0.0, max = 3.0, step = 0.1, def = 1.0 },
+			{id = "divider", type = "line"},
+			{id = "safe_uninstall", type = "check", val = 1, def = false}
 		}
 	}
 	

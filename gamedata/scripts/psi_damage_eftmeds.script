@@ -1,4 +1,4 @@
-if zzz_player_injuries then end
+if zzz_player_injuries.painkillerlist.painkillerpower then end
 
 local psy_mechanics = zzz_player_injuries_mcm.get_config("PSY_MECHANICS")
 

@@ -1,0 +1,151 @@
+local loot_coefficient = 1.0
+local safe_uninstall = false
+
+local itemlist={}
+itemlist.splint={
+    novice=0.03,
+    trainee=0.05,
+    experienced=0.03,
+    professional=0,
+    veteran=0,
+    expert=0,
+    master=0,
+    legend=0}
+itemlist.alu_splint={
+    novice=0,
+    trainee=0,
+    experienced=0.02,
+    professional=0.03,
+    veteran=0.04,
+    expert=0.05,
+    master=0.06,
+    legend=0.07}
+itemlist.analgin={
+    novice=0.1,
+    trainee=0.1,
+    experienced=0.08,
+    professional=0.07,
+    veteran=0.07,
+    expert=0.06,
+    master=0.05,
+    legend=0.05}
+itemlist.cms={
+    novice=0,
+    trainee=0,
+    experienced=0,
+    professional=0.03,
+    veteran=0.04,
+    expert=0.05,
+    master=0.06,
+    legend=0.07}
+itemlist.sj1={
+    novice=0.00,
+    trainee=0.00,
+    experienced=0.00,
+    professional=0.03,
+    veteran=0.05,
+    expert=0.07,
+    master=0.08,
+    legend=0.1}
+itemlist.sj6={
+    novice=0.00,
+    trainee=0.00,
+    experienced=0.00,
+    professional=0.00,
+    veteran=0.02,
+    expert=0.03,
+    master=0.06,
+    legend=0.08}
+itemlist.propital={
+    novice=0.00,
+    trainee=0.00,
+    experienced=0.00,
+    professional=0.03,
+    veteran=0.05,
+    expert=0.07,
+    master=0.08,
+    legend=0.1}
+itemlist.zagustin={
+    novice=0.00,
+    trainee=0.00,
+    experienced=0.00,
+    professional=0.03,
+    veteran=0.05,
+    expert=0.07,
+    master=0.08,
+    legend=0.1}
+itemlist.bandage_army={
+    novice=0.00,
+    trainee=0.00,
+    experienced=0.03,
+    professional=0.04,
+    veteran=0.05,
+    expert=0.06,
+    master=0.07,
+    legend=0.08}
+itemlist.surginst={
+    novice=0.03,
+    trainee=0.05,
+    experienced=0.05,
+    professional=0.03,
+    veteran=0.00,
+    expert=0.00,
+    master=0.00,
+    legend=0.00}
+
+function values(t)
+    local i = 0
+    return function() i = i + 1; return t[i] end
+end
+
+function delete_addon_items()
+    for i = 1, 65534 do
+        local obj = alife_object(i)
+        if obj then
+            for itemname in pairs(itemlist) do
+                if string.match(obj:name(), tostring(itemname)) then
+                    printf("Deleting %s, Itemname: %s", obj:name(), itemname)
+                    alife_release(obj)
+                    break
+                end
+            end
+        end
+    end
+end
+
+function on_option_change()
+    loot_coefficient = zzz_player_injuries_mcm.get_config("loot_coefficient")
+    safe_uninstall = zzz_player_injuries_mcm.get_config("safe_uninstall")
+
+    if safe_uninstall and level.present() then
+        delete_addon_items()
+        zzz_player_injuries_mcm.set_config("safe_uninstall", false)
+    end
+end
+
+function actor_on_first_update()
+    on_option_change()
+end
+
+local orig_spawn_cosmetics = death_manager.spawn_cosmetics
+function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+    orig_spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+    printf("BHSRO Possible spawns:")
+    for objname, rank in pairs(itemlist) do
+        local max_uses = SYS_GetParam(2, objname, "max_uses", 1)
+        local do_uses = math.random(max_uses)
+        local chance = (itemlist[objname][npc_rank] or 0.05) * loot_coefficient
+        if (chance>0) then
+            printf("Object: %s Chance: %s%",objname, itemlist[objname][npc_rank]*100)
+        end
+        if math.random() < chance then
+            printf("Spawned %s with %s uses",objname,do_uses)
+            alife_create_item(objname, npc, { ["uses"] = do_uses })
+        end
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

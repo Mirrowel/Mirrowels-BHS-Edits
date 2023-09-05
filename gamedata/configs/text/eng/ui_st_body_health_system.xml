@@ -24,25 +24,25 @@
 		<text>New Limb Penalties feature</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
-		<text>(Reloading required) Enabling this activates new penalties feature. Disabling returns old BHS penalties.</text>
+		<text>(Reloading required) Enabling this activates new penalties feature. \nDisabling returns old BHS penalties.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds">
 		<text>New voice for penalties</text>
 	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
-		<text>Enabling this activates new voice during sprint with damaged legs. Disabling returns voice from original mod.</text>
+		<text>Enabling this activates new voice during sprint with damaged legs. \nDisabling returns voice from original mod.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp">
 		<text>Minimum Leg HP for camera sway penalty</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
-		<text>HP of at least one leg must be below this value to play effects. Default slider value of 5 means that effects will play at 4 or less HP. (Movement speed penalty will still be there, for now)</text>
+		<text>HP of at least one leg must be below this value to play effects. \nDefault slider value of 5 means that effects will play at 4 or less HP. (Movement speed penalty will still be there, for now)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp">
 		<text>Minimum Leg HP for damage during sprint</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp_desc">
-		<text>Sprint with damaged leg has a chance to deal damage. This slider sets the minimum amount of leg HP needed to play this effect, i.e. if slider is 4 and leg HP is 4 then effect will be active. (Value of -1 disables the feature)</text>
+		<text>Sprint with damaged leg has a chance to deal damage. \nThis slider sets the minimum amount of leg HP needed to play this effect, i.e. if slider is 4 and leg HP is 4 then effect will be active. (Value of -1 disables the feature)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_animation_power">
 		<text>Legs Camera Effects Power</text>
@@ -54,7 +54,7 @@
 		<text>Minimum Arms HP for penalties</text>
 	</string>
 	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp_desc">
-		<text>Summary Arms HP must be below this value to play effects. Default slider value of 10 means that effects will play if both arms have 9 or less HP.</text>
+		<text>Summary Arms HP must be below this value to play effects. \nDefault slider value of 10 means that effects will play if both arms have 9 or less HP.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_arm_animation_power">
 		<text>Arms Effects Power</text>
@@ -76,19 +76,19 @@
 	</string>
 
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
-		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game.\n YOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW. SOME SETTINGS MAY REQUIRE A FULL RESTART</text>
+		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game.\nYOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW. SOME SETTINGS MAY REQUIRE A FULL RESTART</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Natural healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
-		<text>Damaged body parts will heal VERY slowly on their own.\nCannot heal over % of your main HP. Default is 1 limb HP every 5 minutes</text>
+		<text>Damaged body parts will heal VERY slowly on their own.\nCannot heal over % of your main HP. \nDefault is 1 limb HP every 5 minutes</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed">
 		<text>Natural healing speed</text>
 	</string>
 	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
-		<text>Multiplier for natural regeneration. Higher is faster. Healing time is divided by this number.</text>
+		<text>Multiplier for natural regeneration. Higher is faster. \nHealing time is divided by this number.</text>
 	</string>
 
 	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
@@ -102,7 +102,7 @@
 		<text>Medkit healing logic</text>
 	</string>
 	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC_desc">
-		<text>Medkits heal all limbs at once for one HP at a time (easier) OR medkits heal most damaged limb first one HP at a time (Intended default). </text>
+		<text>Medkits heal all limbs at once for one HP at a time (easier) \nOR medkits heal most damaged limb first one HP at a time (Intended default). </text>
 	</string>
 	<string id="ui_mcm_lst_MEDKITS_ALL_HEAL">
 		<text>Medkits heal all limbs at once</text>
@@ -114,7 +114,7 @@
 		<text>Rebirth healing logic</text>
 	</string>
 	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC_desc">
-		<text>Rebirth heals all limbs at once for one HP at a time (easier) OR rebirth heals most damaged limb first one HP at a time (Intended default). </text>
+		<text>Rebirth heals all limbs at once for one HP at a time (easier) \nOR rebirth heals most damaged limb first one HP at a time (Intended default). </text>
 	</string>
 	<string id="ui_mcm_lst_REBIRTH_ALL_HEAL">
 		<text>Rebirth heals all limbs at once</text>
@@ -127,13 +127,13 @@
 		<text>Surgery mechanic </text>
 	</string>
 	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
-		<text>Destroyed limbs(Reached 0 HP) require surgery via surgical tools or surgical kit first to be healed. Does not prevent painkillers from working</text>
+		<text>Destroyed limbs(Reached 0 HP) require surgery via surgical tools or surgical kit first to be healed. \nDoes not prevent painkillers from working</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
 		<text>Surgery tools repair only one limb</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
-		<text>Surgery tools repair their set amount of HP instantly and on one limb only. Have to enable this for CMS to be able to heal more than one HP on a limb</text>
+		<text>Surgery tools repair their set amount of HP instantly and on one limb only. \nHave to enable this for CMS to be able to heal more than one HP on a limb</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
 		<text>Surgery heals by itself (ENABLED IF SPLINTING IS DISABLED BUT SURGERY ENABLED)</text>
@@ -145,14 +145,14 @@
 		<text>CMS like tarkov</text>
 	</string>
 	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO_desc">
-		<text>Allows CMS kit to restore limbs to 40% of hp instead of just repairing them to be splinted. Only works for CMS kit.</text>
+		<text>Allows CMS kit to restore limbs to 40% of hp instead of just repairing them to be splinted. \nOnly works for CMS kit.</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_SPLINTING">
 		<text>Broken limb mechanic</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SPLINTING_desc">
-		<text>Limbs repaired with surgery require a splint first to be healed. Does not prevent painkillers from working. </text>
+		<text>Limbs repaired with surgery require a splint first to be healed. \nDoes not prevent painkillers from working. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
 		<text>Bandage is splint</text>
@@ -177,23 +177,20 @@
 		<text>Medicine psy effects(Voiced actor)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_PSY_MECHANICS_desc">
-		<text>Medicine can cause or heal psy damage. Currently only SJ injectors psy effects are implemented.\n
-		SJ injectors decrease maximum psy health causing hallucinations but also increase psy resistance and regeneration.\n
-		Works by default for GAMMA. Otherwise requires Voiced Actor mod.\n
-		If script is not found nothing happens. Disable only if you dont like psi damage from meds.</text>
+		<text>Medicine can cause or heal psy damage. Currently only SJ injectors psy effects are implemented.\nSJ injectors decrease maximum psy health causing hallucinations but also increase psy resistance and regeneration.\nWorks by default for GAMMA. Otherwise requires Voiced Actor mod.\nIf script is not found nothing happens. Disable only if you dont like psi damage from meds.</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
 		<text>Sleep healing</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_desc">
-		<text>Sleeping regenerates damage to limbs. Healing speed and mechanic can be adjusted below. Cannot heal over % of your main HP. </text>
+		<text>Sleeping regenerates damage to limbs. Healing speed and mechanic can be adjusted below. \nCannot heal over % of your main HP. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL">
 		<text>New sleeping heal logic</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL_desc">
-		<text>In original BHS every limb got healed one HP per hour of sleep. This heals most damaged limb one HP at a time per hour(can be adjusted). </text>
+		<text>In original BHS every limb got healed one HP per hour of sleep. \nThis heals most damaged limb one HP at a time per hour(can be adjusted). </text>
 	</string>
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER">
 		<text>Sleeping heal rate</text>
@@ -206,8 +203,7 @@
 		<text>Artefacts can regenerate Limbs</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
-		<text>(ONLY COMPATIBLE WITH GAMMA BY DEFAULT. LOOK UP MOD PAGE ON HOW TO EDIT THE VALUES)\n
-		If an artefact posesses healing properties it will also slowly regenerate limbs up to current HP level. </text>
+		<text>(ONLY COMPATIBLE WITH GAMMA BY DEFAULT. LOOK UP MOD PAGE ON HOW TO EDIT THE VALUES)\nIf an artefact posesses healing properties it will also slowly regenerate limbs up to current HP level. </text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
 		<text>Artefact healing speed multiplier (Higher=Faster)</text>
@@ -226,15 +222,28 @@
 		<text>Time between heal (seconds)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
-		<text>The amount of time for a limb to heal by one tick (in seconds). Press ENTER after typing your desired value. </text>
+		<text>The amount of time for a limb to heal by one tick (in seconds). \nPress ENTER after typing your desired value. </text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_HEALTH_OG">
 		<text>Restore health values to default BHS ones</text>
 	</string>
 	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
-		<text>Restores values to how they were in default BHS. Does nothing but decrease the amount of health steps on the UI. </text>
+		<text>Restores values to how they were in default BHS. \nDoes nothing but decrease the amount of health steps on the UI. </text>
 	</string>
 
+
+	<string id="ui_mcm_body_health_system_loot_coefficient">
+		<text>Loot Chance Coefficient</text>
+	</string>
+	<string id="ui_mcm_body_health_system_loot_coefficient_desc">
+		<text>Multiplier for new meds drop chance.\nDefault value - 1.0</text>
+	</string>
+	<string id="ui_mcm_body_health_system_safe_uninstall">
+		<text>Delete all addon related items (for safe uninstall)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_safe_uninstall_desc">
+		<text>This option makes it possible to safely uninstall the addon.\n1) Enable it\n2) Load a game if you haven't already\n3) Make sure all items were removed\n4) Make a save, exit and disable the addon</text>
+	</string>
 
 </string_table>
