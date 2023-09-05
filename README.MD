@@ -8,9 +8,6 @@ Currently in active development to balance the items and the system.
 
 MORE UP-TO-DATE Description on Moddb page https://www.moddb.com/mods/stalker-anomaly/addons/bhs-realistic-overhaul
 
-All new items are sold by medics. Some new items also added to flea market and butcher's shop.
-As well as a lot of different traders that don't have medics nearby.
-
 **MOD IS CONSTANTLY BEING DEVELOPED SO EXPECT CHANGES TO HAPPEN FREQUENTLY.**
 
 **An overview of the mod and plans below.**
@@ -28,7 +25,7 @@ As well as a lot of different traders that don't have medics nearby.
   - Medkits either heal all parts at once OR they heal set amount of HP, going one HP at a time for the lowest HP limb(potentially more efficient, which makes a lot of sense).
   - Broken limb system. If HP of the limb reaches 0 you need to use a surgical kit, then splint with a splint(all configurable and can turn off).
   - Reworked sleep healing to heal more logically(you heal lowest limbs first). Can disable that.
-  - Health multiplier to enable more gradual healing. Limb HP by default is 11 torso, head; 5 for the rest - kinda low. - Experimental. Realistically would do nothing but increase the number of HP steps so it looks smoother but makes it hard to see real HP
+  - Health multiplier to enable more gradual healing. Limb HP by default is 11 torso, head; 5 for the rest - kinda low. - Experimental. Realistically would do nothing but increase the number of HP steps so it looks smoother but makes it hard to see real HP -- UNSUPPORTED - TOO MANY PROBLEMS
   - Weapon sway depending on arms damage and painkiller effect
   - Slower medkit usage and healing rate.
   - Campfire heal for limbs(adapting script)
@@ -38,8 +35,12 @@ As well as a lot of different traders that don't have medics nearby.
   - More effects on limb damage. Instead of instadeath increase received damage, stuff like that - need ideas
   - Heal limbs one-by-one only like in EFT(maybe)
 
+All new items are sold by medics. Some new items also added to flea market and butcher's shop.
+As well as a lot of different traders that don't have medics nearby.
+
 Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
 
+Suggestions and ideas related to BHS are appreciated, as i myself am trying to figure out how to balance things out.
 
 # Balancing for meds:
 - All medkits heal twice as slow. Overall they heal exactly the same amount, just slower. New time is 66.8 seconds.
@@ -73,7 +74,7 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 ---
 - ### Splints:
   - Splint: Slow use, restores a limb to full 1HP in 10 seconds. One charge.
-  - Aluminum splints: Slow use, restores a limb to full 1HP in 10 seconds. Three charges. More weight-efficient
+  - Aluminium splint: Slow use, restores a limb to full 1HP in 10 seconds. Three charges. More weight-efficient
 ---
 - ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**)
   - Morphine: 9 painkiller power for 305 seconds.
@@ -98,6 +99,11 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
   - Bottled vodkas: 1 painkiller power for 300 seconds.
   - Quality vodka: 2 painkiller power for 300 seconds.
   - Zone vodka(bottle_metal): 2 painkiller power for 300 seconds.
+---
+**Credits:**
+- bvcx for detailed item descriptions mod.
+- ilrathCXV for campfire and artefact healing scripts.
+- DokBrok for BHS Evolution mod that inspired this one.
 ---
 # Latest changelog:
 ## 0.63 Beta:
