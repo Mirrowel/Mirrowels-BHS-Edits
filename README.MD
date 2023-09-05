@@ -38,7 +38,7 @@ As well as a lot of different traders that don't have medics nearby.
   - More effects on limb damage. Instead of instadeath increase received damage, stuff like that - need ideas
   - Heal limbs one-by-one only like in EFT(maybe)
 
-  Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
+Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
 
 
 # Balancing for meds:
@@ -61,42 +61,44 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
   - Rebirth: 63 HP total over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
   - Propital: 30 HP total over 180 seconds. Cant heal over your HP level.
 ---
-- ### Heal All System(Healing one HP at a time for all limbs):
+- ### Heal All System(Healing one HP at a time for all limbs) - LEGACY:
   - Basic medkit: Head/Torso - 11 HP, Legs/Arms - 5 HP total over the duration. Can heal two arms/legs to full or torso/head once
   - Army and Cheese: Head/Torso - 16 HP, Legs/Arms - 7 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
   - Stimpacks: Mirror what medkits heal over their duration, but faster.
   - Rebirth: Head/Torso - 22 HP, Legs/Arms - 10 HP over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-
-- ### Surgery system and kits:
-In order to restore a limb to 1 HP surgical tools are required.
-- Surgical tools: Slow use, restores one limb to be splinted in 10 seconds. One use and needs a bandage. Will cause damage on use.
-- CMS: Slow use, 5 charges. Restores one limb to be splinted in 10 seconds. Can be configured to restore a limb without a splint required. More weight-efficient
-
-- ### Splints:
-- Splint: Slow use, restores a limb to full 1HP in 10 seconds. Once charge.
-- Aluminium splints: Slow use, restores a limb to full 1HP in 10 seconds. Three charges. More weight-efficient
 ---
-- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**) -OUTDATED
-  - Morphine: 5 painkiller power for 305 seconds.
-  - Rebirth: 5 painkiller power for 305 seconds.
-  - Fentanyl: 3 painkiller power for 202 seconds.
-  - SJ6 stimulator: 5 painkiller power for 600 seconds.
-  - SJ1 stimulator: 3 painkiller power for 600 seconds.
-  - Analgin painkiller: 1 painkiller power for 180 seconds.
-  - Salicidic acid: 3 painkiller power for 152 seconds.
-  - Analgetic(Diclofenac Sodium): 2 painkiller power for 305 seconds.
-  - Ibuprofen: 2 painkiller power for 290 seconds.
-  - Yadulin: 2 painkiller power for 505 seconds.
-  - Adrenalin(Epinephrine): 1 painkiller power for 2184 seconds.
-  - Army Medkit: 3 painkiller power for 128 seconds.
-  - Cheese Medkit: 2 painkiller power for 128 seconds.
-  - Stimpack: 1 painkiller power for 64 seconds.
-  - Army Stimpack: 3 painkiller power for 128 seconds.
-  - Sci Stimpack: 1 painkiller power for 128 seconds.
-  - Cocaine: 1 painkiller power for 1644 seconds.
+- ### Surgery system and kits(In order to restore a limb to 1 HP surgical tools are required):
+  - Surgical tools: Slow use, restores one limb to be splinted in 10 seconds. One use and needs a bandage. Will cause damage on use.
+  - CMS: Slow use, 5 charges. Restores one limb to be splinted in 10 seconds. Can be configured to restore a limb without a splint required. More weight-efficient
+---
+- ### Splints:
+  - Splint: Slow use, restores a limb to full 1HP in 10 seconds. One charge.
+  - Aluminum splints: Slow use, restores a limb to full 1HP in 10 seconds. Three charges. More weight-efficient
+---
+- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**)
+  - Morphine: 9 painkiller power for 305 seconds.
+  - Rebirth: 9 painkiller power for 305 seconds.
+  - Salicidic acid: 7 painkiller power for 180 seconds.
+  - Fentanyl: 4 painkiller power for 202 seconds.
+  - Analgetic(Diclofenac Sodium): 5 painkiller power for 305 seconds.
+  - SJ6 stimulator: 7 painkiller power for 600 seconds.
+  - SJ1 stimulator: 4 painkiller power for 600 seconds.
+  - Analgin painkiller: 2 painkiller power for 180 seconds.
+  - Ibuprofen: 4 painkiller power for 290 seconds.
+  - Yadulin: 4 painkiller power for 505 seconds.
+  - Adrenalin(Epinephrine): 2 painkiller power for 2184 seconds.
+  - Army Medkit: 4 painkiller power for 128 seconds.
+  - Cheese Medkit: 3 painkiller power for 128 seconds.
+  - Stimpack: 2 painkiller power for 128 seconds.
+  - Army Stimpack: 4 painkiller power for 128 seconds.
+  - Sci Stimpack: 3 painkiller power for 128 seconds.
+  - Cocaine: 2 painkiller power for 1644 seconds.
   - Joint: 1 painkiller power for 420 seconds.
   - Marijuana: 1 painkiller power for 652 seconds.
-
+  - Bottled vodkas: 1 painkiller power for 300 seconds.
+  - Quality vodka: 2 painkiller power for 300 seconds.
+  - Zone vodka(bottle_metal): 2 painkiller power for 300 seconds.
+---
 # Latest changelog:
 ## 0.63 Beta:
 - Dynamic item spawns,item rewards,new game loadouts DLTX item injection
