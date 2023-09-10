@@ -122,6 +122,7 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 - Update hit detection to more accurately tell what limb was hit.
 - Removed legacy features.
 - Grok's Actor Damage Balancer and Progressive Rad Damages compatibility patches.(Gamma requires both)
+- Non-medical enhanced animations separated into a sister mod. FDDA enhanced animations.
 ### Fixes:
 - Fixed FDDA anims crash. Mod is fully DLTX now.
 - Fixed arm/legs minimal hp settings to correctly apply.
