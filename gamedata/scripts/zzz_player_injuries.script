@@ -1733,6 +1733,9 @@ local function actor_on_footstep(material,power,hud_view,flags)
 			state_cooldown = time_global() + cooldown
 
 			actor_health = db.actor.health
+			if bhs_exp_mode then
+				hit_power = hit_power *0.25
+			end
 			actor_health_reduced = actor_health - hit_power
 			db.actor:set_health_ex(actor_health_reduced)
 			--hit.type="Fracture"
@@ -2284,6 +2287,7 @@ end
 
 local function actor_on_before_death(whoID,flags)
     if bhs_exp_mode and not hit.death and arszi_psy.get_psy_health() > 0 then
+		printf("!Death prevented")
 		db.actor.health=myhealth
 		flags.ret_value = false
 		return
