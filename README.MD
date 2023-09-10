@@ -10,6 +10,8 @@ MORE UP-TO-DATE Description on Moddb page https://www.moddb.com/mods/stalker-ano
 
 **MOD IS CONSTANTLY BEING DEVELOPED SO EXPECT CHANGES TO HAPPEN FREQUENTLY.**
 
+**NOW INCLUDES AN EXPERIMENTL TARKOV-LIKE HP SYSTEM. READ 0.8 CHANGELOG FOR MORE INFO**
+
 **An overview of the mod and plans below.**
 # General points:
 ## The goals of the mod:
