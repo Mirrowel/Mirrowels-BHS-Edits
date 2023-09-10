@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+	<text>Sistema De Salud Corporal</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Sistema De Salud Corporal</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH">
+		<text>Reemplazador De HUD De Texto</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TEXT_BASED_PATCH_desc">
+		<text>(Se Requiere Recarga) Versiуn De Texto Del HUD.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
+		<text>Nueva caracterнstica de penalizaciones de extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
+		<text>(Se requiere recarga) Habilitar esto activa la nueva funciуn de penalizaciones. Deshabilitarlo devuelve las penalizaciones BHS antiguas.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds">
+		<text>Nueva voz para las penalizaciones</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
+		<text>Habilitando esto se activa la nueva voz durante el sprint con piernas daсadas. Desactivando vuelve la voz del mod original.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp">
+		<text>HP mнnimo de pierna para la penalizaciуn por balanceo de cбmara</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
+		<text>El HP de al menos una pierna debe estar por debajo de este valor para reproducir efectos. El valor predeterminado del control deslizante de 5 significa que los efectos se ejecutarбn con 4 o menos HP. (La penalizaciуn de velocidad de movimiento seguirб ahн, por ahora)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp">
+		<text>HP mнnimo de la pierna para el daсo durante el sprint</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp_desc">
+		<text>La pisada con la pierna daсada tiene una probabilidad de infligir daсo. Este deslizador establece la cantidad mнnima de HP de la pierna necesaria para activar este efecto, es decir, si el deslizador es 4 y el HP de la pierna es 4, el efecto se activarб. (Un valor de -1 desactiva la funciуn)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power">
+		<text>Potencia de efectos de cбmara de las piernas</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_animation_power_desc">
+		<text>Multiplicador de la penalizaciуn de las piernas por efecto de cбmara. Por defecto: 1,0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp">
+		<text>HP mнnimo de brazos para las penalizaciones</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp_desc">
+		<text>Summary Los HP de los brazos deben estar por debajo de este valor para reproducir efectos. El valor predeterminado del control deslizante de 10 significa que los efectos se reproducirбn si ambos brazos tienen 9 o menos HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power">
+		<text>Potencia de efectos de los brazos</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_animation_power_desc">
+		<text>Multiplicador de la potencia de efectos de penalizaciуn de armas. Por defecto: 1,0.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp">
+		<text>Daсo mнnimo en la cabeza para las penalizaciones</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_penalty_minimum_hp_desc">
+	<text>Daсo necesario para reproducir efectos. Por ejemplo, el valor predeterminado del control deslizante de 2 significa que cada daсo por disparo en la cabeza debe ser de 2 o mбs HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power">
+		<text>Potencia de efectos en la cabeza</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_animation_power_desc">
+		<text>Multiplicador de la potencia del efecto de penalizaciуn de la cabeza. Por defecto: 1,0.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
+		<text>Nuevas opciones de la revisiуn realista de BHS. Dejar por defecto para la forma preferida de jugar el juego.\n TIENES QUE VOLVER A CARGAR EL JUEGO DESPUЙS DE CAMBIAR CUALQUIER AJUSTE DEBAJO</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
+		<text>Curaciуn natural</text>
+	</string>
+	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION_desc">
+		<text>Las partes del cuerpo daсadas se curarбn MUY lentamente por sн solas. No se pueden curar por encima del % de tu HP principal. Por defecto es 1 HP de miembro cada 5 minutos</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regeneration_speed">
+		<text>Velocidad de curaciуn natural y por artefacto</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regeneration_speed_desc">
+		<text>Acelera o ralentiza la curaciуn natural y la curaciуn de artefactos. Mбs alto es mбs rбpido, el tiempo de curaciуn se divide por este nъmero.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER">
+		<text>Sombreador de grano de Painkiller</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PAINKILLER_GRAIN_SHADER_desc">
+		<text>Cuando tomas un objeto mйdico con efecto analgйsico, la pantalla se vuelve granulada (igual que cuando estбs en una zona de radiaciуn)</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC">
+		<text>Lуgica de curaciуn del Medkit</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKITS_HEAL_LOGIC_desc">
+		<text>Los botiquines curan todos los miembros a la vez por un HP a la vez (mбs fбcil) O los botiquines curan primero el miembro mбs daсado por un HP a la vez (Predeterminado). </text>
+	</string>
+	<string id="ui_mcm_lst_MEDKITS_ALL_HEAL">
+		<text>Los kits mйdicos curan todas las extremidades a la vez</text>
+	</string>
+	<string id="ui_mcm_lst_MEDKITS_ONE_HEAL">
+		<text>Los kits mйdicos curan un HP cada vez, primero el miembro mбs daсado</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC">
+		<text>Lуgica de curaciуn de renacimiento</text>
+	</string>
+	<string id="ui_mcm_body_health_system_REBIRTH_HEAL_LOGIC_desc">
+		<text>Renacimiento cura todas las extremidades a la vez por un HP a la vez (mбs fбcil) O renacimiento cura la extremidad mбs daсada primero un HP a la vez (Predeterminado). </text>
+	</string>
+	<string id="ui_mcm_lst_REBIRTH_ALL_HEAL">
+		<text>Rebirth cura todas las extremidades a la vez</text>
+	</string>
+	<string id="ui_mcm_lst_REBIRTH_ONE_HEAL">
+		<text>Rebirth cura un HP cada vez, la extremidad mбs daсada primero</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_USE_SURGERY">
+		<text>Mecбnica de cirugнa</text>
+	</string>
+	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
+		<text>Las extremidades destruidas(Alcanzado 0 HP) requieren cirugнa mediante herramientas quirъrgicas o kit quirъrgico primero para ser curadas. No impide que los analgйsicos hagan efecto</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
+		<text>Las herramientas de cirugнa sуlo reparan una extremidad</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
+		<text>Las herramientas de cirugнa reparan la cantidad de PS instantбneamente y sуlo en una extremidad. Tienes que activar esto para que CMS pueda curar mбs de un HP en una extremidad</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
+		<text>La cirugнa se cura por sн sola (HABILITADO SI LA ESPINILLACIУN ESTБ DESHABILITADA PERO LA CIRUGНA HABILITADA)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SURGERY_HEALS_desc">
+		<text>Las herramientas de cirugнa curan en lugar de reparar HP, eliminando efectivamente la mecбnica de entablillado.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO">
+		<text>CMS como tarkov</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CMS_RESTORES_HP_TOO_desc">
+		<text>Permite al kit CMS restaurar extremidades al 40% de hp en lugar de solo repararlas para entablillarlas. Sуlo funciona para el kit CMS.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_SPLINTING">
+		<text>Mecбnica de extremidades rotas</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SPLINTING_desc">
+		<text>Los miembros reparados con cirugнa requieren una fйrula primero para curarse. No impide el efecto de los analgйsicos. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT">
+		<text>El vendaje es una fйrula</text>
+	</string>
+	<string id="ui_mcm_body_health_system_BANDAGE_IS_SPLINT_desc">
+		<text>Con esta opciуn activada, el vendaje fija una extremidad rota.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT">
+		<text>El torniquete es una fйrula</text>
+	</string>
+	<string id="ui_mcm_body_health_system_TOURNIQUET_IS_SPLINT_desc">
+		<text>Con esta opciуn activada, el torniquete fija un miembro roto.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT">
+		<text>Los kits mйdicos tambiйn entablillan los miembros rotos</text>
+	</string>
+	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
+		<text>Los Medkits ignoran la mecбnica de miembro roto y curan los miembros de todos modos. Piensa en esto como si una fйrula estuviera contenida en un medkit (vaya, tarkov). </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
+		<text>Curaciуn del sueсo</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_desc">
+		<text>Dormir regenera el daсo de las extremidades. La velocidad de curaciуn y la mecбnica se pueden ajustar a continuaciуn. No puede curar por encima del % de tu HP principal. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL">
+		<text>Nueva lуgica de curaciуn al dormir</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_LOGICAL_desc">
+		<text>En el BHS original cada miembro se curaba un HP por hora de sueсo. Esto cura la mayorнa de los miembros daсados un HP a la vez por hora (se puede ajustar). </text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER">
+		<text>Tasa de curaciуn al dormir</text>
+	</string>
+	<string id="ui_mcm_body_health_system_SLEEP_HEALS_POWER_desc">
+		<text>Multiplicador de la tasa de curaciуn al dormir. </text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
+		<text>Artefactos pueden regenerar extremidades (SOLO COMPATIBLE CON GAMMA POR DEFECTO. CONSULTA LA PБGINA MOD PARA VER CУMO EDITAR LOS VALORES)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
+		<text>Si un artefacto posee propiedades curativas, tambiйn regenerarб lentamente los miembros hasta el nivel de HP actual. </text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
+		<text>Multiplicador de velocidad de curaciуn de artefactos (Mayor=Mбs rбpido)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER_desc">
+		<text>Ajusta la velocidad de regeneraciуn de los artefactos con este multiplicador. </text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING">
+		<text>Las hogueras pueden regenerar extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING_desc">
+		<text>Las hogueras pueden regenerar extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval">
+		<text>Tiempo entre curaciones (segundos)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
+		<text>La cantidad de tiempo para que una extremidad se cure en un tick (en segundos). Pulsa ENTER despuйs de escribir el valor deseado. </text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_HEALTH_OG">
+		<text>Restaura los valores de salud a los predeterminados de BHS.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
+		<text>Restaura los valores a como estaban en el BHS por defecto. No hace nada mбs que disminuir la cantidad de pasos de salud en la interfaz de usuario. </text>
+	</string>
+
+
+</string_table>

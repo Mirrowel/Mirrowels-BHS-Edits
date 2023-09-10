@@ -18,7 +18,7 @@ end
 
 BuildFooter = ui_item.build_desc_footer
 function ui_item.build_desc_footer(obj, sec, str)
-	if zzz_player_injuries.healonelist[sec] or zzz_player_injuries.healhelplist[sec] or zzz_player_injuries.painkillerlist[sec] or zzz_player_injuries.surgerylist[sec] or zzz_player_injuries.splintlist[sec] then
+	if zzz_player_injuries.healonelist[sec] or zzz_player_injuries.healhelplist[sec] or zzz_player_injuries.painkillerlist[sec] or zzz_player_injuries.surgerylist[sec] or zzz_player_injuries.splintlist[sec] or (zzz_player_injuries.bhs_exp_mode and zzz_player_injuries.exp_druglist[sec]) then
 		printf("Changed desc for %s", sec)
 		str = str or gc(ini_sys:r_string_ex(sec, "description"))
 		if (not str) then return "" end
@@ -69,19 +69,6 @@ function bhs_descr_str(obj, obj_sec)
 	local yel_clr = strformat("%c[%s,%s,%s,%s]", 0, 252, 186, 3)
 	local grey_clr = utils_xml.get_color("ui_gray_2")
 
-	-- get circles/number for string
-	local function val_to_fkn_circles(val)
-		local circles = ""
-		if val >= bhs_display_numeric_at or bhs_show_numeric_always then
-			return val
-		elseif val > 0 then
-			for i = 1, val do
-				circles = circles .. gc("st_bhs_mihail_krug")
-			end
-		end
-		return circles
-	end
-
 	-- get string
 	local function build_string(t_name, sec, color)
 		local hphealed_str = ""
@@ -95,22 +82,24 @@ function bhs_descr_str(obj, obj_sec)
 		local painkillerdur_str = ""
 		local splint_str = ""
 		local surgery_str = ""
+		local restore_str = ""
+		local restoretime_str = ""
 		if sec and t_name[sec] then
 			for limb, val in pairs(t_name[sec]) do
 				if limb == "healamount" then
-					hphealed_str = grey_clr .. color .. "+" .. val .. "HP"
+					hphealed_str = grey_clr .. color .. "+" .. val .. " " .. gc("st_bhs_limb_hp")
 				elseif limb == "head" then
-					head_str = grey_clr .. gc("st_bhs_head_str") .. color .. val_to_fkn_circles(val) .. " "
+					head_str = grey_clr .. gc("st_bhs_head_str") .. color .. (val) .. "%" .. " "
 				elseif limb == "torso" then
-					torso_str = grey_clr .. gc("st_bhs_torso_str") .. color .. val_to_fkn_circles(val) .. " "
+					torso_str = grey_clr .. gc("st_bhs_torso_str") .. color .. (val) .. "%" .. " "
 				elseif limb == "rightarm" then
-					arm_str = grey_clr .. gc("st_bhs_rightarm_str") .. color .. val_to_fkn_circles(val) .. " "
+					arm_str = grey_clr .. gc("st_bhs_rightarm_str") .. color .. (val) .. "%" .. " "
 				elseif limb == "rightleg" then
-					leg_str = grey_clr .. gc("st_bhs_rightleg_str") .. color .. val_to_fkn_circles(val) .. " "
+					leg_str = grey_clr .. gc("st_bhs_rightleg_str") .. color .. (val) .. "%" .. " "
 				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==2 then
-					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].healamount) .. gc("desc_over_sec") .. " "
+					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].healamount) .. " " .. gc("desc_over_sec") .. " "
 				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==1 then
-					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].head) .. gc("desc_over_sec") .. " "
+					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].head) .. " " .. gc("desc_over_sec") .. " "
 				elseif limb == "healpower" then
 					if val == 0 then text=gc("st_bhs_currhp")
 					else text = val*100 .. "%" end
@@ -118,16 +107,20 @@ function bhs_descr_str(obj, obj_sec)
 				elseif limb == "painkillerpower" then
 					painkillerpower_str = grey_clr .. gc("st_bhs_painkillerlvl") .. " " .. color .. val
 				elseif limb == "painkillerduration" then
-					painkillerdur_str = grey_clr .. gc("st_bhs_for") .. " " .. color .. (val / 1000) .. gc("desc_over_sec")
+					painkillerdur_str = grey_clr .. gc("st_bhs_for") .. " " .. color .. (val / 1000) .. " " .. gc("desc_over_sec")
 				elseif limb == "splintamount" then
 					splint_str = grey_clr .. gc("st_bhs_splints") .. " "
 				elseif limb == "surgeryamount" then
 					surgery_str = grey_clr .. gc("st_bhs_surgerys") .. " "	
+				elseif limb == "restorepower" then
+					restore_str = grey_clr .. color .. (val*ini_sys:r_float_ex(sec, "boost_time"))*100 .. "%" .. " " .. gc("st_bhs_main_hp")	
+				elseif limb == "restoretime" then
+					restoretime_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. val .. " " .. gc("desc_over_sec") .. " "
 				end
 			end
 		end
 		--local main_string = head_str .. torso_str .. arm_str .. leg_str .. (timeregen_str ~= "" and (" " .. timeregen_str) or "")
-		local main_string = (hphealed_str ~= "" and (" " .. hphealed_str) or "") .. (timeregen_str ~= "" and (" " .. timeregen_str) or "") .. (healpower_str ~= "" and (" " .. healpower_str) or "") .. (head_str ~= "" and (" " .. head_str) or "") .. (torso_str ~= "" and (" " .. torso_str) or "") .. (arm_str ~= "" and (" " .. arm_str) or "") .. (leg_str ~= "" and (" " .. leg_str) or "") .. (painkillerpower_str ~= "" and (" " .. painkillerpower_str) or "") .. (painkillerdur_str ~= "" and (" " .. painkillerdur_str) or "") .. (surgery_str ~= "" and (" " .. surgery_str) or "") .. (splint_str ~= "" and (" " .. splint_str) or "")
+		local main_string = (hphealed_str ~= "" and (" " .. hphealed_str) or "") .. (timeregen_str ~= "" and (" " .. timeregen_str) or "") .. (healpower_str ~= "" and (" " .. healpower_str) or "") .. (head_str ~= "" and (" " .. head_str) or "") .. (torso_str ~= "" and (" " .. torso_str) or "") .. (arm_str ~= "" and (" " .. arm_str) or "") .. (leg_str ~= "" and (" " .. leg_str) or "") .. (painkillerpower_str ~= "" and (" " .. painkillerpower_str) or "") .. (painkillerdur_str ~= "" and (" " .. painkillerdur_str) or "") .. (surgery_str ~= "" and (" " .. surgery_str) or "") .. (splint_str ~= "" and (" " .. splint_str) or "") .. (restore_str ~= "" and (" " .. restore_str) or "") .. (restoretime_str ~= "" and (" " .. restoretime_str) or "")
 --		printf("main_string: [%s]", main_string)
 		return main_string
 	end
@@ -142,12 +135,16 @@ function bhs_descr_str(obj, obj_sec)
 	local splints_str = build_string(zzz_player_injuries.splintlist, obj_sec, blue_clr)
 	local painkillers_pre = "  " .. yel_clr .. gc("st_bhs_mihail_krug") .. " " .. yel_clr .. " " .. gc("st_bhs_painkiller") .. "  "
 	local painkillers_str = build_string(zzz_player_injuries.painkillerlist, obj_sec, yel_clr)
+	local bhs_exp_pre = "  " .. green_clr .. gc("st_bhs_mihail_krug") .. " " .. green_clr .. " " .. gc("st_bhs_restore") .. "  "
+	local bhs_exp_str = build_string(zzz_player_injuries.exp_druglist, obj_sec, green_clr)
 
 --		printf("obj_sec: [ %s ] || medkits_str: [ %s ] || healhelp_str: [ %s ]", obj_sec, medkits_str ~= "" and true or false, healhelp_str ~= "" and true or false)
 	if medkits_str ~= "" and painkillers_str ~= "" then
 		_str = medkits_pre .. medkits_str .. "\\n" .. painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
 	elseif healhelp_str ~= "" and painkillers_str ~= "" then
 		_str = healhelp_pre .. healhelp_str .. "\\n" .. painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
+	elseif medkits_str ~= "" and bhs_exp_str ~= "" and zzz_player_injuries.bhs_exp_mode then
+		_str = medkits_pre .. medkits_str .. "\\n" .. bhs_exp_pre .. bhs_exp_str .. grey_clr .. "\\n"
 	elseif medkits_str ~= "" then
 		_str = medkits_pre .. medkits_str .. grey_clr .. "\\n"
 	elseif healhelp_str ~= "" then
@@ -158,6 +155,8 @@ function bhs_descr_str(obj, obj_sec)
 		_str = painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
 	elseif surgerys_str ~= "" then
 		_str = surgerys_pre .. surgerys_str .. grey_clr .. "\\n"
+	elseif bhs_exp_str ~= "" and zzz_player_injuries.bhs_exp_mode then
+		_str = bhs_exp_pre .. bhs_exp_str .. grey_clr .. "\\n"
 	end
 
 	return _str

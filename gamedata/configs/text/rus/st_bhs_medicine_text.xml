@@ -25,6 +25,18 @@
 		<text>Лечит </text>
 	</string>
 	
+	<string id="st_bhs_limb_hp">
+		<text>HP конечностей </text>
+	</string>
+	
+	<string id="st_bhs_restore">
+		<text>(EXP)Восстанавливает </text>
+	</string>
+	
+	<string id="st_bhs_main_hp">
+		<text>главного HP </text>
+	</string>
+	
 	<string id="st_bhs_currhp">
 		<text>текущего уровня HP</text>
 	</string>

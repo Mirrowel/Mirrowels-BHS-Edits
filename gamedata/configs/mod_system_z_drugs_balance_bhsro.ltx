@@ -1,0 +1,114 @@
+![medkit]
+boost_time					                       = 66.8
+boost_health_restore		                       = 0.0015
+boost_radiation_restore		                       = 0.0004
+
+![medkit_army]
+boost_time					                       = 66.8
+boost_health_restore		                       = 0.0025
+boost_bleeding_restore 		                       = 0.0025
+boost_power_restore			                       = 0.004
+
+![medkit_scientic]
+boost_time					                       = 66.8
+boost_health_restore		                       = 0.0025
+boost_bleeding_restore 		                       = 0.0025
+boost_radiation_restore		                       = 0.001
+
+![survival_kit]
+boost_time					                       = 90
+boost_health_restore		                       = 0.0015
+boost_radiation_restore		                       = 0.0004
+boost_bleeding_restore		                       = 0.05
+
+![stimpack]
+boost_time					                       = 12
+boost_health_restore		                       = 0.007		;= abouth half health restored.
+
+![stimpack_army]
+boost_time					                       = 15
+boost_health_restore		                       = 0.01
+
+![stimpack_scientic]
+boost_time					                       = 15
+boost_health_restore		                       = 0.01
+boost_radiation_restore		                       = 0.003
+
+![rebirth]
+boost_time					                       = 17
+boost_health_restore		                       = 0.0188
+boost_radiation_restore		                       = 0.0122
+
+![akvatab]:booster_multi
+$spawn 						                       = "food and drugs\antirad"
+visual	= dynamics\eft_meds\itm_ibuprofen.ogf
+kind			                               = i_medical
+description					                       = st_akvatab_descr
+cost						                       = 2500
+inv_name					                       = st_akvatab
+inv_name_short				                       = st_akvatab
+use_condition                            		   = true
+max_uses                                 		   = 5
+empty_weight					                   = 0.01
+inv_weight					                       = 0.15
+eat_alcohol					                       = 0
+icons_texture = ui\ui_maid_meds_eftmo
+inv_grid_width = 1
+inv_grid_height = 1
+inv_grid_x = 15
+inv_grid_y = 0
+use_sound					                       = interface\inv_eat_pills
+snd_on_take										   = pills
+tier = 4
+
+![bandage]
+eat_satiety 				                       = 0
+eat_alcohol					                       = 0
+eat_sleepiness				                       = 0
+boost_time 					                       = 1 --10
+boost_bleeding_restore 		                       = 0.075 --0.01
+
+![jgut]
+eat_satiety 				                       = 0
+eat_alcohol					                       = 0
+eat_sleepiness				                       = 0
+boost_time 					                       = 1
+boost_bleeding_restore 		                       = 0.2
+visual	= dynamics\eft_meds\itm_tourniquet.ogf
+
+![adrenalin]
+visual	= dynamics\eft_meds\itm_stim_adrenaline.ogf
+icons_texture = ui\ui_maid_meds_eftmo
+inv_grid_width = 1
+inv_grid_height = 1
+inv_grid_x = 16
+inv_grid_y = 0
+
+![analgetic]
+boost_wound_immunity		                       = 0.05
+boost_fire_wound_immunity	                       = 0.05
+boost_explosion_immunity	                       = 0.05
+boost_strike_immunity		                       = 0.05
+
+![salicidic_acid]
+boost_wound_immunity		                       = 0.075
+boost_fire_wound_immunity	                       = 0.075
+boost_explosion_immunity	                       = 0.075
+boost_strike_immunity		                       = 0.075
+visual	= dynamics\eft_meds\itm_stim_morphine.ogf
+
+![morphine]
+boost_wound_immunity		                       = 0.1
+boost_fire_wound_immunity	                       = 0.1
+boost_explosion_immunity	                       = 0.1
+boost_strike_immunity		                       = 0.1
+visual	= dynamics\eft_meds\itm_stim_morphine.ogf
+icons_texture = ui\ui_maid_meds_eftmo
+inv_grid_width = 1
+inv_grid_height = 1
+inv_grid_x = 17
+inv_grid_y = 0
+
+![drug_coagulant]
+cost                                               = 5000
+--boost_health_restore		                       = 0.0002 --medkit 0.0015

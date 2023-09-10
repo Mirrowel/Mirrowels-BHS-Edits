@@ -1,0 +1,8 @@
+function actor_on_hit_callback(obj, amount, local_direction, who, bone_index)
+	printf("! CALLBACK CHECK >> on hit callback fired")
+	printf("! Damage: %s",amount)
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_hit_callback", actor_on_hit_callback)
+end

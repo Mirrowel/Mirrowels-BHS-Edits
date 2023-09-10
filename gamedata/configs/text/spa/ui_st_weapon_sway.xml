@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_weapon_sway_title">
+	<text>Movimiento del arma</text>
+	</string>
+	<string id="ui_mcm_menu_weapon_sway">
+		<text>Movimiento del arma</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature">
+		<text>Activar balanceo de arma</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_sway_feature_desc">
+		<text>Activaciуn/desactivaciуn de la funciуn de balanceo del arma</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_bhs_patch">
+		<text>Parche del sistema de salud corporal (Necesita recarga)</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_bhs_patch_desc">
+		<text>Activar si tienes instalado el addon Body Health System y quieres tener penalizaciones de balanceo de BHS. Esto usarб el addon Weapon Sway cuando los brazos estйn por encima de las penalizaciones de brazo de BHS. \n
+					\n Puedes desactivar el parche incluso cuando BHS estб instalado, esto sobrescribirб BHS y usarб sуlo Weapon Sway addon todo el tiempo.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_sway_keybind">
+		<text>Hold Breath Keybind</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_sway_keybind_desc">
+		<text>Cambia la combinaciуn de teclas para la funciуn de contener la respiraciуn</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type">
+		<text>Tipo de animaciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_desc">
+		<text>Tipo de animaciуn del balanceo del arma. Actualmente solo tiene los dos primeros, todos los "custom_" estбn vacнos y estбn ahн para que la gente aсada los suyos.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_animation_type_scope">
+		<text>Tipo de animaciуn de alcance</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_animation_type_scope_desc">
+		<text>Tipo de animaciуn del balanceo del arma con alcance. Lista igual que la anterior.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_effect_power">
+		<text>Potencia mбxima de efecto</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_effect_power_desc">
+		<text>Potencia mбxima que puede alcanzar el efecto de la cбmara, combinada de todos los demбs factores. \n 
+				\n Por defecto: 3</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weight_factor">
+		<text>Factor de peso</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weight_factor_desc">
+		<text>Multiplicador del peso del arma (peso_arma * Factor_peso). \n 
+				\n Por defecto: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_power_weight">
+		<text>Potencia mбxima de peso</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_power_weight_desc">
+		<text>Potencia mбxima que puede alcanzar el multiplicador de peso, cuanto mбs pesada sea el arma mбs multiplicador para el efecto de cбmara serб. \n 
+				\n Por defecto: 7</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand">
+		<text>Potencia de soporte</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_desc">
+		<text>Multiplicador de efecto para estados corporales de pie/caminar. \n 
+				\nPor defecto: 1.2\n 
+				\n (Stand_Power * gun_weight * Weight_Factor * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch">
+	<text>Poder de agacharse</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_desc">
+		<text>Multiplicador de efecto para el estado corporal agachado. \n 
+				\nPor defecto: 0.8\n 
+				\n (Crouch_Power * gun_weight * Weight_Factor * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch">
+		<text>Potencia de agachado baja</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_desc">
+		<text>Multiplicador de efecto para el estado corporal agachado bajo. \n 
+				\mPor defecto: 0.4\n 
+				\n (Baja_Crouch_Power * gun_weight * Factor_de_peso * 0.1)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_stand_scoped">
+		<text>Potencia de soporte de alcance</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_stand_scoped_desc">
+		<text>Multiplicador de efecto para los estados de cuerpo de pie/caminar si el arma tiene alcance. \n 
+				\nPor defecto: 1.2\n 
+				\n (Scope_Stand_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped">
+		<text>Potencia de agachado con alcance</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_crouch_scoped_desc">
+		<text>Multiplicador de efecto para el estado de cuerpo agachado si el arma tiene alcance. \n 
+				\nPor defecto: 0.8\n 
+				\n (Scope_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped">
+		<text>Potencia de agachado bajo con alcance</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped_desc">
+		<text>Multiplicador de efecto para el estado de cuerpo agachado bajo si el arma tiene alcance. \n 
+				\nPor defecto: 0.4\n 
+				\n (Scope_Low_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped">
+		<text>Potencia de agachado bajo con alcance</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_power_low_crouch_scoped_desc">
+		<text>Multiplicador de efecto para el estado de cuerpo agachado bajo si el arma tiene alcance. \n 
+				\nPor defecto: 0.4\n 
+				\n (Scope_Low_Crouch_Power * gun_weight * Weight_Factor * 0.02)</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature">
+		<text>Caracterнstica de arma montada</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mount_feature_desc">
+		<text>Caracterнstica que te permite colocar un arma en un obstбculo frente a ti para reducir el balanceo del arma.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power">
+		<text>El arma montada reduce la potencia</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_weapon_mounted_power_desc">
+		<text>Multiplicador de reducciуn del balanceo del arma cuando estб montada. \n 
+				\n Por defecto: 0,1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance">
+		<text>Altura mбxima del arma montada</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance_desc">
+		<text>Esta es un poco complicada, reduce aъn mбs si quieres que un arma se siga considerando "montada" cuando la subas mбs. \n 
+				\n Por defecto: -0.35</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_feature">
+	<text>Funciуn de retenciуn de la respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_feature_desc">
+		<text>Te permite contener la respiraciуn manteniendo pulsada la tecla "Usar" mientras apuntas y disminuye el balanceo del arma durante un tiempo limitado.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_hold_breath_mult">
+		<text>Mantiene la potencia de la respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_hold_breath_mult_desc">
+		<text>(constante) Multiplicador para la reducciуn del balanceo del arma mientras mantienes la respiraciуn. \n 
+				\n Predeterminado: 0.1</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_release_breath_mult">
+		<text>Liberar potencia de respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_release_breath_mult_desc">
+		<text>(1 + this_value * seconds_hold) Multiplicador de penalizaciуn que obtienes tras soltar la tecla "Usar" o si alcanzas el temporizador mбximo. \n 
+				\Por defecto: 0.04</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time">
+		<text>Tiempo mбximo para aguantar la respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_max_hold_breath_time_desc">
+		<text>Tiempo mбximo que puedes aguantar la respiraciуn (en segundos). \n 
+				\n Por defecto: 11</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_breath_restore_mult">
+		<text>Potencia de restauraciуn de la respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_breath_restore_mult_desc">
+		<text>Multiplicador para la restauraciуn del aliento, un valor de "1" significa que el aliento se restaurarб a la misma velocidad que disminuye. \n 
+				\nPor defecto: 0.5</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_enable_breath_sound">
+		<text>Habilitar sonido de respiraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_enable_breath_sound_desc">
+		<text>Habilita los sonidos de inhalaciуn y exhalaciуn.</text>
+	</string>
+
+	<string id="ui_mcm_weapon_sway_handling_mult">
+		<text>"Manipulaciуn" factor de estadнsticas de arma</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_handling_mult_desc">
+		<text>Rango del multiplicador de stat de arma de manejo:  \n
+				\nIncrementar este valor resultarб en: malos manejos = mayores penalizaciones; buenos manejos = mayores bonificaciones. \n
+				\n Disminuyendo es: malas manipulaciones = menos penalizaciones, buenas manipulaciones = menos bonificaciones, "0" = las manipulaciones no afectan al balanceo. \n
+				\n Por defecto: 1</text>
+	</string>
+
+
+	<string id="ui_mcm_weapon_sway_debugx">
+		<text>Depuraciуn</text>
+	</string>
+	<string id="ui_mcm_weapon_sway_debugx_desc">
+		<text>Debug te permite ver: \n
+					\n 1. Direcciуn y cambio de direcciуn del eje y (en consola) \n
+					\n 2. Diferencia de distancia entre cursor y raycast con "y" editado (en noticias dinбmicas) \n
+					\n 3. Potencia del efecto de cбmara de animaciуn (mensajes de actor en la parte inferior)</text>
+	</string>
+
+
+</string_table>

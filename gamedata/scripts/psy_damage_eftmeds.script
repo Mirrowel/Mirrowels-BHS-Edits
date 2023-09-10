@@ -1,0 +1,138 @@
+if zzz_player_injuries.painkillerlist.painkillerpower then end
+
+local psy_mechanics = zzz_player_injuries_mcm.get_config("PSY_MECHANICS")
+
+local c_psy_health_regen_per_seconds = 0.0005 --Psy health regeneration per in-game seconds
+
+local previous_time = nil
+
+local init=false
+
+
+psylist={}
+psylist.lasttimestamp=time_global()
+psylist.psyduration=0
+psylist.psydebuff=0
+psylist.countdown_increments=0
+psylist.sj6={psydebuff=0.6,psyduration=1500000,countdown_increments=300}
+psylist.sj1={psydebuff=0.85,psyduration=1500000,countdown_increments=300}
+local oldhealth=0
+
+
+local function SavePsyStatus()
+    utils_obj.save_var(db.actor,"psylist.countdown_increments",psylist.countdown_increments)
+    utils_obj.save_var(db.actor,"psylist.psyduration",psylist.psyduration)
+	utils_obj.save_var(db.actor,"psylist.psydebuff",psylist.psydebuff)
+
+end
+local function LoadPsyStatus()
+    psylist.countdown_increments=utils_obj.load_var(db.actor,"psylist.countdown_increments",psylist.countdown_increments) or time_global()
+    psylist.psyduration=utils_obj.load_var(db.actor,"psylist.psyduration",psylist.psyduration) or 0
+	psylist.psydebuff=utils_obj.load_var(db.actor,"psylist.psydebuff",psylist.psydebuff) or 0
+end
+
+local function actor_on_item_use(obj,objname)
+    --printf("PSY_MECHANICS: %s",psy_mechanics)
+    --printf("arszi_psy: %s",arszi_psy)
+    if (obj and objname) then
+        local curhealth=arszi_psy.get_psy_health()
+        --printf("objname: %s",objname)
+        --printf("curhealth: %s",curhealth)
+        if (objname == "drug_anabiotic") then
+            arszi_psy.set_psy_health(1)
+        end
+        if psylist[objname] then
+            if psylist.psydebuff > psylist[objname].psydebuff or psylist.psydebuff == 0 then
+				psylist.psydebuff = psylist[objname].psydebuff
+                psylist.countdown_increments=psylist[objname].countdown_increments
+               --printf("Original duration: %s",psylist[objname].psyduration)
+				psylist.psyduration = psylist[objname].psyduration/psylist.countdown_increments
+                --printf("Countdowns set. New duration: %s",psylist.psyduration)
+                psylist.lasttimestamp = time_global()
+                --printf("Effects are higher set")
+			elseif psylist.psydebuff == psylist[objname].psydebuff then
+                psylist.countdown_increments=psylist[objname].countdown_increments
+                --printf("Original duration: %s",psylist[objname].psyduration)
+				psylist.psyduration = psylist[objname].psyduration/psylist.countdown_increments
+                --printf("Countdowns set. New duration: %s",psylist.psyduration)
+                psylist.lasttimestamp = time_global()
+                --printf("Effects are equal set")
+			end
+            SavePsyStatus()
+        else
+            --printf("No such item in psylist: %s",objname)
+        end
+    end
+end
+
+local function actor_on_sleep()
+        psylist.psydebuff = 0
+        psylist.psyduration = 0
+		psylist.countdown_increments=0
+        SavePsyStatus()
+end
+
+local base_arszi_on_before_hit = arszi_psy.actor_on_before_hit
+function arszi_psy.actor_on_before_hit(s_hit)
+    if s_hit.power > 0 and s_hit.type == 4 and psylist.psydebuff > 0 then
+        psy_resist=1-psylist.psydebuff
+		s_hit.power = s_hit.power * (psy_resist/2)
+	end
+	base_arszi_on_before_hit(s_hit)
+end
+
+function actor_on_update()
+    if psylist.psydebuff>0 then
+        if time_global() - psylist.lasttimestamp > psylist.psyduration then
+            if psylist.countdown_increments == 1 or psylist.countdown_increments < 0 then
+                psylist.countdown_increments = 0
+                printf("Psy effect ran out")
+                psylist.psydebuff = 0
+                psylist.psyduration = 0
+                psylist.lasttimestamp = time_global()
+            elseif psylist.countdown_increments > 1 then
+                psylist.countdown_increments = psylist.countdown_increments - 1
+                psylist.lasttimestamp = time_global()
+                --printf("Countdowns left: %s",psylist.countdown_increments)
+            end
+            SavePsyStatus()
+		end	
+
+        psy_resist=1-psylist.psydebuff
+        local curhealth=arszi_psy.get_psy_health()
+
+        local curr_time = game.get_game_time()
+        if (previous_time == nil) then previous_time = curr_time end
+
+        if (curr_time:diffSec(previous_time) > 1) then
+            previous_time = curr_time
+
+            if (curhealth >= psylist.psydebuff) and (curhealth < psylist.psydebuff+0.01) then
+                --printf("Psy in debuff range: %s",psylist.psydebuff)
+                arszi_psy.set_psy_health(psylist.psydebuff)
+                curhealth=psylist.psydebuff
+            end
+
+            if (curhealth > psylist.psydebuff) then
+                --printf("PSY above psy debuff %s, curhealth: %s",psylist.psydebuff, curhealth)
+                arszi_psy.set_psy_health(curhealth-c_psy_health_regen_per_seconds*2)
+            elseif (curhealth < psylist.psydebuff) then
+                --printf("PSY below psy debuff %s, curhealth: %s",psylist.psydebuff, curhealth)
+                local multiplier = 0.5*(psy_resist/curhealth)
+                arszi_psy.set_psy_health(curhealth+(c_psy_health_regen_per_seconds*multiplier))
+            end
+        end
+    end
+    if not init then
+		LoadPsyStatus()
+		init=true
+	end
+end
+
+function on_game_start()
+    if arszi_psy and psy_mechanics then
+        RegisterScriptCallback("actor_on_item_use",actor_on_item_use)
+        RegisterScriptCallback("actor_on_update",actor_on_update)
+        RegisterScriptCallback("actor_on_sleep",actor_on_sleep)
+    end
+end

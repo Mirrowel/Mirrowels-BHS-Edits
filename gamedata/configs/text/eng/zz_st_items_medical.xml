@@ -53,7 +53,7 @@
 		</text>
 	</string>
 	<string id="st_sj6">
-		<text>Combat Stimulant SJ6</text>
+		<text>SJ6 Labs Combat Stimulant Injector</text>
 	</string>
 	<string id="st_sj6_descr">
 		<text>Combat stimulant. Mixed with a small amount of adrenalin it is used to increase the body abilities before combat for about 3 minutes. The stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ6. Has side effects. Not recommended for use in psy-active zones\n \n
@@ -72,7 +72,7 @@
 		</text>
 	</string>
 	<string id="st_sj1">
-		<text>Combat Stimulant SJ1</text>
+		<text>SJ1 Labs Combat Stimulant Injector</text>
 	</string>
 	<string id="st_sj1_descr">
 		<text>Combat stimulant. Is used for gaining strength and endurance before combat for about 3 minutes. Stimulant is allowed to use by the special forces units. Develeped by Svarog Test Labs, marked as SJ1. Has side effects. Not recommended for use in psy-active zones\n \n
@@ -127,29 +127,26 @@
 	</string>
 	<string id="st_alu_splint_descr">
 		<text>Common splint for fixing the damaged bones in positions as an emergency aid measure.\n \n
-		%c[ui_gray_3]PROPERTIES:\n
+		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] heals broken bones\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
 		%c[d_blue] • %c[ui_gray_2] fast and permanent\n
 		</text>
 	</string>
-	<string id="st_morphine">
-		<text>Morphine Ampoule</text>
+	<string id="st_etg">
+		<text>eTG-Change</text>
 	</string>
-	<string id="st_morphine_descr">
-		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. This ampoule contains a powerful dose of morphine. In clinical medicine, morphine is regarded as the gold standard of opioid analgesics used to relieve severe or agonizing pain and suffering. Like other opioids, such as oxycodone, hydromorphone, and diacetylmorphine (heroin), morphine acts directly on the central nervous system (CNS) to relieve pain. Injected into an arm or a thigh.\n \n
+	<string id="st_etg_descr">
+		<text>Pen injector which contains a mix of different steroids and other ingredients. Guess nobody wants to know exactly what is in it. The main point is that it works.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_purple] • %c[ui_gray_2]extremely large damage resistance bonus (10%)\n
-		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
-		</text>
-	</string>
-	<string id="st_salicidic_acid">
-		<text>Metamizole Ampoule</text>
-	</string>
-	<string id="st_salicidic_acid_descr">
-		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. It contains a powerful dose of metamizole mixed with an antihemorrhagic drug. Metamizole is one of the strongest Non-Steroidal Anti-Inflammatory Drugs (NSAIDs), especially effective at easing aches and pains as well as reducing fevers. It is also useful as anti-inflammatory drug when used in higher doses. May cause some delayed side effects such as leucopenia or agranulocytosis, so it should be used with moderation. Injected into an arm or a thigh. Its availability in the Zone is limited due to the difficulty of smuggling the medicine across military cordons.\n \n
-		%c[0,255,255,255]PROPERTIES:\n
-		%c[d_purple] • %c[pda_white]Large damage resistance bonus (7.5%)\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] military item\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] greatly increased carryweight\n
+		%c[d_purple] • %c[ui_gray_2] very good stamina bonus\n
+		%c[d_purple] • %c[ui_gray_2] very long duration\n
+		%c[d_red] • %c[ui_gray_2] greatly increases hunger\n
 		</text>
 	</string>
 </string_table>

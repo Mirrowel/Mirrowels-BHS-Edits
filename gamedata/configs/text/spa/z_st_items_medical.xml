@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Medical Items + Drugs
+-->
+
+<string_table>
+	<string id="st_akvatab">
+		<text>Ibuprofeno</text>
+	</string>
+	<string id="st_akvatab_descr">
+		<text>El ibuprofeno es un medicamento de la clase de medicamentos antiinflamatorios no esteroideos (AINE) que se usa para tratar el dolor, la fiebre y la inflamaciуn. Se utiliza como analgйsico general.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Analgйsicos\n
+		</text>
+	</string>
+	<string id="st_bandage">
+		<text>Bendage</text>
+	</string>
+	<string id="st_bandage_descr">
+		<text>Un vendaje elбstico normal que se usa para detener el sangrado y prevenir la infecciуn de las heridas. Para un sangrado regular, aplique cuidadosamente el vendaje a la herida. Para el sangrado arterial, ate con urgencia el vendaje alrededor del бrea afectada.\n \n
+		</text>
+	</string>
+	<string id="st_drug_coagulant">
+		<text>Vinca</text>
+	</string>
+	<string id="st_drug_coagulant_descr">
+		<text>Vikasolum ucraniano: un equivalente artificial de la vitamina K. El objetivo principal de este medicamento es aumentar la velocidad de coagulaciуn de la sangre. Tiene una gran demanda entre los acosadores que quieren que las heridas y laceraciones infligidas por mutantes se cicatricen lentamente y se cierren mбs rбpido. Los efectos de la droga son duraderos. Tome dos tabletas a la vez.\n \n
+		</text>
+	</string>
+	<string id="st_drug_anabiotic">
+		<text>Anabiуticos</text>
+	</string>
+	<string id="st_drug_anabiotic_descr">
+		<text>Una droga experimental desarrollada por el profesor Ozersky para equipos de investigaciуn cientнfica que trabajan en la Zona. En esencia, la droga contiene tetrodotoxina, conocida coloquialmente como "polvo zombie", que provoca un cierre completo del sistema nervioso central del cuerpo que puede permitir que las personas sobrevivan a las emisiones fuera de la cubierta. Despuйs de seis aсos de pruebas de campo, los acosadores reflexivos saben que deben tener algunos a mano para estallidos inesperados.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Apagуn Temporal\n
+		</text>
+	</string>
+	<string id="st_drug_antidot">
+		<text>Antidoto</text>
+	</string>
+	<string id="st_drug_antidot_descr">
+		<text>La antitoxina IP2 es un fбrmaco complejo que comprende varios antнdotos, incluidos metoclopramida, piridoxina, tiamina, riboxina y otros fбrmacos. La droga se usa para inyectar una variedad de antibiуticos para neutralizar los venenos naturales, junto con absorbentes de veneno sintйticos, en el torrente sanguнneo. IP2 no es particularmente popular en la Zona ya que la mayorнa de los acosadores usan una mбscara antigбs y un traje protector. Sin embargo, todavнa hay quienes tienen guardadas algunas unidades de este antнdoto para situaciones de emergencia. Los efectos de la droga son duraderos. Tome una cбpsula a la vez.\n \n
+		</text>
+	</string>
+	<string id="st_analgetic">
+		<text>Diclofenaco Sуdico</text>
+	</string>
+	<string id="st_analgetic_descr">
+		<text>Medicamento antiinflamatorio no esteroideo del grupo de los derivados del бcido fenilacйtico. El efecto de la droga entorpece la actividad nerviosa del usuario. Debido a la gran cantidad de efectos secundarios, como dolor de cabeza, mareos, somnolencia y, en algunos casos, trastornos de la memoria, desorientaciуn, irritabilidad, no se usa con fines medicinales en la mayorнa de los paнses. Sin embargo, en la Zona se ha vuelto popular debido a un efecto secundario expresado en la violaciуn de la sensibilidad del sistema nervioso central, lo que le permite resistir lesiones graves, como heridas de bala y metralla.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[pda_white]Average damage resistance bonus (5%)\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_jgut_zhgut">
+		<text>Torniquete</text>
+	</string>
+	<string id="st_jgut_descr">
+		<text>Un torniquete de goma hemostбtica, que permite al usuario detener el sangrado.\n \n
+		</text>
+	</string>
+	<string id="st_yadylin">
+		<text>Yadulin</text>
+	</string>
+	<string id="st_yadylin_descr">
+		<text>Semidroga a base de morfina. Permite al usuario calmar rбpidamente el dolor y aumentar la producciуn de adrenalina, lo que ayuda al usuario a resistir incluso las batallas mбs intensas. Es popular entre los acosadores, a menudo se usa como droga recreativa entre los grupos criminales y supuestamente se suministra al Monolito.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Causa Mareos Severos\n
+		</text>
+	</string>
+	<string id="st_medkit">
+		<text>AI-2 Medkit</text>
+	</string>
+	<string id="st_medkit_descr">
+		<text>El botiquнn AI-2 fue desarrollado como un botiquнn de primeros auxilios de servicio estбndar para varias agencias de defensa y aplicaciуn de la ley y fuerzas de defensa civil de la URSS. Ъtil para el tratamiento de lesiones, heridas, quemaduras quнmicas y tйrmicas y varios tipos de veneno.\n \n
+		</text>
+	</string>
+	<string id="st_medkit_army">
+		<text>Botiquнn Militar</text>
+	</string>
+	<string id="st_medkit_army_descr">
+		<text>Un botiquнn especializado para brindar primeros auxilios a las vнctimas del combate. El botiquнn incluye coagulantes sanguнneos a base de menadiona, analgйsicos, antibiуticos e inmunoestimulantes, asн como un botiquнn para la extracciуn de balas y fragmentos del cuerpo. Este botiquнn se entrega principalmente al personal del ejйrcito, como las unidades Spetsnaz que se aventuran en las profundidades de la Zona, y es popular entre las fuerzas de servicio.\n \n
+		</text>
+	</string>
+	<string id="st_medkit_science">
+		<text>Botiquнn Cientнfico</text>
+	</string>
+	<string id="st_medkit_science_descr">
+		<text>Un botiquнn diseсado especнficamente para su uso en la Zona. El kit contiene productos para el manejo de heridas, asн como para prevenir el desarrollo de envenenamiento por radiaciуn y reducir la radiaciуn acumulada en el cuerpo. Contiene Vikasolum, Batilolum y Naphazoline, a diferencia de otros botiquines.\n \n
+		</text>
+	</string>
+	<string id="st_stim_impro">
+		<text>Paquete Me Estimulantes Improvisado</text>
+	</string>
+	<string id="st_stim_impro_descr">
+		<text>Los paquetes de estimulantes improvisados son populares entre los Zoners novatos, ya que son fбciles de obtener y econуmicos. Producido en la Zona a partir de ingredientes comъnmente disponibles, sin equipo ni purificaciуn adecuados. Esta es la causa de muchos efectos secundarios que incluyen dolor de cabeza, parestesia y un aumento considerable en la demanda de nutriciуn. Inyectado en el muslo.\n \n
+		</text>
+	</string>
+	<string id="st_stim_military">
+		<text>Paquete De Estнmulo Militar</text>
+	</string>
+	<string id="st_stim_military_descr">
+		<text>Los estнmulos militares constituyen una parte del equipo estбndar de los soldados para las operaciones de campo en la Zona. Fбcilmente disponible en el mercado y se puede adquirir por un precio moderado. Popular entre los Zoners experimentados. Son significativamente mбs potentes y funcionan mбs rбpido que sus contrapartes improvisadas, lo que los hace perfectos para usar en situaciones que amenazan la vida. Producido a partir de materias primas de alta densidad que pueden pasar factura al organismo. Los efectos secundarios incluyen shock, mareos extremos y aumento del hambre.\n \n
+		</text>
+	</string>
+	<string id="st_stim_scientic">
+		<text>Paquete De Estнmulo Cientнfico</text>
+	</string>
+	<string id="st_stim_scientic_descr">
+		<text>Creada por el mismo instituto de investigaciуn de defensa en Kiev que desarrollу el conocido traje SEVA, esta soluciуn de ъltima generaciуn constituye el estabilizador de salud mбs potente disponible en la Zona. Los ingredientes de la mejor calidad y la fуrmula perfeccionada permiten una recuperaciуn casi instantбnea y garantizan una rбpida limpieza por radiaciуn. Los efectos secundarios se minimizan. El costo extremadamente alto prбcticamente limita el grupo objetivo de la droga a los acosadores mбs hбbiles y exitosos.\n \n
+		</text>
+	</string>
+	<string id="st_cocaine">
+		<text>Cocaina</text>
+	</string>
+	<string id="st_cocaine_descr">
+		<text>Pequeсo maletнn de aluminio que contiene la cocaнna y las herramientas que facilitan su uso. La cocaнna es un poderoso estimulante del sistema nervioso. Sus efectos pueden durar de 15-30 minutos a una hora, dependiendo de la vнa de administraciуn. La cocaнna aumenta el estado de alerta, induce sentimientos de bienestar, competencia y sexualidad. La ansiedad, la paranoia y la inquietud son efectos secundarios comunes. Con dosis excesivas, se observan temblores, convulsiones y aumento de la temperatura corporal. Los bandidos son conocidos por oler esta droga justo antes de lanzar un asalto o una emboscada.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_cyan] • %c[ui_gray_2]Estimulante Muy Potente\n
+		%c[d_green] • %c[ui_gray_2]Eliminaciуn De Mareos Muy Potente\n
+		</text>
+	</string>
+	<string id="st_adrenalin">
+		<text>Inyecciуn De Epinefrina</text>
+	</string>
+	<string id="st_adrenalin_descr">
+		<text>La epinefrina (tambiйn conocida como adrenalina) es una hormona y un neurotransmisor. La epinefrina tiene muchas funciones en el cuerpo, regulando instantбneamente la frecuencia cardнaca, los vasos sanguнneos y los diбmetros de las vнas respiratorias, y los cambios metabуlicos. La liberaciуn de epinefrina es un componente crucial de la respuesta de lucha o huida del sistema nervioso simpбtico. Los efectos conducen a un aumento de la glucosa y los бcidos grasos en la sangre, proporcionando sustratos para la producciуn instantбnea de energнa dentro de las cйlulas de todo el cuerpo.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_cyan] • %c[ui_gray_2]Estimulante Muy Potente\n
+		%c[d_green] • %c[ui_gray_2]Eliminaciуn De Mareos Muy Potente\n
+		</text>
+	</string>
+	<string id="st_morphine">
+		<text>Ampolla De Morfina</text>
+	</string>
+	<string id="st_morphine_descr">
+		<text>Una ampolla de hierro diseсada como equipo de campo para el personal de campo militar para la reducciуn instantбnea del dolor. Esta ampolla contiene una potente dosis de morfina. En la medicina clнnica, la morfina se considera el estбndar de oro de los analgйsicos opioides utilizados para aliviar el dolor y el sufrimiento intensos o agonizantes. Al igual que otros opioides, como la oxicodona, la hidromorfona y la diacetilmorfina (heroнna), la morfina actъa directamente sobre el sistema nervioso central (SNC) para aliviar el dolor. Inyectado en un brazo o un muslo.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[ui_gray_2]Bonificaciуn De Resistencia Al Daсo Extremadamente Grande (15%)\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_salicidic_acid_descr">
+		<text>Una ampolla de hierro diseсada como equipo de campo para el personal de campo militar para la reducciуn instantбnea del dolor. Contiene una potente dosis de metamizol mezclado con un fбrmaco antihemorrбgico. El metamizol es uno de los medicamentos antiinflamatorios no esteroideos (AINE) mбs fuertes, especialmente efectivo para aliviar dolores y molestias, asн como para reducir la fiebre. Tambiйn es ъtil como medicamento antiinflamatorio cuando se usa en dosis mбs altas. Puede causar algunos efectos secundarios tardнos como leucopenia o agranulocitosis, por lo que debe usarse con moderaciуn. Inyectado en un brazo o un muslo. Su disponibilidad en la Zona es limitada debido a la dificultad de pasar el medicamento de contrabando a travйs de cordones militares.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[pda_white]Gran Bonificaciуn De Resistencia Al Daсo (10%)\n
+		</text>
+	</string>
+	<string id="st_antibio_sulfad">
+		<text>Sulfanilamida</text>
+	</string>
+	<string id="st_antibio_sulfad_descr">
+		<text>Medicamento con sulfanilamida, eficaz contra bacterias grampositivas y gramnegativas. Actъa sobre neumococos, estreptococos, estafilococos, E. coli, palo de Klebsiella (palo de Friedlander), agentes causantes de la disenterнa; es menos activo con respecto a la proteнna; es activo contra el virus del tracoma (una enfermedad ocular infecciosa que puede causar ceguera); No actъa sobre cepas de bacterias resistentes a otros preparados de sulfanilamida. Los efectos adversos incluyen dolores de cabeza, trastornos digestivos, erupciones en la piel, fiebre y leucopenia. Los efectos de la droga son duraderos.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_antibio_chlor">
+		<text>Clortetraciclina</text>
+	</string>
+	<string id="st_antibio_chlor_descr">
+		<text>Un antibiуtico. Polvo cristalino de color amarillo dorado, sabor amargo, soluble en agua. Este es uno de los primeros antibiуticos abiertos (despuйs de la penicilina).\n El clorhidrato de clorotetraciclina tiene un efecto bacteriostбtico sobre los microbios grampositivos y gramnegativos, la rickettsia y algunos virus grandes.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_rebirth_descr">
+		<text>ЎAdvertencia! No lo use en combinaciуn con ningъn otro fбrmaco, ya que puede resultar letal. Esta poderosa mezcla contenida en una pequeсa jeringa te harб perder el conocimiento. Pero cuando te despiertes (si te despiertas), te sentirбs renacer. Inyecte la jeringa en su muslo cuando estй sentado.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Causa Mareos Extremos\n
+		</text>
+	</string>
+	<string id="st_tetanus">
+		<text>Fentanyl</text>
+	</string>
+	<string id="st_tetanus_descr">
+		<text>El fentanilo es un opioide poderoso que se usa como medicamento para el dolor. Tambiйn se usa como droga recreativa, a veces mezclada con heroнna, cocaнna o metanfetamina, y sus efectos de sobredosis potencialmente mortales pueden neutralizarse con naloxona. El fentanilo funciona principalmente activando los receptores opioides.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+</string_table>

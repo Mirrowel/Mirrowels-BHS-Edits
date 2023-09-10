@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="desc_over_prop">
+		<text>PROPIEDADES:</text>
+</string>
+
+<string id="desc_over_timed">
+<text>TEMPORIZADO:</text>
+</string>
+
+<string id="desc_over_bhs">
+<text>EXTREMIDADES:</text>
+</string>
+
+<string id="desc_over_hp">
+<text>Salud:</text>
+</string>
+
+<string id="desc_over_rad">
+<text>Radiaciуn:</text>
+</string>
+
+<string id="desc_over_bleed">
+<text>Sangrado:</text>
+</string>
+
+<string id="desc_over_over">
+<text>Sobre</text>
+</string>
+
+<string id="desc_over_sec">
+<text>Segundo</text>
+</string>
+
+<string id="desc_over_sleep">
+<text>Dormir:</text>
+</string>
+
+<string id="desc_over_thirst">
+<text>Sed:</text>
+</string>
+</string_table>

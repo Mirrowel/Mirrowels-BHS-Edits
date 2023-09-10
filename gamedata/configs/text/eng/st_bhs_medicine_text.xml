@@ -20,9 +20,21 @@
 	<string id="st_bhs_rightleg_str">
 		<text>L</text>
 	</string>
-
+	
 	<string id="st_bhs_heals">
 		<text>Heals </text>
+	</string>
+	
+	<string id="st_bhs_limb_hp">
+		<text>limb HP </text>
+	</string>
+	
+	<string id="st_bhs_restore">
+		<text>(EXP)Heals</text>
+	</string>
+	
+	<string id="st_bhs_main_hp">
+		<text>main HP </text>
 	</string>
 	
 	<string id="st_bhs_currhp">

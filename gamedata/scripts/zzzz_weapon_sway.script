@@ -33,7 +33,6 @@ local weapon_sway_debug = weapon_sway_mcm.get_config("debugx")
 
 ------------------------------- mcm patch --------------------------------------
 local bhs_patch = 1
-local NEW_LIMB_PENALTIES_FEATURE = zzz_player_injuries_mcm and zzz_player_injuries_mcm.get_config("NEW_LIMB_PENALTIES_FEATURE")
 local effects_mult = zzz_player_injuries.effects_mult		-- If you changed this in BHS script - you need to change it here too
 
 	-- demonized's and Raven's magic, i dont even know how it works
@@ -272,7 +271,6 @@ end
 ----------------------- BHS compatibility ------------------------
 if bhs_patch and zzz_player_injuries then
 	function bhs_sway_func()
-		if not (NEW_LIMB_PENALTIES_FEATURE) then return end
 
 		local wpn = db.actor:active_item()
 		if not (wpn and IsWeapon(wpn)) then return end
@@ -306,7 +304,7 @@ if bhs_patch and zzz_player_injuries then
 		cam_power = clamp(cam_power, 0, max_effect_power)
 
 		-- BHS
-		if arms_sum < (max_arms_sum * (zzz_player_injuries_mcm.get_config("arm_penalty_minimum_hp") * 0.1)) then
+		if arms_sum < (max_arms_sum * (zzz_player_injuries_mcm.get_config("arm_penalty_minimum_hp") * 0.05)) then
 			if (left_arm < right_arm / 1.5) or (right_arm < left_arm / 1.5) then
 				bhs_cam_power = 1.15 * weight / arms_sum
 				bhs_cam_power = (body_state == "crouch") and (0.8 * weight / arms_sum) or bhs_cam_power

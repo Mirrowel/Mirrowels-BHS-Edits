@@ -106,6 +106,23 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 - DokBrok for BHS Evolution mod that inspired this one.
 ---
 # Latest changelog:
+## 0.8 Beta:
+### Additions and rebalancing:
+- **New Experimental BHS mode. Tarkov-like limb system. Vanilla HP only acts as a wellness indicator and cannot be healed with medkits. Only vinca and the usual ways of resting, artefacts,etc. Enables below feature automatically.**
+- Above can be buggy when the system prevents a death, as a callback fires but is cancelled by the script. Depends on installed mods. An alternative way can be used if this proves too buggy.
+- **Combined with the above change - damage bleedthrugh from destroyed limbs to every other limb. If you take damage in the destroyed limb the damage is split between all the other limbs. Can be turned on/off**
+- Limb damage multiplier added to MCM menu.
+- Small-ish balancing changes to painkillers that are too much to list.
+- Added bone breaking sound effect and feedback to notify the player when their limb(s) reach 0 HP.
+- Update/reworked the damage system. Changes should not be noticeable unless you go into code.
+- Fall damage multiplier added to mcm. Fall damage should be goddamn scary.
+- Explosives are **VERY** scary and do damage to all limbs. You really dont want to experience it.
+- Update hit detection to more accurately tell what limb was hit.
+- Removed legacy features.
+- Grok's Actor Damage Balancer and Progressive Rad Damages compatibility patches.(Gamma requires both)
+### Fixes:
+- Fixed arm/legs minimal hp settings to correctly apply.
+- General bugfixing of everything not touched by changes, which is not much.
 ## 0.63 Beta:
 - Dynamic item spawns,item rewards,new game loadouts DLTX item injection
 - Safe deletion utility to safely delete all new items

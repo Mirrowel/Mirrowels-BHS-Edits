@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_bhs_mihail_krug">
+		<text>•</text>
+	</string>
+
+	<string id="st_bhs_head_str">
+		<text>Cabeza</text>
+	</string>
+
+	<string id="st_bhs_torso_str">
+		<text>Torso</text>
+	</string>
+
+	<string id="st_bhs_rightarm_str">
+		<text>Brazo</text>
+	</string>
+
+	<string id="st_bhs_rightleg_str">
+		<text>Pierna</text>
+	</string>
+
+	<string id="st_bhs_heals">
+		<text>Cura </text>
+	</string>
+	
+	<string id="st_bhs_currhp">
+		<text>Nivel Actual De HP</text>
+	</string>
+	
+	<string id="st_bhs_upto">
+		<text>Hasta</text>
+	</string>
+	
+	<string id="st_bhs_for">
+		<text>Para</text>
+	</string>
+	
+	<string id="st_bhs_painkiller">
+		<text>Adictivo</text>
+	</string>
+
+	<string id="st_bhs_painkillerlvl">
+		<text>Nivel</text>
+	</string>
+	
+	<string id="st_bhs_splint">
+		<text>Juego De Fйrulas</text>
+	</string>
+	
+	<string id="st_bhs_splints">
+		<text>Fйrulas Una Extremidad</text>
+	</string>
+	
+	<string id="st_bhs_surgery">
+		<text>Kit Quirъrgico</text>
+	</string>
+	
+	<string id="st_bhs_surgerys">
+		<text>Restaura Un Miembro</text>
+	</string>
+
+</string_table>

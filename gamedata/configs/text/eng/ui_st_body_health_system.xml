@@ -36,7 +36,7 @@
 		<text>Minimum Leg HP for camera sway penalty</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
-		<text>HP of at least one leg must be below this value to play effects. \nDefault slider value of 5 means that effects will play at 4 or less HP. (Movement speed penalty will still be there, for now)</text>
+		<text>HP of at least one leg must be below this value to play effects. \nDefault slider value of 10 means that effects will play at 9 or less HP. (Movement speed penalty will still be there, for now)</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_limping_damage_minimum_hp">
 		<text>Minimum Leg HP for damage during sprint</text>
@@ -54,7 +54,7 @@
 		<text>Minimum Arms HP for penalties</text>
 	</string>
 	<string id="ui_mcm_body_health_system_arm_penalty_minimum_hp_desc">
-		<text>Summary Arms HP must be below this value to play effects. \nDefault slider value of 10 means that effects will play if both arms have 9 or less HP.</text>
+		<text>Summary Arms HP must be below this value to play effects. \nDefault slider value of 16 means that effects will play if both arms have 9 or less HP.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_arm_animation_power">
 		<text>Arms Effects Power</text>
@@ -78,6 +78,46 @@
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
 		<text>New options from the BHS Realistic Overhaul. Leave at default for the preferred way to play the game.\nYOU HAVE TO RELOAD THE GAME AFTER CHANGING ANY SETTINGS BELOW. SOME SETTINGS MAY REQUIRE A FULL RESTART</text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_REWRITE">
+		<text>2 new options added with BHS Rewrite in v0.8 BETA.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_EXPERIMENTAL_MODE">
+		<text>(EXPERIMENTAL)BHS Alternative mode(EXPERIMENTAL)</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_EXPERIMENTAL_MODE_desc">
+		<text>Damage can be dealt to limbs only. Player can only die from head reaching 0 HP.\n
+		Vanilla stalker HP is only used as reference for how overall healthy you are.\n
+		In this mode damage bleed-through can not be disabled.\n
+		Think of this as an attempt to bring a stalker version of tarkov HP system.\n
+		EXPERIMENTAL. USE FOR TESTING OR PREVIEW. POSSIBLY UNBALANCED AND NOT STRESS TESTED.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_BLEEDTHROUGH">
+		<text>Limb damage bleed through</text>
+	</string>
+	<string id="ui_mcm_body_health_system_BHS_BLEEDTHROUGH_desc">
+		<text>Any damage done to a limb over its HP will instead bleed through to other limbs\n
+		Torso damage scaled(2x) compared to other limbs from bleed-through\n
+		</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_DAMAGE_MULT">
+		<text>Limb damage multiplier</text>
+	</string>
+	<string id="ui_mcm_body_health_system_DAMAGE_MULT_desc">
+		<text>Multiplies the incoming limb damage by set value. Default: 2.5</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_FALL_MULT">
+		<text>Fall limb damage multiplier</text>
+	</string>
+	<string id="ui_mcm_body_health_system_FALL_MULT_desc">
+		<text>Multiplies limb from falling by set value. Default: 2</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Natural healing</text>
 	</string>

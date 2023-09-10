@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Medical Items + Drugs
+-->
+
+<string_table>
+	<string id="st_surginst">
+	<text>Instrumentos Quirъrgicos</text>
+	</string>
+	<string id="st_surginst_descr">
+		<text>Pequeсa variaciуn de instrumento quirъrgico que son comunes en la zona. Se utilizan para elaborar el kit CMS. Se puede utilizar directamente, pero requerirб un vendaje y los instrumentos ya no son estйriles. Asн que sуlo se pueden usar una vez.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Pequeсo Kit Para Recuperar Partes Del Cuerpo\n
+		%c[d_blue] • %c[ui_gray_2] Objeto De Artesanнa\n
+		%c[d_blue] • %c[ui_gray_2] Objeto Quirъrgico\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Alta Calidad\n
+		%c[d_red] • %c[ui_gray_2] Tendrб que hacerse daсo dentro de la intervenciуn mйdica\n
+		</text>
+	</string>
+	<string id="st_zagustin">
+		<text>Zagustin</text>
+	</string>
+	<string id="st_zagustin_descr">
+		<text>Fбrmaco de uso militar. Inhibe los activadores de la profibinolisina y frena su transformaciуn en fibrinolisina. Detiene temporalmente las hemorragias y aumenta la resistencia a la pйrdida de sangre. Tiene efectos secundarios. Provoca deshidrataciуn grave.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Detiene La Hemorragia Alta\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rбpido (Jeringa)\n
+		</text>
+	</string>
+	<string id="st_bandage_army">
+	<text>Vendaje Militar</text>
+	</string>
+	<string id="st_bandage_army_descr">
+		<text>Una venda elбstica del ejйrcito utilizada para detener hemorragias y prevenir la infecciуn de heridas. Para hemorragias regulares, aplicar cuidadosamente la venda sobre la herida. Para las hemorragias arteriales, atar urgentemente la venda alrededor de la zona afectada.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Detiene La Hemorragia\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rбpido (Yeso Adhesivo)\n
+		</text>
+	</string>
+	<string id="st_propital">
+		<text>Propital</text>
+	</string>
+	<string id="st_propital_descr">
+		<text>Fбrmaco de uso militar. Estimula los procesos de regeneraciуn aumentando la biosнntesis de bases de purina y pirimidina, ARN, elementos celulares funcionales y enzimбticos. Aumenta el metabolismo, la salud y la vitalidad. Tiene efectos secundarios a largo plazo. Permitido su uso sуlo por mйdicos y paramйdicos.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Alta calidad\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rбpido (Jeringa)\n
+		</text>
+	</string>
+	<string id="st_sj6">
+	<text>Estimulante De Combate SJ6</text>
+	</string>
+	<string id="st_sj6_descr">
+		<text>Estimulante de combate. Mezclado con una pequeсa cantidad de adrenalina se utiliza para aumentar las capacidades corporales antes del combate durante unos 3 minutos. El estimulante es permitido usar por las unidades de fuerzas especiales. Desarrollado por Svarog Test Labs, marcado como SJ6. Tiene efectos secundarios.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Artнculo Militar\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rбpido (jeringuilla)\n
+		%c[d_purple] • %c[ui_gray_2] Bonificaciуn de resistencia al daсo muy buena\n
+		%c[d_pъrpura] • %c[ui_gris_2] Muy buena bonificaciуn de peso de carga\n
+		%c[d_purple] • %c[ui_gray_2] Muy buena bonificaciуn de resistencia\n
+		</text>
+	</string>
+	<string id="st_sj1">
+		<text>Estimulante De Combate SJ1</text>
+	</string>
+	<string id="st_sj1_descr">
+		<text>Estimulante de combate. Se utiliza para ganar fuerza y resistencia antes del combate durante unos 3 minutos. Las unidades de fuerzas especiales pueden usar este estimulante. Desarrollado por Svarog Test Labs, marcado como SJ1. Tiene efectos secundarios.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Artнculo Militar\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rбpido (Jeringuilla)\n
+		%c[d_purple] • %c[ui_gray_2] Buena bonificaciуn de resistencia al daсo\n
+		%c[d_pъrpura] • %c[ui_gris_2] Buena bonificaciуn de peso de carga\n
+		%c[d_purple] • %c[ui_gray_2] Muy buena bonificaciуn de resistencia\n
+		</text>
+	</string>
+	<string id="st_cms">
+	<text>Kit Quirъrgico CMS</text>
+	</string>
+	<string id="st_cms_descr">
+		<text>Kit quirъrgico compacto para el tratamiento de heridas de bala y otras lesiones graves. A diferencia de las herramientas quirъrgicas tambiйn restaurarб algunos HP perdido tambiйn despuйs de restaurar la extremidad.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Objeto Quirъrgico\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Alta Calidad\n
+		%c[d_red] • %c[ui_gray_2] Uso Lento (Kit De Campo)\n
+		</text>
+	</string>
+	<string id="st_analgin">
+		<text>Analgina Analgйsica</text>
+	</string>
+	<string id="st_analgin_descr">
+		<text>Los analgйsicos mбs baratos y extendidos.\n 
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Analgйsicos\n
+		</text>
+	</string>
+	<string id="st_splint">
+		<text>Splint</text>
+	</string>
+	<string id="st_splint_descr">
+		<text>Fйrula comъn para fijar los huesos daсados en posiciones como medida de ayuda de emergencia.\n 
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_blue] • %c[0,255,255,255] Cura Huesos Rotos \n
+		%c[d_blue] • %c[ui_gray_2] Rбpido y Permanente\n
+		</text>
+	</string>
+	<string id="st_alu_splint">
+	<text>Fйrula de Aluminio</text>
+	</string>
+	<string id="st_alu_splint_descr">
+		<text>Fйrula comъn para fijar los huesos daсados en posiciones como medida de ayuda de emergencia.\n
+		%c[ui_gray_3]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] Cura Huesos Rotos\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Rбpido y Permanente\n
+		</text>
+	</string>
+	<string id="st_morphine">
+		<text>Ampolla De Morfina</text>
+	</string>
+	<string id="st_morphine_descr">
+		<text>Una ampolla de hierro diseсada como equipo de campo para el personal militar de campaсa para la reducciуn instantбnea del dolor. Esta ampolla contiene una potente dosis de morfina. En Medicina clнnica, la morfina se considera el patrуn oro de los analgйsicos opiбceos utilizados para aliviar el dolor y el sufrimiento graves o agуnicos. Al igual que otros opiбceos, como la oxicodona, la hidromorfona y la diacetilmorfina (heroнna), la morfina actъa directamente sobre el sistema nervioso central (SNC) para aliviar el dolor. Se inyecta en el brazo o el muslo.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[ui_gray_2]Bonificaciуn de resistencia al daсo extremadamente grande (10%)\n
+		%c[d_rojo] • %c[ui_gris_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_salicidic_acid">
+	<text>Metamizol Ampolla</text>
+	</string>
+	<string id="st_salicidic_acid_descr">
+		<text>Una ampolla de hierro diseсada como equipo de campo para el personal militar de campaсa para la reducciуn instantбnea del dolor. Contiene una potente dosis de metamizol mezclada con un fбrmaco antihemorrбgico. El metamizol es uno de los antiinflamatorios no esteroideos (AINE) mбs potentes, especialmente eficaz para aliviar los dolores y reducir la fiebre. Tambiйn es ъtil como antiinflamatorio cuando se utiliza en dosis mбs altas. Puede provocar algunos efectos secundarios retardados, como leucopenia o agranulocitosis, por lo que debe utilizarse con moderaciуn. Se inyecta en el brazo o el muslo. Su disponibilidad en la Zona es limitada debido a la dificultad de pasar el medicamento de contrabando a travйs de cordones militares.\n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[pda_white]Gran Bonificaciуn De Resistencia Al Daсo (7,5%)\n
+		</text>
+	</string>
+</string_table>
