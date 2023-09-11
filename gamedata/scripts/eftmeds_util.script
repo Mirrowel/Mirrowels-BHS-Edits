@@ -2,6 +2,15 @@ local loot_coefficient = 1.0
 local safe_uninstall = false
 
 local itemlist={}
+itemlist.akvatab={
+    novice=0,
+    trainee=0,
+    experienced=0,
+    professional=0,
+    veteran=0,
+    expert=0,
+    master=0,
+    legend=0}
 itemlist.splint={
     novice=0.03,
     trainee=0.05,
