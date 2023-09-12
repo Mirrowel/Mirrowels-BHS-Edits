@@ -20,12 +20,6 @@
 		<text>(Reloading required) Text version of HUD.</text>
 	</string>
 
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
-		<text>New Limb Penalties feature</text>
-	</string>
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
-		<text>(Reloading required) Enabling this activates new penalties feature. \nDisabling returns old BHS penalties.</text>
-	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds">
 		<text>New voice for penalties</text>
 	</string>
@@ -169,11 +163,11 @@
 	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
 		<text>Destroyed limbs(Reached 0 HP) require surgery via surgical tools or surgical kit first to be healed. \nDoes not prevent painkillers from working</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
-		<text>Surgery tools repair only one limb</text>
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS">
+		<text>Surgery tools repair all limbs instead of one</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
-		<text>Surgery tools repair their set amount of HP instantly and on one limb only. \nHave to enable this for CMS to be able to heal more than one HP on a limb</text>
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS_desc">
+		<text>Surgery tools repair their set amount of HP on all limbs.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
 		<text>Surgery heals by itself (ENABLED IF SPLINTING IS DISABLED BUT SURGERY ENABLED)</text>
@@ -263,13 +257,6 @@
 	</string>
 	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
 		<text>The amount of time for a limb to heal by one tick (in seconds). \nPress ENTER after typing your desired value. </text>
-	</string>
-	
-	<string id="ui_mcm_body_health_system_HEALTH_OG">
-		<text>Restore health values to default BHS ones</text>
-	</string>
-	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
-		<text>Restores values to how they were in default BHS. \nDoes nothing but decrease the amount of health steps on the UI. </text>
 	</string>
 
 

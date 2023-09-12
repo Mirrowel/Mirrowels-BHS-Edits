@@ -2,11 +2,8 @@
 local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
-local OGhealthbool = zzz_player_injuries_mcm.get_config("HEALTH_OG") -- Scales the healing gain and health. Used in some functions to adjust based on the HP changes. MUST BE INTEGER
-OGhealth = 1
-if OGhealthbool then OGhealth = 2 end
 local damagescale=zzz_player_injuries_mcm.get_config("DAMAGE_MULT") or 2.5
-damagescale=damagescale/OGhealth -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
+-- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local damage_threshold=0.0125 -- 0.0293 is default
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
@@ -22,15 +19,14 @@ local tourniquet_is_splint = zzz_player_injuries_mcm.get_config("TOURNIQUET_IS_S
 local bandage_is_splint = zzz_player_injuries_mcm.get_config("BANDAGE_IS_SPLINT")
 local splinting = zzz_player_injuries_mcm.get_config("SPLINTING")
 local medkit_is_splint = zzz_player_injuries_mcm.get_config("MEDKIT_IS_SPLINT")
-local regeneration_is_splint = zzz_player_injuries_mcm.get_config("REGENERATION_IS_SPLINT")
 local medkits_heal_logic = zzz_player_injuries_mcm.get_config("MEDKITS_HEAL_LOGIC") or 2
 local rebirth_heal_logic = zzz_player_injuries_mcm.get_config("REBIRTH_HEAL_LOGIC") or 2
 local sleep_heal = zzz_player_injuries_mcm.get_config("SLEEP_HEALS")
 local sleep_heal_logic = zzz_player_injuries_mcm.get_config("SLEEP_HEALS_LOGICAL")
 local sleep_heal_power = zzz_player_injuries_mcm.get_config("SLEEP_HEALS_POWER")
 local using_surgery = zzz_player_injuries_mcm.get_config("USE_SURGERY")
-local surgery_instant = zzz_player_injuries_mcm.get_config("SURGERY_INSTANT")
 local surgery_heals = zzz_player_injuries_mcm.get_config("SURGERY_HEALS")
+local surgery_all_limbs = zzz_player_injuries_mcm.get_config("SURGERY_ALL_LIMBS")
 local cms_restores_hp_too = zzz_player_injuries_mcm.get_config("CMS_RESTORES_HP_TOO")
 bhs_exp_mode = zzz_player_injuries_mcm.get_config("BHS_EXPERIMENTAL_MODE")
 local bhs_bleed = zzz_player_injuries_mcm.get_config("BHS_BLEEDTHROUGH")
@@ -39,11 +35,10 @@ local fall_mult = zzz_player_injuries_mcm.get_config("FALL_MULT")
 local regen=0 -- Don't change that. Use mcm instead. Automatic blue health regeneration on each limb. Setting it to 90000 would mean each 90 seconds 1 health point restores
 if natural_regeneration then
 	regen = 300000/natural_regeneration_speed_mod
-	regen = regen*OGhealth
 end
 
 -- It's very important to keep the correct ratio between "effects_mult" and "maxhp" as shown in example
-effects_mult = 0.5*OGhealth -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
+effects_mult = 0.5 -- Divide this by maxhp and damagescale multipliers. Example "effects_mult = 1/10" if (default maxhp)*10, damagescale*10, medicines*10 etc (more immersive and harmful effects don't reduce the whole chunks)
 local prev_time = nil
 local head_tbl = {}
 local tinnitus_play = false
@@ -91,10 +86,6 @@ hit.fall = false
 hit.death = false
 hit.apply = false
 
-local exp_healing = {}
-exp_healing.status = false
-exp_healing.times = nil
-
 showtexthud=(zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and 2 or 0 --1 large left down, 2 default center 0 texture
 
 show_hud_type=2
@@ -114,12 +105,12 @@ display.types[169]=1.7777
 display.types[1610]=1.56
 
 maxhp={}
-maxhp.head=22/OGhealth
-maxhp.torso=22/OGhealth
-maxhp.leftarm=10/OGhealth
-maxhp.rightarm=10/OGhealth
-maxhp.leftleg=10/OGhealth
-maxhp.rightleg=10/OGhealth
+maxhp.head=22
+maxhp.torso=22
+maxhp.leftarm=10
+maxhp.rightarm=10
+maxhp.leftleg=10
+maxhp.rightleg=10
 
 health={}
 health.head=maxhp.head
@@ -148,6 +139,8 @@ preview.bonus.leftleg=nil
 preview.bonus.rightleg=nil
 
 preview.surgeryhp={}
+preview.surgeryhp.head=nil
+preview.surgeryhp.torso=nil
 preview.surgeryhp.leftarm=nil
 preview.surgeryhp.rightarm=nil
 preview.surgeryhp.leftleg=nil
@@ -204,19 +197,6 @@ end
 if rebirth_heal_logic == 1 then
 	healhelplist.rebirth={head=22,torso=22,rightleg=10,leftleg=10,rightarm=10,leftarm=10,healpower=0,healtimer=772}
 end
-if OGhealthbool then
-	if medkits_heal_logic == 1 then
-		healhelplist.medkit={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,healtimer=6000}
-		healhelplist.medkit_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=4175}
-		healhelplist.medkit_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=4175}
-		healhelplist.stimpack={head=5,torso=5,rightleg=2,leftleg=2,rightarm=2,leftarm=2,healpower=1,healtimer=1000}
-		healhelplist.stimpack_army={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=900}
-		healhelplist.stimpack_scientic={head=7,torso=7,rightleg=4,leftleg=4,rightarm=4,leftarm=4,healpower=1,healtimer=900}
-	end
-	if rebirth_heal_logic == 1 then
-		healhelplist.rebirth={head=11,torso=11,rightleg=5,leftleg=5,rightarm=5,leftarm=5,healpower=0,healtimer=772}
-	end
-end
 
 -- Items that add 1 hp at a time to the most injured body part. Won't heal if body part is at 0 hp (=broken).
 -- For broken limbs you first need to use a bandage (=splint).
@@ -243,23 +223,6 @@ if rebirth_heal_logic == 2 then
 end
 healonelist.drug_coagulant={healamount=11,healtimer=39818,healpower=0}
 healonelist.propital={healamount=21,healtimer=6000,healpower=0}
-if OGhealthbool then
-	if medkits_heal_logic == 2 then
-		healonelist.medkit={healamount=11,healtimer=6070,healpower=1}
-		healonelist.medkit_army={healamount=21,healtimer=3180,healpower=1}
-		healonelist.medkit_scientic={healamount=21,healtimer=3180,healpower=1}
-		healonelist.stimpack={healamount=11,healtimer=1009,healpower=1}
-		healonelist.stimpack_army={healamount=21,healtimer=714,healpower=1}
-		healonelist.stimpack_scientic={healamount=21,healtimer=714,healpower=1}
-		healonelist.survival_kit={healamount=31,healtimer=2903,healpower=1}
-	end
-	if rebirth_heal_logic == 2 then
-		healonelist.rebirth={healamount=31,healtimer=548,healpower=0}
-	end
-	healonelist.drug_coagulant={healamount=5,healtimer=39818,healpower=0}
-	healonelist.propital={healamount=15,healtimer=6000,healpower=0}
-
-end
 
 -- First aid items:
 -- * instant effect
@@ -268,23 +231,23 @@ end
 splintlist={}
 if splinting then
 	if tourniquet_is_splint then
-		splintlist.jgut={splintamount=1,maxarmleg=1,maxheadtorso=1}
+		splintlist.jgut={splintamount=1}
 	end
 	if bandage_is_splint then
-		splintlist.bandage={splintamount=1,maxarmleg=1,maxheadtorso=1}
-		splintlist.bandage_army={splintamount=1,maxarmleg=1,maxheadtorso=1}
+		splintlist.bandage={splintamount=1}
+		splintlist.bandage_army={splintamount=1}
 	end
-	splintlist.splint={splintamount=1,maxarmleg=1,maxheadtorso=1}
-	splintlist.alu_splint={splintamount=1,maxarmleg=1,maxheadtorso=1}
+	splintlist.splint={splintamount=1}
+	splintlist.alu_splint={splintamount=1}
 end
 
 surgerylist={}
 if using_surgery then
-	surgerylist.surginst={surgeryamount=1,maxarmleg=1,maxheadtorso=1}
-	if cms_restores_hp_too and surgery_instant then
-		surgerylist.cms={surgeryamount=4,maxarmleg=1,maxheadtorso=1}
+	surgerylist.surginst={surgeryamount=1}
+	if cms_restores_hp_too then
+		surgerylist.cms={surgeryamount=4}
 	else
-		surgerylist.cms={surgeryamount=1,maxarmleg=1,maxheadtorso=1}
+		surgerylist.cms={surgeryamount=1}
 	end
 end
 
@@ -408,6 +371,8 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"timedhp.rightleg",timedhp.rightleg)
 	utils_obj.save_var(db.actor,"timedhp.leftleg",timedhp.leftleg)
 
+	utils_obj.save_var(db.actor,"surgeryhp.head",surgeryhp.head)
+	utils_obj.save_var(db.actor,"surgeryhp.torso",surgeryhp.torso)
 	utils_obj.save_var(db.actor,"surgeryhp.rightarm",surgeryhp.rightarm)
 	utils_obj.save_var(db.actor,"surgeryhp.leftarm",surgeryhp.leftarm)
 	utils_obj.save_var(db.actor,"surgeryhp.rightleg",surgeryhp.rightleg)
@@ -427,12 +392,9 @@ local function SaveHealthStatus()
 	utils_obj.save_var(db.actor,"exp_druglist.restoreduration",exp_druglist.restoreduration)
 	utils_obj.save_var(db.actor,"exp_druglist.restorepower",exp_druglist.restorepower)
 	utils_obj.save_var(db.actor,"exp_druglist.countdown_increments",exp_druglist.countdown_increments)
-
-	utils_obj.save_var(db.actor,"exp_healing.status",exp_healing.status)
-	utils_obj.save_var(db.actor,"exp_healing.time",exp_healing.time)
-
-
 end
+
+
 local function LoadHealthStatus()
 
 	health.head=utils_obj.load_var(db.actor,"health.head") or maxhp.head
@@ -456,10 +418,12 @@ local function LoadHealthStatus()
 	timedhp.rightleg=utils_obj.load_var(db.actor,"timedhp.rightleg") or 0
 	timedhp.leftleg=utils_obj.load_var(db.actor,"timedhp.leftleg") or 0
 
+	surgeryhp.head=utils_obj.load_var(db.actor,"surgeryhp.head",surgeryhp.head) or 0
+	surgeryhp.torso=utils_obj.load_var(db.actor,"surgeryhp.torso",surgeryhp.torso) or 0
 	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.rightarm",surgeryhp.rightarm) or 0
-	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.leftarm",surgeryhp.leftarm) or 0
-	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.rightleg",surgeryhp.rightleg) or 0
-	surgeryhp.rightarm=utils_obj.load_var(db.actor,"surgeryhp.leftleg",surgeryhp.leftleg) or 0
+	surgeryhp.leftarm=utils_obj.load_var(db.actor,"surgeryhp.leftarm",surgeryhp.leftarm) or 0
+	surgeryhp.rightleg=utils_obj.load_var(db.actor,"surgeryhp.rightleg",surgeryhp.rightleg) or 0
+	surgeryhp.leftleg=utils_obj.load_var(db.actor,"surgeryhp.leftleg",surgeryhp.leftleg) or 0
 
 	healhelplist.healtimer=utils_obj.load_var(db.actor,"healhelplist.healtimer",healhelplist.healtimer) or 0
 	healhelplist.healpower=utils_obj.load_var(db.actor,"healhelplist.healpower",healhelplist.healpower) or 0
@@ -477,14 +441,12 @@ local function LoadHealthStatus()
 	exp_druglist.countdown_increments=utils_obj.load_var(db.actor,"exp_druglist.countdown_increments",exp_druglist.countdown_increments) or 0
 
 	if painkillerlist.painkillerpower > 0 and painkiller_grain_shader then 
-		printf("Adding the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
+		--printf("Adding the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
 		level.add_pp_effector("radiation.ppe", 5020, true) 
+	else
+		--printf("Removing the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
+		level.remove_pp_effector(5020)
 	end
-	if painkillerlist.painkillerpower <=0 or not painkiller_grain_shader then
-		printf("Removing the effector. Painkillerpower: %s , Painkillerduration: %s",painkillerlist.painkillerpower,painkillerlist.painkillerduration)
-		level.remove_pp_effector(5020) 
-	end
-
 end
 
 function r(val)
@@ -777,12 +739,18 @@ local function received_damage(amount)
 		hud_blink_timer.rightarm=time_global()
 		hud_blink_timer.leftleg=time_global()
 		hud_blink_timer.rightleg=time_global()
-		health.head=health.head-damage*0.75
-		health.torso=health.torso-damage*0.75
-		health.leftarm=health.leftarm-damage*0.75
-		health.rightarm=health.rightarm-damage*0.75
-		health.leftleg=health.leftleg-damage*0.75
-		health.rightleg=health.rightleg-damage*0.75
+		health.head=math.floor(health.head-damage*0.75)
+		health.torso=math.floor(health.torso-damage*0.75)
+		health.leftarm=math.floor(health.leftarm-damage*0.75)
+		health.rightarm=math.floor(health.rightarm-damage*0.75)
+		health.leftleg=math.floor(health.leftleg-damage*0.75)
+		health.rightleg=math.floor(health.rightleg-damage*0.75)
+		surgeryhp.head=0
+		surgeryhp.torso=0
+		surgeryhp.leftarm=0
+		surgeryhp.rightarm=0
+		surgeryhp.leftleg=0
+		surgeryhp.rightleg=0
 		damage=0
 	elseif choosen_hitbox=="head" then
 		if damage >= 18 then
@@ -803,7 +771,7 @@ local function received_damage(amount)
 		if damage_head > (zzz_player_injuries_mcm.get_config("head_penalty_minimum_hp") - 1) then
 			head_tbl.stage = 1
 		end
-		
+		surgeryhp.head=0
 	elseif choosen_hitbox=="torso" then
 		if damage >= 16 then
 			damage = 14
@@ -818,7 +786,7 @@ local function received_damage(amount)
 		end
 		hud_blink_timer.torso=time_global()
 		utils_obj.save_var(db.actor,"health.torso",health.torso)
-		
+		surgeryhp.torso=0
 	elseif choosen_hitbox=="leftarm" then
 		if damage >= 8 then
 			damage = 7
@@ -833,7 +801,7 @@ local function received_damage(amount)
 		end
 		hud_blink_timer.leftarm=time_global()
 		utils_obj.save_var(db.actor,"health.leftarm",health.leftarm)
-		
+		surgeryhp.leftarm=0
 	elseif choosen_hitbox=="rightarm" then
 		if damage >= 8 then
 			damage = 7
@@ -848,7 +816,7 @@ local function received_damage(amount)
 		end
 		hud_blink_timer.rightarm=time_global()
 		utils_obj.save_var(db.actor,"health.rightarm",health.rightarm)
-		
+		surgeryhp.rightarm=0
 	elseif choosen_hitbox=="leftleg" then
 		if not hit.fall then
 			if damage >= 8 then
@@ -863,6 +831,7 @@ local function received_damage(amount)
 				damage=0
 			end
 			hud_blink_timer.leftleg=time_global()
+			surgeryhp.leftleg=0
 		else
 			local damage_rl = damage
 			local damage_ll = damage
@@ -884,6 +853,8 @@ local function received_damage(amount)
 			end
 			utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
 			damage=damage_ll+damage_rl
+			surgeryhp.leftleg=0
+			surgeryhp.rightleg=0
 		end
 		utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
 	elseif choosen_hitbox=="rightleg" then
@@ -900,6 +871,7 @@ local function received_damage(amount)
 				damage=0
 			end
 			hud_blink_timer.rightleg=time_global()
+			surgeryhp.rightleg=0
 		else
 			local damage_rl = damage
 			local damage_ll = damage
@@ -921,6 +893,8 @@ local function received_damage(amount)
 			end
 			utils_obj.save_var(db.actor,"health.leftleg",health.leftleg)
 			damage=damage_ll+damage_rl
+			surgeryhp.leftleg=0
+			surgeryhp.rightleg=0
 		end
 		utils_obj.save_var(db.actor,"health.rightleg",health.rightleg)
 	end
@@ -933,7 +907,7 @@ local function received_damage(amount)
 			local count = 0
 			for k,v in pairs(health) do
 				if v > 0 then
-					if string.find(k, "torso") then
+					if string.match(k, "torso") then
 						count = count + 1
 					end
 					count = count + 1
@@ -948,7 +922,7 @@ local function received_damage(amount)
 				damage_parts=math.floor(damage/count)
 				for k in pairs(health) do
 					if health[k] > 0 then
-						if string.find(k, "torso") then
+						if string.match(k, "torso") then
 							damage_torso = damage_parts*2
 							if damage_torso >= health.torso then
 								damage_torso = damage_torso - health.torso
@@ -968,6 +942,7 @@ local function received_damage(amount)
 							end
 							damage = damage - damage_parts
 						end
+						surgeryhp[k]=0
 					end
 				end
 				printf("! Damage left: %s", damage)
@@ -997,6 +972,7 @@ local function received_damage(amount)
 					end
 					if health[choosen_hitbox] > 0 then
 						health[choosen_hitbox]=health[choosen_hitbox]-1
+						surgeryhp[choosen_hitbox]=0
 						damage_rest=damage_rest-1
 						printf("! Hitting %s once", choosen_hitbox)
 					else
@@ -1018,7 +994,7 @@ local function received_damage(amount)
 			if missinghealth < 0 then missinghealth = 0 end
 		end
 		local bonus = painkillerlist.painkillerpower
-		if string.find(k, "head") or string.find(k, "torso") then
+		if string.match(k, "head") or string.match(k, "torso") then
 			bonus = painkillerlist.painkillerpower * 2
 		end
 		if bonus > missinghealth then
@@ -1151,6 +1127,7 @@ local function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
 		hit.bone_id_adj = nil
 		hit.draftsman = nil
 	end
+	SaveHealthStatus()
 end
 
 function actor_on_before_hit(shit, bone_id)
@@ -1847,9 +1824,9 @@ function rank_part(name)
         return 5
     elseif string.find(name, "arm") then
         return 4
-    elseif string.find(name, "head") then
+    elseif string.match(name, "torso") then
         return 3
-    elseif string.find(name, "torso") then
+    elseif string.match(name, "head") then
         return 2
     else
         return 1
@@ -1864,15 +1841,15 @@ local functor = function(t,a,b)
     end
 end
 
-local function HealOne(healthmod,health)
-	local healupto = healthmod
+local function HealOne(healpower,health,surgeryhp)
+	local healupto = healpower
 	if healupto == 0 then healupto=db.actor.health		--Heal up to this percentage value. Medicine should have 1, regeneration uses actor health.
-	elseif healupto > 1 then healupto = 1
-	elseif healupto < 0 then return end
+	elseif healupto > 1 then healupto = 1 end
 	local healamount = 1
 	local loopcounter = 1 --Only heal limbs that are not broken (broken = at 0 hp).
-	if medkit_is_splint and medkits_one_heal and healupto > 0 then
-		loopcounter = 0
+
+	if using_surgery then
+		if splinting and (healpower>0 and medkit_is_splint) then loopcounter = 0 end
 		while healamount > 0 do
 			for k,v in pairs(health, functor) do
 				adjustedhealth = v						--Double health for arm&leg for deciding what to heal, since limbs have half hp of head/torso
@@ -1880,10 +1857,10 @@ local function HealOne(healthmod,health)
 					adjustedhealth = adjustedhealth * 2
 				end
 				if adjustedhealth == loopcounter then
-					if (using_surgery and health[k] < maxhp[k] * healupto and health[k] > 0) or (using_surgery and health[k] == 0 and surgeryhp[k]>0) or (not using_surgery and health[k] < maxhp[k] * healupto) then
+					if ((loopcounter==0 and surgeryhp[k]>0) and health[k] < maxhp[k] * healupto) or (loopcounter>0 and health[k] < maxhp[k] * healupto) then
 						health[k] = health[k] + 1
-						if surgeryhp[k]>0 then surgeryhp[k] = surgeryhp[k] - 1 end
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
+						if surgeryhp[k]>0 then surgeryhp[k] = surgeryhp[k] - 1 end
 						healamount = 0
 						--printf("Healed once")
 						break
@@ -1895,8 +1872,9 @@ local function HealOne(healthmod,health)
 			loopcounter = loopcounter + 1
 		end
 	else
-		loopcounter = 1
+		if (medkit_is_splint and healpower > 0) or not splinting then loopcounter=0 end
 		while healamount > 0 do
+			printf("Trying to limb with %s, healpower: %s",loopcounter,healpower)
 			for k,v in pairs(health, functor) do
 				adjustedhealth = v						--Double health for arm&leg for deciding what to heal, since limbs have half hp of head/torso
 				if string.find(k, "leg") or string.find(k, "arm") then
@@ -1906,6 +1884,7 @@ local function HealOne(healthmod,health)
 					if health[k] < maxhp[k] * healupto then
 						health[k] = health[k] + 1
 						if health[k]>maxhp[k] then health[k]=maxhp[k] end
+						if surgeryhp[k]>0 then surgeryhp[k] = surgeryhp[k] - 1 end
 						healamount = 0
 						--printf("Healed once")
 						break
@@ -1920,85 +1899,70 @@ local function HealOne(healthmod,health)
 	SaveHealthStatus()
 end
 
-function ArtiHeal(healthmod)
+function ArtiHeal(healpower)
 	printf("Artihealed or campfire once")
-	HealOne(healthmod,health)
+	HealOne(healpower,health,surgeryhp)
 end
 
 local function SurgeryUsed(name,health,surgeryhp)
 	local surgeryamount = surgerylist[name].surgeryamount
 	if surgeryamount <= 0 then return end
-	local maxarmleg = surgerylist[name].maxarmleg or 0
-	local maxheadtorso = surgerylist[name].maxheadtorso or 0
-	
-	local loopcounter = 0 -- can heal destroyed limbs
 	--printf("Using surgery")
-	if not surgery_heals and splinting then
-		if surgery_instant then
+	if using_surgery and not surgery_all_limbs then
+		if not surgery_heals and not (cms_restores_hp_too and string.match(name, "cms")) then
 			for k,v in pairs(health, functor) do
-				if v == 0 then
-					if string.find(k, "leg") or string.find(k, "arm") then
-						if surgeryhp[k] == 0 and surgeryamount > 0 then
-							surgeryhp[k] = surgeryamount
-							--printf("Surgery used on %s",k)
-							surgeryamount = 0
-							if surgeryhp[k]>maxhp[k] then surgeryhp[k]=maxhp[k] end
-							return
-						end
+				if v == 0 and surgeryhp[k] == 0 then
+					if string.match(k, "torso") or string.match(k, "head") then
+						surgeryhp[k] = surgeryamount*2
+					else
+						surgeryhp[k] = surgeryamount
 					end
+					--printf("Surgery used on %s",k)
+					surgeryamount = 0
+					if surgeryhp[k]>maxhp[k] then surgeryhp[k]=maxhp[k] end
+					break
 				end
 			end
 		else
 			for k,v in pairs(health, functor) do
-				if v == loopcounter then
-					if string.find(k, "leg") or string.find(k, "arm") then
-						if health[k] == 0 and surgeryhp[k] == 0 then
-							surgeryhp[k] = surgeryhp[k] + 1
-							--printf("Surgery used on %s",k)
-							surgeryamount = surgeryamount - 1
-						end
-					end
-				end
-				if surgeryamount <= 0 then break end
-			end
-			surgeryamount = 0
-		end
-	else
-		if surgery_instant or (cms_restores_hp_too and string.find(name, "cms")) then
-			for k,v in pairs(health, functor) do
 				if v == 0 then
-					if string.find(k, "leg") or string.find(k, "arm") then
+					if string.match(k, "torso") or string.match(k, "head") then
+						health[k] = surgeryamount*2
+					else
 						health[k] = surgeryamount
-						--printf("Instant healing Surgery used on %s",k)
-						surgeryamount = 0
-						if health[k]>maxhp[k] then health[k]=maxhp[k] end
-						return
 					end
+					--printf("Surgery used on %s",k)
+					surgeryamount = 0
+					surgeryhp[k] = 0
+					if health[k]>maxhp[k] then health[k]=maxhp[k] end
+					break
+				end
+			end
+		end
+	elseif using_surgery and surgery_all_limbs then
+		if not surgery_heals and not (cms_restores_hp_too and string.match(name, "cms")) then
+			for k,v in pairs(health, functor) do
+				if v == 0 and surgeryhp[k] == 0 then
+					if string.match(k, "torso") or string.match(k, "head") then
+						surgeryhp[k] = surgeryamount*2
+					else
+						surgeryhp[k] = surgeryamount
+					end
+					--printf("Surgery used on %s",k)
+					if surgeryhp[k]>maxhp[k] then surgeryhp[k]=maxhp[k] end
 				end
 			end
 		else
-			while surgeryamount > 0 do
-				for k,v in pairs(health, functor) do
-					if v == loopcounter then
-						if string.find(k, "leg") or string.find(k, "arm") then
-							if health[k] == 0 and surgeryhp[k] == loopcounter then
-								surgeryhp[k] = surgeryhp[k] + 1
-								--printf("Oneheal healing Surgery used on %s",k)
-								surgeryamount = surgeryamount - 1
-							end
-						end
-					end
-					if surgeryamount <= 0 then break end
-				end
-				if loopcounter >= maxarmleg and loopcounter >= maxheadtorso then break end
-				loopcounter = loopcounter + 1
-			end
 			for k,v in pairs(health, functor) do
-				if string.find(k, "leg") or string.find(k, "arm") then
-					if surgeryhp[k] > 0 then
-						health[k] = health[k] + surgeryhp[k]
-						if health[k]>maxhp[k] then health[k]=maxhp[k] end
+				if v == 0 then
+					if string.match(k, "torso") or string.match(k, "head") then
+						health[k] = surgeryamount*2
+					else
+						health[k] = surgeryamount
 					end
+					--printf("Surgery used on %s",k)
+					if health[k]>maxhp[k] then health[k]=maxhp[k] end
+					if surgeryhp[k]>0 then surgeryhp[k] = 0 end
 				end
 			end
 		end
@@ -2009,43 +1973,31 @@ end
 local function SplintUsed(name,health,surgeryhp)
 	local splintamount = splintlist[name].splintamount
 	if splintamount <= 0 then return end
-	local maxarmleg = splintlist[name].maxarmleg or 0
-	local maxheadtorso = splintlist[name].maxheadtorso or 0
+
 	local loopcounter = 0
 	if using_surgery then
-		loopcounter = 1
 		--printf("Using surgery")
 		--printf("Splinting")
-		while splintamount > 0 do
-			for k,v in pairs(surgeryhp, functor) do
-				if v == loopcounter then
-					if v-1 < maxarmleg and health[k] < maxhp[k]  then
-						health[k] = health[k] + 1
-						--printf("Splint used on %s",k)
-						splintamount = splintamount - 1
-						surgeryhp[k] = surgeryhp[k] - 1
-						if health[k]>maxhp[k] then health[k]=maxhp[k] end
-					end
-				end
+		for k,v in pairs(surgeryhp, functor) do
+			if v >= 1 then
+				health[k] = health[k] + surgeryhp[k]
+				--printf("Splint used on %s",k)
+				splintamount = 0
+				surgeryhp[k] = 0
+				if health[k]>maxhp[k] then health[k]=maxhp[k] end
 				if splintamount <= 0 then break end
 			end
-			if loopcounter >= maxarmleg and loopcounter >= maxheadtorso then break end
-			loopcounter = loopcounter + 1
 		end
 	else
-		while splintamount > 0 do
-			for k,v in pairs(health, functor) do
-				if v == loopcounter then
-					if v < maxarmleg and health[k] < maxhp[k]  then
-						health[k] = health[k] + 1
-						splintamount = splintamount - 1
-						if health[k]>maxhp[k] then health[k]=maxhp[k] end
-					end
-				end
+		for k,v in pairs(health, functor) do
+			if v == 0 then
+				health[k] = health[k] + splintamount
+				--printf("Splint used on %s",k)
+				splintamount = 0
+				surgeryhp[k] = 0
+				if health[k]>maxhp[k] then health[k]=maxhp[k] end
 				if splintamount <= 0 then break end
 			end
-			if loopcounter >= maxarmleg and loopcounter >= maxheadtorso then break end
-			loopcounter = loopcounter + 1
 		end
 	end
 	SaveHealthStatus()
@@ -2094,10 +2046,10 @@ local status_check_interval = 1000
 function actor_on_update()
 	if bhs_exp_mode then
 		manage_boosters()
-		if time_global() >= status_check_timer and exp_healing.status then 
-			status_check_timer = time_global() + status_check_interval
-		end
-		if exp_druglist.restoreduration > 0 then
+		--if time_global() >= status_check_timer then 
+		--	status_check_timer = time_global() + status_check_interval
+		--end
+		if exp_druglist.restorepower > 0 then
 			if time_global() - exp_druglist.lasttimestamp > exp_druglist.restoreduration then
 				if exp_druglist.countdown_increments == 1 or exp_druglist.countdown_increments < 0 then
 					db.actor:change_health(exp_druglist.restorepower)
@@ -2178,7 +2130,7 @@ function actor_on_update()
 
 	if time_global() - healonelist.lastregen > healonelist.healtimer then
 		if healonelist.healamount > 0 then
-			HealOne(healonelist.healpower,health)  -- healing not capped to actor.health %
+			HealOne(healonelist.healpower,health,surgeryhp)  -- healing not capped to actor.health %
 			healonelist.healamount = healonelist.healamount - 1
 			if healonelist.healamount < 0 then
 				healonelist.healamount = 0
@@ -2216,7 +2168,7 @@ function actor_on_update()
 	
 	if modifiedregen>0 and init then
 		if time_global() - healtimer > modifiedregen then
-			HealOne(newhealth,health)
+			HealOne(newhealth,health,surgeryhp)
 			healtimer = time_global()
 			statuschanged = true
 			
@@ -2330,8 +2282,8 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 			healhelplist.healpower=healhelplist[name].healpower
 			for k,v in pairs(timedheal) do
 				local bonus=healhelplist[name][k]
-				if bonus and v==0 then
-					timedheal[k]=v+bonus
+				if bonus and (health[k]>0 or (health[k]==0 and (not splinting or (medkit_is_splint and healhelplist.healpower>0)))) then
+					timedheal[k]=bonus
 				end
 			end
 			--printf("Heal all used for %s",ispreview)
@@ -2365,7 +2317,7 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 					if missinghealth < 0 then missinghealth = 0 end
 				end
 				local bonus = painkillerlist.painkillerpower
-				if string.find(k, "head") or string.find(k, "torso") then
+				if string.match(k, "head") or string.match(k, "torso") then
 					bonus = painkillerlist.painkillerpower * 2
 				end
 				if bonus > missinghealth then
@@ -2379,17 +2331,17 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 	else
 		if healonelist[name] then
 			for i=1,healonelist[name].healamount do
-				HealOne(healonelist[name].healpower,preview.health)
+				HealOne(healonelist[name].healpower,health,surgeryhp)
 				--printf("HealOne used for %s",ispreview)
 			end
 		end
-		local allheal_ceiling=1
 		if healhelplist[name] then
+			local allheal_ceiling=1
 			if healhelplist[name].healpower <= 0 then allheal_ceiling=db.actor.health
-			else allheal_ceiling=healhelplist.healpower end
+			else allheal_ceiling=healhelplist[name].healpower end
 			for k,v in pairs(health) do
 				local bonus = healhelplist[name][k]
-				if v > 0 and bonus then
+				if bonus and (health[k]>0 or (health[k]==0 and (not splinting or (medkit_is_splint and healhelplist[name].healpower>0)))) then
 					if health[k]+bonus>maxhp[k]*allheal_ceiling then
 						health[k]=maxhp[k]*allheal_ceiling 
 					else
@@ -2414,7 +2366,7 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 					if missinghealth < 0 then missinghealth = 0 end
 				end
 				bonus = painkillerpreview
-				if string.find(k, "head") or string.find(k, "torso") then
+				if string.match(k, "head") or string.match(k, "torso") then
 					bonus = painkillerpreview * 2
 				end
 				if bonus > missinghealth then
@@ -2438,13 +2390,13 @@ local function actor_on_sleep(hours)
 			level.remove_pp_effector(5020) 
 		end
 	end
-	hoursleft = hoursleft/OGhealth*sleep_heal_power
+	hoursleft = hoursleft*sleep_heal_power
 	printf("Adjusted hours: %s", hoursleft)
 	if sleep_heal then
 		if sleep_heal_logic then
 			printf("Sleep logic is on")
 			for i=1,hoursleft do
-				HealOne(0,health)
+				HealOne(0,health,surgeryhp)
 			end
 		else
 			printf("Sleep logic is off")
@@ -2611,7 +2563,7 @@ local function ActorMenu_on_item_focus_receive(item)
 		--printf("It was a medical item")
 		-- InitializePreviewBars()
 		preview.health=copy_table(health)
-		preview.bonus=copy_table(timedhp)
+		preview.bonus=copy_table(timedheal)
 		preview.surgeryhp=copy_table(surgeryhp)
 		MedicineUsed(item_name,preview.health,preview.bonus,preview.surgeryhp,1)
 	end

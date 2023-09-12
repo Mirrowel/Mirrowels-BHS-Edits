@@ -20,12 +20,6 @@
 		<text>(Требуется перезагрузка) Текстовая версия HUD'а.</text>
 	</string>
 
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
-		<text>Новая функция штрафов конечностей</text>
-	</string>
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
-		<text>(Требуется перезагрузка) Включение этой опции активирует новую функцию штрафов. \nОтключение возвращает старые штрафы BHS.</text>
-	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds">
 		<text>Новый голос при эффектах</text>
 	</string>
@@ -112,10 +106,10 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_FALL_MULT">
-		<text>Множитель урона от падения конечностей</text>
+		<text>Множитель урона конечностям от падения</text>
 	</string>
 	<string id="ui_mcm_body_health_system_FALL_MULT_desc">
-		<text>Умножает урон от падения по конечностям на заданное значение. По умолчанию: 2</text>
+		<text>Умножает урон по конечностям от падения на заданное значение. По умолчанию: 2</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
@@ -169,11 +163,11 @@
 	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
 		<text>Уничтоженные конечности (достигшие 0 HP) требуют хирургического вмешательства с использованием хирургических инструментов или хирургического набора. Не мешает работе обезболивающих</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
-		<text>Хирургические инструменты восстанавливают только одну конечность</text>
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS">
+		<text>Хирургические инструменты восстанавливают все конечности сразу</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
-		<text>Хирургические инструменты мгновенно восстанавливают своё заданное количество HP на одной конечности. \nНеобходимо включить эту опцию, чтобы CMS мог излечивать более одного HP на конечность</text>
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS_desc">
+		<text>Хирургические инструменты ввосстанавливают все конечности сразу.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
 		<text>Хирургия излечивает сама по себе (ВКЛЮЧЕНО, ЕСЛИ ВЫКЛЮЧЕНЫ ПЕРЕЛОМЫ, НО ХИРУРГИЯ ВКЛЮЧЕНА)</text>
@@ -241,10 +235,10 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING">
-		<text>Артефакты могут восстанавливать конечности</text>
+		<text>Артефакты могут регенерировать конечности</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_desc">
-		<text>(СОВМЕСТИМО ПО УМОЛЧАНИЮ ТОЛЬКО С ГАММОЙ. СМОТРИТЕ КАК ДОБАВИТЬ ДРУГИЕ АРТЕФАКТЫ НА СТРАНИЦЕ МОДА)\nЕсли артефакт обладает свойствами заживления, он также медленно восстанавливает конечности до уровня текущего HP.</text>
+		<text>(СОВМЕСТИМО ПО УМОЛЧАНИЮ ТОЛЬКО С ГАММОЙ. СМОТРИТЕ КАК ДОБАВИТЬ ДРУГИЕ АРТЕФАКТЫ НА СТРАНИЦЕ МОДА)\nЕсли артефакт обладает свойствами заживления, он также медленно регенерирует конечности до уровня текущего HP.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_ARTEFACT_HEALING_POWER">
 		<text>Множитель скорости заживления артефактов</text>
@@ -254,10 +248,10 @@
 	</string>
 	
 	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING">
-		<text>Костры могут восстанавливать конечности</text>
+		<text>Костры могут регенерировать конечности</text>
 	</string>
 	<string id="ui_mcm_body_health_system_CAMPFIRE_HEALING_desc">
-		<text>Костры могут восстанавливать конечности</text>
+		<text>Костры могут регенерировать конечности</text>
 	</string>
 	
 	<string id="ui_mcm_body_health_system_limb_heal_interval">
@@ -267,12 +261,6 @@
 		<text>Время восстановления конечности за один такт (в секундах). \nНажмите ENTER после ввода желаемого значения.</text>
 	</string>
 	
-	<string id="ui_mcm_body_health_system_HEALTH_OG">
-		<text>Восстановить значения здоровья до стандартных BHS</text>
-	</string>
-	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
-		<text>Восстанавливает значения как они были в стандартном BHS. \nНичего не делает, кроме уменьшения количества шагов здоровья на интерфейсе.</text>
-	</string>
 	
 	<string id="ui_mcm_body_health_system_loot_coefficient">
 		<text>Коэффициент шанса выпадения</text>
