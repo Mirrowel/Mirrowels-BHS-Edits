@@ -2,7 +2,6 @@
 
 if perk_based_artefacts then end
 if zzz_player_injuries then end
-if zzzzzz_player_injuries_mp_new_attachments then end
 
 local artefact_healing = zzz_player_injuries_mcm.get_config("ARTEFACT_HEALING")
 local artefact_healing_power = zzz_player_injuries_mcm.get_config("ARTEFACT_HEALING_POWER")
@@ -178,7 +177,7 @@ function artihealing_calculations()
 		if modifiedregen == 0 then
 			timer_regen=time_global()
 		end
-		modifiedregen = math.floor(((150000 / val)/artefact_healing_power)*zzz_player_injuries.OGhealth)
+		modifiedregen = math.floor(150000 / val)/artefact_healing_power
 		printf('Limb regeneration set')
 	end
 	
