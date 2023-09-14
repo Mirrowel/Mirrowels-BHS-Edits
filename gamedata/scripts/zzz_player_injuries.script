@@ -918,7 +918,7 @@ local function received_damage(amount)
 				break
 			end
 			if damage >= count then
-				printf("! Enough damage(%s) to hit all healthy limbs(%s) at least once", damage, count)
+				printf("! Enough damage(%s) to hit all healthy limbs(%s) %s times", damage, count, damage/count)
 				printf("! Torso counts as 2")
 				damage_parts=math.floor(damage/count)
 				for k in pairs(health) do
