@@ -1168,6 +1168,7 @@ local progress_health_leftarm_time=nil
 local progress_health_rightleg_time=nil
 local progress_health_leftleg_time=nil
 
+local progress_health_torso_surgery=nil
 local progress_health_rightarm_surgery=nil
 local progress_health_leftarm_surgery=nil
 local progress_health_rightleg_surgery=nil
@@ -1578,6 +1579,7 @@ local function HUDUpdate()
 
 		--- red bkg health equals surgery -----
 		
+		progress_health_torso_surgery=ParamBar(progress_health_torso_surgery,"bhs_health_torso_bar_blue","bhs_health_bodypart_blue",	preview.surgeryhp.torso or surgeryhp.torso,maxhp.torso,false)
 		progress_health_rightarm_surgery=ParamBar(progress_health_rightarm_surgery,"bhs_health_rightarm_bar_blue","bhs_health_bodypart_blue",	preview.surgeryhp.rightarm or surgeryhp.rightarm,maxhp.rightarm,false)
 		progress_health_leftarm_surgery=ParamBar(progress_health_leftarm_surgery,"bhs_health_leftarm_bar_blue","bhs_health_bodypart_blue",	preview.surgeryhp.leftarm or surgeryhp.leftarm,maxhp.leftarm,false)
 		progress_health_rightleg_surgery=ParamBar(progress_health_rightleg_surgery,"bhs_health_rightleg_bar_blue","bhs_health_bodypart_blue",	preview.surgeryhp.rightleg or surgeryhp.rightleg,maxhp.rightleg,false)
