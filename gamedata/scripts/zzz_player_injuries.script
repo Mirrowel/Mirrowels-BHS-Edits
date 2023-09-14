@@ -4,7 +4,8 @@ local disable_hud_fps_fix_tmr = 0.2			-- sec
 ------------------------ SETTINGS ------------------------
 local damagescale=zzz_player_injuries_mcm.get_config("DAMAGE_MULT") or 2.5
 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
-local damage_threshold=0.0125 -- 0.0293 is default
+local damagescale_floor = math.floor(damagescale)
+local damage_threshold=0.0293/damagescale_floor -- 0.0293 is default
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
@@ -1107,7 +1108,7 @@ local function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
         text=hitboxes[bone_id]
     end
 	local damage=amount
-    printf("! Actor got hit in %s, random? %s, redirected? %s, damagescale: %s. Original bone: %s, damage type: %s",text, random, redirect, damagescale, hit.bone_id, hit.type)
+    printf("! Actor got hit in %s, random? %s, redirected? %s, damagescale: %s, damage threshold: %s. Original bone: %s, damage type: %s",text, random, redirect, damagescale, damage_threshold, hit.bone_id, hit.type)
 	printf("! Damage: %s",damage)
 	--printf("! Whodunit: %s",who:id())
 	if not hit.bone_id then
