@@ -1108,6 +1108,9 @@ local function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
         text=hitboxes[bone_id]
     end
 	local damage=amount
+	if hit.fall then
+		text = "both legs"
+	end
     printf("! Actor got hit in %s, random? %s, redirected? %s, damagescale: %s, damage threshold: %s. Original bone: %s, damage type: %s",text, random, redirect, damagescale, damage_threshold, hit.bone_id, hit.type)
 	printf("! Damage: %s",damage)
 	--printf("! Whodunit: %s",who:id())
