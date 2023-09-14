@@ -1,0 +1,318 @@
+local gc = game.translate_string
+local blue_clr = utils_xml.get_color("d_blue")
+local red_clr = strformat("%c[%s,%s,%s,%s]", 255, 250, 50, 50) -- bad shit
+local white_clr = strformat("%c[%s,%s,%s,%s]", 255, 255, 255, 255)
+local teal_clr = strformat("%c[%s,%s,%s,%s]", 255, 150, 250, 240)		-- for non-stat properties
+local green_clr = utils_xml.get_color("d_green")
+local def_clr  = utils_xml.get_color("ui_gray_2")
+local title_clr = utils_xml.get_color("ui_gray_3")
+
+local bhs_display_numeric_at = 12
+local bhs_show_numeric_always = true
+
+local dbg = false
+function pr(...)
+	if not dbg then return end
+	printf(...)
+end
+
+obj_desc_def = ui_item.get_obj_desc
+function ui_item.get_obj_desc(obj)
+	if not obj then
+		return ""
+	end
+
+	-- exclude non-consumables
+	local sec = obj:section()
+	if not (IsItem("consumable", sec)) then
+		return obj_desc_def(obj)
+	end
+
+	-- exclude repair items
+	local kind = ini_sys:r_string_ex(sec, "kind")
+	if kind and kind == "i_repair" then
+		return obj_desc_def(obj)
+	end
+
+	local str = gc(ini_sys:r_string_ex(sec, "description"))
+	-- leave only footer's real description
+	local _, n_idx = string.find(str, "\\n")
+	local res = string.sub(str, 1, n_idx)
+	res = res .. " \\n"
+	res = ui_item.item_description(obj, res)
+
+	return res
+end
+
+BuildFooter = ui_item.build_desc_footer
+function ui_item.build_desc_footer(obj, sec, str)
+	str = str or gc(ini_sys:r_string_ex(sec, "description"))
+	if (not str) then return "" end
+
+	-- exclude non-consumables
+	if not (IsItem("consumable", sec)) then
+		return BuildFooter(obj, sec, str)
+	end
+
+	-- exclude repair items
+	local kind = ini_sys:r_string_ex(sec, "kind")
+	if kind and kind == "i_repair" then
+		return BuildFooter(obj, sec, str)
+	end
+
+
+	-- fill new properties
+	local rad_max = 3870
+	local boost_time = ini_sys:r_float_ex(sec, "boost_time")
+
+	----------- instant effects -----------
+
+	-- instant title
+	local eat_health = ini_sys:r_float_ex(sec, "eat_health")
+	local eat_hp_ex = eat_health and eat_health ~= 0
+
+	local eat_rad = ini_sys:r_float_ex(sec, "eat_radiation")
+	local eat_rad_ex = eat_rad and eat_rad ~= 0
+
+	local eat_sleepiness = ini_sys:r_float_ex(sec, "eat_sleepiness")
+	local eat_sleep_ex = eat_sleepiness and eat_sleepiness ~= 0
+
+	local eat_thirstiness = ini_sys:r_float_ex(sec, "eat_thirstiness")
+	local eat_thirst_ex = eat_thirstiness and eat_thirstiness ~= 0
+
+	if (eat_hp_ex or eat_rad_ex or eat_sleep_ex or eat_thirst_ex) then
+		str = str .. title_clr .. gc("desc_over_prop") .. def_clr .. " \\n"
+	end
+
+	-- health
+	if eat_hp_ex then
+		local hp_clr = eat_health > 0 and green_clr or red_clr
+		local hp_sign = eat_health > 0 and "+" or ""
+		local hp_num = eat_health * 100
+		str = str .. hp_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_hp") .. " " .. hp_clr .. hp_sign .. round(hp_num) .. "%" .. def_clr .. " \\n"
+		pr("show health")
+	end
+
+	-- radiation
+	if eat_rad_ex then
+		local rad_clr = eat_rad > 0 and red_clr or green_clr
+		local rad_sign = eat_rad > 0 and "+" or ""
+		local rad_num = eat_rad * rad_max
+		str = str .. rad_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_rad") .. " " .. rad_clr .. rad_sign .. round(rad_num) .. " " .. def_clr .. gc("st_msv") .. " \\n"
+		pr("show rad")
+	end
+
+	-- sleep
+	local max_sleep = get_local_val([[gamedata\scripts\actor_status_sleep.script]], "actor_status_sleep", "local start_blur_4") or 8750
+	local sleep_mult = get_local_val([[gamedata\scripts\actor_status_sleep.script]], "actor_status_sleep", "local eat_sleepiness_mul") or 1000
+	if eat_sleep_ex then
+		eat_sleepiness = eat_sleepiness * sleep_mult
+		local sleep_clr = eat_sleepiness > 0 and red_clr or green_clr
+		local sleep_sign = eat_sleepiness > 0 and "+" or ""
+		local sleep_num = (eat_sleepiness / max_sleep) * 100
+		str = str .. sleep_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_sleep") .. " " .. sleep_clr .. sleep_sign .. round(sleep_num) .. "%" .. def_clr .. " \\n"
+		pr("show sleep")
+	end
+
+	-- thirst
+	local max_thirst = get_local_val([[gamedata\scripts\actor_status_thirst.script]], "actor_status_thirst", "local start_blur_4") or 5760
+	local thirst_mult = get_local_val([[gamedata\scripts\actor_status_thirst.script]], "actor_status_thirst", "local eat_thirstiness_mul") or 1000
+	if eat_thirst_ex then
+		eat_thirstiness = eat_thirstiness * thirst_mult
+		local thirst_clr = eat_thirstiness > 0 and red_clr or green_clr
+		local thirst_sign = eat_thirstiness > 0 and "+" or ""
+		local thirst_num = (eat_thirstiness / max_thirst) * 100
+		str = str .. thirst_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_thirst") .. " " .. thirst_clr .. thirst_sign .. round(thirst_num) .. "%" .. def_clr .. " \\n"
+		pr("show thirst")
+	end
+
+
+	----------- timed effects -----------
+
+	if boost_time and boost_time ~= 0 then
+
+		-- timed title
+		local boost_health_restore = ini_sys:r_float_ex(sec, "boost_health_restore")
+		local boost_hp_ex = boost_health_restore and boost_health_restore ~= 0
+
+		local boost_radiation_restore = ini_sys:r_float_ex(sec, "boost_radiation_restore")
+		local boost_rad_ex = boost_radiation_restore and boost_radiation_restore ~= 0
+
+		local boost_bleeding_restore = ini_sys:r_float_ex(sec, "boost_bleeding_restore")
+		local boost_bleed_ex = boost_bleeding_restore and boost_bleeding_restore ~= 0
+
+		if (boost_hp_ex or boost_rad_ex or boost_bleed_ex) then
+			str = str .. title_clr .. gc("desc_over_timed") .. def_clr .. " \\n"
+		end
+
+		-- health
+		if boost_hp_ex then
+			local thp_clr = boost_health_restore > 0 and green_clr or red_clr
+			local thp_sign = boost_health_restore > 0 and "+" or ""
+			local thp_num = round(boost_health_restore * 100 * 6 * boost_time)
+			str = str .. thp_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_hp") .. " " .. thp_clr .. thp_sign .. thp_num .. "%" .. def_clr .. " " .. gc("desc_over_over") .. " " .. round(boost_time) .. " " .. gc("desc_over_sec") .. def_clr .. " \\n"
+			pr("show timed hp")
+		end
+
+		-- radiation
+		if boost_rad_ex then
+			local trad_clr = boost_radiation_restore > 0 and green_clr or red_clr
+			local trad_sign = boost_radiation_restore > 0 and "-" or ""
+			local trad_num = round(boost_radiation_restore * rad_max * 6 * boost_time)
+			str = str .. trad_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_rad") .. " " .. trad_clr .. trad_sign .. trad_num .. " " .. def_clr .. gc("st_msv") .. " " .. gc("desc_over_over") .. " " .. round(boost_time) .. " " .. gc("desc_over_sec") .. def_clr .. " \\n"
+			pr("show timed rad")
+		end
+
+		-- bleeding
+		if boost_bleed_ex then
+			local tbleed_clr = boost_bleeding_restore > 0 and green_clr or red_clr
+			local tbleed_sign = boost_bleeding_restore > 0 and "-" or ""
+			local tbleed_num = round(boost_bleeding_restore * 100 * 6 * boost_time)
+			str = str .. tbleed_clr .. "  " .. gc("st_bhs_mihail_krug") .. " " .. def_clr .. " " .. gc("desc_over_bleed") .. " " .. tbleed_clr .. tbleed_sign .. tbleed_num .. "%" .. def_clr .. " " .. gc("desc_over_over") .. " " .. round(boost_time) .. " " .. gc("desc_over_sec") .. def_clr .. " \\n"
+			pr("show timed bleed")
+		end
+
+	end
+
+
+	----------- BHS patch -----------
+	if zzz_player_injuries and ( (zzz_player_injuries.healonelist and zzz_player_injuries.healonelist[sec]) or (zzz_player_injuries.healhelplist and zzz_player_injuries.healhelplist[sec]) or (zzz_player_injuries.painkillerlist and zzz_player_injuries.painkillerlist[sec]) or (zzz_player_injuries.surgerylist and zzz_player_injuries.surgerylist[sec]) or (zzz_player_injuries.splintlist and zzz_player_injuries.splintlist[sec]) ) then
+		str = str .. title_clr .. gc("desc_over_bhs") .. def_clr .. " \\n"
+		local bhs_str = bhs_descr_str(obj, sec)
+		str = str .. bhs_str
+	end
+
+	str = str .. " \\n"
+
+	return str
+end
+
+function get_local_val(path, script_name, str_to_find)
+	if _G[script_name] then
+
+		if not file_exists(path) then
+			return
+		end
+
+		for line in io.lines(path) do
+			if string.find(line, str_to_find) then
+				_,_, loc_val = string.find(line, "start_blur_4%s*=%s*(%d+)")		-- RavenAscendant carried
+				if type(tonumber(loc_val)) == "number" then
+					return loc_val
+				end
+			end
+		end
+	end
+end
+
+function file_exists(name)
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
+-- BHS
+function bhs_descr_str(obj, obj_sec)
+
+	local _str = ""
+	local blue_main = utils_xml.get_color("d_blue")
+	local blue_clr = strformat("%c[%s,%s,%s,%s]", 255, 74, 134, 232)
+	local yel_clr = strformat("%c[%s,%s,%s,%s]", 0, 252, 186, 3)
+	local grey_clr = utils_xml.get_color("ui_gray_2")
+
+	-- get string
+	local function build_string(t_name, sec, color)
+		local hphealed_str = ""
+		local head_str = ""
+		local torso_str = ""
+		local arm_str = ""
+		local leg_str = ""
+		local healpower_str = ""
+		local timeregen_str = ""
+		local painkillerpower_str = ""
+		local painkillerdur_str = ""
+		local splint_str = ""
+		local surgery_str = ""
+		local restore_str = ""
+		local restoretime_str = ""
+		if sec and t_name[sec] then
+			for limb, val in pairs(t_name[sec]) do
+				if limb == "healamount" then
+					hphealed_str = grey_clr .. color .. "+" .. val .. " " .. gc("st_bhs_limb_hp")
+				elseif limb == "head" then
+					head_str = grey_clr .. gc("st_bhs_head_str") .. color .. (val) .. "%" .. " "
+				elseif limb == "torso" then
+					torso_str = grey_clr .. gc("st_bhs_torso_str") .. color .. (val) .. "%" .. " "
+				elseif limb == "rightarm" then
+					arm_str = grey_clr .. gc("st_bhs_rightarm_str") .. color .. (val) .. "%" .. " "
+				elseif limb == "rightleg" then
+					leg_str = grey_clr .. gc("st_bhs_rightleg_str") .. color .. (val) .. "%" .. " "
+				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==2 then
+					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].healamount) .. " " .. gc("desc_over_sec") .. " "
+				elseif limb == "healtimer" and zzz_player_injuries.medkits_heal_logic==1 then
+					timeregen_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. ((val / 1000)*t_name[sec].head) .. " " .. gc("desc_over_sec") .. " "
+				elseif limb == "healpower" then
+					if val == 0 then text=gc("st_bhs_currhp")
+					else text = val*100 .. "%" end
+					healpower_str = grey_clr .. gc("st_bhs_upto") .. " " .. color .. text .. " max. "
+				elseif limb == "painkillerpower" then
+					painkillerpower_str = grey_clr .. gc("st_bhs_painkillerlvl") .. " " .. color .. val
+				elseif limb == "painkillerduration" then
+					painkillerdur_str = grey_clr .. gc("st_bhs_for") .. " " .. color .. (val / 1000) .. " " .. gc("desc_over_sec")
+				elseif limb == "splintamount" then
+					splint_str = grey_clr .. gc("st_bhs_splints") .. " "
+				elseif limb == "surgeryamount" then
+					surgery_str = grey_clr .. gc("st_bhs_surgerys") .. " "	
+				elseif limb == "restorepower" then
+					restore_str = grey_clr .. color .. (val*ini_sys:r_float_ex(sec, "boost_time"))*100 .. "%" .. " " .. gc("st_bhs_main_hp")	
+				elseif limb == "restoretime" then
+					restoretime_str = grey_clr ..  gc("desc_over_over") .. " " .. color .. val .. " " .. gc("desc_over_sec") .. " "
+				end
+			end
+		end
+		--local main_string = head_str .. torso_str .. arm_str .. leg_str .. (timeregen_str ~= "" and (" " .. timeregen_str) or "")
+		local main_string = (hphealed_str ~= "" and (" " .. hphealed_str) or "") .. (timeregen_str ~= "" and (" " .. timeregen_str) or "") .. (healpower_str ~= "" and (" " .. healpower_str) or "") .. (head_str ~= "" and (" " .. head_str) or "") .. (torso_str ~= "" and (" " .. torso_str) or "") .. (arm_str ~= "" and (" " .. arm_str) or "") .. (leg_str ~= "" and (" " .. leg_str) or "") .. (painkillerpower_str ~= "" and (" " .. painkillerpower_str) or "") .. (painkillerdur_str ~= "" and (" " .. painkillerdur_str) or "") .. (surgery_str ~= "" and (" " .. surgery_str) or "") .. (splint_str ~= "" and (" " .. splint_str) or "") .. (restore_str ~= "" and (" " .. restore_str) or "") .. (restoretime_str ~= "" and (" " .. restoretime_str) or "")
+--		printf("main_string: [%s]", main_string)
+		return main_string
+	end
+
+	local medkits_pre = "  " .. blue_main .. gc("st_bhs_mihail_krug") .. " " .. blue_clr .. " " .. gc("st_bhs_heals") .. "  "
+	local medkits_str = build_string(zzz_player_injuries.healonelist, obj_sec, blue_clr)
+	local healhelp_pre = "  " .. blue_main .. gc("st_bhs_mihail_krug") .. " " .. blue_clr .. " " .. gc("st_bhs_heals") .. "  "
+	local healhelp_str = build_string(zzz_player_injuries.healhelplist, obj_sec, blue_clr)
+	local surgerys_pre = "  " .. blue_main .. gc("st_bhs_mihail_krug") .. " " .. blue_clr .. " " .. gc("st_bhs_surgery") .. "  "
+	local surgerys_str = build_string(zzz_player_injuries.surgerylist, obj_sec, blue_clr)
+	local splints_pre = "  " .. blue_main .. gc("st_bhs_mihail_krug") .. " " .. blue_clr .. " " .. gc("st_bhs_splint") .. "  "
+	local splints_str = build_string(zzz_player_injuries.splintlist, obj_sec, blue_clr)
+	local painkillers_pre = "  " .. yel_clr .. gc("st_bhs_mihail_krug") .. " " .. yel_clr .. " " .. gc("st_bhs_painkiller") .. "  "
+	local painkillers_str = build_string(zzz_player_injuries.painkillerlist, obj_sec, yel_clr)
+	local bhs_exp_pre = "  " .. green_clr .. gc("st_bhs_mihail_krug") .. " " .. green_clr .. " " .. gc("st_bhs_restore") .. "  "
+	local bhs_exp_str = build_string(zzz_player_injuries.exp_druglist, obj_sec, green_clr)
+
+--		printf("obj_sec: [ %s ] || medkits_str: [ %s ] || healhelp_str: [ %s ]", obj_sec, medkits_str ~= "" and true or false, healhelp_str ~= "" and true or false)
+	if medkits_str ~= "" and painkillers_str ~= "" then
+		_str = medkits_pre .. medkits_str .. "\\n" .. painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
+	elseif healhelp_str ~= "" and painkillers_str ~= "" then
+		_str = healhelp_pre .. healhelp_str .. "\\n" .. painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
+	elseif medkits_str ~= "" and bhs_exp_str ~= "" and zzz_player_injuries.bhs_exp_mode then
+		_str = medkits_pre .. medkits_str .. "\\n" .. bhs_exp_pre .. bhs_exp_str .. grey_clr .. "\\n"
+	elseif medkits_str ~= "" then
+		_str = medkits_pre .. medkits_str .. grey_clr .. "\\n"
+	elseif healhelp_str ~= "" then
+		_str = healhelp_pre .. healhelp_str .. grey_clr .. "\\n"
+	elseif splints_str ~= "" then
+		_str = splints_pre .. splints_str .. grey_clr .. "\\n"
+	elseif painkillers_str ~= "" then
+		_str = painkillers_pre .. painkillers_str .. grey_clr .. "\\n"
+	elseif surgerys_str ~= "" then
+		_str = surgerys_pre .. surgerys_str .. grey_clr .. "\\n"
+	elseif bhs_exp_str ~= "" and zzz_player_injuries.bhs_exp_mode then
+		_str = bhs_exp_pre .. bhs_exp_str .. grey_clr .. "\\n"
+	end
+
+	return _str
+end

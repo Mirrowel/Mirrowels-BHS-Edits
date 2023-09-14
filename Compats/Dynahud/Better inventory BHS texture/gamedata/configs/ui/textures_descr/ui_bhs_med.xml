@@ -1,0 +1,19 @@
+<w>
+
+	<file name="ui\ui_body_health_system_med">
+		<!-- body health system -->
+		<texture id="ui_hud_bhs_med_bg"		x="0" y="0" width="804" height="704" />
+		<texture id="ui_hud_bhs_med_health"		x="832" y="0" width="192" height="496" />
+		<texture id="ui_hud_bhs_med_bar"		x="0" y="710" width="150" height="25" />
+		<texture id="ui_hud_bhs_med_bar_green"		x="150" y="710" width="150" height="25" />
+		<texture id="ui_hud_bhs_med_bar_blue"		x="382" y="709" width="150" height="25" />
+		<texture id="ui_hud_bhs_med_stamina"		x="0" y="750" width="530" height="25" />
+		
+
+		<texture id="ui_hud_bhs_med_health_bg"		x="832" y="528" width="192" height="496" />
+		<texture id="ui_hud_bhs_med_bar_bg"		x="0" y="848" width="152" height="20" />
+		<texture id="ui_hud_bhs_med_stamina_bg"		x="0" y="788" width="536" height="56" />
+		
+	</file>
+
+</w>
