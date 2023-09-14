@@ -2044,6 +2044,7 @@ local status_check_timer = 0
 local status_check_interval = 1000
 
 function actor_on_update()
+	local statuschanged = false
 	if bhs_exp_mode then
 		manage_boosters()
 		--if time_global() >= status_check_timer then 
@@ -2105,7 +2106,6 @@ function actor_on_update()
 		if (preview.health[k]+preview.bonus[k])>maxhp[k] then preview.bonus[k]=(health[k]-maxhp[k]) end  -- needs a check
 	end
 	
-	local statuschanged = false
 	local allheal_ceiling=1
 	if timedheal.torso>0 and time_global()-healhelplist.lastregen>healhelplist.healtimer  then
 		healhelplist.lastregen=time_global()
@@ -2193,6 +2193,21 @@ function actor_on_update()
 		init=true
 	else
 		if statuschanged then
+			for k,v in pairs(health) do
+				local missinghealth = 0
+				if v < maxhp[k] then
+					missinghealth = maxhp[k] - v
+					if missinghealth < 0 then missinghealth = 0 end
+				end
+				local bonus = painkillerlist.painkillerpower
+				if string.match(k, "head") or string.match(k, "torso") then
+					bonus = painkillerlist.painkillerpower * 2
+				end
+				if bonus > missinghealth then
+					bonus = missinghealth
+				end
+				timedhp[k] = bonus
+			end
 			SaveHealthStatus()
 		end
 	end
@@ -2310,23 +2325,23 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 				--printf("Countdowns set. New duration: %s",painkillerlist.painkillerduration)
 				painkillerlist.lasttimestamp = time_global()
 			end
-			for k,v in pairs(health) do
-				local missinghealth = 0
-				if v < maxhp[k] then
-					missinghealth = maxhp[k] - v
-					if missinghealth < 0 then missinghealth = 0 end
-				end
-				local bonus = painkillerlist.painkillerpower
-				if string.match(k, "head") or string.match(k, "torso") then
-					bonus = painkillerlist.painkillerpower * 2
-				end
-				if bonus > missinghealth then
-					bonus = missinghealth
-				end
-				timedhp[k] = bonus
-			end
 			if painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
 			--printf("Painkiller used for %s",ispreview)
+		end
+		for k,v in pairs(health) do
+			local missinghealth = 0
+			if v < maxhp[k] then
+				missinghealth = maxhp[k] - v
+				if missinghealth < 0 then missinghealth = 0 end
+			end
+			local bonus = painkillerlist.painkillerpower
+			if string.match(k, "head") or string.match(k, "torso") then
+				bonus = painkillerlist.painkillerpower * 2
+			end
+			if bonus > missinghealth then
+				bonus = missinghealth
+			end
+			timedhp[k] = bonus
 		end
 	else
 		if healonelist[name] then
@@ -2563,7 +2578,7 @@ local function ActorMenu_on_item_focus_receive(item)
 		--printf("It was a medical item")
 		-- InitializePreviewBars()
 		preview.health=copy_table(health)
-		preview.bonus=copy_table(timedheal)
+		preview.bonus=copy_table(timedhp)
 		preview.surgeryhp=copy_table(surgeryhp)
 		MedicineUsed(item_name,preview.health,preview.bonus,preview.surgeryhp,1)
 	end
