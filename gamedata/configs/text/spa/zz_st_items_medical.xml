@@ -16,7 +16,7 @@
 		%c[d_blue] • %c[ui_gray_2] Objeto Quirúrgico\n
 		%c[d_blue] • %c[ui_gray_2] Importado\n
 		%c[d_blue] • %c[ui_gray_2] Alta Calidad\n
-		%c[d_red] • %c[ui_gray_2] Tendrá que hacerse daño dentro de la intervención médica\n
+		%c[d_red] • %c[ui_gray_2] Tendrá Que Hacerse Daño Dentro De La Intervención Médica\n
 		</text>
 	</string>
 	<string id="st_zagustin">
@@ -48,7 +48,7 @@
 		%c[0,255,255,255]PROPIEDADES:\n
 		%c[d_blue] • %c[ui_gray_2] Medicina\n
 		%c[d_blue] • %c[ui_gray_2] Importado\n
-		%c[d_blue] • %c[ui_gray_2] Alta calidad\n
+		%c[d_blue] • %c[ui_gray_2] Alta Calidad\n
 		%c[d_blue] • %c[ui_gray_2] Uso Rápido (Jeringa)\n
 		</text>
 	</string>
@@ -61,10 +61,14 @@
 		%c[d_blue] • %c[ui_gray_2] Medicina\n
 		%c[d_blue] • %c[ui_gray_2] Importado\n
 		%c[d_blue] • %c[ui_gray_2] Artículo Militar\n
-		%c[d_blue] • %c[ui_gray_2] Uso Rápido (jeringuilla)\n
-		%c[d_purple] • %c[ui_gray_2] Bonificación de resistencia al daño muy buena\n
-		%c[d_púrpura] • %c[ui_gris_2] Muy buena bonificación de peso de carga\n
-		%c[d_purple] • %c[ui_gray_2] Muy buena bonificación de resistencia\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rápido (Jeringuilla)\n
+		%c[d_purple] • %c[ui_gray_2] Bonificación De Resistencia Al Daño Muy Buena\n
+		%c[d_purple] • %c[ui_gray_2] Muy Buena Bonificación De Resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Muy Buen Bono De Peso De Transporte\n
+		%c[d_purple] • %c[ui_gray_2] Muy Buen Bono De Resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Larga duración\n
+		%c[d_red] • %c[ui_gray_2] Provoca Alucinaciones Pero Fortalece La Mente.\n
+		%c[d_red] • %c[ui_gray_2] Aumenta Mucho El Hambre\n
 		</text>
 	</string>
 	<string id="st_sj1">
@@ -77,9 +81,13 @@
 		%c[d_blue] • %c[ui_gray_2] Importado\n
 		%c[d_blue] • %c[ui_gray_2] Artículo Militar\n
 		%c[d_blue] • %c[ui_gray_2] Uso Rápido (Jeringuilla)\n
-		%c[d_purple] • %c[ui_gray_2] Buena bonificación de resistencia al daño\n
-		%c[d_púrpura] • %c[ui_gris_2] Buena bonificación de peso de carga\n
-		%c[d_purple] • %c[ui_gray_2] Muy buena bonificación de resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Buena Bonificación De Resistencia Al Daño\n
+		%c[d_púrpura] • %c[ui_gris_2] Buena Bonificación De Peso De Carga\n
+		%c[d_purple] • %c[ui_gray_2] Muy Buena Bonificación De Resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Muy Buen Bono De Resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Larga Duración\n
+		%c[d_red] • %c[ui_gray_2] Provoca Alucinaciones Pero Fortalece La Mente.\n
+		%c[d_red] • %c[ui_gray_2] Aumenta El Hambre\n
 		</text>
 	</string>
 	<string id="st_cms">
@@ -125,23 +133,20 @@
 		%c[d_blue] • %c[ui_gray_2] Rápido y Permanente\n
 		</text>
 	</string>
-	<string id="st_morphine">
-		<text>Ampolla De Morfina</text>
+	<string id="st_etg">
+		<text>eTG-Change</text>
 	</string>
-	<string id="st_morphine_descr">
-		<text>Una ampolla de hierro diseñada como equipo de campo para el personal militar de campaña para la reducción instantánea del dolor. Esta ampolla contiene una potente dosis de morfina. En Medicina clínica, la morfina se considera el patrón oro de los analgésicos opiáceos utilizados para aliviar el dolor y el sufrimiento graves o agónicos. Al igual que otros opiáceos, como la oxicodona, la hidromorfona y la diacetilmorfina (heroína), la morfina actúa directamente sobre el sistema nervioso central (SNC) para aliviar el dolor. Se inyecta en el brazo o el muslo.\n \n
+	<string id="st_etg_descr">
+		<text>Inyector de pluma que contiene una mezcla de diferentes esteroides y otros ingredientes. Supongo que nadie quiere saber exactamente qué contiene. El punto principal es que funciona.\n \n
 		%c[0,255,255,255]PROPIEDADES:\n
-		%c[d_purple] • %c[ui_gray_2]Bonificación de resistencia al daño extremadamente grande (10%)\n
-		%c[d_rojo] • %c[ui_gris_2]Provoca Un Ligero Mareo\n
-		</text>
-	</string>
-	<string id="st_salicidic_acid">
-	<text>Metamizol Ampolla</text>
-	</string>
-	<string id="st_salicidic_acid_descr">
-		<text>Una ampolla de hierro diseñada como equipo de campo para el personal militar de campaña para la reducción instantánea del dolor. Contiene una potente dosis de metamizol mezclada con un fármaco antihemorrágico. El metamizol es uno de los antiinflamatorios no esteroideos (AINE) más potentes, especialmente eficaz para aliviar los dolores y reducir la fiebre. También es útil como antiinflamatorio cuando se utiliza en dosis más altas. Puede provocar algunos efectos secundarios retardados, como leucopenia o agranulocitosis, por lo que debe utilizarse con moderación. Se inyecta en el brazo o el muslo. Su disponibilidad en la Zona es limitada debido a la dificultad de pasar el medicamento de contrabando a través de cordones militares.\n
-		%c[0,255,255,255]PROPIEDADES:\n
-		%c[d_purple] • %c[pda_white]Gran Bonificación De Resistencia Al Daño (7,5%)\n
+		%c[d_blue] • %c[ui_gray_2] Medicina\n
+		%c[d_blue] • %c[ui_gray_2] Importado\n
+		%c[d_blue] • %c[ui_gray_2] Artículo Militar\n
+		%c[d_blue] • %c[ui_gray_2] Uso Rápido (Jeringuilla)\n
+		%c[d_purple] • %c[ui_gray_2] Gran Aumento Del Peso En El Transporte\n
+		%c[d_purple] • %c[ui_gray_2] Muy buen bono de resistencia\n
+		%c[d_purple] • %c[ui_gray_2] Duración Muy Larga\n
+		%c[d_red] • %c[ui_gray_2] Aumenta Considerablemente El Hambre\n
 		</text>
 	</string>
 </string_table>

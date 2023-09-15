@@ -44,16 +44,6 @@
 		<text>La antitoxina IP2 es un fármaco complejo que comprende varios antídotos, incluidos metoclopramida, piridoxina, tiamina, riboxina y otros fármacos. La droga se usa para inyectar una variedad de antibióticos para neutralizar los venenos naturales, junto con absorbentes de veneno sintéticos, en el torrente sanguíneo. IP2 no es particularmente popular en la Zona ya que la mayoría de los acosadores usan una máscara antigás y un traje protector. Sin embargo, todavía hay quienes tienen guardadas algunas unidades de este antídoto para situaciones de emergencia. Los efectos de la droga son duraderos. Tome una cápsula a la vez.\n \n
 		</text>
 	</string>
-	<string id="st_analgetic">
-		<text>Diclofenaco Sódico</text>
-	</string>
-	<string id="st_analgetic_descr">
-		<text>Medicamento antiinflamatorio no esteroideo del grupo de los derivados del ácido fenilacético. El efecto de la droga entorpece la actividad nerviosa del usuario. Debido a la gran cantidad de efectos secundarios, como dolor de cabeza, mareos, somnolencia y, en algunos casos, trastornos de la memoria, desorientación, irritabilidad, no se usa con fines medicinales en la mayoría de los países. Sin embargo, en la Zona se ha vuelto popular debido a un efecto secundario expresado en la violación de la sensibilidad del sistema nervioso central, lo que le permite resistir lesiones graves, como heridas de bala y metralla.\n \n
-		%c[0,255,255,255]PROPIEDADES:\n
-		%c[d_purple] • %c[pda_white]Average damage resistance bonus (5%)\n
-		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
-		</text>
-	</string>
 	<string id="st_jgut_zhgut">
 		<text>Torniquete</text>
 	</string>
@@ -154,6 +144,16 @@
 	<string id="st_antibio_sulfad_descr">
 		<text>Medicamento con sulfanilamida, eficaz contra bacterias grampositivas y gramnegativas. Actúa sobre neumococos, estreptococos, estafilococos, E. coli, palo de Klebsiella (palo de Friedlander), agentes causantes de la disentería; es menos activo con respecto a la proteína; es activo contra el virus del tracoma (una enfermedad ocular infecciosa que puede causar ceguera); No actúa sobre cepas de bacterias resistentes a otros preparados de sulfanilamida. Los efectos adversos incluyen dolores de cabeza, trastornos digestivos, erupciones en la piel, fiebre y leucopenia. Los efectos de la droga son duraderos.\n \n
 		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
+		</text>
+	</string>
+	<string id="st_analgetic">
+		<text>Diclofenaco Sódico</text>
+	</string>
+	<string id="st_analgetic_descr">
+		<text>Medicamento antiinflamatorio no esteroideo del grupo de los derivados del ácido fenilacético. El efecto de la droga entorpece la actividad nerviosa del usuario. Debido a la gran cantidad de efectos secundarios, como dolor de cabeza, mareos, somnolencia y, en algunos casos, trastornos de la memoria, desorientación, irritabilidad, no se usa con fines medicinales en la mayoría de los países. Sin embargo, en la Zona se ha vuelto popular debido a un efecto secundario expresado en la violación de la sensibilidad del sistema nervioso central, lo que le permite resistir lesiones graves, como heridas de bala y metralla.\n \n
+		%c[0,255,255,255]PROPIEDADES:\n
+		%c[d_purple] • %c[pda_white]Average damage resistance bonus (5%)\n
 		%c[d_red] • %c[ui_gray_2]Provoca Un Ligero Mareo\n
 		</text>
 	</string>

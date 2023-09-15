@@ -20,20 +20,14 @@
 		<text>(Se Requiere Recarga) Versión De Texto Del HUD.</text>
 	</string>
 
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE">
-		<text>Nueva característica de penalizaciones de extremidades</text>
-	</string>
-	<string id="ui_mcm_body_health_system_NEW_LIMB_PENALTIES_FEATURE_desc">
-		<text>(Se requiere recarga) Habilitar esto activa la nueva función de penalizaciones. Deshabilitarlo devuelve las penalizaciones BHS antiguas.</text>
-	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds">
-		<text>Nueva voz para las penalizaciones</text>
+		<text>Nueva voz para los penaltis</text>
 	</string>
 	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
-		<text>Habilitando esto se activa la nueva voz durante el sprint con piernas dañadas. Desactivando vuelve la voz del mod original.</text>
+		<text>Habilitar esto activa una nueva voz durante el sprint con piernas dañadas. \nAl desactivarlo se devuelve la voz del mod original.</text>
 	</string>
 	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp">
-		<text>HP mínimo de pierna para la penalización por balanceo de cámara</text>
+		<text>HP mínimo de pierna para la penalización por balanceo de cámara</text>USE_SURGERY
 	</string>
 	<string id="ui_mcm_body_health_system_leg_penalty_minimum_hp_desc">
 		<text>El HP de al menos una pierna debe estar por debajo de este valor para reproducir efectos. El valor predeterminado del control deslizante de 5 significa que los efectos se ejecutarán con 4 o menos HP. (La penalización de velocidad de movimiento seguirá ahí, por ahora)</text>
@@ -78,6 +72,46 @@
 	<string id="ui_mcm_body_health_system_NEW_OPTIONS">
 		<text>Nuevas opciones de la revisión realista de BHS. Dejar por defecto para la forma preferida de jugar el juego.\n TIENES QUE VOLVER A CARGAR EL JUEGO DESPUÉS DE CAMBIAR CUALQUIER AJUSTE DEBAJO</text>
 	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_REWRITE">
+		<text>2 nuevas opciones añadidas con BHS Rewrite en v0.8 BETA.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_EXPERIMENTAL_MODE">
+		<text>(EXPERIMENTAL)BHS Modo alternativo(EXPERIMENTAL)</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_EXPERIMENTAL_MODE_desc">
+		<text>Sólo se puede causar daño a las extremidades. El jugador sólo puede morir si la cabeza llega a 0 PV.\n
+		Los PV del acechador vainilla sólo se usan como referencia para saber cómo estás de salud en general..\n
+		En este modo no se puede desactivar el sangrado de daño.\n
+		Piensa en esto como un intento de traer una versión stalker del sistema HP de Tarkov.\n
+		EXPERIMENTAL. USO PARA PRUEBAS O VISTA PREVIA. POSIBLEMENTE DESEQUILIBRADO Y NO PROBADO.</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_BHS_BLEEDTHROUGH">
+		<text>Sangrado por daño en extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_BHS_BLEEDTHROUGH_desc">
+		<text>Cualquier daño causado a una extremidad por encima de sus PS se extenderá a otras extremidades.\n
+		Daño en el torso escalado(2x) en comparación con otras extremidades por sangrado\n
+		</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_DAMAGE_MULT">
+		<text>Multiplicador de daño en extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_DAMAGE_MULT_desc">
+		<text>Multiplica el daño recibido por las extremidades por el valor establecido. Por defecto: 2,5</text>
+	</string>
+	
+	<string id="ui_mcm_body_health_system_FALL_MULT">
+		<text>Multiplicador del daño por caída de extremidades</text>
+	</string>
+	<string id="ui_mcm_body_health_system_FALL_MULT_desc">
+		<text>Multiplica la extremidad de la caída por el valor establecido. Predeterminado: 2</text>
+	</string>
+	
 	<string id="ui_mcm_body_health_system_NATURAL_REGENERATION">
 		<text>Curación natural</text>
 	</string>
@@ -129,10 +163,10 @@
 	<string id="ui_mcm_body_health_system_USE_SURGERY_desc">
 		<text>Las extremidades destruidas(Alcanzado 0 HP) requieren cirugía mediante herramientas quirúrgicas o kit quirúrgico primero para ser curadas. No impide que los analgésicos hagan efecto</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT">
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS">
 		<text>Las herramientas de cirugía sólo reparan una extremidad</text>
 	</string>
-	<string id="ui_mcm_body_health_system_SURGERY_INSTANT_desc">
+	<string id="ui_mcm_body_health_system_SURGERY_ALL_LIMBS_desc">
 		<text>Las herramientas de cirugía reparan la cantidad de PS instantáneamente y sólo en una extremidad. Tienes que activar esto para que CMS pueda curar más de un HP en una extremidad</text>
 	</string>
 	<string id="ui_mcm_body_health_system_SURGERY_HEALS">
@@ -172,6 +206,14 @@
 	<string id="ui_mcm_body_health_system_MEDKIT_IS_SPLINT_desc">
 		<text>Los Medkits ignoran la mecánica de miembro roto y curan los miembros de todos modos. Piensa en esto como si una férula estuviera contenida en un medkit (vaya, tarkov). </text>
 	</string>
+
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS">
+		<text>Efectos psicológicos de la medicina (actor de voz)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_PSY_MECHANICS_desc">
+		<text>La medicina puede causar o curar daños psíquicos. Actualmente solo se implementan los efectos psíquicos de los inyectores SJ.\nLos inyectores SJ disminuyen la salud psíquica máxima causando alucinaciones pero también aumentan la resistencia psíquica y la regeneración.\nFunciona de forma predeterminada para GAMMA. De lo contrario, se requiere el mod Actor con voz.\nSi no se encuentra el script, no sucede nada. Desactívelo sólo si no le gusta el daño psi causado por los medicamentos.</text>
+	</string>
+
 	<string id="ui_mcm_body_health_system_SLEEP_HEALS">
 		<text>Curación del sueño</text>
 	</string>
@@ -215,14 +257,18 @@
 	</string>
 	<string id="ui_mcm_body_health_system_limb_heal_interval_desc">
 		<text>La cantidad de tiempo para que una extremidad se cure en un tick (en segundos). Pulsa ENTER después de escribir el valor deseado. </text>
+		</string>
+	<string id="ui_mcm_body_health_system_loot_coefficient">
+		<text>Coeficiente de probabilidad de botín</text>
 	</string>
-	
-	<string id="ui_mcm_body_health_system_HEALTH_OG">
-		<text>Restaura los valores de salud a los predeterminados de BHS.</text>
+	<string id="ui_mcm_body_health_system_loot_coefficient_desc">
+		<text>Multiplicador de la posibilidad de que caigan nuevos medicamentos.\nValor por defecto - 1.0</text>
 	</string>
-	<string id="ui_mcm_body_health_system_HEALTH_OG_desc">
-		<text>Restaura los valores a como estaban en el BHS por defecto. No hace nada más que disminuir la cantidad de pasos de salud en la interfaz de usuario. </text>
+	<string id="ui_mcm_body_health_system_safe_uninstall">
+		<text>Eliminar todos los elementos relacionados con el addon (Desinstalación Segura)</text>
 	</string>
-
+	<string id="ui_mcm_body_health_system_safe_uninstall_desc">
+		<text>Esta opción permite desinstalar el addon de forma segura.\n1) Actívalo\n2) Carga un juego si aún no lo has hecho\n3) Asegúrate de que todos los elementos han sido eliminados\n4) Guarda, sal y desactiva el addon.</text>
+	</string>
 
 </string_table>

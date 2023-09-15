@@ -25,6 +25,18 @@
 		<text>Cura </text>
 	</string>
 	
+	<string id="st_bhs_limb_hp">
+		<text>limb HP </text>
+	</string>
+	
+	<string id="st_bhs_restore">
+		<text>(EXP)Cura</text>
+	</string>
+	
+	<string id="st_bhs_main_hp">
+		<text>Principal HP </text>
+	</string>
+	
 	<string id="st_bhs_currhp">
 		<text>Nivel Actual De HP</text>
 	</string>
