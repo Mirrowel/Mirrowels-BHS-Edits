@@ -136,13 +136,17 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 
 # Latest changelog:
 
-## 0.86C Update
+## 0.86D Update
 
 - Reduced weapon out delay for bandages(Mirror of Enhanced anims - medical)
 
-## 0.86B Update
+## 0.86C Update
 
 - Skinning without a knife out is done with a hunting knife, always. Fix for gamma tomahawk.
+
+## 0.86B Update
+
+- Crafting recipes added
 
 ## 0.86A Update
 
