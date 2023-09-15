@@ -28,7 +28,7 @@ All your base are belong to us! (⌐■_■)
 ]]--
 local ini_eff = {}
 enable_animations = true
-mutant_loot_mod = false
+mutant_loot_mod = true
 local ea_debug = false
 ini_eff = ini_file("items\\items\\animations_settings.ltx")
 local active_slot,anim_exist_tm,wpn,item_usage_snd,monster_usage_snd,item,anim_use_time,obj_m,used_monster = nil
