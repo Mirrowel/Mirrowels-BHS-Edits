@@ -136,6 +136,10 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 
 # Latest changelog:
 
+## 0.86E Update
+
+- Actor damage balancer update to match gamma 0.91
+
 ## 0.86D Update
 
 - Reduced weapon out delay for bandages(Mirror of Enhanced anims - medical)
