@@ -1,0 +1,25 @@
+<w>
+
+    <file name="ui\dynahud\bhs">
+		<!-- body health system -->
+		<texture id="ui_dynahud_bhs_bg"		x="0" y="12" width="317" height="217" />
+		<texture id="ui_dynahud_bhs_health"		x="462" y="0" width="50" height="58" />
+		<texture id="ui_dynahud_bhs_bar"		x="0" y="229" width="38" height="5" />
+		<texture id="ui_dynahud_bhs_bar_green"		x="38" y="229" width="38" height="5" />
+		<texture id="ui_dynahud_bhs_bar_blue"		x="98" y="229" width="38" height="5" />
+		<texture id="ui_dynahud_bhs_stamina"		x="0" y="235" width="134" height="14" />
+		<texture id="ui_dynahud_bhs_health_bg"		x="462" y="71" width="50" height="58" />
+		<texture id="ui_dynahud_bhs_bar_bg"		x="0" y="265" width="38" height="5" />
+		<texture id="ui_dynahud_bhs_stamina_bg"		x="0" y="250" width="134" height="14" />
+	</file>
+
+    <file name="ui\dynahud\mainhud">
+		<texture id="ui_dynahud_health" x="145" y="283" width="113" height="10" />
+		<texture id="ui_dynahud_psy" x="145" y="326" width="76" height="2" />
+		<texture id="ui_dynahud_stamina" x="145" y="311" width="113" height="2" />
+	</file>
+
+    <file name="ui\dynahud\mainhud_bg">
+		<texture id="ui_dynahud_mainhud" x="-10" y="10" width="1366" height="128" />
+	</file>    
+</w>

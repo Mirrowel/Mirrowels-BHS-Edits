@@ -4,7 +4,8 @@ local disable_hud_fps_fix_tmr = 0.2			-- sec
 ------------------------ SETTINGS ------------------------
 local damagescale=zzz_player_injuries_mcm.get_config("DAMAGE_MULT") or 2.5
 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
-local damage_threshold=0.0125 -- 0.0293 is default
+local damagescale_floor = math.floor(damagescale)
+local damage_threshold=0.0293/damagescale_floor -- 0.0293 is default
 local hud_vertical_spacing=25--27 -- How low hitbox hud will be drown. The higher the number, the lower the HUD. 0 is default ~in the middle of screen.
 
 local hide_default_hud= (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and false or true
@@ -937,7 +938,7 @@ local function received_damage(amount)
 				break
 			end
 			if damage >= count then
-				printf("! Enough damage(%s) to hit all healthy limbs(%s) at least once", damage, count)
+				printf("! Enough damage(%s) to hit all healthy limbs(%s) %s times", damage, count, damage/count)
 				printf("! Torso counts as 2")
 				damage_parts=math.floor(damage/count)
 				for k in pairs(health) do
@@ -1127,7 +1128,10 @@ local function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
         text=hitboxes[bone_id]
     end
 	local damage=amount
-    printf("! Actor got hit in %s, random? %s, redirected? %s, damagescale: %s. Original bone: %s, damage type: %s",text, random, redirect, damagescale, hit.bone_id, hit.type)
+	if hit.fall then
+		text = "both legs"
+	end
+    printf("! Actor got hit in %s, random? %s, redirected? %s, damagescale: %s, damage threshold: %s. Original bone: %s, damage type: %s",text, random, redirect, damagescale, damage_threshold, hit.bone_id, hit.type)
 	printf("! Damage: %s",damage)
 	--printf("! Whodunit: %s",who:id())
 	if not hit.bone_id then
@@ -1184,6 +1188,7 @@ local progress_health_leftarm_time=nil
 local progress_health_rightleg_time=nil
 local progress_health_leftleg_time=nil
 
+local progress_health_torso_surgery=nil
 local progress_health_rightarm_surgery=nil
 local progress_health_leftarm_surgery=nil
 local progress_health_rightleg_surgery=nil
@@ -1594,6 +1599,7 @@ local function HUDUpdate()
 
 		--- red bkg health equals surgery -----
 		
+		progress_health_torso_surgery=ParamBar(progress_health_torso_surgery,"bhs_health_torso_bar_blue","bhs_health_bodypart_blue2",	preview.surgeryhp.torso or surgeryhp.torso,maxhp.torso,false)
 		progress_health_rightarm_surgery=ParamBar(progress_health_rightarm_surgery,"bhs_health_rightarm_bar_blue","bhs_health_bodypart_blue3",	preview.surgeryhp.rightarm or surgeryhp.rightarm,maxhp.rightarm,false)
 		progress_health_leftarm_surgery=ParamBar(progress_health_leftarm_surgery,"bhs_health_leftarm_bar_blue","bhs_health_bodypart_blue4",	preview.surgeryhp.leftarm or surgeryhp.leftarm,maxhp.leftarm,false)
 		progress_health_rightleg_surgery=ParamBar(progress_health_rightleg_surgery,"bhs_health_rightleg_bar_blue","bhs_health_bodypart_blue5",	preview.surgeryhp.rightleg or surgeryhp.rightleg,maxhp.rightleg,false)
@@ -2064,6 +2070,7 @@ local status_check_timer = 0
 local status_check_interval = 1000
 
 function actor_on_update()
+	local statuschanged = false
 	if bhs_exp_mode then
 		manage_boosters()
 		--if time_global() >= status_check_timer then 
@@ -2125,7 +2132,6 @@ function actor_on_update()
 		if (preview.health[k]+preview.bonus[k])>maxhp[k] then preview.bonus[k]=(health[k]-maxhp[k]) end  -- needs a check
 	end
 	
-	local statuschanged = false
 	local allheal_ceiling=1
 	if timedheal.torso>0 and time_global()-healhelplist.lastregen>healhelplist.healtimer  then
 		healhelplist.lastregen=time_global()
@@ -2213,12 +2219,27 @@ function actor_on_update()
 		init=true
 	else
 		if statuschanged then
+			for k,v in pairs(health) do
+				local missinghealth = 0
+				if v < maxhp[k] then
+					missinghealth = maxhp[k] - v
+					if missinghealth < 0 then missinghealth = 0 end
+				end
+				local bonus = painkillerlist.painkillerpower
+				if string.match(k, "head") or string.match(k, "torso") then
+					bonus = painkillerlist.painkillerpower * 2
+				end
+				if bonus > missinghealth then
+					bonus = missinghealth
+				end
+				timedhp[k] = bonus
+			end
 			SaveHealthStatus()
 		end
 	end
 	
 	if not (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) then
-		local hidehudonce=false
+		local hidehudonce=true
 		if hide_default_hud and not hidehudonce then
 			local maingameui = ActorMenu.get_maingame()
 			maingameui.m_ui_hud_states.m_ui_health_bar_show = false
@@ -2330,23 +2351,23 @@ local function MedicineUsed(name,health,timedheal,surgeryhp,ispreview)
 				--printf("Countdowns set. New duration: %s",painkillerlist.painkillerduration)
 				painkillerlist.lasttimestamp = time_global()
 			end
-			for k,v in pairs(health) do
-				local missinghealth = 0
-				if v < maxhp[k] then
-					missinghealth = maxhp[k] - v
-					if missinghealth < 0 then missinghealth = 0 end
-				end
-				local bonus = painkillerlist.painkillerpower
-				if string.match(k, "head") or string.match(k, "torso") then
-					bonus = painkillerlist.painkillerpower * 2
-				end
-				if bonus > missinghealth then
-					bonus = missinghealth
-				end
-				timedhp[k] = bonus
-			end
 			if painkiller_grain_shader then level.add_pp_effector("radiation.ppe", 5020, true) end
 			--printf("Painkiller used for %s",ispreview)
+		end
+		for k,v in pairs(health) do
+			local missinghealth = 0
+			if v < maxhp[k] then
+				missinghealth = maxhp[k] - v
+				if missinghealth < 0 then missinghealth = 0 end
+			end
+			local bonus = painkillerlist.painkillerpower
+			if string.match(k, "head") or string.match(k, "torso") then
+				bonus = painkillerlist.painkillerpower * 2
+			end
+			if bonus > missinghealth then
+				bonus = missinghealth
+			end
+			timedhp[k] = bonus
 		end
 	else
 		if healonelist[name] then
@@ -2583,7 +2604,7 @@ local function ActorMenu_on_item_focus_receive(item)
 		--printf("It was a medical item")
 		-- InitializePreviewBars()
 		preview.health=copy_table(health)
-		preview.bonus=copy_table(timedheal)
+		preview.bonus=copy_table(timedhp)
 		preview.surgeryhp=copy_table(surgeryhp)
 		MedicineUsed(item_name,preview.health,preview.bonus,preview.surgeryhp,1)
 	end

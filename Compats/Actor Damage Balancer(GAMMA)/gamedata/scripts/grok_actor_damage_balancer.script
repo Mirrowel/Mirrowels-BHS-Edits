@@ -496,11 +496,12 @@ function shit_booster(shit, bone_id, k_ap)
 	printf('total protection = %s', total_prot)
 	printf('damage to actor = %s', damage)
 
-	if zzz_player_injuries then
+	if zzz_player_injuries and zzz_player_injuries_mcm then
 		zzz_player_injuries.actor_on_before_hit(shit, bone_id)
 	end
 
 	shit.power = 0
+	
 	--if zzz_player_injuries.bhs_exp_mode and damage > db.actor.health and not zzz_player_injuries.hit.death then
 	--	printf("! Death prevented from hit")
 	--	damage=0
