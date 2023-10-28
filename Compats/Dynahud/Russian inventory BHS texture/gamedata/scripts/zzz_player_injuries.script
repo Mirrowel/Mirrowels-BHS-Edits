@@ -2,7 +2,7 @@
 local disable_hud_fps_fix_tmr = 0.2			-- sec
 
 ------------------------ SETTINGS ------------------------
-local damagescale=zzz_player_injuries_mcm.get_config("DAMAGE_MULT") or 2.5
+local damagescale=zzz_player_injuries_mcm.get_config("DAMAGE_MULT") or 3.5
 -- Damage scale to body parts from recieved damage; 0.5 means half of normal limbs do have 50 hp, torso has 100 hp and head has 50 hp
 local damagescale_floor = math.floor(damagescale)
 local damage_threshold=0.0293/damagescale_floor -- 0.0293 is default
@@ -86,6 +86,7 @@ hit.draftsman = nil
 hit.fall = false
 hit.death = false
 hit.apply = false
+hit.damage = false
 
 showtexthud=(zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) and 2 or 0 --1 large left down, 2 default center 0 texture
 
@@ -261,14 +262,14 @@ painkillerlist.painkillerpower=0
 painkillerlist.countdown_increments=0 -- divides the total duration into x parts. Used to make sure painkillers actual duration stays closer to its set duration + up to length of one increment.
 painkillerlist.morphine={painkillerpower=7,painkillerduration=1518000,countdown_increments=92}
 painkillerlist.rebirth={painkillerpower=7,painkillerduration=305000,countdown_increments=30}
-painkillerlist.salicidic_acid={painkillerpower=5,painkillerduration=1152000,countdown_increments=80}
+painkillerlist.salicidic_acid={painkillerpower=6,painkillerduration=1152000,countdown_increments=80}
 painkillerlist.tetanus={painkillerpower=4,painkillerduration=202000,countdown_increments=20}
-painkillerlist.analgetic={painkillerpower=4,painkillerduration=1042000,countdown_increments=80}
+painkillerlist.analgetic={painkillerpower=5,painkillerduration=1042000,countdown_increments=80}
 painkillerlist.sj1={painkillerpower=6,painkillerduration=1500000,countdown_increments=75}
 painkillerlist.sj6={painkillerpower=9,painkillerduration=1500000,countdown_increments=75}
 painkillerlist.analgin={painkillerpower=2,painkillerduration=180000,countdown_increments=36}
-painkillerlist.akvatab={painkillerpower=3,painkillerduration=290000,countdown_increments=29}
-painkillerlist.yadylin={painkillerpower=4,painkillerduration=505000,countdown_increments=50}
+painkillerlist.akvatab={painkillerpower=4,painkillerduration=290000,countdown_increments=29}
+painkillerlist.yadylin={painkillerpower=5,painkillerduration=505000,countdown_increments=50}
 painkillerlist.adrenalin={painkillerpower=2,painkillerduration=2184000,countdown_increments=105}
 painkillerlist.etg={painkillerpower=4,painkillerduration=1800000,countdown_increments=90}
 painkillerlist.medkit_army={painkillerpower=4,painkillerduration=128000,countdown_increments=25}
@@ -290,6 +291,7 @@ exp_druglist.restoreduration=0
 exp_druglist.restorepower=0
 exp_druglist.countdown_increments=0
 exp_druglist.drug_coagulant={restorepower=0.0005,countdown_increments=438,restoretime=438}
+--exp_druglist.yadylin={restorepower=0.0005,countdown_increments=438,restoretime=438}
 
 
 local modifiedregen = regen
@@ -1128,6 +1130,7 @@ local function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
         text=hitboxes[bone_id]
     end
 	local damage=amount
+	hit.damage = damage
 	if hit.fall then
 		text = "both legs"
 	end
@@ -2267,7 +2270,7 @@ function manage_boosters()
 end
 
 local status_check_timer = 0
-local status_check_interval = 1000
+local status_check_interval = 250
 
 function actor_on_update()
 	local statuschanged = false
@@ -2298,7 +2301,7 @@ function actor_on_update()
 	--actor_menu.set_msg("width:"..device().width.." height:"..device().height)
 	local newhealth=db.actor.health
 	local amount=myhealth-newhealth
-	if bhs_exp_mode and amount>0 and hit.type then
+	if amount>0 and hit.type and bhs_exp_mode then
 		if hit.apply then
 			hit.apply=false
 		else
@@ -2306,119 +2309,121 @@ function actor_on_update()
 		end
 			printf("Damage received: %s, Type: %s",amount,hit.type)
 			hit.type = nil
-	elseif bhs_exp_mode and amount>0.001 then
+	elseif amount>0.001 and bhs_exp_mode then
 		printf("Typeless damage received: %s",amount)
 	end
-	if bhs_exp_mode and db.actor.health<=0 then
+	if db.actor.health <= 0 and bhs_exp_mode then
+		printf("Allowing death")
 		hit.death=true
 		db.actor.health=1
 		db.actor.health=-1
 	end
 	myhealth=db.actor.health
-	--if time_global() >= status_check_timer then 
-		--status_check_timer = time_global() + status_check_interval
-	for k,v in pairs(health) do
-		if v>maxhp[k] then 
-			health[k]=maxhp[k] 
+
+
+	if time_global() >= status_check_timer then 
+		status_check_timer = time_global() + status_check_interval
+		for k,v in pairs(health) do
+			if v>maxhp[k] then 
+				health[k]=maxhp[k] 
+			end
+			if v<=0 then health[k]=0 end
 		end
-		if v<=0 then health[k]=0 end
-	end
-	for k,v in pairs(preview.health) do
-		if v>maxhp[k] then 
-			preview.health[k]=maxhp[k]
-			preview.bonus[k]=0	
+		for k,v in pairs(preview.health) do
+			if v>maxhp[k] then 
+				preview.health[k]=maxhp[k]
+				preview.bonus[k]=0	
+			end
+			if v<=0 then preview.health[k]=0 end
+			if (preview.health[k]+preview.bonus[k])>maxhp[k] then preview.bonus[k]=(health[k]-maxhp[k]) end  -- needs a check
 		end
-		if v<=0 then preview.health[k]=0 end
-		if (preview.health[k]+preview.bonus[k])>maxhp[k] then preview.bonus[k]=(health[k]-maxhp[k]) end  -- needs a check
-	end
-	
-	local allheal_ceiling=1
-	if timedheal.torso>0 and time_global()-healhelplist.lastregen>healhelplist.healtimer  then
-		healhelplist.lastregen=time_global()
-		if healhelplist.healpower == 0 then allheal_ceiling=db.actor.health
-		else allheal_ceiling=healhelplist.healpower end
-		for k,v in pairs(timedheal) do
-			if v>0 then
-				if health[k]~=0 or (not splinting) or (medkit_is_splint and medkits_all_heal) then -- broken
-					if health[k]<maxhp[k]*allheal_ceiling  then
-						health[k]=health[k] + 1
-						if health[k]>maxhp[k] then health[k]=maxhp[k] end
+		
+		local allheal_ceiling=1
+		if timedheal.torso>0 and time_global()-healhelplist.lastregen>healhelplist.healtimer  then
+			healhelplist.lastregen=time_global()
+			if healhelplist.healpower == 0 then allheal_ceiling=db.actor.health
+			else allheal_ceiling=healhelplist.healpower end
+			for k,v in pairs(timedheal) do
+				if v>0 then
+					if health[k]~=0 or (not splinting) or (medkit_is_splint and medkits_all_heal) then -- broken
+						if health[k]<maxhp[k]*allheal_ceiling  then
+							health[k]=health[k] + 1
+							if health[k]>maxhp[k] then health[k]=maxhp[k] end
+						end
+					--printf("Healed all")
+					else --printf("Wasted healing on %s",k) 
 					end
-				--printf("Healed all")
-				else --printf("Wasted healing on %s",k) 
+					timedheal[k]=timedheal[k]-1
+					if timedheal[k]<0 then timedheal[k]=0 end
+				end	
+			end
+			statuschanged = true
+		end
+
+		if time_global() - healonelist.lastregen > healonelist.healtimer then
+			if healonelist.healamount > 0 then
+				HealOne(healonelist.healpower,health,surgeryhp)  -- healing not capped to actor.health %
+				healonelist.healamount = healonelist.healamount - 1
+				if healonelist.healamount < 0 then
+					healonelist.healamount = 0
 				end
-				timedheal[k]=timedheal[k]-1
-				if timedheal[k]<0 then timedheal[k]=0 end
+				if healonelist.healamount == 0 then
+					healonelist.lastregen = 0
+					healonelist.healpower = 0
+				else
+					healonelist.lastregen = time_global()
+				end
+				statuschanged = true
+			end
+		end
+
+		if painkillerlist.painkillerpower > 0 then
+			if time_global() - painkillerlist.lasttimestamp > painkillerlist.painkillerduration then
+				if painkillerlist.countdown_increments == 1 or painkillerlist.countdown_increments < 0 then
+					painkillerlist.countdown_increments = 0
+					printf("Painkillers ran out")
+					painkillerlist.painkillerpower = 0
+					painkillerlist.painkillerduration = 0
+					painkillerlist.lasttimestamp = time_global()
+					if painkiller_grain_shader then level.remove_pp_effector(5020) end
+					for k,v in pairs(health) do
+						timedhp[k] = 0
+					end
+				elseif painkillerlist.countdown_increments > 1 then
+					painkillerlist.countdown_increments = painkillerlist.countdown_increments - 1
+					painkillerlist.lasttimestamp = time_global()
+					--printf("Countdowns left: %s",painkillerlist.countdown_increments)
+				end
+				statuschanged = true
 			end	
 		end
-		statuschanged = true
-	end
-
-	if time_global() - healonelist.lastregen > healonelist.healtimer then
-		if healonelist.healamount > 0 then
-			HealOne(healonelist.healpower,health,surgeryhp)  -- healing not capped to actor.health %
-			healonelist.healamount = healonelist.healamount - 1
-			if healonelist.healamount < 0 then
-				healonelist.healamount = 0
+		
+		if modifiedregen>0 and init then
+			if time_global() - healtimer > modifiedregen then
+				HealOne(newhealth,health,surgeryhp)
+				healtimer = time_global()
+				statuschanged = true
+				
 			end
-			if healonelist.healamount == 0 then
-				healonelist.lastregen = 0
-				healonelist.healpower = 0
-			else
-				healonelist.lastregen = time_global()
-			end
-			statuschanged = true
 		end
-	end
-
-	if painkillerlist.painkillerpower > 0 then
-		if time_global() - painkillerlist.lasttimestamp > painkillerlist.painkillerduration then
-			if painkillerlist.countdown_increments == 1 or painkillerlist.countdown_increments < 0 then
-				painkillerlist.countdown_increments = 0
-				printf("Painkillers ran out")
-				painkillerlist.painkillerpower = 0
-				painkillerlist.painkillerduration = 0
-				painkillerlist.lasttimestamp = time_global()
-				if painkiller_grain_shader then level.remove_pp_effector(5020) end
-				for k,v in pairs(health) do
-					timedhp[k] = 0
-				end
-			elseif painkillerlist.countdown_increments > 1 then
-				painkillerlist.countdown_increments = painkillerlist.countdown_increments - 1
-				painkillerlist.lasttimestamp = time_global()
-				--printf("Countdowns left: %s",painkillerlist.countdown_increments)
-			end
-			statuschanged = true
-		end	
-	end
-	
-	if modifiedregen>0 and init then
-		if time_global() - healtimer > modifiedregen then
-			HealOne(newhealth,health,surgeryhp)
-			healtimer = time_global()
-			statuschanged = true
+		if not init then
+		
+			display_width=device().width
+			display_height=device().height
+			local currentratio=display_width/display_height
 			
-		end
-	end
-	if not init then
-	
-		display_width=device().width
-		display_height=device().height
-		local currentratio=display_width/display_height
-		
-		local closest=999
-		local closestkey=999
-		for k,v in pairs(display.types) do
-			local d=math.abs(currentratio-v)
-			if d<closest then closest=d closestkey=k end
-		end
-		display_ratio=closestkey
-		--actor_menu.set_msg(display_ratio,1)
-		
-		LoadHealthStatus()
-		init=true
-	else
-		if statuschanged then
+			local closest=999
+			local closestkey=999
+			for k,v in pairs(display.types) do
+				local d=math.abs(currentratio-v)
+				if d<closest then closest=d closestkey=k end
+			end
+			display_ratio=closestkey
+			--actor_menu.set_msg(display_ratio,1)
+			
+			LoadHealthStatus()
+			init=true
+		elseif statuschanged then
 			for k,v in pairs(health) do
 				local missinghealth = 0
 				if v < maxhp[k] then
@@ -2436,34 +2441,33 @@ function actor_on_update()
 			end
 			SaveHealthStatus()
 		end
-	end
-	
-	if not (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) then
-		local hidehudonce=true
-		if hide_default_hud and not hidehudonce then
-			local maingameui = ActorMenu.get_maingame()
-			maingameui.m_ui_hud_states.m_ui_health_bar_show = false
-			maingameui.m_ui_hud_states.m_ui_stamina_bar_show = false
-			-- maingameui.m_ui_hud_states.m_ui_psy_bar_show = false
-			hidehudonce=true
+		
+		if not (zzz_player_injuries_mcm.get_config("TEXT_BASED_PATCH")) then
+			local hidehudonce=false
+			if hide_default_hud and not hidehudonce then
+				local maingameui = ActorMenu.get_maingame()
+				maingameui.m_ui_hud_states.m_ui_health_bar_show = false
+				maingameui.m_ui_hud_states.m_ui_stamina_bar_show = false
+				-- maingameui.m_ui_hud_states.m_ui_psy_bar_show = false
+				hidehudonce=true
+			end
 		end
-	end
 
-	local speedvector=db.actor:get_movement_speed()
-	local movementspeed=(speedvector.x*speedvector.x)+(speedvector.y*speedvector.y)+(speedvector.z*speedvector.z)
+		local speedvector=db.actor:get_movement_speed()
+		local movementspeed=(speedvector.x*speedvector.x)+(speedvector.y*speedvector.y)+(speedvector.z*speedvector.z)
 
-	-- xcvb ---
-	limp_speed_slow()
-	torso_penalty()
-	bhs_concussion()
-	local curr_time = game.get_game_time()
-	if (prev_time == nil) then prev_time = curr_time end
-	if (curr_time:diffSec(prev_time) > 3) then
-		prev_time = curr_time
-		legs_limp()
-	end
+		-- xcvb ---
+		limp_speed_slow()
+		torso_penalty()
+		bhs_concussion()
+		local curr_time = game.get_game_time()
+		if (prev_time == nil) then prev_time = curr_time end
+		if (curr_time:diffSec(prev_time) > 3) then
+			prev_time = curr_time
+			legs_limp()
+		end
 	----------------------------
-	--end
+	end
 	HUDUpdate()
 	--if health.torso==0 then
 	--	hit.death = true
@@ -2472,16 +2476,37 @@ function actor_on_update()
 	if health.head== 0 then
 		hit.death = true
 		db.actor.health=-1
+		printf("Allowing death from head reaching 0")
 	end
 	if hit.death then
+		printf("Allowing death")
 		db.actor.health=-1
 	end
 end
 
 local function actor_on_before_death(whoID,flags)
     if bhs_exp_mode and not hit.death and arszi_psy.get_psy_health() > 0 then
-		printf("!Death prevented")
-		db.actor.health=myhealth
+		printf("!Preventing death")
+		--if myhealth <=0 then
+		--	printf("Healing to full from: %s, actual health: %s",myhealth, db.actor.health)
+		--	db.actor.health=1
+		--else
+		--	printf("Resetting health to: %s, actual health: %s",myhealth, db.actor.health)
+		--	db.actor.health=myhealth
+		--end
+
+		if hit.type then
+			if hit.apply then
+				hit.apply=false
+			else
+				db.actor.health=myhealth
+				printf("!Revesing death damage")
+			end
+		end
+		if db.actor.health <= 0 then
+			printf("!Allowing death")
+			hit.death=true
+		end
 		flags.ret_value = false
 		return
 	else

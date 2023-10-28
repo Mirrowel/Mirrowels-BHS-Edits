@@ -1,0 +1,1786 @@
+<header>
+	<!-- Condition Drink -->
+	<indicator_drink x="0" y="0" stretch="1" complex_mode="1">
+		<texture><!-- controlled from script --></texture>
+	</indicator_drink>
+
+	<!-- Condition Sleep -->
+	<indicator_sleep x="0" y="0" stretch="1" complex_mode="1">
+		<texture><!-- controlled from script --></texture>
+	</indicator_sleep>
+	
+	<!-- Nightvision Tunneling -->
+	<nv_tunnel x="0" y="0" stretch="1" complex_mode="1">
+		<texture><!-- controlled from script --></texture>
+	</nv_tunnel>
+	
+	<!-- Texture Cache -->
+	<dds_cacher x="0" y="0" stretch="1" complex_mode="1">
+		<texture><!-- controlled from script --></texture>
+	</dds_cacher>
+
+
+    <debug_info x="10" y="160" width="1024" height="768" la_text="1" la_alpha="1" complex_mode="1">
+        <text font="arial_14" r="225" g="225" b="225" a="255" />
+    </debug_info>
+
+    <hud_timer  x="869" y="0" width="155" height="66">
+        <text x="-15" y="23it" font="graffiti32" r="238" g="155" b="23" a="255" align="r"/>
+        <texture>ui_hud_timer_games</texture>
+    </hud_timer>
+
+    <hud_timer_text x="852" y="80" width="157" height="67" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_texture="0" la_text="1" la_alpha="1">
+        <text x="0" y="0" font="graffiti22" r="240" g="217" b="182" a="255" align="c"/>
+    </hud_timer_text>
+
+	<cs_debug  x="350" y="20" width="400" height="100" la_text="1" la_alpha="1" complex_mode="1">
+		<text font="letterica16"  r="240" g="217" b="180" a="255" align="l"/>
+	</cs_debug>
+	<cop_debug  x="20" y="20" width="600" height="100" la_text="1" la_alpha="1" complex_mode="1">
+		<text font="letterica16"  r="240" g="217" b="180" a="255" align="l"/>
+	</cop_debug>
+	
+	
+	<cop2_debug  x="750" y="20" width="255" height="100" la_text="1" la_alpha="1" complex_mode="1">
+		<text font="arial_14" r="240" g="217" b="180" a="255" align="l"/>
+	</cop2_debug>
+	<debug_error  x="910" y="600" width="40" height="50" light_anim="ui_slow_blinking_alpha" stretch="1">
+        <texture r="255" g="100" b="100">ui_frame_error_sign_alarm</texture>
+    </debug_error>
+	
+    <sleep_001  x="20" y="20" width="984" height="728">
+        <texture x="0" y="0" width="984" height="728">car\trabantnoise</texture>
+    </sleep_001>
+
+    <controller_fx  x="0" y="0" width="1024" height="768" stretch="1">
+        <texture>act\act_controller_hit</texture>
+    </controller_fx>
+
+    <controller_fx2  x="0" y="0" width="1024" height="768" stretch="1">
+        <texture>act\act_controller_hit1</texture>
+    </controller_fx2>
+
+    <monster_claws  x="512" y="384" width="512" height="512" alignment="c" stretch="1" heading="1" light_anim="monster_claws" la_alpha="1" la_cyclic="0" ttl="3">
+        <texture>controller\controller_blood_01</texture>
+    </monster_claws>
+
+	<main_task  x="235" y="120" width="554" height="60" complex_mode="1">
+		<text align="c" font="graffiti32"  r="240" g="217" b="182" a="255"/>
+	</main_task>
+
+	<secondary_task  x="235" y="180" width="554" height="60" complex_mode="1" light_anim="ui_tesk_description" la_alpha="1" la_text="1" la_cyclic="0">
+		<text align="c" font="graffiti22"  r="240" g="217" b="182" a="200"/>
+	</secondary_task>
+
+	<cs_psy_danger  x="262" y="30" width="500" height="20" complex_mode="1">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c"/>
+    </cs_psy_danger>
+
+    <cs_radiation_danger  x="262" y="50" width="500" height="20" complex_mode="1">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c"/>
+    </cs_radiation_danger>
+
+	<cs_demo_play  x="30" y="710" width="600" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="letterica18"  r="240" g="217" b="182" a="255" align="l"/>
+	</cs_demo_play>
+
+	<closecaption_1  x="512" y="670" width="600" height="50" alignment="c" complex_mode="1">	<!-- normal -->
+		<text font="graffiti22" r="240" g="217" b="182" a="255" align="c"/>
+	</closecaption_1>
+	<closecaption_1_shadow  x="513" y="671" width="600" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_1_shadow>
+
+	<closecaption_2  x="512" y="635" width="600" height="50" alignment="c" complex_mode="1">	<!-- distant voice, "shouting from afar" -->
+		<text font="graffiti22" r="216" g="186" b="140" a="255" align="c"/>
+	</closecaption_2>
+	<closecaption_2_shadow  x="513" y="636" width="600" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_2_shadow>
+
+	<closecaption_3  x="512" y="561" width="740" height="50" alignment="c" complex_mode="1">	<!-- monolith pray -->
+		<text font="graffiti22" r="180" g="172" b="148" a="255" align="c"/>
+	</closecaption_3>
+	<closecaption_3_shadow  x="513" y="562" width="740" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_3_shadow>
+
+	<closecaption_4  x="512" y="705" width="600" height="50" alignment="c" complex_mode="1">	<!-- second talker -->
+		<text font="graffiti22" r="238" g="155" b="23" a="255" align="c"/>
+	</closecaption_4>
+	<closecaption_4_shadow  x="513" y="706" width="600" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_4_shadow>
+
+	<cs_subtitles_npc  x="175" y="597" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="216" g="186" b="140" a="255" align="c"/>
+	</cs_subtitles_npc>
+	<cs_subtitles_npc_shadow  x="176" y="598" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</cs_subtitles_npc_shadow>
+
+	<closecaption_6  x="512" y="561" width="600" height="50" alignment="c" complex_mode="1">	<!-- "danger" -->
+		<text font="graffiti22" r="240" g="0" b="0" a="255" align="c"/>
+	</closecaption_6>
+	<closecaption_6_shadow  x="513" y="562" width="600" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_6_shadow>
+
+	<cs_subtitles_actor  x="175" y="597" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="240" g="217" b="182" a="255" align="c"/>
+	</cs_subtitles_actor>
+	<cs_subtitles_actor_shadow  x="176" y="598" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</cs_subtitles_actor_shadow>
+
+	<cs_subtitles_object  x="175" y="516" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="255" g="255" b="255" a="255" align="c"/>
+	</cs_subtitles_object>
+	<cs_subtitles_object_shadow  x="176" y="517" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</cs_subtitles_object_shadow>
+
+	<closecaption_9  x="512" y="597" width="600" height="50" alignment="c" complex_mode="1">	<!-- [closed caption] -->
+		<text font="graffiti22" r="240" g="192" b="0" a="255" align="c"/>
+	</closecaption_9>
+	<closecaption_9_shadow  x="513" y="598" width="600" height="50" alignment="c" complex_mode="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</closecaption_9_shadow>
+
+	<cs_subtitles  x="175" y="597" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="160" g="160" b="160" a="255" align="c"/>
+	</cs_subtitles>
+	<cs_subtitles_shadow  x="176" y="598" width="674" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="0" g="0" b="0" a="200" align="c"/>
+	</cs_subtitles_shadow>
+
+    <cs_yantar_td  x="200" y="200" width="600" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti22"  r="240" g="217" b="182" a="255" align="c"/>
+    </cs_yantar_td>
+
+	<cs_arena_kills  x="30" y="300" width="600" height="50" complex_mode="1" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+		<text font="graffiti32"  r="240" g="217" b="182" a="255" align="l"/>
+	</cs_arena_kills>
+
+	<game_saved x="100" y="730" width="800" height="30" ttl="3">
+		<text font="graffiti22" r="240" g="217" b="182" a="255" align="c"/>
+	</game_saved>
+
+    <autosave  x="100" y="730" width="800" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">st_autosave</text>
+    </autosave>
+
+    <item_used  x="100" y="700" width="800" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c"/>
+    </item_used>
+
+    <gun_jammed x="200" y="70" width="600" height="50" ttl="3">
+        <text font="graffiti32"  r="240" g="217" b="182" a="255" align="c">gun_jammed</text>
+    </gun_jammed>
+
+    <cant_walk x="200" y="650" width="600" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">cant_walk</text>
+    </cant_walk>
+
+    <cant_walk_weight x="200" y="650" width="600" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">cant_walk_weight</text>
+    </cant_walk_weight>
+	
+	<gameplay_notification x="200" y="650" width="630" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">st_not_enough_money</text>
+    </gameplay_notification>
+	
+	<showcase_notification x="200" y="700" width="630" height="30" ttl="3">
+        <text font="graffiti22"  r="255" g="232" b="208" a="255" align="c">st_not_enough_money</text>
+    </showcase_notification>
+	
+	<can_use_weapon_now x="200" y="650" width="630" height="30" ttl="3">
+        <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">can_use_weapon_now</text>
+    </can_use_weapon_now>
+
+    <not_enough_money_mine  x="100" y="100" width="800" height="60">
+        <text font="graffiti32"  r="240" g="217" b="182" a="255" align="c">st_not_enough_money</text>
+    </not_enough_money_mine>
+
+    <not_enough_money_other  x="100" y="100" width="800" height="60">
+        <text font="graffiti32"  r="240" g="217" b="182" a="255" align="c">st_not_enough_money_npc</text>
+    </not_enough_money_other>
+
+	<max_ping_warn_1 x="512" y="300" width="360" height="64" alignment="c" ttl="10">
+		<texture x="0" y="0" width="360" height="64" a="30">ui\ui_cm_connection_error</texture>
+		<text x="80" y="50" font="graffiti32" r="238" g="155" b="23" a="255"/>
+		<auto_static x="180" y="50" width="180" height="14">
+			<window_name>cur_num</window_name>
+			<text font="graffiti32" r="238" g="155" b="23" a="255"/>
+		</auto_static>
+	</max_ping_warn_1>
+	<max_ping_warn_2 x="512" y="300" width="360" height="64" alignment="c" ttl="8">
+		<texture x="0" y="0" width="360" height="64" a="64">ui\ui_cm_connection_error</texture>
+		<text x="80" y="50" font="graffiti32" r="238" g="155" b="23" a="255"/>
+		<auto_static x="180" y="50" width="180" height="14">
+			<window_name>cur_num</window_name>
+			<text font="graffiti32" r="238" g="155" b="23" a="255"/>
+		</auto_static>
+	</max_ping_warn_2>
+	<max_ping_warn_3 x="512" y="300" width="360" height="64" alignment="c" ttl="8">
+		<texture x="0" y="0" width="360" height="64" a="160">ui\ui_cm_connection_error</texture>
+		<text x="80" y="50" font="graffiti32" r="238" g="155" b="23" a="255"/>
+		<auto_static x="180" y="50" width="180" height="14">
+			<window_name>cur_num</window_name>
+			<text font="graffiti32" r="238" g="155" b="23" a="255"/>
+		</auto_static>
+	</max_ping_warn_3>
+	<max_ping_warn_4 x="512" y="300" width="360" height="64" alignment="c" ttl="8">
+		<texture x="0" y="0" width="360" height="64" a="255">ui\ui_cm_connection_error</texture>
+		<text x="80" y="50" font="graffiti32" r="238" g="155" b="23" a="255"/>
+		<auto_static x="180" y="50" width="180" height="14">
+			<window_name>cur_num</window_name>
+			<text font="graffiti32" r="238" g="155" b="23" a="255"/>
+		</auto_static>
+	</max_ping_warn_4>
+
+	<cs_enemy_health  x="680" y="15" width="325" height="25" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_sega_healph</texture>
+	</cs_enemy_health>
+    <cs_strelok_health  x="680" y="15" width="325" height="25" stretch="1">
+        <!--                <text font="graffiti22"  r="240" g="217" b="182" a="255" align="l"/>
+        <texture x="0" y="0" width="325" height="25" a="255">ui_sega_healph</texture> -->
+        <texture>ui_sega_healph</texture>
+    </cs_strelok_health>
+
+	<crow_timer  x="869" y="0" width="155" height="66">
+		<text x="20" y="23" font="graffiti32" r="238" g="155" b="23" a="255" align="c"/>
+		<texture>ui_hud_timer_games</texture>
+		<!--
+		<text x="-15" y="23" font="graffiti32" r="238" g="155" b="23" a="255" align="r"/>
+		<texture>ui_hud_timer_games</texture>
+		-->
+	</crow_timer>
+	<crow_timer_text x="852" y="80" width="157" height="67" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_texture="0" la_text="1" la_alpha="1">
+		<text x="0" y="0" font="graffiti22" r="240" g="217" b="182" a="255" align="c"/>
+	</crow_timer_text>
+
+	<shooting_timer x="869" y="0" width="155" height="66">
+		<text x="20" y="23it" font="graffiti32" r="238" g="155" b="23" a="255" align="c"/>
+		<texture>ui_hud_timer_games</texture>
+	</shooting_timer>
+	<shooting_counter  x="433" y="0" width="224" height="46">
+		<text x="2" y="6it" font="graffiti32" r="238" g="155" b="23" a="255" align="c"/>
+		<texture>ui_hud_points_count</texture>
+	</shooting_counter>
+	<shooting_get_ready  x="212" y="300" width="600" height="68" complex_mode="1" light_anim="ui_slow_blinking_alpha">
+		<text font="graffiti32"  r="240" g="217" b="182" a="255" align="c"/>
+	</shooting_get_ready>
+
+
+	<text_on_screen_center x="212" y="300" width="600" height="68" complex_mode="1" light_anim="ui_slow_blinking_alpha">
+		<text font="graffiti32"  r="240" g="217" b="182" a="255" align="c"/>
+	</text_on_screen_center>
+
+	<mp_timelimit x="100" y="77" width="824" height="30">
+		<text font="graffiti19" color="ui_red" align="c"/>
+	</mp_timelimit>
+	<mp_spetatormode x="100" y="115" width="824" height="30">
+		<text font="graffiti19" color="ui_red" align="c"/>
+	</mp_spetatormode>
+	<mp_spectator x="100" y="115" width="824" height="30">
+		<text font="graffiti19" color="ui_white" align="c"/>
+	</mp_spectator>
+	<mp_pressjump x="100" y="729" width="824" height="30">
+		<text font="graffiti19" color="ui_white" align="c"/>
+	</mp_pressjump>
+	<mp_pressbuy x="100" y="749" width="824" height="30">
+		<text font="graffiti19" color="ui_white" align="c"/>
+	</mp_pressbuy>
+	<mp_round_result x="100" y="345" width="824" height="30">
+		<text font="graffiti19" r="240" g="255" b="240"    align="c"/>
+	</mp_round_result>
+	<mp_force_respawn_time x="100" y="38" width="824" height="30">
+		<text font="graffiti19" color="ui_white" align="c"/>
+	</mp_force_respawn_time>
+	<mp_demo_play x="0" y="195" width="824" height="30">
+		<text font="graffiti19" color="ui_green"/>
+	</mp_demo_play>
+	<mp_warm_up x="100" y="75" width="824" height="30">
+		<text font="graffiti19" color="ui_green" align="c"/>
+	</mp_warm_up>
+	<mp_ah_buy x="100" y="729" width="824" height="30">
+		<text font="graffiti19" r="255" g="255" b="0"    align="c"/>
+	</mp_ah_buy>
+	<mp_tdm_buy x="100" y="729" width="824" height="30">
+		<text font="graffiti19" r="255" g="255" b="0"    align="c"/>
+	</mp_tdm_buy>
+
+	<blackscreen width="1024" height="768" stretch="1">
+		<texture>intro\intro_back</texture>
+	</blackscreen>
+  
+<!-- Bars -->
+  	<gieger x="130" y="728" width="113" height="50">
+		<text complex_mode="1" r="50" g="200" b="50" vert_align="c" align="l" font="letterica18" />
+	</gieger>
+	
+	<bar_disguise x="0" y="720" width="1024" height="50">
+		<text complex_mode="1" r="150" g="150" b="150" align="c"  vert_align="c" font="letterica18" />
+	</bar_disguise>
+	
+	<bar_measurement x="0" y="420" width="1024" height="50">
+		<text complex_mode="1" r="0" g="250" b="100" align="c"  vert_align="c" font="letterica18" />
+	</bar_measurement>
+
+<!-- Dinamic HUD -->
+	<hud_vingette x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_vingette</texture>
+	</hud_vingette>
+	
+	<hud_gas_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_1">shaders\gasmasks\mask_nm_1</texture>
+	</hud_gas_blue1>
+	<hud_gas_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_2">shaders\gasmasks\mask_nm_2</texture>
+	</hud_gas_blue2>
+	<hud_gas_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_3">shaders\gasmasks\mask_nm_3</texture>
+	</hud_gas_blue3>
+	<hud_gas_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_4">shaders\gasmasks\mask_nm_4</texture>
+	</hud_gas_green1>
+	<hud_gas_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_5">shaders\gasmasks\mask_nm_5</texture>
+	</hud_gas_green2>
+	<hud_gas_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_6">shaders\gasmasks\mask_nm_6</texture>
+	</hud_gas_green3>
+	<hud_gas_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_7">shaders\gasmasks\mask_nm_7</texture>
+	</hud_gas_yellow1>
+	<hud_gas_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_8">shaders\gasmasks\mask_nm_8</texture>
+	</hud_gas_yellow2>
+	<hud_gas_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_9">shaders\gasmasks\mask_nm_9</texture>
+	</hud_gas_yellow3>
+	<hud_gas_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_10">shaders\gasmasks\mask_nm_10</texture>
+	</hud_gas_red1>
+	<hud_gas_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_10">shaders\gasmasks\mask_nm_10</texture>
+	</hud_gas_red2>
+	<hud_gas_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_10">shaders\gasmasks\mask_nm_10</texture>
+	</hud_gas_red3>
+
+<hud_nbc_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc1</texture>
+	</hud_nbc_blue1>
+	<hud_nbc_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc2</texture>
+	</hud_nbc_blue2>
+	<hud_nbc_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc3</texture>
+	</hud_nbc_blue3>
+	<hud_nbc_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc4</texture>
+	</hud_nbc_green1>
+	<hud_nbc_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc5</texture>
+	</hud_nbc_green2>
+	<hud_nbc_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc6</texture>
+	</hud_nbc_green3>
+	<hud_nbc_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc7</texture>
+	</hud_nbc_yellow1>
+	<hud_nbc_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc8</texture>
+	</hud_nbc_yellow2>
+	<hud_nbc_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc9</texture>
+	</hud_nbc_yellow3>
+	<hud_nbc_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc10</texture>
+	</hud_nbc_red1>
+	<hud_nbc_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc11</texture>
+	</hud_nbc_red2>
+	<hud_nbc_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_nbc12</texture>
+	</hud_nbc_red3>
+	
+	
+	<hud_spp_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp1</texture>
+	</hud_spp_blue1>
+	<hud_spp_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp2</texture>
+	</hud_spp_blue2>
+	<hud_spp_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp3</texture>
+	</hud_spp_blue3>
+	<hud_spp_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp4</texture>
+	</hud_spp_green1>
+	<hud_spp_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp5</texture>
+	</hud_spp_green2>
+	<hud_spp_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp6</texture>
+	</hud_spp_green3>
+	<hud_spp_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp7</texture>
+	</hud_spp_yellow1>
+	<hud_spp_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp8</texture>
+	</hud_spp_yellow2>
+	<hud_spp_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp9</texture>
+	</hud_spp_yellow3>
+	<hud_spp_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp10</texture>
+	</hud_spp_red1>
+	<hud_spp_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp11</texture>
+	</hud_spp_red2>
+	<hud_spp_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_spp12</texture>
+	</hud_spp_red3>
+	
+	
+	<hud_seva_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva1</texture>
+	</hud_seva_blue1>
+	<hud_seva_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva2</texture>
+	</hud_seva_blue2>
+	<hud_seva_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva3</texture>
+	</hud_seva_blue3>
+	<hud_seva_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva4</texture>
+	</hud_seva_green1>
+	<hud_seva_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva5</texture>
+	</hud_seva_green2>
+	<hud_seva_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva6</texture>
+	</hud_seva_green3>
+	<hud_seva_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva7</texture>
+	</hud_seva_yellow1>
+	<hud_seva_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva8</texture>
+	</hud_seva_yellow2>
+	<hud_seva_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva9</texture>
+	</hud_seva_yellow3>
+	<hud_seva_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva10</texture>
+	</hud_seva_red1>
+	<hud_seva_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva11</texture>
+	</hud_seva_red2>
+	<hud_seva_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_seva12</texture>
+	</hud_seva_red3>
+	
+	
+	<hud_noso_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso1</texture>
+	</hud_noso_blue1>
+	<hud_noso_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso2</texture>
+	</hud_noso_blue2>
+	<hud_noso_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso3</texture>
+	</hud_noso_blue3>
+	<hud_noso_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso4</texture>
+	</hud_noso_green1>
+	<hud_noso_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso5</texture>
+	</hud_noso_green2>
+	<hud_noso_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso6</texture>
+	</hud_noso_green3>
+	<hud_noso_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso7</texture>
+	</hud_noso_yellow1>
+	<hud_noso_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso8</texture>
+	</hud_noso_yellow2>
+	<hud_noso_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso9</texture>
+	</hud_noso_yellow3>
+	<hud_noso_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso10</texture>
+	</hud_noso_red1>
+	<hud_noso_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso11</texture>
+	</hud_noso_red2>
+	<hud_noso_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_noso12</texture>
+	</hud_noso_red3>
+	
+	
+	<hud_exo_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo1</texture>
+	</hud_exo_blue1>
+	<hud_exo_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo2</texture>
+	</hud_exo_blue2>
+	<hud_exo_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo3</texture>
+	</hud_exo_blue3>
+	<hud_exo_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo4</texture>
+	</hud_exo_green1>
+	<hud_exo_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo5</texture>
+	</hud_exo_green2>
+	<hud_exo_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo6</texture>
+	</hud_exo_green3>
+	<hud_exo_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo7</texture>
+	</hud_exo_yellow1>
+	<hud_exo_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo8</texture>
+	</hud_exo_yellow2>
+	<hud_exo_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo9</texture>
+	</hud_exo_yellow3>
+	<hud_exo_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo10</texture>
+	</hud_exo_red1>
+	<hud_exo_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo11</texture>
+	</hud_exo_red2>
+	<hud_exo_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exo12</texture>
+	</hud_exo_red3>
+	
+	
+	
+	<hud_ach_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach1</texture>
+	</hud_ach_blue1>
+	<hud_ach_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach2</texture>
+	</hud_ach_blue2>
+	<hud_ach_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach3</texture>
+	</hud_ach_blue3>
+	<hud_ach_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach4</texture>
+	</hud_ach_green1>
+	<hud_ach_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach5</texture>
+	</hud_ach_green2>
+	<hud_ach_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach6</texture>
+	</hud_ach_green3>
+	<hud_ach_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach7</texture>
+	</hud_ach_yellow1>
+	<hud_ach_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach8</texture>
+	</hud_ach_yellow2>
+	<hud_ach_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach9</texture>
+	</hud_ach_yellow3>
+	<hud_ach_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach10</texture>
+	</hud_ach_red1>
+	<hud_ach_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach11</texture>
+	</hud_ach_red2>
+	<hud_ach_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ach12</texture>
+	</hud_ach_red3>
+	
+		
+	
+	<hud_achex_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex1</texture>
+	</hud_achex_blue1>
+	<hud_achex_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex2</texture>
+	</hud_achex_blue2>
+	<hud_achex_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex3</texture>
+	</hud_achex_blue3>
+	<hud_achex_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex4</texture>
+	</hud_achex_green1>
+	<hud_achex_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex5</texture>
+	</hud_achex_green2>
+	<hud_achex_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex6</texture>
+	</hud_achex_green3>
+	<hud_achex_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex7</texture>
+	</hud_achex_yellow1>
+	<hud_achex_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex8</texture>
+	</hud_achex_yellow2>
+	<hud_achex_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex9</texture>
+	</hud_achex_yellow3>
+	<hud_achex_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex10</texture>
+	</hud_achex_red1>
+	<hud_achex_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex11</texture>
+	</hud_achex_red2>
+	<hud_achex_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_achex12</texture>
+	</hud_achex_red3>
+	
+		
+	
+	<hud_exosuit_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit1</texture>
+	</hud_exosuit_blue1>
+	<hud_exosuit_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit2</texture>
+	</hud_exosuit_blue2>
+	<hud_exosuit_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit3</texture>
+	</hud_exosuit_blue3>
+	<hud_exosuit_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit4</texture>
+	</hud_exosuit_green1>
+	<hud_exosuit_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit5</texture>
+	</hud_exosuit_green2>
+	<hud_exosuit_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit6</texture>
+	</hud_exosuit_green3>
+	<hud_exosuit_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit7</texture>
+	</hud_exosuit_yellow1>
+	<hud_exosuit_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit8</texture>
+	</hud_exosuit_yellow2>
+	<hud_exosuit_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit9</texture>
+	</hud_exosuit_yellow3>
+	<hud_exosuit_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit10</texture>
+	</hud_exosuit_red1>
+	<hud_exosuit_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit11</texture>
+	</hud_exosuit_red2>
+	<hud_exosuit_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_exosuit12</texture>
+	</hud_exosuit_red3>
+	
+		
+	
+	<hud_mil_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil1</texture>
+	</hud_mil_blue1>
+	<hud_mil_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil2</texture>
+	</hud_mil_blue2>
+	<hud_mil_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil3</texture>
+	</hud_mil_blue3>
+	<hud_mil_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil4</texture>
+	</hud_mil_green1>
+	<hud_mil_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil5</texture>
+	</hud_mil_green2>
+	<hud_mil_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil6</texture>
+	</hud_mil_green3>
+	<hud_mil_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil7</texture>
+	</hud_mil_yellow1>
+	<hud_mil_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil8</texture>
+	</hud_mil_yellow2>
+	<hud_mil_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil9</texture>
+	</hud_mil_yellow3>
+	<hud_mil_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil10</texture>
+	</hud_mil_red1>
+	<hud_mil_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil11</texture>
+	</hud_mil_red2>
+	<hud_mil_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_mil12</texture>
+	</hud_mil_red3>
+	
+		
+	
+	<hud_respnoglass_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass1</texture>
+	</hud_respnoglass_blue1>
+	<hud_respnoglass_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass2</texture>
+	</hud_respnoglass_blue2>
+	<hud_respnoglass_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass3</texture>
+	</hud_respnoglass_blue3>
+	<hud_respnoglass_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass4</texture>
+	</hud_respnoglass_green1>
+	<hud_respnoglass_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass5</texture>
+	</hud_respnoglass_green2>
+	<hud_respnoglass_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass6</texture>
+	</hud_respnoglass_green3>
+	<hud_respnoglass_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass7</texture>
+	</hud_respnoglass_yellow1>
+	<hud_respnoglass_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass8</texture>
+	</hud_respnoglass_yellow2>
+	<hud_respnoglass_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass9</texture>
+	</hud_respnoglass_yellow3>
+	<hud_respnoglass_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass10</texture>
+	</hud_respnoglass_red1>
+	<hud_respnoglass_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass11</texture>
+	</hud_respnoglass_red2>
+	<hud_respnoglass_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respnoglass12</texture>
+	</hud_respnoglass_red3>
+	
+	
+		<hud_respwithglass_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass1</texture>
+	</hud_respwithglass_blue1>
+	<hud_respwithglass_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass2</texture>
+	</hud_respwithglass_blue2>
+	<hud_respwithglass_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass3</texture>
+	</hud_respwithglass_blue3>
+	<hud_respwithglass_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass4</texture>
+	</hud_respwithglass_green1>
+	<hud_respwithglass_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass5</texture>
+	</hud_respwithglass_green2>
+	<hud_respwithglass_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass6</texture>
+	</hud_respwithglass_green3>
+	<hud_respwithglass_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass7</texture>
+	</hud_respwithglass_yellow1>
+	<hud_respwithglass_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass8</texture>
+	</hud_respwithglass_yellow2>
+	<hud_respwithglass_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass9</texture>
+	</hud_respwithglass_yellow3>
+	<hud_respwithglass_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass10</texture>
+	</hud_respwithglass_red1>
+	<hud_respwithglass_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass11</texture>
+	</hud_respwithglass_red2>
+	<hud_respwithglass_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respwithglass12</texture>
+	</hud_respwithglass_red3>
+		
+	
+	<hud_respold_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold1</texture>
+	</hud_respold_blue1>
+	<hud_respold_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold2</texture>
+	</hud_respold_blue2>
+	<hud_respold_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold3</texture>
+	</hud_respold_blue3>
+	<hud_respold_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold4</texture>
+	</hud_respold_green1>
+	<hud_respold_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold5</texture>
+	</hud_respold_green2>
+	<hud_respold_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold6</texture>
+	</hud_respold_green3>
+	<hud_respold_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold7</texture>
+	</hud_respold_yellow1>
+	<hud_respold_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold8</texture>
+	</hud_respold_yellow2>
+	<hud_respold_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold9</texture>
+	</hud_respold_yellow3>
+	<hud_respold_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold10</texture>
+	</hud_respold_red1>
+	<hud_respold_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold11</texture>
+	</hud_respold_red2>
+	<hud_respold_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respold12</texture>
+	</hud_respold_red3>
+	
+		
+	
+	<hud_respround_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround1</texture>
+	</hud_respround_blue1>
+	<hud_respround_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround2</texture>
+	</hud_respround_blue2>
+	<hud_respround_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround3</texture>
+	</hud_respround_blue3>
+	<hud_respround_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround4</texture>
+	</hud_respround_green1>
+	<hud_respround_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround5</texture>
+	</hud_respround_green2>
+	<hud_respround_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround6</texture>
+	</hud_respround_green3>
+	<hud_respround_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround7</texture>
+	</hud_respround_yellow1>
+	<hud_respround_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround8</texture>
+	</hud_respround_yellow2>
+	<hud_respround_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround9</texture>
+	</hud_respround_yellow3>
+	<hud_respround_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround10</texture>
+	</hud_respround_red1>
+	<hud_respround_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround11</texture>
+	</hud_respround_red2>
+	<hud_respround_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_respround12</texture>
+	</hud_respround_red3>
+	
+		
+	
+	<hud_bala_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala1</texture>
+	</hud_bala_blue1>
+	<hud_bala_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala2</texture>
+	</hud_bala_blue2>
+	<hud_bala_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala3</texture>
+	</hud_bala_blue3>
+	<hud_bala_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala4</texture>
+	</hud_bala_green1>
+	<hud_bala_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala5</texture>
+	</hud_bala_green2>
+	<hud_bala_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala6</texture>
+	</hud_bala_green3>
+	<hud_bala_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala7</texture>
+	</hud_bala_yellow1>
+	<hud_bala_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala8</texture>
+	</hud_bala_yellow2>
+	<hud_bala_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala9</texture>
+	</hud_bala_yellow3>
+	<hud_bala_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala10</texture>
+	</hud_bala_red1>
+	<hud_bala_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala11</texture>
+	</hud_bala_red2>
+	<hud_bala_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_bala12</texture>
+	</hud_bala_red3>
+	
+		
+	
+	<hud_coatbl_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl1</texture>
+	</hud_coatbl_blue1>
+	<hud_coatbl_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl2</texture>
+	</hud_coatbl_blue2>
+	<hud_coatbl_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl3</texture>
+	</hud_coatbl_blue3>
+	<hud_coatbl_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl4</texture>
+	</hud_coatbl_green1>
+	<hud_coatbl_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl5</texture>
+	</hud_coatbl_green2>
+	<hud_coatbl_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl6</texture>
+	</hud_coatbl_green3>
+	<hud_coatbl_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl7</texture>
+	</hud_coatbl_yellow1>
+	<hud_coatbl_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl8</texture>
+	</hud_coatbl_yellow2>
+	<hud_coatbl_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl9</texture>
+	</hud_coatbl_yellow3>
+	<hud_coatbl_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl10</texture>
+	</hud_coatbl_red1>
+	<hud_coatbl_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl11</texture>
+	</hud_coatbl_red2>
+	<hud_coatbl_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbl12</texture>
+	</hud_coatbl_red3>
+	
+		
+	
+	<hud_coatbr_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr1</texture>
+	</hud_coatbr_blue1>
+	<hud_coatbr_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr2</texture>
+	</hud_coatbr_blue2>
+	<hud_coatbr_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr3</texture>
+	</hud_coatbr_blue3>
+	<hud_coatbr_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr4</texture>
+	</hud_coatbr_green1>
+	<hud_coatbr_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr5</texture>
+	</hud_coatbr_green2>
+	<hud_coatbr_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr6</texture>
+	</hud_coatbr_green3>
+	<hud_coatbr_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr7</texture>
+	</hud_coatbr_yellow1>
+	<hud_coatbr_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr8</texture>
+	</hud_coatbr_yellow2>
+	<hud_coatbr_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr9</texture>
+	</hud_coatbr_yellow3>
+	<hud_coatbr_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr10</texture>
+	</hud_coatbr_red1>
+	<hud_coatbr_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr11</texture>
+	</hud_coatbr_red2>
+	<hud_coatbr_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatbr12</texture>
+	</hud_coatbr_red3>
+	
+		
+	
+	<hud_coatgr_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr1</texture>
+	</hud_coatgr_blue1>
+	<hud_coatgr_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr2</texture>
+	</hud_coatgr_blue2>
+	<hud_coatgr_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr3</texture>
+	</hud_coatgr_blue3>
+	<hud_coatgr_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr4</texture>
+	</hud_coatgr_green1>
+	<hud_coatgr_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr5</texture>
+	</hud_coatgr_green2>
+	<hud_coatgr_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr6</texture>
+	</hud_coatgr_green3>
+	<hud_coatgr_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr7</texture>
+	</hud_coatgr_yellow1>
+	<hud_coatgr_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr8</texture>
+	</hud_coatgr_yellow2>
+	<hud_coatgr_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr9</texture>
+	</hud_coatgr_yellow3>
+	<hud_coatgr_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr10</texture>
+	</hud_coatgr_red1>
+	<hud_coatgr_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr11</texture>
+	</hud_coatgr_red2>
+	<hud_coatgr_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatgr12</texture>
+	</hud_coatgr_red3>
+	
+		
+	
+	<hud_coatwh_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh1</texture>
+	</hud_coatwh_blue1>
+	<hud_coatwh_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh2</texture>
+	</hud_coatwh_blue2>
+	<hud_coatwh_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh3</texture>
+	</hud_coatwh_blue3>
+	<hud_coatwh_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh4</texture>
+	</hud_coatwh_green1>
+	<hud_coatwh_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh5</texture>
+	</hud_coatwh_green2>
+	<hud_coatwh_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh6</texture>
+	</hud_coatwh_green3>
+	<hud_coatwh_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh7</texture>
+	</hud_coatwh_yellow1>
+	<hud_coatwh_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh8</texture>
+	</hud_coatwh_yellow2>
+	<hud_coatwh_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh9</texture>
+	</hud_coatwh_yellow3>
+	<hud_coatwh_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh10</texture>
+	</hud_coatwh_red1>
+	<hud_coatwh_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh11</texture>
+	</hud_coatwh_red2>
+	<hud_coatwh_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_coatwh12</texture>
+	</hud_coatwh_red3>
+	
+		
+	
+	<hud_ghillie_blue1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie1</texture>
+	</hud_ghillie_blue1>
+	<hud_ghillie_blue2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie2</texture>
+	</hud_ghillie_blue2>
+	<hud_ghillie_blue3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie3</texture>
+	</hud_ghillie_blue3>
+	<hud_ghillie_green1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie4</texture>
+	</hud_ghillie_green1>
+	<hud_ghillie_green2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie5</texture>
+	</hud_ghillie_green2>
+	<hud_ghillie_green3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie6</texture>
+	</hud_ghillie_green3>
+	<hud_ghillie_yellow1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie7</texture>
+	</hud_ghillie_yellow1>
+	<hud_ghillie_yellow2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie8</texture>
+	</hud_ghillie_yellow2>
+	<hud_ghillie_yellow3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie9</texture>
+	</hud_ghillie_yellow3>
+	<hud_ghillie_red1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie10</texture>
+	</hud_ghillie_red1>
+	<hud_ghillie_red2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie11</texture>
+	</hud_ghillie_red2>
+	<hud_ghillie_red3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\hud_ghillie12</texture>
+	</hud_ghillie_red3>
+
+
+<!-- Blood effects -->
+	<hud_blood1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\blood1</texture>
+	</hud_blood1>
+	<hud_blood2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\blood2</texture>
+	</hud_blood2>
+	<hud_blood3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\blood3</texture>
+	</hud_blood3>
+	<hud_blood4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\blood4</texture>
+	</hud_blood4>
+	<hud_blood5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>dinamic_hud\blood5</texture>
+	</hud_blood5>
+
+<!-- Breathing fog -->
+	<hud_blur1_1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="25">dinamic_hud\breath1</texture>
+	</hud_blur1_1>
+	<hud_blur1_2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="51">dinamic_hud\breath1</texture>
+	</hud_blur1_2>
+	<hud_blur1_3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="76">dinamic_hud\breath1</texture>
+	</hud_blur1_3>
+	<hud_blur1_4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="102">dinamic_hud\breath1</texture>
+	</hud_blur1_4>
+	<hud_blur1_5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="127">dinamic_hud\breath1</texture>
+	</hud_blur1_5>
+	<hud_blur1_6 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="153">dinamic_hud\breath1</texture>
+	</hud_blur1_6>
+	<hud_blur1_7 x="" y="0" width="1024" height="768" stretch="1">
+		<texture a="178">dinamic_hud\breath1</texture>
+	</hud_blur1_7>
+	<hud_blur1_8 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="204">dinamic_hud\breath1</texture>
+	</hud_blur1_8>
+	<hud_blur1_9 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="229">dinamic_hud\breath1</texture>
+	</hud_blur1_9>
+	<hud_blur1_10 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="255">dinamic_hud\breath1</texture>
+	</hud_blur1_10>
+	<hud_blur2_1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="25">dinamic_hud\breath2</texture>
+	</hud_blur2_1>
+	<hud_blur2_2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="51">dinamic_hud\breath2</texture>
+	</hud_blur2_2>
+	<hud_blur2_3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="76">dinamic_hud\breath2</texture>
+	</hud_blur2_3>
+	<hud_blur2_4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="102">dinamic_hud\breath2</texture>
+	</hud_blur2_4>
+	<hud_blur2_5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="127">dinamic_hud\breath2</texture>
+	</hud_blur2_5>
+	<hud_blur2_6 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="153">dinamic_hud\breath2</texture>
+	</hud_blur2_6>
+	<hud_blur2_7 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="178">dinamic_hud\breath2</texture>
+	</hud_blur2_7>
+	<hud_blur2_8 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="204">dinamic_hud\breath2</texture>
+	</hud_blur2_8>
+	<hud_blur2_9 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="229">dinamic_hud\breath2</texture>
+	</hud_blur2_9>
+	<hud_blur2_10 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="255">dinamic_hud\breath2</texture>
+	</hud_blur2_10>
+	<hud_blur3_1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="25">dinamic_hud\breath5</texture>
+	</hud_blur3_1>
+	<hud_blur3_2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="51">dinamic_hud\breath5</texture>
+	</hud_blur3_2>
+	<hud_blur3_3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="76">dinamic_hud\breath5</texture>
+	</hud_blur3_3>
+	<hud_blur3_4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="102">dinamic_hud\breath5</texture>
+	</hud_blur3_4>
+	<hud_blur3_5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="127">dinamic_hud\breath5</texture>
+	</hud_blur3_5>
+	<hud_blur3_6 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="153">dinamic_hud\breath5</texture>
+	</hud_blur3_6>
+	<hud_blur3_7 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="178">dinamic_hud\breath5</texture>
+	</hud_blur3_7>
+	<hud_blur3_8 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="204">dinamic_hud\breath5</texture>
+	</hud_blur3_8>
+	<hud_blur3_9 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="229">dinamic_hud\breath5</texture>
+	</hud_blur3_9>
+	<hud_blur3_10 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="255">dinamic_hud\breath5</texture>
+	</hud_blur3_10>
+	<hud_blur4_1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="25">dinamic_hud\breath3</texture>
+	</hud_blur4_1>
+	<hud_blur4_2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="51">dinamic_hud\breath3</texture>
+	</hud_blur4_2>
+	<hud_blur4_3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="76">dinamic_hud\breath3</texture>
+	</hud_blur4_3>
+	<hud_blur4_4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="102">dinamic_hud\breath3</texture>
+	</hud_blur4_4>
+	<hud_blur4_5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="127">dinamic_hud\breath3</texture>
+	</hud_blur4_5>
+	<hud_blur4_6 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="153">dinamic_hud\breath3</texture>
+	</hud_blur4_6>
+	<hud_blur4_7 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="178">dinamic_hud\breath3</texture>
+	</hud_blur4_7>
+	<hud_blur4_8 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="204">dinamic_hud\breath3</texture>
+	</hud_blur4_8>
+	<hud_blur4_9 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="229">dinamic_hud\breath3</texture>
+	</hud_blur4_9>
+	<hud_blur4_10 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="255">dinamic_hud\breath3</texture>
+	</hud_blur4_10>
+	
+<!-- /Notifications -->
+	<notify_icon x="12" y="700" width="30" height="20" stretch="1" light_anim="ui_slow_blinking_alpha"/> <!-- x="130" y="738" --> <!-- x="20" y="195" -->
+	
+<!-- /Dinamic HUD -->
+<!-- AtmosFear 4:3 ratio -->
+	<atm_indik_rad_green x="30" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_green</texture>
+	</atm_indik_rad_green>
+	<atm_indik_rad_yellow x="30" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_yellow</texture>
+	</atm_indik_rad_yellow>
+	<atm_indik_rad_orange x="30" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_orange</texture>
+	</atm_indik_rad_orange>
+	<atm_indik_rad_red x="30" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_red</texture>
+	</atm_indik_rad_red>
+
+	<atm_indik_acid_green x="165" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_green</texture>
+	</atm_indik_acid_green>
+	<atm_indik_acid_yellow x="165" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_yellow</texture>
+	</atm_indik_acid_yellow>
+	<atm_indik_acid_orange x="165" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_orange</texture>
+	</atm_indik_acid_orange>
+	<atm_indik_acid_red x="165" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_red</texture>
+	</atm_indik_acid_red>
+
+	<atm_indik_psi_green x="120" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_green</texture>
+	</atm_indik_psi_green>
+	<atm_indik_psi_yellow x="120" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_yellow</texture>
+	</atm_indik_psi_yellow>
+	<atm_indik_psi_orange x="120" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_orange</texture>
+	</atm_indik_psi_orange>
+	<atm_indik_psi_red x="120" y="230" width="37" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_red</texture>
+	</atm_indik_psi_red>
+
+	<!-- AtmosFear 16:10 ratio -->
+	<atm_indik_rad_green_16 x="24" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_green</texture>
+	</atm_indik_rad_green_16>
+	<atm_indik_rad_yellow_16 x="24" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_yellow</texture>
+	</atm_indik_rad_yellow_16>
+	<atm_indik_rad_orange_16 x="24" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_orange</texture>
+	</atm_indik_rad_orange_16>
+	<atm_indik_rad_red_16 x="24" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Radiation_red</texture>
+	</atm_indik_rad_red_16>
+
+	<atm_indik_acid_green_16 x="132" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_green</texture>
+	</atm_indik_acid_green_16>
+	<atm_indik_acid_yellow_16 x="132" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_yellow</texture>
+	</atm_indik_acid_yellow_16>
+	<atm_indik_acid_orange_16 x="132" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_orange</texture>
+	</atm_indik_acid_orange_16>
+	<atm_indik_acid_red_16 x="132" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Biological_red</texture>
+	</atm_indik_acid_red_16>
+
+	<atm_indik_psi_green_16 x="21" y="146" width="19" height="22" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_green</texture>
+	</atm_indik_psi_green_16>
+	<atm_indik_psi_yellow_16 x="96" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_yellow</texture>
+	</atm_indik_psi_yellow_16>
+	<atm_indik_psi_orange_16 x="96" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_orange</texture>
+	</atm_indik_psi_orange_16>
+	<atm_indik_psi_red_16 x="96" y="230" width="29" height="33" stretch="1">
+		<texture>ui_inGame2_triangle_Psy_red</texture>
+	</atm_indik_psi_red_16>
+	
+	<hud_water9 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="255">dinamic_hud\water</texture>
+	</hud_water9>
+	<hud_water8 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="224">dinamic_hud\water</texture>
+	</hud_water8>
+	<hud_water7 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="192">dinamic_hud\water</texture>
+	</hud_water7>
+	<hud_water6 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="160">dinamic_hud\water</texture>
+	</hud_water6>
+	<hud_water5 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="128">dinamic_hud\water</texture>
+	</hud_water5>
+	<hud_water4 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="112">dinamic_hud\water</texture>
+	</hud_water4>
+	<hud_water3 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="96">dinamic_hud\water</texture>
+	</hud_water3>
+	<hud_water2 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="64">dinamic_hud\water</texture>
+	</hud_water2>
+	<hud_water1 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="32">dinamic_hud\water</texture>
+	</hud_water1>
+	<hud_water0 x="0" y="0" width="1024" height="768" stretch="1">
+		<texture a="0">dinamic_hud\water</texture>
+	</hud_water0>
+
+	<cs_battery_state  x="0" y="0" width="1024" height="768" stretch="0"/>
+	
+	<dx8_fill_shader x="0" y="0" width="1024" height="768" stretch="1">
+		<texture shader="hud\gs_1">shaders\gasmasks\mask_nm_1</texture>
+	</dx8_fill_shader>
+	
+	<!-- Body Health System 16:9 ratio -->
+	
+	<body_health_system_text  x="15" y="635" width="600" height="100" la_text="1" la_alpha="1" complex_mode="1">
+		<text font="letterica18"  r="240" g="217" b="180" a="255" align="l"/>
+	</body_health_system_text>
+	
+	<body_health_system  x="0" y="611" width="168" height="154" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bg</texture>
+	</body_health_system>
+	
+	<body_health_system_2  x="0" y="611" width="168" height="154" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bgm</texture>
+	</body_health_system_2>
+	
+	<bhs_stamina_bar  x="15" y="745" width="71" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_stamina_bar>
+	
+	<bhs_health_bar  x="38" y="650" width="25" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_health_bar>
+	
+	<bhs_health_head_bar  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar>
+	
+	<bhs_health_torso_bar  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar>
+	
+	<bhs_health_leftarm_bar  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar>
+	
+	<bhs_health_rightarm_bar  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar>
+	
+	<bhs_health_leftleg_bar  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar>
+	
+	<bhs_health_rightleg_bar  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar>
+	
+	
+	<bhs_health_head_bar_green  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_green>
+	
+	<bhs_health_torso_bar_green  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_green>
+	
+	<bhs_health_leftarm_bar_green  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_green>
+	
+	<bhs_health_rightarm_bar_green  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_green>
+	
+	<bhs_health_leftleg_bar_green  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_green>
+	
+	<bhs_health_rightleg_bar_green  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_green>
+	
+	<bhs_health_head_bar_blue  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_blue>
+	
+	<bhs_health_torso_bar_blue  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_blue>
+	
+	<bhs_health_leftarm_bar_blue  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_blue>
+	
+	<bhs_health_rightarm_bar_blue  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_blue>
+	
+	<bhs_health_leftleg_bar_blue  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_blue>
+	
+	<bhs_health_rightleg_bar_blue  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_blue>
+	
+
+	<bhs_stamina_bar_bg  x="15" y="745" width="71" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_stamina_bg</texture>
+	</bhs_stamina_bar_bg>
+	
+	<bhs_health_bar_bg  x="38" y="650" width="25" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_health_bg</texture>
+	</bhs_health_bar_bg>
+	
+	<bhs_health_head_bar_bg  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_head_bar_bg>
+	
+	<bhs_health_torso_bar_bg  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_torso_bar_bg>
+	
+	<bhs_health_leftarm_bar_bg  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftarm_bar_bg>
+	
+	<bhs_health_rightarm_bar_bg  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightarm_bar_bg>
+	
+	<bhs_health_leftleg_bar_bg  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftleg_bar_bg>
+	
+	<bhs_health_rightleg_bar_bg  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightleg_bar_bg>
+	
+	<bhs_garbage  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_garbage>
+	
+	<!-- body health system 4:3 -->
+	
+	<body_health_system_43  x="0" y="640" width="139" height="125" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bg</texture>
+	</body_health_system_43>
+	
+	<body_health_system_2_43  x="0" y="640" width="139" height="125" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bgm</texture>
+	</body_health_system_2_43>
+	
+	<bhs_stamina_bar_43  x="20" y="745" width="95" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_stamina_bar_43>
+	
+	<bhs_health_bar_43  x="51" y="650" width="34" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_health_bar_43>
+	
+	<bhs_health_head_bar_43  x="21" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_43>
+	
+	<bhs_health_torso_bar_43  x="88" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_43>
+	
+	<bhs_health_leftarm_bar_43  x="21" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_43>
+	
+	<bhs_health_rightarm_bar_43  x="88" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_43>
+	
+	<bhs_health_leftleg_bar_43  x="21" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_43>
+	
+	<bhs_health_rightleg_bar_43  x="88" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_43>
+	
+	
+	<bhs_health_head_bar_green_43  x="21" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_green_43>
+	
+	<bhs_health_torso_bar_green_43  x="88" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_green_43>
+	
+	<bhs_health_leftarm_bar_green_43  x="21" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_green_43>
+	
+	<bhs_health_rightarm_bar_green_43  x="88" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_green_43>
+	
+	<bhs_health_leftleg_bar_green_43  x="21" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_green_43>
+	
+	<bhs_health_rightleg_bar_green_43  x="88" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_green_43>
+	
+	<bhs_health_head_bar_blue_43  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_blue_43>
+	
+	<bhs_health_torso_bar_blue_43  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_blue_43>
+	
+	<bhs_health_leftarm_bar_blue_43  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_blue_43>
+	
+	<bhs_health_rightarm_bar_blue_43  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_blue_43>
+	
+	<bhs_health_leftleg_bar_blue_43  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_blue_43>
+	
+	<bhs_health_rightleg_bar_blue_43  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_blue_43>
+	
+
+	<bhs_stamina_bar_bg_43  x="20" y="745" width="95" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_stamina_bg</texture>
+	</bhs_stamina_bar_bg_43>
+	
+	<bhs_health_bar_bg_43  x="51" y="650" width="34" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_health_bg</texture>
+	</bhs_health_bar_bg_43>
+	
+	<bhs_health_head_bar_bg_43  x="21" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_head_bar_bg_43>
+	
+	<bhs_health_torso_bar_bg_43  x="88" y="659" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_torso_bar_bg_43>
+	
+	<bhs_health_leftarm_bar_bg_43  x="21" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftarm_bar_bg_43>
+	
+	<bhs_health_rightarm_bar_bg_43  x="88" y="686" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightarm_bar_bg_43>
+	
+	<bhs_health_leftleg_bar_bg_43  x="21" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftleg_bar_bg_43>
+	
+	<bhs_health_rightleg_bar_bg_43  x="88" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightleg_bar_bg_43>
+	
+	<bhs_garbage_43  x="88" y="713" width="28" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_garbage_43>
+	
+	<!-- body health system 16:10 -->
+	
+	<body_health_system_1610  x="0" y="611" width="168" height="154" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bg</texture>
+	</body_health_system_1610>
+	
+	<body_health_system_2_1610  x="0" y="611" width="168" height="154" la_text="1" la_alpha="1" complex_mode="1" stretch="1" >
+		<text font="letterica16"  r="255" g="255" b="255" a="255" align="l"/>
+		<texture>ui_hud_bhs_bgm</texture>
+	</body_health_system_2_1610>
+	
+	<bhs_stamina_bar_1610  x="15" y="745" width="71" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_stamina_bar_1610>
+	
+	<bhs_health_bar_1610  x="38" y="650" width="25" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+	</bhs_health_bar_1610>
+	
+	<bhs_health_head_bar_1610  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_1610>
+	
+	<bhs_health_torso_bar_1610  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_1610>
+	
+	<bhs_health_leftarm_bar_1610  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_1610>
+	
+	<bhs_health_rightarm_bar_1610  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_1610>
+	
+	<bhs_health_leftleg_bar_1610  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_1610>
+	
+	<bhs_health_rightleg_bar_1610  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_1610>
+	
+	
+	<bhs_health_head_bar_green_1610  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_green_1610>
+	
+	<bhs_health_torso_bar_green_1610  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_green_1610>
+	
+	<bhs_health_leftarm_bar_green_1610  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_green_1610>
+	
+	<bhs_health_rightarm_bar_green_1610  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_green_1610>
+	
+	<bhs_health_leftleg_bar_green_1610  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_green_1610>
+	
+	<bhs_health_rightleg_bar_green_1610  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_green_1610>
+	
+	<bhs_health_head_bar_blue_1610  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_head_bar_blue_1610>
+	
+	<bhs_health_torso_bar_blue_1610  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_torso_bar_blue_1610>
+	
+	<bhs_health_leftarm_bar_blue_1610  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftarm_bar_blue_1610>
+	
+	<bhs_health_rightarm_bar_blue_1610  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightarm_bar_blue_1610>
+	
+	<bhs_health_leftleg_bar_blue_1610  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_leftleg_bar_blue_1610>
+	
+	<bhs_health_rightleg_bar_blue_1610  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_health_rightleg_bar_blue_1610>
+	
+
+	<bhs_stamina_bar_bg_1610  x="15" y="745" width="71" height="10" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_stamina_bg</texture>
+	</bhs_stamina_bar_bg_1610>
+	
+	<bhs_health_bar_bg_1610  x="38" y="650" width="25" height="87" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="240" g="217" b="182" a="255" align="c"/>
+		<texture>ui_hud_bhs_health_bg</texture>
+	</bhs_health_bar_bg_1610>
+	
+	<bhs_health_head_bar_bg_1610  x="16" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_head_bar_bg_1610>
+	
+	<bhs_health_torso_bar_bg_1610  x="66" y="659" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_torso_bar_bg_1610>
+	
+	<bhs_health_leftarm_bar_bg_1610  x="16" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftarm_bar_bg_1610>
+	
+	<bhs_health_rightarm_bar_bg_1610  x="66" y="686" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightarm_bar_bg_1610>
+	
+	<bhs_health_leftleg_bar_bg_1610  x="16" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_leftleg_bar_bg_1610>
+	
+	<bhs_health_rightleg_bar_bg_1610  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+		<texture>ui_hud_bhs_bar_bg</texture>
+	</bhs_health_rightleg_bar_bg_1610>
+	
+	<bhs_garbage_1610  x="66" y="713" width="20" height="4" complex_mode="1" stretch="1">
+		<text font="graffiti19"  r="255" g="0" b="0" a="255" align="c"/>
+	</bhs_garbage_1610>
+	
+</header>
