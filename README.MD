@@ -134,7 +134,17 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
 
 ---
 
-# Latest changelog:
+# Latest changelogs:
+
+## 0.87 Update(not the big one)
+
+- Experimental mode bugfix for death prevention(rewrote it)
+- on_update to 250ms intervals instead of each update. Lag fix if any, but should do nothing at all.
+- Adjustements to painkillers, default suggested values in mcm.
+- Localization files update
+- Craft recipes redone
+- "No old ammo in the wheel" compatibility(Gamma)
+(i have so much to do and not much time. Notes keep increasing)
 
 ## 0.86E Update
 
