@@ -19,6 +19,9 @@
 	</string>
 	<string id="st_bandage_descr">
 		<text>A normal elastic bandage used to stop bleeding and prevent infection of wounds. For regular bleeding, carefully apply the bandage to the wound. For arterial bleeding, urgently tie the bandage around the affected area.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] stops bleeding\n
+		%c[d_blue] • %c[ui_gray_2] fast usage (adhesive plaster)\n
 		</text>
 	</string>
 	<string id="st_drug_coagulant">
@@ -179,6 +182,26 @@
 		<text>Fentanyl is a powerful opioid used as a pain medication. It is also used as a recreational drug, sometimes mixed with heroin, cocaine, or methamphetamine, and its potentially deadly overdose effects can be neutralized by naloxone. Fentanyl works primarily by activating ?-opioid receptors.\n \n
 		%c[0,255,255,255]PROPERTIES:\n
 		%c[d_red] • %c[ui_gray_2]causes slight dizziness\n
+		</text>
+	</string>
+	<string id="st_sleepingpills">
+		<text>Sleeping Pills</text>
+	</string>
+	<string id="st_sleepingpills_descr">
+		<text>A package of small sleeping pills that will almost immediately induce sleepiness, which also helps reducing avalanche-like nerve impulses for a considerable period. Swallow some time before you want to rest and drink a few sips of water afterwards for maximum effect. Take two tablets at a time.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_green] • %c[ui_gray_2]improves morale and mind protection against horrors of the Zone\n
+		%c[d_green] • %c[ui_gray_2]induces sleepiness\n
+		</text>
+	</string>
+	<string id="st_drug_psy_blockade">
+		<text>Psy-block</text>
+	</string>
+	<string id="st_drug_psy_blockade_descr">
+		<text>A drug that blocks avalanche-like nerve impulses. Consumption induces short-term loss of all emotion. Used exclusively in the Zone to counteract the effects of anomalous psy-fields. The effects of the drug are long-lasting. Take two tablets at a time.\n \n
+		%c[0,255,255,255]PROPERTIES:\n
+		%c[d_green] • %c[ui_gray_2]improves morale and mind protection against horrors of the Zone\n
+		%c[d_red] • %c[ui_gray_2]causes extreme dizziness\n
 		</text>
 	</string>
 </string_table>

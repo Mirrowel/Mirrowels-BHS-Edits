@@ -39,7 +39,7 @@
 	<cop_debug  x="20" y="20" width="600" height="100" la_text="1" la_alpha="1" complex_mode="1">
 		<text font="letterica16"  r="240" g="217" b="180" a="255" align="l"/>
 	</cop_debug>
-			
+	
 	
 	<cop2_debug  x="750" y="20" width="255" height="100" la_text="1" la_alpha="1" complex_mode="1">
 		<text font="arial_14" r="240" g="217" b="180" a="255" align="l"/>
