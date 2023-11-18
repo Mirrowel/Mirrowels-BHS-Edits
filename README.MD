@@ -36,6 +36,7 @@ MORE UP-TO-DATE Description on Moddb page <https://www.moddb.com/mods/stalker-an
 - Slower medkit usage and healing rate.
 - Campfire heal for limbs(adapting script)
 - Artefact healing for limbs(same thing)
+- Gunslinger item use animations for medicine + Exo animations
 
 ## **Stuff i will add:**
 
@@ -44,8 +45,6 @@ MORE UP-TO-DATE Description on Moddb page <https://www.moddb.com/mods/stalker-an
 
 All new items are sold by medics. Some new items also added to flea market and butcher's shop.
 As well as a lot of different traders that don't have medics nearby.
-
-Keep in mind that in the more-or-less finished version **everything will be optional modules**. While in development i wont split it into modules so my workload is more sane.
 
 Suggestions and ideas related to BHS are appreciated, as i myself am trying to figure out how to balance things out.
 
@@ -58,24 +57,20 @@ Suggestions and ideas related to BHS are appreciated, as i myself am trying to f
 
 ## As for limb damage:
 
-Keep in mind these values: Legs and Arms have 10HP per limb. Torso and Head have 22HP per limb. 
-That is double of what basic BHS has to make 1HP matter less in the system making balancing easier.
-No, boosting HP does not make limbs survive more damage. Everything is scaled.
+Keep in mind these values: **Legs and Arms have 10HP per limb**. **Torso and Head have 22HP per limb**.  
+That means **total** amount of hp is: **84HP**  
+That is **double of what basic BHS** has to make 1HP matter less in the system making balancing easier.  
+No, boosting HP does not make limbs survive more damage. Everything is **scaled**.  
 
 ---
 
 - ### Heal One System(Healing one HP at a time for one limb):
 
-  - Basic medkit: 21 HP total over the duration. Can heal two arms/legs to full or torso/head once
-  - Army and Cheese: 42 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
-  - Stimpacks: Mirror what medkits heal over their duration, but faster.
-  - Survival kit: 63 HP total over 90 seconds.
-  - Coagulant(Vinca/Barvinok): Heals 11 HP over 438 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-  - Rebirth: 63 HP total over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
-  - Propital: 30 HP total over 180 seconds. Cant heal over your HP level.
+  - Refer to [Medical list](healing_list.md) for detailed stats
   
 ---
-- ### Heal All System(Healing one HP at a time for all limbs) - LEGACY:
+
+- ### Heal All System(Healing one HP at a time for all limbs) - LEGACY, no support:
 
   - Basic medkit: Head/Torso - 11 HP, Legs/Arms - 5 HP total over the duration. Can heal two arms/legs to full or torso/head once
   - Army and Cheese: Head/Torso - 16 HP, Legs/Arms - 7 HP total over the duration. Can heal all arms/legs to full or both torso and head to full.
@@ -83,6 +78,7 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
   - Rebirth: Head/Torso - 22 HP, Legs/Arms - 10 HP over 17 seconds. Cant heal over your HP level. (If you are at 50% then it can only heal limbs to 50%)
 
 ---
+
 - ### Surgery system and kits(In order to restore a limb to 1 HP surgical tools are required):
 
   - Surgical tools: Slow use, restores one limb to be splinted in 10 seconds. One use and needs a bandage. Will cause damage on use.
@@ -97,30 +93,10 @@ No, boosting HP does not make limbs survive more damage. Everything is scaled.
   
 ---
 
-- ### Painkillers(**Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**)
+- ### Painkillers:
 
-  - Morphine: 9 painkiller power for 305 seconds.
-  - Rebirth: 9 painkiller power for 305 seconds.
-  - Salicidic acid: 7 painkiller power for 180 seconds.
-  - Fentanyl: 4 painkiller power for 202 seconds.
-  - Analgetic(Diclofenac Sodium): 5 painkiller power for 305 seconds.
-  - SJ6 stimulator: 7 painkiller power for 600 seconds.
-  - SJ1 stimulator: 4 painkiller power for 600 seconds.
-  - Analgin painkiller: 2 painkiller power for 180 seconds.
-  - Ibuprofen: 4 painkiller power for 290 seconds.
-  - Yadulin: 4 painkiller power for 505 seconds.
-  - Adrenalin(Epinephrine): 2 painkiller power for 2184 seconds.
-  - Army Medkit: 4 painkiller power for 128 seconds.
-  - Cheese Medkit: 3 painkiller power for 128 seconds.
-  - Stimpack: 2 painkiller power for 128 seconds.
-  - Army Stimpack: 4 painkiller power for 128 seconds.
-  - Sci Stimpack: 3 painkiller power for 128 seconds.
-  - Cocaine: 2 painkiller power for 1644 seconds.
-  - Joint: 1 painkiller power for 420 seconds.
-  - Marijuana: 1 painkiller power for 652 seconds.
-  - Bottled vodkas: 1 painkiller power for 300 seconds.
-  - Quality vodka: 2 painkiller power for 300 seconds.
-  - Zone vodka(bottle_metal): 2 painkiller power for 300 seconds.
+  - **Keep in mind that painkiller system doubles the painkiller power for torso and head because they have double the HP over legs and arms**
+  - Refer to [Painkiller list](painkiller_list.md) for detailed stats
 
 ---
 

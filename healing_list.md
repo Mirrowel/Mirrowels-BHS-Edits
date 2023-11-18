@@ -1,0 +1,22 @@
+### Healing items(Heal up to 100%)
+  - **AI-2 Medkit**: Heals: **21** HP
+    - Over: **1 minutes 6 seconds** (66 seconds in total, once per 3.18 seconds)
+  - **Improvised Stimpack**: Heals: **21** HP
+    - Over: **0 minutes 11 seconds** (11 seconds in total, once per 0.57 seconds)
+  - **Army Medkit**: Heals: **32** HP
+    - Over: **1 minutes 6 seconds** (66 seconds in total, once per 2.08 seconds)
+  - **Scientific Medkit**: Heals: **32** HP
+    - Over: **1 minutes 6 seconds** (66 seconds in total, once per 2.08 seconds)
+  - **Military Stimpack**: Heals: **32** HP
+    - Over: **0 minutes 14 seconds** (14 seconds in total, once per 0.47 seconds)
+  - **Scientific Stimpack**: Heals: **32** HP
+    - Over: **0 minutes 14 seconds** (14 seconds in total, once per 0.47 seconds)
+  - **Small Survival Kit**: Heals: **60** HP
+    - Over: **1 minutes 25 seconds** (85 seconds in total, once per 1.43 seconds)
+### Regenerating items(Heal up to current HP%)
+  - **Vinca**: Heals: **11** HP
+    - Over: **7 minutes 17 seconds** (437 seconds in total, once per 39.82 seconds)
+  - **Propital**: Heals: **21** HP
+    - Over: **2 minutes 6 seconds** (126 seconds in total, once per 6.00 seconds)
+  - **Axyltallisal "The Rebirth"**: Heals: **60** HP
+    - Over: **0 minutes 16 seconds** (16 seconds in total, once per 0.28 seconds)
