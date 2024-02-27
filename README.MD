@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C0UZS4P)
+
 I always disliked how BHS worked. Where medkits give temporary hp and most random items heal certain parts.
 
 This mod is my attempt at making BHS fun and immersive instead of just "use a if b, use c if d".
